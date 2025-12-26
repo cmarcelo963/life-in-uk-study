@@ -196,7 +196,7 @@ body {
 }
 
 .chapter-item:hover {
-    background: #EEF2FF;
+    background: var(--hover-bg);
     border-color: var(--primary-color);
 }
 
@@ -305,6 +305,7 @@ body {
 .filter-btn:hover {
     border-color: var(--primary-color);
     color: var(--primary-color);
+    background: var(--hover-bg);
 }
 
 .filter-btn.active {
