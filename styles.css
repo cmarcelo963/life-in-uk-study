@@ -343,6 +343,68 @@ body {
     color: var(--text-primary);
 }
 
+/* Story Narrative Styles */
+.story-narrative {
+    background: var(--card-bg);
+    border: 2px solid #5865F2;
+    border-radius: 16px;
+    padding: 30px;
+    margin-bottom: 20px;
+}
+
+.narrative-icon {
+    font-size: 48px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.narrative-title {
+    font-size: 24px;
+    color: #5865F2;
+    margin-bottom: 20px;
+    text-align: center;
+    line-height: 1.4;
+}
+
+.narrative-content {
+    background: var(--hover-bg);
+    padding: 25px;
+    border-radius: 12px;
+    margin-bottom: 0;
+}
+
+.narrative-text {
+    font-size: 18px;
+    line-height: 1.8;
+    color: var(--text-primary);
+    margin-bottom: 20px;
+    text-align: justify;
+}
+
+.key-fact {
+    background: linear-gradient(135deg, #5865F2 0%, #4752C4 100%);
+    padding: 20px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: 20px;
+}
+
+.key-fact-label {
+    font-weight: 700;
+    color: white;
+    font-size: 16px;
+    white-space: nowrap;
+}
+
+.key-fact-text {
+    font-size: 17px;
+    color: white;
+    line-height: 1.6;
+    font-weight: 600;
+}
+
 .study-answer-section {
     background: var(--success-bg);
     padding: 20px;

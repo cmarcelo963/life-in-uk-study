@@ -377,8 +377,7 @@ function startStudyMode() {
 // Load study card
 function loadStudyCard() {
     if (studyQuestions.length === 0) {
-        // No questions available for this filter
-        document.getElementById('studyQuestion').textContent = 'No questions available for this category.';
+        document.getElementById('studyQuestion').textContent = 'No content available.';
         return;
     }
     
@@ -391,29 +390,51 @@ function loadStudyCard() {
     }
     document.getElementById('studyCounter').textContent = counterText;
     
-    // Update content
+    // Create narrative story format
+    const storyContent = `
+        <div class="story-narrative">
+            <div class="narrative-icon">${getCategoryIcon(question.category)}</div>
+            <h3 class="narrative-title">${question.question}</h3>
+            <div class="narrative-content">
+                <p class="narrative-text">${question.explanation || 'In this moment of British history, we learn about ' + question.question.toLowerCase()}</p>
+                <div class="key-fact">
+                    <span class="key-fact-label">📌 Key Fact:</span>
+                    <span class="key-fact-text">${question.options[question.correct]}</span>
+                </div>
+            </div>
+        </div>
+    `;
+    
     document.getElementById('studyCategoryBadge').textContent = question.category;
-    document.getElementById('studyQuestion').textContent = question.question;
-    document.getElementById('studyAnswer').textContent = question.options[question.correct];
-    document.getElementById('studyExplanation').textContent = question.explanation;
-    
-    // Show all options with correct one highlighted
-    const optionsPreview = document.getElementById('studyOptionsPreview');
-    optionsPreview.innerHTML = '';
-    
-    question.options.forEach((option, index) => {
-        const optionDiv = document.createElement('div');
-        optionDiv.className = 'study-option-item';
-        if (index === question.correct) {
-            optionDiv.classList.add('correct-option');
-        }
-        optionDiv.textContent = option;
-        optionsPreview.appendChild(optionDiv);
-    });
+    document.getElementById('studyQuestion').innerHTML = storyContent;
+    document.querySelector('.study-answer-section').style.display = 'none';
+    document.querySelector('.study-explanation').style.display = 'none';
+    document.querySelector('.study-options-preview').style.display = 'none';
     
     // Update navigation buttons
     document.getElementById('prevStudyBtn').disabled = currentStudyIndex === 0;
-    document.getElementById('nextStudyBtn').disabled = currentStudyIndex === studyQuestions.length - 1;
+    
+    // Check if this is the last card in the chapter
+    if (currentStudyIndex === studyQuestions.length - 1) {
+        document.getElementById('nextStudyBtn').style.display = 'none';
+        document.getElementById('chapterTestBtn').style.display = 'block';
+    } else {
+        document.getElementById('nextStudyBtn').style.display = 'block';
+        document.getElementById('chapterTestBtn').style.display = 'none';
+    }
+}
+
+// Get category icon
+function getCategoryIcon(category) {
+    const icons = {
+        'History': '🏛️',
+        'Government': '⚖️',
+        'Values': '🤝',
+        'Culture': '🎨',
+        'Geography': '🗺️',
+        'Sports': '⚽'
+    };
+    return icons[category] || '📖';
 }
 
 // Navigate study cards
@@ -531,6 +552,10 @@ function beginChapterStudy() {
     
     document.getElementById('chapterStoryIntro').style.display = 'none';
     if (studyCard) studyCard.style.display = 'block';
+    
+    // Show navigation
+    const studyNav = document.querySelector('.study-navigation');
+    if (studyNav) studyNav.style.display = 'flex';
     
     // Load the first study card
     loadStudyCard();
