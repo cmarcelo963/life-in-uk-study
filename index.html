@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Life in the UK - Interactive Study</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <h1>🇬🇧 Life in the UK Study</h1>
+            <div class="stats">
+                <div class="stat-item">
+                    <span class="stat-label">Score</span>
+                    <span class="stat-value" id="score">0</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">Streak</span>
+                    <span class="stat-value" id="streak">0</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">Level</span>
+                    <span class="stat-value" id="level">1</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- Progress Bar -->
+        <div class="progress-container">
+            <div class="progress-bar" id="progressBar"></div>
+        </div>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Welcome Screen -->
+            <div id="welcomeScreen" class="screen active">
+                <div class="welcome-card">
+                    <h2>Welcome! 👋</h2>
+                    <p>Ready to ace your Life in the UK exam?</p>
+                    <p class="subtitle">Interactive studying made easy - bite-sized questions, instant feedback, and gamification!</p>
+                    
+                    <div class="mode-selection">
+                        <button class="mode-btn study-mode" onclick="startStudyMode()">
+                            <span class="emoji">📖</span>
+                            <span class="mode-title">Study Mode</span>
+                            <span class="mode-desc">Learn answers before testing</span>
+                        </button>
+                        <button class="mode-btn" onclick="startQuiz('quick')">
+                            <span class="emoji">⚡</span>
+                            <span class="mode-title">Quick Practice</span>
+                            <span class="mode-desc">10 random questions</span>
+                        </button>
+                        <button class="mode-btn" onclick="startQuiz('full')">
+                            <span class="emoji">📚</span>
+                            <span class="mode-title">Full Test</span>
+                            <span class="mode-desc">24 questions (like the real exam)</span>
+                        </button>
+                        <button class="mode-btn" onclick="startQuiz('category')">
+                            <span class="emoji">🎯</span>
+                            <span class="mode-title">Category Focus</span>
+                            <span class="mode-desc">Practice specific topics</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Study Screen -->
+            <div id="studyScreen" class="screen">
+                <!-- Sidebar Navigation -->
+                <div class="study-sidebar" id="studySidebar">
+                    <div class="sidebar-header">
+                        <h3>📚 Chapters</h3>
+                        <button class="sidebar-toggle" onclick="toggleSidebar()">✕</button>
+                    </div>
+                    <div class="sidebar-chapters" id="sidebarChapters">
+                        <!-- Chapters will be loaded here dynamically -->
+                    </div>
+                </div>
+
+                <!-- Main Study Content -->
+                <div class="study-main">
+                    <button class="mobile-menu-btn" onclick="toggleSidebar()">☰ Chapters</button>
+                    
+                    <!-- Chapter Story Introduction -->
+                    <div id="chapterStoryIntro" class="chapter-story-box" style="display: none;">
+                        <button class="story-back-btn" onclick="goHome()">← Back to Home</button>
+                        <div class="story-header">
+                            <h2 id="storyTitle">Chapter Title</h2>
+                        </div>
+                        <div class="story-content" id="storyContent">
+                            <!-- Story text will be inserted here -->
+                        </div>
+                        <button class="btn btn-primary story-begin-btn" onclick="beginChapterStudy()">Begin Studying →</button>
+                    </div>
+                    
+                    <div class="study-card">
+                    <div class="study-header">
+                        <button class="btn-back" onclick="goHome()">← Back</button>
+                        <div class="study-controls">
+                            <button class="btn-filter" onclick="toggleCategoryFilter()">📁 Filter by Category</button>
+                        </div>
+                    </div>
+
+                    <div class="category-filter" id="categoryFilter">
+                        <button class="filter-btn active" onclick="filterCategory('all')">All</button>
+                        <button class="filter-btn" onclick="filterCategory('History')">History</button>
+                        <button class="filter-btn" onclick="filterCategory('Government')">Government</button>
+                        <button class="filter-btn" onclick="filterCategory('Values')">Values</button>
+                        <button class="filter-btn" onclick="filterCategory('Culture')">Culture</button>
+                        <button class="filter-btn" onclick="filterCategory('Geography')">Geography</button>
+                        <button class="filter-btn" onclick="filterCategory('Sports')">Sports</button>
+                    </div>
+
+                    <div class="study-progress">
+                        <span id="studyCounter">1 of 25</span>
+                    </div>
+
+                    <div class="study-content">
+                        <div class="study-category-badge" id="studyCategoryBadge">History</div>
+                        <h2 class="study-question" id="studyQuestion"></h2>
+                        
+                        <div class="study-answer-section">
+                            <div class="answer-label">✅ Correct Answer:</div>
+                            <div class="study-answer" id="studyAnswer"></div>
+                        </div>
+
+                        <div class="study-explanation">
+                            <div class="explanation-label">💡 Explanation:</div>
+                            <div class="explanation-text" id="studyExplanation"></div>
+                        </div>
+
+                        <div class="study-options-preview">
+                            <div class="options-label">All Options:</div>
+                            <div id="studyOptionsPreview"></div>
+                        </div>
+                    </div>
+
+                    <div class="study-navigation">
+                        <button class="btn btn-secondary" id="prevStudyBtn" onclick="previousStudyCard()">← Previous</button>
+                        <button class="btn btn-primary" id="nextStudyBtn" onclick="nextStudyCard()">Next →</button>
+                        <button class="btn btn-success" id="chapterTestBtn" onclick="startChapterTest()" style="display: none;">🎯 Take Chapter Test</button>
+                    </div>
+                </div>
+                </div>
+            </div>
+
+            <!-- Quiz Screen -->
+            <div id="quizScreen" class="screen">
+                <div class="quiz-card">
+                    <div class="quiz-header">
+                        <button class="quiz-back-btn" onclick="goHome()">← Exit Quiz</button>
+                        <span class="question-number" id="questionNumber">Question 1 of 10</span>
+                        <span class="category-badge" id="categoryBadge">History</span>
+                    </div>
+                    
+                    <h2 class="question-text" id="questionText"></h2>
+                    
+                    <div class="options" id="optionsContainer"></div>
+                    
+                    <div class="feedback" id="feedback"></div>
+                    
+                    <div class="quiz-actions">
+                        <button class="btn btn-secondary" onclick="skipQuestion()">Skip</button>
+                        <button class="btn btn-primary" id="nextBtn" onclick="nextQuestion()" style="display: none;">Next Question →</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Results Screen -->
+            <div id="resultsScreen" class="screen">
+                <div class="results-card">
+                    <div class="results-header">
+                        <h2>Quiz Complete! 🎉</h2>
+                    </div>
+                    
+                    <div class="results-score">
+                        <div class="score-circle">
+                            <span class="score-percentage" id="scorePercentage">0%</span>
+                        </div>
+                        <p class="score-text" id="scoreText"></p>
+                    </div>
+                    
+                    <div class="results-stats">
+                        <div class="result-stat">
+                            <span class="result-stat-value" id="correctAnswers">0</span>
+                            <span class="result-stat-label">Correct</span>
+                        </div>
+                        <div class="result-stat">
+                            <span class="result-stat-value" id="wrongAnswers">0</span>
+                            <span class="result-stat-label">Wrong</span>
+                        </div>
+                        <div class="result-stat">
+                            <span class="result-stat-value" id="skippedAnswers">0</span>
+                            <span class="result-stat-label">Skipped</span>
+                        </div>
+                    </div>
+                    
+                    <div class="results-actions">
+                        <button class="btn btn-primary" onclick="restartQuiz()">Try Again</button>
+                        <button class="btn btn-secondary" onclick="goHome()">Back to Home</button>
+                        <button class="btn btn-secondary" onclick="goHome()">Back to Home</button>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Achievements Toast -->
+        <!-- Chapter Test Modal -->
+        <div id="chapterTestModal" class="chapter-test-modal">
+            <div class="test-modal-content">
+                <div class="test-header">
+                    <h2 id="testTitle">Chapter Test</h2>
+                    <button class="test-close-btn" onclick="closeChapterTest()">✕</button>
+                </div>
+                
+                <div class="test-progress">
+                    <span id="testCounter">Question 1 of 5</span>
+                    <div class="test-score-display">
+                        Score: <span id="testScoreDisplay">0</span>/<span id="testTotalDisplay">5</span>
+                    </div>
+                </div>
+                
+                <div id="testQuestionArea" class="test-question-area">
+                    <div class="test-category-badge" id="testCategoryBadge">History</div>
+                    <h3 class="test-question-text" id="testQuestion"></h3>
+                    
+                    <div class="test-options" id="testOptions">
+                        <!-- Options will be inserted here -->
+                    </div>
+                    
+                    <div class="test-feedback" id="testFeedback" style="display: none;">
+                        <!-- Feedback will be inserted here -->
+                    </div>
+                    
+                    <button class="btn btn-primary" id="nextTestBtn" onclick="nextTestQuestion()" style="display: none;">Next Question →</button>
+                </div>
+                
+                <div id="testResultsArea" class="test-results-area" style="display: none;">
+                    <div class="test-results">
+                        <div class="test-score-circle" id="testScoreCircle">
+                            <span class="score-percentage" id="scorePercentage">0%</span>
+                        </div>
+                        
+                        <h3 id="resultTitle">Test Complete!</h3>
+                        <p id="resultMessage"></p>
+                        
+                        <div class="test-result-actions">
+                            <button class="btn btn-primary" id="unlockBtn" onclick="unlockNextChapter()" style="display: none;">Continue to Next Chapter →</button>
+                            <button class="btn btn-secondary" id="retryBtn" onclick="retryChapterTest()" style="display: none;">🔄 Retry Test</button>
+                            <button class="btn btn-secondary" onclick="reviewChapter()">📖 Review Chapter</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div id="achievementToast" class="achievement-toast">
+            <span class="achievement-icon">🏆</span>
+            <span class="achievement-text"></span>
+        </div>
+    </div>
+
+    <script src="chapter_test_functions.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

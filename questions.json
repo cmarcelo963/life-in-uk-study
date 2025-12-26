@@ -1,0 +1,2447 @@
+{
+  "chapters": [
+    {
+      "id": "ancient-britain",
+      "title": "Ancient and Medieval Britain",
+      "order": 1,
+      "questions": [
+        {
+          "category": "History",
+          "question": "When did the Romans first invade Britain?",
+          "options": ["55 BC", "43 AD", "410 AD", "1066 AD"],
+          "correct": 0,
+          "explanation": "Julius Caesar led the first Roman invasion of Britain in 55 BC, though the successful occupation began in 43 AD."
+        },
+        {
+          "category": "History",
+          "question": "Who built Hadrian's Wall?",
+          "options": ["The Celts", "The Saxons", "The Romans", "The Vikings"],
+          "correct": 2,
+          "explanation": "Hadrian's Wall was built by the Romans around 122 AD on the orders of Emperor Hadrian."
+        },
+        {
+          "category": "History",
+          "question": "Who was Boudicca?",
+          "options": ["A Roman empress", "A Celtic queen who fought the Romans", "An Anglo-Saxon warrior", "A Norman princess"],
+          "correct": 1,
+          "explanation": "Boudicca was a Celtic queen of the Iceni tribe who led a major uprising against Roman rule in 60-61 AD."
+        },
+        {
+          "category": "History",
+          "question": "When did the Battle of Hastings take place?",
+          "options": ["1066", "1215", "1485", "1588"],
+          "correct": 0,
+          "explanation": "The Battle of Hastings took place in 1066, when William the Conqueror defeated King Harold II."
+        },
+        {
+          "category": "History",
+          "question": "What language did the Normans speak?",
+          "options": ["English", "Latin", "Norman French", "German"],
+          "correct": 2,
+          "explanation": "The Normans spoke Norman French, which influenced the development of the English language."
+        },
+        {
+          "category": "History",
+          "question": "What was the Domesday Book?",
+          "options": ["A religious text", "A land and property record", "A law book", "A history of battles"],
+          "correct": 1,
+          "explanation": "The Domesday Book was a survey of land and property ordered by William the Conqueror in 1086."
+        },
+        {
+          "category": "History",
+          "question": "What document was signed by King John in 1215?",
+          "options": ["The Bill of Rights", "The Magna Carta", "The Constitution", "The Declaration"],
+          "correct": 1,
+          "explanation": "The Magna Carta was signed in 1215 and limited the power of the king."
+        },
+        {
+          "category": "History",
+          "question": "Who was the first man to print a book in England?",
+          "options": ["William Shakespeare", "William Caxton", "Geoffrey Chaucer", "Charles Dickens"],
+          "correct": 1,
+          "explanation": "William Caxton produced the first printed book in England in 1476."
+        },
+        {
+          "category": "History",
+          "question": "Which two royal houses fought in the Wars of the Roses?",
+          "options": ["York and Tudor", "Lancaster and Tudor", "Lancaster and York", "Stuart and Tudor"],
+          "correct": 2,
+          "explanation": "The Wars of the Roses (1455-1485) were fought between the House of Lancaster and the House of York."
+        },
+        {
+          "category": "History",
+          "question": "Who was the first Tudor monarch?",
+          "options": ["Henry VIII", "Henry VII", "Edward VI", "Elizabeth I"],
+          "correct": 1,
+          "explanation": "Henry VII became the first Tudor monarch after defeating Richard III at the Battle of Bosworth Field in 1485."
+        },
+        {
+          "category": "History",
+          "question": "When did the Stone Age end in Britain?",
+          "options": ["3000 BC", "2500 BC", "2000 BC", "1500 BC"],
+          "correct": 0,
+          "explanation": "The Stone Age in Britain ended around 3000 BC with the start of the Bronze Age."
+        },
+        {
+          "category": "History",
+          "question": "What ancient monument is found in Wiltshire?",
+          "options": ["Hadrian's Wall", "Stonehenge", "The Tower of London", "Edinburgh Castle"],
+          "correct": 1,
+          "explanation": "Stonehenge is a prehistoric monument in Wiltshire, built around 3000 BC."
+        },
+        {
+          "category": "History",
+          "question": "What did the Romans call Scotland?",
+          "options": ["Britannia", "Caledonia", "Hibernia", "Albion"],
+          "correct": 1,
+          "explanation": "The Romans called Scotland 'Caledonia' and never fully conquered it."
+        },
+        {
+          "category": "History",
+          "question": "When did the Romans leave Britain?",
+          "options": ["AD 43", "AD 122", "AD 410", "AD 1066"],
+          "correct": 2,
+          "explanation": "The Romans left Britain around AD 410 as their empire was under threat."
+        },
+        {
+          "category": "History",
+          "question": "Who were the Anglo-Saxons?",
+          "options": ["Roman soldiers", "Germanic tribes who settled in Britain", "Vikings", "Normans"],
+          "correct": 1,
+          "explanation": "The Anglo-Saxons were tribes from northern Europe who settled in Britain after the Romans left."
+        },
+        {
+          "category": "History",
+          "question": "What language did the Anglo-Saxons speak?",
+          "options": ["Latin", "Old English", "French", "Celtic"],
+          "correct": 1,
+          "explanation": "The Anglo-Saxons spoke Old English, which formed the basis of modern English."
+        },
+        {
+          "category": "History",
+          "question": "Who was Alfred the Great?",
+          "options": ["A Norman king", "An Anglo-Saxon king who defeated the Vikings", "A Roman emperor", "A Tudor king"],
+          "correct": 1,
+          "explanation": "Alfred the Great was King of Wessex who successfully defended England against Viking invasions."
+        },
+        {
+          "category": "History",
+          "question": "When did the Vikings first raid Britain?",
+          "options": ["AD 410", "AD 597", "AD 789", "AD 1066"],
+          "correct": 2,
+          "explanation": "The Vikings first raided Britain in AD 789, beginning a period of Viking invasions."
+        },
+        {
+          "category": "History",
+          "question": "What area did the Vikings control in England?",
+          "options": ["The South", "The Danelaw", "Wessex", "Kent"],
+          "correct": 1,
+          "explanation": "The Vikings controlled an area of eastern England called the Danelaw."
+        },
+        {
+          "category": "History",
+          "question": "Who was the last Anglo-Saxon king of England?",
+          "options": ["Alfred the Great", "Edward the Confessor", "Harold II", "William the Conqueror"],
+          "correct": 2,
+          "explanation": "Harold II was the last Anglo-Saxon king, defeated at the Battle of Hastings in 1066."
+        },
+        {
+          "category": "History",
+          "question": "What type of architecture did the Normans introduce?",
+          "options": ["Gothic", "Tudor", "Romanesque (Norman)", "Victorian"],
+          "correct": 2,
+          "explanation": "The Normans introduced Romanesque architecture, characterized by round arches and thick walls."
+        },
+        {
+          "category": "History",
+          "question": "What was the feudal system?",
+          "options": ["A tax system", "A medieval social hierarchy based on land ownership", "A religious system", "A legal code"],
+          "correct": 1,
+          "explanation": "The feudal system was a social structure where land was held by nobles who provided military service to the king."
+        },
+        {
+          "category": "History",
+          "question": "Who was Thomas Becket?",
+          "options": ["A king", "An Archbishop murdered in Canterbury Cathedral", "A knight", "A poet"],
+          "correct": 1,
+          "explanation": "Thomas Becket was Archbishop of Canterbury, murdered in 1170 after a dispute with King Henry II."
+        },
+        {
+          "category": "History",
+          "question": "What was the Black Death?",
+          "options": ["A war", "A plague that killed one third of Britain's population", "A famine", "A political movement"],
+          "correct": 1,
+          "explanation": "The Black Death was a plague that arrived in Britain in 1348, killing about one third of the population."
+        },
+        {
+          "category": "History",
+          "question": "What was the Hundred Years War?",
+          "options": ["A war between England and France", "A civil war", "A war with Scotland", "A religious war"],
+          "correct": 0,
+          "explanation": "The Hundred Years War (1337-1453) was fought between England and France over the French throne."
+        },
+        {
+          "category": "History",
+          "question": "Who was the famous English king who won at Agincourt?",
+          "options": ["Henry IV", "Henry V", "Henry VI", "Henry VII"],
+          "correct": 1,
+          "explanation": "Henry V won a famous victory against the French at Agincourt in 1415."
+        },
+        {
+          "category": "History",
+          "question": "Who was Joan of Arc?",
+          "options": ["An English queen", "A French heroine who fought the English", "A Scottish warrior", "A Norman princess"],
+          "correct": 1,
+          "explanation": "Joan of Arc was a French heroine who led forces against England during the Hundred Years War."
+        },
+        {
+          "category": "History",
+          "question": "Which medieval king was known as 'the Lionheart'?",
+          "options": ["Richard I", "Richard III", "Henry V", "Edward I"],
+          "correct": 0,
+          "explanation": "Richard I (1189-1199) was known as Richard the Lionheart, famous for his role in the Crusades."
+        },
+        {
+          "category": "History",
+          "question": "Who was the first Prince of Wales?",
+          "options": ["Edward I", "Edward II", "Llywelyn", "Owain Glyndŵr"],
+          "correct": 1,
+          "explanation": "Edward II was the first English Prince of Wales, given the title by his father Edward I in 1301."
+        },
+        {
+          "category": "History",
+          "question": "Which king conquered Wales?",
+          "options": ["William I", "Henry II", "Edward I", "Richard I"],
+          "correct": 2,
+          "explanation": "Edward I conquered Wales in the 1280s and built castles like Caernarfon to control it."
+        },
+        {
+          "category": "History",
+          "question": "Who wrote 'The Canterbury Tales'?",
+          "options": ["William Shakespeare", "Geoffrey Chaucer", "William Caxton", "Thomas More"],
+          "correct": 1,
+          "explanation": "Geoffrey Chaucer wrote 'The Canterbury Tales' in the 14th century, one of the first major works in English."
+        }
+      ]
+    },
+    {
+      "id": "tudor-reformation",
+      "title": "The Tudors and Reformation",
+      "order": 2,
+      "questions": [
+        {
+          "category": "History",
+          "question": "How many wives did Henry VIII have?",
+          "options": ["Four", "Five", "Six", "Seven"],
+          "correct": 2,
+          "explanation": "Henry VIII had six wives: Catherine of Aragon, Anne Boleyn, Jane Seymour, Anne of Cleves, Catherine Howard, and Catherine Parr."
+        },
+        {
+          "category": "History",
+          "question": "What was the Reformation?",
+          "options": ["A political movement", "A religious movement", "An economic reform", "A military campaign"],
+          "correct": 1,
+          "explanation": "The Reformation was a religious movement in the 16th century that challenged the authority of the Pope and the Catholic Church."
+        },
+        {
+          "category": "History",
+          "question": "Who was the first head of the Church of England?",
+          "options": ["Elizabeth I", "Henry VIII", "Edward VI", "Mary I"],
+          "correct": 1,
+          "explanation": "Henry VIII became the first head of the Church of England after breaking from the Catholic Church in Rome."
+        },
+        {
+          "category": "History",
+          "question": "Which queen is known as 'Bloody Mary'?",
+          "options": ["Mary I", "Mary II", "Mary Queen of Scots", "Queen Anne"],
+          "correct": 0,
+          "explanation": "Mary I (daughter of Henry VIII) earned the nickname 'Bloody Mary' for her persecution of Protestants."
+        },
+        {
+          "category": "History",
+          "question": "When did the Spanish Armada attempt to invade England?",
+          "options": ["1485", "1588", "1605", "1642"],
+          "correct": 1,
+          "explanation": "The Spanish Armada attempted to invade England in 1588 during the reign of Elizabeth I."
+        },
+        {
+          "category": "History",
+          "question": "What was the Elizabethan period known for?",
+          "options": ["War and conflict", "A golden age of literature and exploration", "Industrial growth", "Religious persecution"],
+          "correct": 1,
+          "explanation": "The Elizabethan period (1558-1603) was a golden age of English literature, theatre, and exploration."
+        },
+        {
+          "category": "Culture",
+          "question": "Which famous English playwright lived during Elizabeth I's reign?",
+          "options": ["Charles Dickens", "William Shakespeare", "Jane Austen", "Oscar Wilde"],
+          "correct": 1,
+          "explanation": "William Shakespeare (1564-1616) wrote his plays during the Elizabethan and early Jacobean periods."
+        },
+        {
+          "category": "History",
+          "question": "Which explorer sailed around the world during Elizabeth I's reign?",
+          "options": ["Christopher Columbus", "Sir Francis Drake", "Captain Cook", "Walter Raleigh"],
+          "correct": 1,
+          "explanation": "Sir Francis Drake circumnavigated the world between 1577 and 1580 and helped defeat the Spanish Armada."
+        },
+        {
+          "category": "History",
+          "question": "Who attempted to establish the first English colony in America?",
+          "options": ["Sir Francis Drake", "Sir Walter Raleigh", "Captain John Smith", "Sir Humphrey Gilbert"],
+          "correct": 1,
+          "explanation": "Sir Walter Raleigh attempted to establish a colony in Virginia in the 1580s, though it failed."
+        },
+        {
+          "category": "Culture",
+          "question": "What famous theatre was built in London during Elizabeth I's reign?",
+          "options": ["The Globe", "The Royal Opera House", "The National Theatre", "The Old Vic"],
+          "correct": 0,
+          "explanation": "The Globe Theatre was built in 1599 and Shakespeare's plays were performed there."
+        },
+        {
+          "category": "History",
+          "question": "How long did Elizabeth I reign?",
+          "options": ["25 years", "35 years", "45 years", "55 years"],
+          "correct": 2,
+          "explanation": "Elizabeth I reigned for 45 years, from 1558 to 1603, and never married."
+        },
+        {
+          "category": "History",
+          "question": "What nickname was Elizabeth I known by?",
+          "options": ["The Iron Lady", "The Virgin Queen", "The Lionheart", "The Conqueror"],
+          "correct": 1,
+          "explanation": "Elizabeth I was known as 'The Virgin Queen' because she never married."
+        }
+      ]
+    },
+    {
+      "id": "stuart-civil-war",
+      "title": "The Stuarts and Civil War",
+      "order": 3,
+      "questions": [
+        {
+          "category": "History",
+          "question": "Who succeeded Elizabeth I to the throne?",
+          "options": ["James I", "Charles I", "James II", "William III"],
+          "correct": 0,
+          "explanation": "James I (James VI of Scotland) succeeded Elizabeth I in 1603, uniting the crowns of England and Scotland."
+        },
+        {
+          "category": "History",
+          "question": "What was the Gunpowder Plot?",
+          "options": ["A military invention", "An attempt to blow up Parliament", "A firework display", "A naval battle"],
+          "correct": 1,
+          "explanation": "The Gunpowder Plot of 1605 was an attempt by Guy Fawkes and others to blow up Parliament and King James I."
+        },
+        {
+          "category": "History",
+          "question": "When is Guy Fawkes Night celebrated?",
+          "options": ["October 31st", "November 5th", "December 25th", "January 1st"],
+          "correct": 1,
+          "explanation": "Guy Fawkes Night (Bonfire Night) is celebrated on November 5th to commemorate the failure of the Gunpowder Plot."
+        },
+        {
+          "category": "History",
+          "question": "What caused the English Civil War?",
+          "options": ["Religious disputes", "Conflict between King and Parliament", "Foreign invasion", "Economic crisis"],
+          "correct": 1,
+          "explanation": "The English Civil War (1642-1651) was caused by conflict between King Charles I and Parliament over power and governance."
+        },
+        {
+          "category": "History",
+          "question": "Who led the Parliamentary forces in the Civil War?",
+          "options": ["Charles I", "Oliver Cromwell", "James II", "William III"],
+          "correct": 1,
+          "explanation": "Oliver Cromwell led the Parliamentary forces (Roundheads) against the Royalists (Cavaliers)."
+        },
+        {
+          "category": "History",
+          "question": "What happened to Charles I?",
+          "options": ["He died in battle", "He was executed", "He fled to France", "He abdicated"],
+          "correct": 1,
+          "explanation": "Charles I was executed in 1649, making England briefly a republic."
+        },
+        {
+          "category": "History",
+          "question": "What period followed the English Civil War?",
+          "options": ["The Restoration", "The Commonwealth", "The Protectorate", "Both B and C"],
+          "correct": 3,
+          "explanation": "After the Civil War came the Commonwealth and Protectorate (1649-1660), followed by the Restoration when Charles II became king."
+        },
+        {
+          "category": "History",
+          "question": "When was the Gunpowder Plot discovered?",
+          "options": ["1603", "1605", "1610", "1642"],
+          "correct": 1,
+          "explanation": "The Gunpowder Plot was discovered on November 5, 1605, when Guy Fawkes was caught with explosives beneath Parliament."
+        },
+        {
+          "category": "History",
+          "question": "What year did the Union of the Crowns occur?",
+          "options": ["1603", "1642", "1688", "1707"],
+          "correct": 0,
+          "explanation": "The Union of the Crowns occurred in 1603 when James VI of Scotland became James I of England."
+        },
+        {
+          "category": "History",
+          "question": "Who translated the Bible into English during James I's reign?",
+          "options": ["The Church scholars", "William Tyndale", "King James translators", "Martin Luther"],
+          "correct": 2,
+          "explanation": "The King James Bible was produced in 1611 by a group of scholars commissioned by James I."
+        },
+        {
+          "category": "Culture",
+          "question": "Which scientist formulated the laws of motion and gravity?",
+          "options": ["Albert Einstein", "Isaac Newton", "Charles Darwin", "Stephen Hawking"],
+          "correct": 1,
+          "explanation": "Sir Isaac Newton formulated the laws of motion and gravity during the Stuart period."
+        }
+      ]
+    },
+    {
+      "id": "restoration-georgian",
+      "title": "Restoration to Georgian Era",
+      "order": 4,
+      "questions": [
+        {
+          "category": "History",
+          "question": "When was the Great Fire of London?",
+          "options": ["1565", "1666", "1766", "1866"],
+          "correct": 1,
+          "explanation": "The Great Fire of London occurred in 1666 and destroyed much of the medieval city."
+        },
+        {
+          "category": "History",
+          "question": "Who designed St Paul's Cathedral?",
+          "options": ["Christopher Wren", "Inigo Jones", "John Nash", "Robert Adam"],
+          "correct": 0,
+          "explanation": "Sir Christopher Wren designed St Paul's Cathedral, which was rebuilt after the Great Fire of London."
+        },
+        {
+          "category": "History",
+          "question": "What was the Glorious Revolution?",
+          "options": ["A violent civil war", "A peaceful change of monarch", "An industrial change", "A religious reform"],
+          "correct": 1,
+          "explanation": "The Glorious Revolution of 1688 was a peaceful overthrow of James II, replaced by William III and Mary II."
+        },
+        {
+          "category": "History",
+          "question": "What is the Bill of Rights?",
+          "options": ["A document limiting royal power", "A declaration of war", "A trade agreement", "A religious text"],
+          "correct": 0,
+          "explanation": "The Bill of Rights (1689) confirmed Parliament's power over the monarch and guaranteed certain civil rights."
+        },
+        {
+          "category": "History",
+          "question": "Who was Mary, Queen of Scots?",
+          "options": ["An English queen", "A Scottish queen executed by Elizabeth I", "A Welsh princess", "An Irish queen"],
+          "correct": 1,
+          "explanation": "Mary, Queen of Scots was forced to abdicate and was later executed by Elizabeth I in 1587."
+        },
+        {
+          "category": "History",
+          "question": "Who was Bonnie Prince Charlie?",
+          "options": ["A Scottish hero who led the 1745 Jacobite rebellion", "A Welsh king", "An Irish rebel", "An English prince"],
+          "correct": 0,
+          "explanation": "Bonnie Prince Charlie (Charles Edward Stuart) led the 1745 Jacobite rebellion to reclaim the throne for the Stuart family."
+        },
+        {
+          "category": "History",
+          "question": "What was the Battle of Culloden?",
+          "options": ["A Viking battle", "The final defeat of the Jacobites in 1746", "A Norman victory", "A medieval battle"],
+          "correct": 1,
+          "explanation": "The Battle of Culloden (1746) was the final defeat of the Jacobite rebellion led by Bonnie Prince Charlie."
+        },
+        {
+          "category": "History",
+          "question": "When did England and Scotland unite to form Great Britain?",
+          "options": ["1603", "1649", "1707", "1801"],
+          "correct": 2,
+          "explanation": "The Act of Union in 1707 united England and Scotland to create the Kingdom of Great Britain."
+        },
+        {
+          "category": "History",
+          "question": "When was the Scottish independence referendum held?",
+          "options": ["2010", "2012", "2014", "2016"],
+          "correct": 2,
+          "explanation": "The Scottish independence referendum was held in 2014, with voters choosing to remain in the UK."
+        },
+        {
+          "category": "Culture",
+          "question": "Who is Scotland's national poet?",
+          "options": ["William Wordsworth", "Robert Burns", "Lord Byron", "Walter Scott"],
+          "correct": 1,
+          "explanation": "Robert Burns (1759-1796) is Scotland's national poet, famous for 'Auld Lang Syne' and other works."
+        },
+        {
+          "category": "Culture",
+          "question": "Which famous author wrote 'Pride and Prejudice'?",
+          "options": ["Charlotte Brontë", "Jane Austen", "George Eliot", "Mary Shelley"],
+          "correct": 1,
+          "explanation": "Jane Austen (1775-1817) wrote 'Pride and Prejudice' during the Georgian period."
+        },
+        {
+          "category": "History",
+          "question": "What was the Enlightenment?",
+          "options": ["A religious movement", "An intellectual movement emphasizing reason and science", "A political revolution", "An industrial change"],
+          "correct": 1,
+          "explanation": "The Enlightenment was an 18th-century intellectual movement that emphasized reason, science, and individual rights."
+        },
+        {
+          "category": "History",
+          "question": "Which king lost the American colonies?",
+          "options": ["George I", "George II", "George III", "George IV"],
+          "correct": 2,
+          "explanation": "George III was king when the American colonies declared independence in 1776."
+        },
+        {
+          "category": "History",
+          "question": "When was the slave trade abolished in the British Empire?",
+          "options": ["1707", "1807", "1833", "1865"],
+          "correct": 1,
+          "explanation": "The slave trade was abolished in 1807, and slavery itself was abolished throughout the British Empire in 1833."
+        },
+        {
+          "category": "History",
+          "question": "Who campaigned to abolish the slave trade?",
+          "options": ["William Gladstone", "Benjamin Disraeli", "William Wilberforce", "Robert Peel"],
+          "correct": 2,
+          "explanation": "William Wilberforce was an MP who led the campaign to abolish the slave trade in the British Empire."
+        },
+        {
+          "category": "History",
+          "question": "When did the Battle of Waterloo take place?",
+          "options": ["1805", "1815", "1825", "1835"],
+          "correct": 1,
+          "explanation": "The Battle of Waterloo was fought in 1815, where the Duke of Wellington defeated Napoleon."
+        },
+        {
+          "category": "History",
+          "question": "Which king lost the American colonies?",
+          "options": ["George I", "George II", "George III", "George IV"],
+          "correct": 2,
+          "explanation": "George III was king when the American colonies declared independence in 1776."
+        },
+        {
+          "category": "History",
+          "question": "When did Ireland unite with Great Britain?",
+          "options": ["1707", "1745", "1801", "1922"],
+          "correct": 2,
+          "explanation": "Ireland united with Great Britain in 1801 to form the United Kingdom of Great Britain and Ireland."
+        },
+        {
+          "category": "History",
+          "question": "When did Ireland become divided?",
+          "options": ["1801", "1916", "1921", "1998"],
+          "correct": 2,
+          "explanation": "Ireland was partitioned in 1921, creating Northern Ireland (part of the UK) and the Irish Free State (later the Republic of Ireland)."
+        },
+        {
+          "category": "History",
+          "question": "What was the Easter Rising?",
+          "options": ["A religious festival", "An Irish rebellion in 1916", "A trade agreement", "A political party"],
+          "correct": 1,
+          "explanation": "The Easter Rising was an armed rebellion in Dublin in 1916 against British rule in Ireland."
+        }
+      ]
+    },
+    {
+      "id": "victorian-era",
+      "title": "The Victorian Era",
+      "order": 5,
+      "questions": [
+        {
+          "category": "History",
+          "question": "How long did Queen Victoria reign?",
+          "options": ["45 years", "54 years", "64 years", "74 years"],
+          "correct": 2,
+          "explanation": "Queen Victoria reigned for 64 years (1837-1901), the longest of any British monarch until Elizabeth II."
+        },
+        {
+          "category": "History",
+          "question": "What was the Industrial Revolution?",
+          "options": ["A political uprising", "A period of rapid industrial growth", "A war", "A religious movement"],
+          "correct": 1,
+          "explanation": "The Industrial Revolution was a period of major industrialization and innovation in the 18th and 19th centuries."
+        },
+        {
+          "category": "History",
+          "question": "Who was the famous engineer of the Industrial Revolution known for bridges and ships?",
+          "options": ["George Stephenson", "Isambard Kingdom Brunel", "James Watt", "Richard Arkwright"],
+          "correct": 1,
+          "explanation": "Isambard Kingdom Brunel was a famous Victorian engineer who designed bridges, railways, and ships."
+        },
+        {
+          "category": "History",
+          "question": "Who developed the steam engine?",
+          "options": ["James Watt", "George Stephenson", "Richard Trevithick", "Thomas Newcomen"],
+          "correct": 0,
+          "explanation": "James Watt significantly improved the steam engine, making it more efficient and practical."
+        },
+        {
+          "category": "History",
+          "question": "Who built the first passenger railway?",
+          "options": ["Isambard Kingdom Brunel", "George Stephenson", "James Watt", "Richard Trevithick"],
+          "correct": 1,
+          "explanation": "George Stephenson built the first passenger railway line (Stockton to Darlington, 1825) and his Rocket locomotive."
+        },
+        {
+          "category": "History",
+          "question": "What was the Suffragette movement?",
+          "options": ["Trade union movement", "Women's right to vote movement", "Anti-slavery movement", "Workers' rights movement"],
+          "correct": 1,
+          "explanation": "The Suffragette movement campaigned for women's right to vote in the early 20th century."
+        },
+        {
+          "category": "History",
+          "question": "Who was the famous nurse in the Crimean War?",
+          "options": ["Mary Seacole", "Florence Nightingale", "Edith Cavell", "Emmeline Pankhurst"],
+          "correct": 1,
+          "explanation": "Florence Nightingale was a famous nurse who improved hospital conditions during the Crimean War."
+        },
+        {
+          "category": "History",
+          "question": "When was the Great Exhibition?",
+          "options": ["1801", "1851", "1901", "1951"],
+          "correct": 1,
+          "explanation": "The Great Exhibition of 1851 was held in the Crystal Palace in Hyde Park, showcasing British industry and innovation."
+        },
+        {
+          "category": "History",
+          "question": "Where was the Titanic built?",
+          "options": ["Liverpool", "Belfast", "Southampton", "Glasgow"],
+          "correct": 1,
+          "explanation": "The RMS Titanic was built in Belfast, Northern Ireland, and sank on its maiden voyage in 1912."
+        },
+        {
+          "category": "History",
+          "question": "Where was the Titanic built?",
+          "options": ["Liverpool", "Belfast", "Southampton", "Glasgow"],
+          "correct": 1,
+          "explanation": "The RMS Titanic was built in Belfast, Northern Ireland, and sank on its maiden voyage in 1912."
+        }
+      ]
+    },
+    {
+      "id": "20th-century",
+      "title": "20th Century Britain",
+      "order": 6,
+      "questions": [
+        {
+          "category": "History",
+          "question": "When did the First World War begin?",
+          "options": ["1914", "1916", "1918", "1920"],
+          "correct": 0,
+          "explanation": "The First World War began in 1914 and lasted until 1918."
+        },
+        {
+          "category": "History",
+          "question": "When did the First World War end?",
+          "options": ["1917", "1918", "1919", "1920"],
+          "correct": 1,
+          "explanation": "The First World War ended on 11 November 1918 with the Armistice."
+        },
+        {
+          "category": "History",
+          "question": "What was the name of the royal house changed to in 1917?",
+          "options": ["Windsor", "Hanover", "Saxe-Coburg-Gotha", "Stuart"],
+          "correct": 0,
+          "explanation": "In 1917, George V changed the royal family name from Saxe-Coburg-Gotha to Windsor due to anti-German sentiment."
+        },
+        {
+          "category": "History",
+          "question": "Which king abdicated in 1936?",
+          "options": ["George V", "Edward VIII", "George VI", "Edward VII"],
+          "correct": 1,
+          "explanation": "Edward VIII abdicated in 1936 to marry Wallis Simpson, an American divorcée. His brother became George VI."
+        },
+        {
+          "category": "History",
+          "question": "Who was King during World War II?",
+          "options": ["Edward VIII", "George V", "George VI", "Edward VII"],
+          "correct": 2,
+          "explanation": "George VI was King during World War II (1939-1945) and became a symbol of British resistance."
+        },
+        {
+          "category": "History",
+          "question": "When did the Second World War begin?",
+          "options": ["1937", "1939", "1941", "1945"],
+          "correct": 1,
+          "explanation": "The Second World War began in 1939 when Germany invaded Poland."
+        },
+        {
+          "category": "History",
+          "question": "Who was the British Prime Minister for most of World War II?",
+          "options": ["Neville Chamberlain", "Winston Churchill", "Clement Attlee", "Anthony Eden"],
+          "correct": 1,
+          "explanation": "Winston Churchill was Prime Minister from 1940-1945 and led Britain through most of World War II."
+        },
+        {
+          "category": "History",
+          "question": "When did women gain the right to vote in the UK?",
+          "options": ["1918 and 1928", "1900", "1945", "1950"],
+          "correct": 0,
+          "explanation": "Women over 30 gained the vote in 1918, and all women over 21 gained equal voting rights in 1928."
+        },
+        {
+          "category": "History",
+          "question": "What was the Blitz?",
+          "options": ["A naval battle", "German bombing of British cities", "A military strategy", "A peace treaty"],
+          "correct": 1,
+          "explanation": "The Blitz was the German bombing campaign against British cities during World War II, especially London."
+        },
+        {
+          "category": "History",
+          "question": "When did the Battle of Britain take place?",
+          "options": ["1939", "1940", "1941", "1944"],
+          "correct": 1,
+          "explanation": "The Battle of Britain was fought in the summer and autumn of 1940 between the RAF and the German Luftwaffe."
+        },
+        {
+          "category": "History",
+          "question": "When did D-Day occur?",
+          "options": ["1942", "1943", "1944", "1945"],
+          "correct": 2,
+          "explanation": "D-Day, the Allied invasion of Normandy, occurred on June 6, 1944."
+        },
+        {
+          "category": "History",
+          "question": "Who created the welfare state in Britain?",
+          "options": ["Winston Churchill", "Clement Attlee's Labour government", "Margaret Thatcher", "Harold Wilson"],
+          "correct": 1,
+          "explanation": "Clement Attlee's Labour government (1945-1951) created the modern welfare state, including the NHS."
+        },
+        {
+          "category": "History",
+          "question": "When was the NHS (National Health Service) established?",
+          "options": ["1942", "1945", "1948", "1951"],
+          "correct": 2,
+          "explanation": "The NHS was established in 1948, providing free healthcare to all UK residents."
+        },
+        {
+          "category": "History",
+          "question": "Who was the first female Prime Minister of the UK?",
+          "options": ["Margaret Thatcher", "Theresa May", "Angela Merkel", "Golda Meir"],
+          "correct": 0,
+          "explanation": "Margaret Thatcher became the UK's first female Prime Minister in 1979, serving until 1990."
+        },
+        {
+          "category": "History",
+          "question": "When did Britain join the European Economic Community (EEC)?",
+          "options": ["1957", "1963", "1973", "1992"],
+          "correct": 2,
+          "explanation": "Britain joined the EEC (later the EU) in 1973 under Prime Minister Edward Heath."
+        },
+        {
+          "category": "History",
+          "question": "What was the Falklands War?",
+          "options": ["A civil war", "A conflict over islands in the South Atlantic", "A trade dispute", "A border conflict"],
+          "correct": 1,
+          "explanation": "The Falklands War (1982) was fought between Britain and Argentina over the Falkland Islands."
+        },
+        {
+          "category": "History",
+          "question": "When was devolution introduced in the UK?",
+          "options": ["1979", "1989", "1997-1999", "2005"],
+          "correct": 2,
+          "explanation": "Devolution was introduced in 1997-1999, giving more power to Scotland, Wales, and Northern Ireland."
+        },
+        {
+          "category": "History",
+          "question": "What is the Good Friday Agreement?",
+          "options": ["A trade agreement", "A peace agreement for Northern Ireland", "An EU treaty", "A constitutional reform"],
+          "correct": 1,
+          "explanation": "The Good Friday Agreement (1998) was a major peace agreement that helped end the Troubles in Northern Ireland."
+        },
+        {
+          "category": "History",
+          "question": "When did the Scottish Parliament reconvene?",
+          "options": ["1979", "1989", "1999", "2007"],
+          "correct": 2,
+          "explanation": "The Scottish Parliament reconvened in 1999 after nearly 300 years, following a referendum in 1997."
+        },
+        {
+          "category": "History",
+          "question": "When did the UK hold a referendum on EU membership?",
+          "options": ["2014", "2015", "2016", "2017"],
+          "correct": 2,
+          "explanation": "The UK held an EU membership referendum on 23 June 2016, with a vote to leave."
+        }
+      ]
+    },
+    {
+      "id": "government",
+      "title": "UK Government and Politics",
+      "order": 7,
+      "questions": [
+        {
+          "category": "Government",
+          "question": "Who is the head of state in the UK?",
+          "options": ["The Prime Minister", "The Monarch", "The Speaker", "The Lord Chancellor"],
+          "correct": 1,
+          "explanation": "The Monarch (currently King Charles III) is the head of state in the UK."
+        },
+        {
+          "category": "Government",
+          "question": "What is the official name of the UK Parliament?",
+          "options": ["House of Commons", "House of Lords", "The Palace of Westminster", "The Houses of Parliament"],
+          "correct": 3,
+          "explanation": "The UK Parliament is officially called the Houses of Parliament, consisting of the House of Commons and House of Lords."
+        },
+        {
+          "category": "Government",
+          "question": "How many MPs are there in the House of Commons?",
+          "options": ["550", "600", "650", "700"],
+          "correct": 2,
+          "explanation": "There are 650 MPs in the House of Commons."
+        },
+        {
+          "category": "Government",
+          "question": "What are MPs?",
+          "options": ["Military Police", "Members of Parliament", "Ministerial Posts", "Mayor's Partners"],
+          "correct": 1,
+          "explanation": "MPs are Members of Parliament elected to represent constituencies in the House of Commons."
+        },
+        {
+          "category": "Government",
+          "question": "What is a constituency?",
+          "options": ["A political party", "An area represented by an MP", "A government department", "A type of election"],
+          "correct": 1,
+          "explanation": "A constituency is a geographical area represented by an MP in Parliament."
+        },
+        {
+          "category": "Government",
+          "question": "At what age can you vote in a UK general election?",
+          "options": ["16", "17", "18", "21"],
+          "correct": 2,
+          "explanation": "You must be at least 18 years old to vote in a UK general election."
+        },
+        {
+          "category": "Government",
+          "question": "How often are general elections held in the UK?",
+          "options": ["Every 3 years", "Every 4 years", "Every 5 years", "Every 6 years"],
+          "correct": 2,
+          "explanation": "UK general elections are held at least every 5 years, though they can be called earlier."
+        },
+        {
+          "category": "Government",
+          "question": "What voting system is used for UK general elections?",
+          "options": ["Proportional representation", "First past the post", "Alternative vote", "Single transferable vote"],
+          "correct": 1,
+          "explanation": "'First past the post' is used for UK general elections - the candidate with most votes in each constituency wins."
+        },
+        {
+          "category": "Government",
+          "question": "At what age can you stand as an MP?",
+          "options": ["18", "21", "25", "30"],
+          "correct": 0,
+          "explanation": "You must be at least 18 years old to stand as a candidate for MP."
+        },
+        {
+          "category": "Government",
+          "question": "At what age can you vote in a general election?",
+          "options": ["16", "18", "21", "25"],
+          "correct": 1,
+          "explanation": "You must be at least 18 years old to vote in a UK general election."
+        },
+        {
+          "category": "Government",
+          "question": "At what age can you vote in a general election?",
+          "options": ["16", "18", "21", "25"],
+          "correct": 1,
+          "explanation": "You must be at least 18 years old to vote in a UK general election."
+        },
+        {
+          "category": "Government",
+          "question": "Who appoints the Prime Minister?",
+          "options": ["The public votes", "The Monarch", "Parliament elects", "The previous PM chooses"],
+          "correct": 1,
+          "explanation": "The Monarch appoints the Prime Minister, who is usually the leader of the party with the most MPs."
+        },
+        {
+          "category": "Government",
+          "question": "What is the Cabinet?",
+          "options": ["A storage unit", "Senior government ministers", "A committee of MPs", "The Royal household"],
+          "correct": 1,
+          "explanation": "The Cabinet is a group of senior government ministers chosen by the Prime Minister."
+        },
+        {
+          "category": "Government",
+          "question": "Where is the Prime Minister's official residence?",
+          "options": ["Buckingham Palace", "10 Downing Street", "Windsor Castle", "Westminster Abbey"],
+          "correct": 1,
+          "explanation": "The Prime Minister's official residence is 10 Downing Street in London."
+        },
+        {
+          "category": "Government",
+          "question": "What does the Speaker of the House of Commons do?",
+          "options": ["Leads the government", "Chairs debates in Parliament", "Represents the Queen", "Leads the opposition"],
+          "correct": 1,
+          "explanation": "The Speaker chairs debates in the House of Commons and keeps order during proceedings."
+        },
+        {
+          "category": "Government",
+          "question": "What is the Opposition?",
+          "options": ["People who protest", "The second largest party in Commons", "Independent MPs", "The House of Lords"],
+          "correct": 1,
+          "explanation": "The Opposition is the second largest party in the House of Commons, which challenges the government."
+        },
+        {
+          "category": "Government",
+          "question": "What is Prime Minister's Questions (PMQs)?",
+          "options": ["A TV quiz show", "Weekly questioning of PM in Commons", "A press conference", "A written exam"],
+          "correct": 1,
+          "explanation": "PMQs is a weekly session where MPs can question the Prime Minister in the House of Commons."
+        },
+        {
+          "category": "Government",
+          "question": "What is the role of the House of Lords?",
+          "options": ["Makes all laws", "Checks and revises laws", "Elects the Prime Minister", "Judges legal cases"],
+          "correct": 1,
+          "explanation": "The House of Lords checks, revises, and debates laws proposed by the House of Commons."
+        },
+        {
+          "category": "Government",
+          "question": "Who chairs the debates in the House of Lords?",
+          "options": ["The Prime Minister", "The Lord Speaker", "The Monarch", "The Lord Chancellor"],
+          "correct": 1,
+          "explanation": "The Lord Speaker chairs debates in the House of Lords."
+        },
+        {
+          "category": "Government",
+          "question": "What is the civil service?",
+          "options": ["The military", "Government departments and officials", "Volunteer organizations", "Emergency services"],
+          "correct": 1,
+          "explanation": "The civil service consists of government departments and officials who implement government policies."
+        },
+        {
+          "category": "Government",
+          "question": "What is devolution?",
+          "options": ["Evolution backwards", "Powers given to Scotland, Wales & N. Ireland", "Removing the monarchy", "Local elections"],
+          "correct": 1,
+          "explanation": "Devolution is the transfer of powers from central UK government to Scotland, Wales, and Northern Ireland."
+        },
+        {
+          "category": "Government",
+          "question": "Where is the Scottish Parliament located?",
+          "options": ["Glasgow", "Edinburgh", "Aberdeen", "Dundee"],
+          "correct": 1,
+          "explanation": "The Scottish Parliament is located in Edinburgh, the capital of Scotland."
+        },
+        {
+          "category": "Government",
+          "question": "What is the Senedd?",
+          "options": ["Scottish Parliament", "Welsh Parliament", "Northern Ireland Assembly", "London Assembly"],
+          "correct": 1,
+          "explanation": "The Senedd (formerly Welsh Assembly) is the devolved parliament of Wales, located in Cardiff."
+        }
+      ]
+    },
+    {
+      "id": "values-principles",
+      "title": "British Values and Principles",
+      "order": 8,
+      "questions": [
+        {
+          "category": "Values",
+          "question": "What are the fundamental principles of British life?",
+          "options": ["Democracy, rule of law, individual liberty, tolerance", "Wealth, power, influence", "Religion, monarchy, tradition", "Business, trade, economy"],
+          "correct": 0,
+          "explanation": "The fundamental principles include democracy, rule of law, individual liberty, and mutual respect and tolerance."
+        },
+        {
+          "category": "Values",
+          "question": "What is the King's official role?",
+          "options": ["Makes all laws", "Ceremonial and symbolic", "Runs the government", "Commands the military"],
+          "correct": 1,
+          "explanation": "The monarch's role is mainly ceremonial and symbolic, though they formally approve legislation."
+        },
+        {
+          "category": "Values",
+          "question": "Is it acceptable to discriminate against someone because of their religion?",
+          "options": ["Yes", "No", "Sometimes", "Only in private"],
+          "correct": 1,
+          "explanation": "Discrimination based on religion is illegal in the UK and goes against British values."
+        },
+        {
+          "category": "Values",
+          "question": "What does 'freedom of speech' mean?",
+          "options": ["You can say whatever you want", "You can express views within the law", "Only MPs have this right", "It only applies to newspapers"],
+          "correct": 1,
+          "explanation": "Freedom of speech means you can express your views within the law, but hate speech and inciting violence are illegal."
+        },
+        {
+          "category": "Values",
+          "question": "Is forced marriage legal in the UK?",
+          "options": ["Yes", "No", "Only with parental consent", "Only for certain religions"],
+          "correct": 1,
+          "explanation": "Forced marriage is illegal in the UK. Marriage must be entered into freely by both partners."
+        },
+        {
+          "category": "Values",
+          "question": "What is the minimum age to get married in England and Wales?",
+          "options": ["16", "18", "21", "25"],
+          "correct": 1,
+          "explanation": "In England and Wales, you must be 18 to get married (changed from 16 in 2022 to prevent child marriage)."
+        },
+        {
+          "category": "Values",
+          "question": "Is Female Genital Mutilation (FGM) legal in the UK?",
+          "options": ["Yes", "No", "Only for adults", "Only with consent"],
+          "correct": 1,
+          "explanation": "FGM is illegal in the UK and is considered a form of child abuse and violence against women."
+        }
+      ]
+    },
+    {
+      "id": "culture-traditions",
+      "title": "British Culture and Traditions",
+      "order": 9,
+      "questions": [
+        {
+          "category": "Culture",
+          "question": "Which famous playwright wrote Romeo and Juliet?",
+          "options": ["Charles Dickens", "William Shakespeare", "Jane Austen", "George Orwell"],
+          "correct": 1,
+          "explanation": "William Shakespeare wrote Romeo and Juliet, one of his most famous plays."
+        },
+        {
+          "category": "Culture",
+          "question": "Where was William Shakespeare born?",
+          "options": ["London", "Stratford-upon-Avon", "Oxford", "Canterbury"],
+          "correct": 1,
+          "explanation": "William Shakespeare was born in Stratford-upon-Avon in 1564."
+        },
+        {
+          "category": "Culture",
+          "question": "Who wrote Pride and Prejudice?",
+          "options": ["Charlotte Brontë", "Emily Brontë", "Jane Austen", "George Eliot"],
+          "correct": 2,
+          "explanation": "Jane Austen wrote Pride and Prejudice in 1813."
+        },
+        {
+          "category": "Culture",
+          "question": "Who wrote Oliver Twist?",
+          "options": ["Charles Dickens", "Thomas Hardy", "Robert Louis Stevenson", "Oscar Wilde"],
+          "correct": 0,
+          "explanation": "Charles Dickens wrote Oliver Twist, along with many other famous novels."
+        },
+        {
+          "category": "Culture",
+          "question": "Who wrote 1984 and Animal Farm?",
+          "options": ["Aldous Huxley", "George Orwell", "H.G. Wells", "Ray Bradbury"],
+          "correct": 1,
+          "explanation": "George Orwell wrote both 1984 and Animal Farm."
+        },
+        {
+          "category": "Culture",
+          "question": "What is the national flower of England?",
+          "options": ["Daffodil", "Thistle", "Shamrock", "Rose"],
+          "correct": 3,
+          "explanation": "The rose is the national flower of England, particularly the Tudor rose."
+        },
+        {
+          "category": "Culture",
+          "question": "What is the national flower of Scotland?",
+          "options": ["Rose", "Daffodil", "Thistle", "Shamrock"],
+          "correct": 2,
+          "explanation": "The thistle is the national flower of Scotland."
+        },
+        {
+          "category": "Culture",
+          "question": "What is the national flower of Wales?",
+          "options": ["Rose", "Daffodil", "Thistle", "Shamrock"],
+          "correct": 1,
+          "explanation": "The daffodil is one of the national flowers of Wales, along with the leek."
+        },
+        {
+          "category": "Culture",
+          "question": "What is the national flower of Northern Ireland?",
+          "options": ["Rose", "Daffodil", "Thistle", "Shamrock"],
+          "correct": 3,
+          "explanation": "The shamrock is the national flower of Northern Ireland."
+        },
+        {
+          "category": "Culture",
+          "question": "When is St George's Day?",
+          "options": ["1st March", "17th March", "23rd April", "30th November"],
+          "correct": 2,
+          "explanation": "St George's Day is celebrated on 23rd April, the patron saint of England."
+        },
+        {
+          "category": "Culture",
+          "question": "When is St Andrew's Day?",
+          "options": ["1st March", "17th March", "23rd April", "30th November"],
+          "correct": 3,
+          "explanation": "St Andrew's Day is celebrated on 30th November, the patron saint of Scotland."
+        },
+        {
+          "category": "Culture",
+          "question": "When is St David's Day celebrated?",
+          "options": ["1st March", "17th March", "23rd April", "30th November"],
+          "correct": 0,
+          "explanation": "St David's Day is celebrated on 1st March, the patron saint of Wales."
+        },
+        {
+          "category": "Culture",
+          "question": "When is St Patrick's Day?",
+          "options": ["1st March", "17th March", "23rd April", "30th November"],
+          "correct": 1,
+          "explanation": "St Patrick's Day is celebrated on 17th March, the patron saint of Ireland."
+        },
+        {
+          "category": "Culture",
+          "question": "Which Scottish poet wrote 'Auld Lang Syne'?",
+          "options": ["William Wordsworth", "Robert Burns", "Lord Byron", "John Keats"],
+          "correct": 1,
+          "explanation": "Robert Burns wrote 'Auld Lang Syne', which is traditionally sung at New Year."
+        },
+        {
+          "category": "Culture",
+          "question": "When is Burns Night celebrated?",
+          "options": ["1st January", "25th January", "30th November", "31st December"],
+          "correct": 1,
+          "explanation": "Burns Night is celebrated on 25th January, the birthday of Scottish poet Robert Burns."
+        },
+        {
+          "category": "Culture",
+          "question": "What is a traditional Burns Night meal?",
+          "options": ["Fish and chips", "Roast beef", "Haggis", "Shepherd's pie"],
+          "correct": 2,
+          "explanation": "Haggis is the traditional meal served on Burns Night, often accompanied by 'neeps and tatties' (turnips and potatoes)."
+        },
+        {
+          "category": "Culture",
+          "question": "What is Burns Night?",
+          "options": ["A fire festival", "Celebration of Robert Burns", "A bonfire tradition", "A cooking competition"],
+          "correct": 1,
+          "explanation": "Burns Night (25th January) celebrates the life and work of Scottish poet Robert Burns."
+        },
+        {
+          "category": "Culture",
+          "question": "What is traditionally eaten on Burns Night?",
+          "options": ["Fish and chips", "Roast beef", "Haggis", "Shepherd's pie"],
+          "correct": 2,
+          "explanation": "Haggis is traditionally eaten on Burns Night, often served with 'neeps and tatties' (turnips and potatoes)."
+        },
+        {
+          "category": "Culture",
+          "question": "When is Hogmanay celebrated?",
+          "options": ["Christmas Day", "New Year's Eve", "Easter", "Halloween"],
+          "correct": 1,
+          "explanation": "Hogmanay is the Scottish celebration of New Year's Eve (31st December)."
+        },
+        {
+          "category": "Culture",
+          "question": "What is the Edinburgh Festival?",
+          "options": ["A music festival", "Arts and culture festival", "Food festival", "Film festival"],
+          "correct": 1,
+          "explanation": "The Edinburgh Festival is a world-famous arts and culture festival held in August."
+        },
+        {
+          "category": "Culture",
+          "question": "What is the Notting Hill Carnival?",
+          "options": ["Christmas celebration", "Caribbean culture festival", "Medieval fair", "Music awards"],
+          "correct": 1,
+          "explanation": "The Notting Hill Carnival is an annual Caribbean culture festival held in London in August."
+        },
+        {
+          "category": "Culture",
+          "question": "When is Halloween?",
+          "options": ["October 30th", "October 31st", "November 1st", "November 5th"],
+          "correct": 1,
+          "explanation": "Halloween is celebrated on 31st October."
+        },
+        {
+          "category": "Culture",
+          "question": "What is Remembrance Day?",
+          "options": ["Queen's birthday", "Day to remember war dead", "National holiday", "Religious festival"],
+          "correct": 1,
+          "explanation": "Remembrance Day (11th November) commemorates those who died in wars, especially World Wars I and II."
+        },
+        {
+          "category": "Culture",
+          "question": "What is traditionally worn on Remembrance Day?",
+          "options": ["White rose", "Red poppy", "Blue ribbon", "Yellow daffodil"],
+          "correct": 1,
+          "explanation": "A red poppy is traditionally worn on Remembrance Day to honor those who died in service."
+        }
+      ]
+    },
+    {
+      "id": "geography",
+      "title": "UK Geography",
+      "order": 10,
+      "questions": [
+        {
+          "category": "Geography",
+          "question": "What is the official name of the country?",
+          "options": ["Britain", "Great Britain", "United Kingdom", "United Kingdom of Great Britain and Northern Ireland"],
+          "correct": 3,
+          "explanation": "The official name is the United Kingdom of Great Britain and Northern Ireland."
+        },
+        {
+          "category": "Geography",
+          "question": "What countries make up Great Britain?",
+          "options": ["England, Scotland, Wales", "England, Scotland, Wales, N. Ireland", "England and Wales", "England and Scotland"],
+          "correct": 0,
+          "explanation": "Great Britain consists of England, Scotland, and Wales. The UK includes Northern Ireland as well."
+        },
+        {
+          "category": "Geography",
+          "question": "What is the capital city of Scotland?",
+          "options": ["Glasgow", "Aberdeen", "Edinburgh", "Dundee"],
+          "correct": 2,
+          "explanation": "Edinburgh is the capital city of Scotland."
+        },
+        {
+          "category": "Geography",
+          "question": "What is the capital city of Wales?",
+          "options": ["Swansea", "Cardiff", "Newport", "Wrexham"],
+          "correct": 1,
+          "explanation": "Cardiff is the capital city of Wales."
+        },
+        {
+          "category": "Geography",
+          "question": "What is the capital city of Northern Ireland?",
+          "options": ["Dublin", "Belfast", "Derry", "Armagh"],
+          "correct": 1,
+          "explanation": "Belfast is the capital city of Northern Ireland."
+        },
+        {
+          "category": "Geography",
+          "question": "Which UK city has the largest population?",
+          "options": ["Birmingham", "Manchester", "London", "Glasgow"],
+          "correct": 2,
+          "explanation": "London is the UK's largest city with a population of around 9 million."
+        },
+        {
+          "category": "Geography",
+          "question": "What is the population of the UK?",
+          "options": ["Around 50 million", "Around 67 million", "Around 80 million", "Around 100 million"],
+          "correct": 1,
+          "explanation": "The UK population is around 67 million people."
+        },
+        {
+          "category": "Geography",
+          "question": "Which is the longest river in the UK?",
+          "options": ["River Thames", "River Severn", "River Trent", "River Mersey"],
+          "correct": 1,
+          "explanation": "The River Severn is the longest river in the UK at 220 miles (354 km)."
+        },
+        {
+          "category": "Geography",
+          "question": "What is the highest mountain in the UK?",
+          "options": ["Snowdon", "Scafell Pike", "Ben Nevis", "Ben Macdui"],
+          "correct": 2,
+          "explanation": "Ben Nevis in Scotland is the highest mountain in the UK at 1,345 metres (4,413 feet)."
+        },
+        {
+          "category": "Geography",
+          "question": "What is the Lake District?",
+          "options": ["An area in Scotland", "A national park in northwest England", "A region in Wales", "An Irish location"],
+          "correct": 1,
+          "explanation": "The Lake District is a national park in northwest England, famous for its lakes and mountains."
+        },
+        {
+          "category": "Geography",
+          "question": "Which river flows through London?",
+          "options": ["River Severn", "River Thames", "River Mersey", "River Clyde"],
+          "correct": 1,
+          "explanation": "The River Thames flows through London and is the second longest river in the UK."
+        },
+        {
+          "category": "Geography",
+          "question": "What body of water separates England and France?",
+          "options": ["English Channel", "North Sea", "Irish Sea", "Atlantic Ocean"],
+          "correct": 0,
+          "explanation": "The English Channel (or La Manche) separates England and France."
+        },
+        {
+          "category": "Geography",
+          "question": "What is the name of the mountain range in Scotland?",
+          "options": ["The Pennines", "The Highlands", "The Cairngorms", "The Grampians"],
+          "correct": 1,
+          "explanation": "The Scottish Highlands is the major mountain range in Scotland."
+        },
+        {
+          "category": "Geography",
+          "question": "What is Snowdonia?",
+          "options": ["A ski resort", "A national park in Wales", "A mountain in Scotland", "A lake district"],
+          "correct": 1,
+          "explanation": "Snowdonia is a national park in Wales, named after Mount Snowdon, the highest mountain in Wales."
+        },
+        {
+          "category": "Geography",
+          "question": "What are the Crown Dependencies?",
+          "options": ["Scottish islands", "Channel Islands and Isle of Man", "UK colonies", "Royal estates"],
+          "correct": 1,
+          "explanation": "The Crown Dependencies are the Channel Islands (Jersey and Guernsey) and the Isle of Man."
+        }
+      ]
+    },
+    {
+      "id": "sports",
+      "title": "Sports and Leisure",
+      "order": 11,
+      "questions": [
+        {
+          "category": "Sports",
+          "question": "Where did golf originate?",
+          "options": ["England", "Ireland", "Scotland", "Wales"],
+          "correct": 2,
+          "explanation": "Golf originated in Scotland in the 15th century."
+        },
+        {
+          "category": "Sports",
+          "question": "Where is the home of cricket?",
+          "options": ["Wembley", "Lord's", "Twickenham", "Wimbledon"],
+          "correct": 1,
+          "explanation": "Lord's Cricket Ground in London is known as the 'home of cricket'."
+        },
+        {
+          "category": "Sports",
+          "question": "Where did tennis originate?",
+          "options": ["France", "England", "Scotland", "USA"],
+          "correct": 1,
+          "explanation": "Modern lawn tennis originated in England in the 19th century."
+        },
+        {
+          "category": "Sports",
+          "question": "Where is the Wimbledon tennis championship held?",
+          "options": ["Wimbledon, London", "Birmingham", "Manchester", "Edinburgh"],
+          "correct": 0,
+          "explanation": "The Wimbledon Championships are held in Wimbledon, London, every summer."
+        },
+        {
+          "category": "Sports",
+          "question": "What sport is Twickenham famous for?",
+          "options": ["Football", "Cricket", "Rugby", "Tennis"],
+          "correct": 2,
+          "explanation": "Twickenham is the home of English rugby union."
+        },
+        {
+          "category": "Sports",
+          "question": "Where is Wembley Stadium located?",
+          "options": ["Manchester", "London", "Birmingham", "Liverpool"],
+          "correct": 1,
+          "explanation": "Wembley Stadium is located in London and is the home of English football."
+        },
+        {
+          "category": "Sports",
+          "question": "What is the Ashes?",
+          "options": ["A football trophy", "A cricket competition", "A rugby competition", "A tennis competition"],
+          "correct": 1,
+          "explanation": "The Ashes is a cricket competition played between England and Australia."
+        },
+        {
+          "category": "Sports",
+          "question": "What is the Six Nations?",
+          "options": ["Football tournament", "Rugby tournament", "Cricket competition", "Athletics event"],
+          "correct": 1,
+          "explanation": "The Six Nations is an annual rugby union tournament between England, Scotland, Wales, Ireland, France, and Italy."
+        },
+        {
+          "category": "Sports",
+          "question": "What is the Premier League?",
+          "options": ["Rugby competition", "Football league", "Cricket league", "Tennis tournament"],
+          "correct": 1,
+          "explanation": "The Premier League is the top division of English football."
+        },
+        {
+          "category": "Sports",
+          "question": "What is the FA Cup?",
+          "options": ["Rugby trophy", "Football competition", "Cricket award", "Tennis cup"],
+          "correct": 1,
+          "explanation": "The FA Cup is the oldest football competition in the world, established in 1871."
+        },
+        {
+          "category": "Sports",
+          "question": "Where is the Grand National horse race held?",
+          "options": ["Ascot", "Aintree", "Cheltenham", "Epsom"],
+          "correct": 1,
+          "explanation": "The Grand National is held annually at Aintree Racecourse in Liverpool."
+        },
+        {
+          "category": "Sports",
+          "question": "How often are the Olympic Games held?",
+          "options": ["Every 2 years", "Every 3 years", "Every 4 years", "Every 5 years"],
+          "correct": 2,
+          "explanation": "The Olympic Games are held every 4 years."
+        },
+        {
+          "category": "Sports",
+          "question": "When were the London Olympics held most recently?",
+          "options": ["2008", "2012", "2016", "2020"],
+          "correct": 1,
+          "explanation": "London most recently hosted the Olympics in 2012."
+        },
+        {
+          "category": "Sports",
+          "question": "Which British tennis player won Wimbledon in 2013?",
+          "options": ["Tim Henman", "Andy Murray", "Greg Rusedski", "Roger Federer"],
+          "correct": 1,
+          "explanation": "Andy Murray won Wimbledon in 2013, the first British man to win since 1936."
+        },
+        {
+          "category": "Sports",
+          "question": "What sport is associated with St Andrews in Scotland?",
+          "options": ["Tennis", "Golf", "Cricket", "Football"],
+          "correct": 1,
+          "explanation": "St Andrews is known as the 'home of golf' and has the world's oldest golf course."
+        },
+        {
+          "category": "History",
+          "question": "Who wrote 'A Tale of Two Cities'?",
+          "options": ["Jane Austen", "Charles Dickens", "Thomas Hardy", "George Eliot"],
+          "correct": 1,
+          "explanation": "Charles Dickens wrote 'A Tale of Two Cities', a famous Victorian novel."
+        },
+        {
+          "category": "History",
+          "question": "What was the name of the ship that carried the Pilgrim Fathers to America?",
+          "options": ["Mayflower", "Victory", "Golden Hinde", "Endeavour"],
+          "correct": 0,
+          "explanation": "The Mayflower carried the Pilgrim Fathers to America in 1620."
+        },
+        {
+          "category": "Culture",
+          "question": "Who painted 'The Fighting Temeraire'?",
+          "options": ["John Constable", "J.M.W. Turner", "Joshua Reynolds", "Thomas Gainsborough"],
+          "correct": 1,
+          "explanation": "J.M.W. Turner painted 'The Fighting Temeraire', one of Britain's most famous paintings."
+        },
+        {
+          "category": "Culture",
+          "question": "Who composed 'The Planets Suite'?",
+          "options": ["Gustav Holst", "Edward Elgar", "Henry Purcell", "Benjamin Britten"],
+          "correct": 0,
+          "explanation": "Gustav Holst composed 'The Planets Suite', a famous orchestral work."
+        },
+        {
+          "category": "Government",
+          "question": "Who can vote in UK general elections?",
+          "options": ["UK, Irish and Commonwealth citizens over 18", "Only UK citizens", "All residents", "Citizens over 21"],
+          "correct": 0,
+          "explanation": "UK, Irish and qualifying Commonwealth citizens over 18 can vote in UK general elections."
+        },
+        {
+          "category": "Government",
+          "question": "What is a by-election?",
+          "options": ["A local election", "An election held when an MP resigns or dies", "A referendum", "A party leadership election"],
+          "correct": 1,
+          "explanation": "A by-election is held when an MP resigns, dies, or is disqualified from office."
+        },
+        {
+          "category": "History",
+          "question": "Who was Robert the Bruce?",
+          "options": ["An English king", "A Scottish king who fought for independence", "A Welsh prince", "A Norman lord"],
+          "correct": 1,
+          "explanation": "Robert the Bruce was King of Scotland who defeated the English at Bannockburn in 1314."
+        },
+        {
+          "category": "History",
+          "question": "When was the Battle of Bannockburn?",
+          "options": ["1066", "1215", "1314", "1415"],
+          "correct": 2,
+          "explanation": "The Battle of Bannockburn was fought in 1314 between Scotland and England."
+        },
+        {
+          "category": "History",
+          "question": "Who was Emmeline Pankhurst?",
+          "options": ["A nurse", "A suffragette leader", "A scientist", "A writer"],
+          "correct": 1,
+          "explanation": "Emmeline Pankhurst was a leading suffragette who campaigned for women's right to vote."
+        },
+        {
+          "category": "History",
+          "question": "When did women get the right to vote on equal terms with men?",
+          "options": ["1918", "1928", "1945", "1969"],
+          "correct": 1,
+          "explanation": "Women gained equal voting rights with men in 1928 when the voting age was lowered to 21 for all."
+        },
+        {
+          "category": "Culture",
+          "question": "What is the Eden Project?",
+          "options": ["A museum", "A botanical garden with giant greenhouses", "A theme park", "An art gallery"],
+          "correct": 1,
+          "explanation": "The Eden Project in Cornwall features giant biodomes housing plants from around the world."
+        },
+        {
+          "category": "Culture",
+          "question": "What is the London Eye?",
+          "options": ["A clock tower", "A giant observation wheel", "A museum", "A bridge"],
+          "correct": 1,
+          "explanation": "The London Eye is a giant Ferris wheel on the South Bank of the River Thames, opened in 2000."
+        },
+        {
+          "category": "Culture",
+          "question": "What is the Turner Prize?",
+          "options": ["A literature award", "A visual arts prize", "A music award", "A film prize"],
+          "correct": 1,
+          "explanation": "The Turner Prize is an annual award for British visual artists."
+        },
+        {
+          "category": "History",
+          "question": "What was the Beveridge Report?",
+          "options": ["A military plan", "A report on social reform and welfare", "An economic policy", "A constitutional document"],
+          "correct": 1,
+          "explanation": "The 1942 Beveridge Report proposed reforms that led to the creation of the welfare state and NHS."
+        },
+        {
+          "category": "History",
+          "question": "Who was Clement Attlee?",
+          "options": ["A wartime general", "Prime Minister who created the welfare state", "A Victorian reformer", "A trade union leader"],
+          "correct": 1,
+          "explanation": "Clement Attlee was Prime Minister from 1945-51 and established the welfare state and NHS."
+        },
+        {
+          "category": "Government",
+          "question": "What is the Commonwealth?",
+          "options": ["A trade union", "An association of countries, most formerly in the British Empire", "A political party", "A type of government"],
+          "correct": 1,
+          "explanation": "The Commonwealth is an association of 54 countries, most of which were formerly part of the British Empire."
+        },
+        {
+          "category": "Government",
+          "question": "Who is the Head of the Commonwealth?",
+          "options": ["The Prime Minister", "The monarch", "The Secretary General", "The Speaker"],
+          "correct": 1,
+          "explanation": "The British monarch serves as Head of the Commonwealth."
+        },
+        {
+          "category": "Government",
+          "question": "Is the UK a permanent member of the UN Security Council?",
+          "options": ["Yes", "No", "Only as part of the EU", "Only temporarily"],
+          "correct": 0,
+          "explanation": "The UK is one of five permanent members of the UN Security Council, along with the US, Russia, China, and France."
+        },
+        {
+          "category": "Government",
+          "question": "Is the UK a member of NATO?",
+          "options": ["Yes", "No", "Only as part of the EU", "It left in 2020"],
+          "correct": 0,
+          "explanation": "The UK is a founding member of NATO (North Atlantic Treaty Organization), a military alliance."
+        },
+        {
+          "category": "Values",
+          "question": "What is a jury's role?",
+          "options": ["To prosecute criminals", "To defend the accused", "To decide if someone is guilty or not guilty", "To pass sentence"],
+          "correct": 2,
+          "explanation": "A jury listens to evidence and decides whether the accused is guilty or not guilty."
+        },
+        {
+          "category": "Values",
+          "question": "At what age can you do jury service?",
+          "options": ["16", "18", "21", "25"],
+          "correct": 1,
+          "explanation": "People aged 18 to 70 can be called for jury service in England, Wales and Northern Ireland."
+        },
+        {
+          "category": "Government",
+          "question": "What does the UK Parliament consist of?",
+          "options": ["House of Commons only", "House of Lords only", "House of Commons and House of Lords", "House of Commons, House of Lords and the monarch"],
+          "correct": 3,
+          "explanation": "The UK Parliament consists of the House of Commons, House of Lords, and the monarch."
+        },
+        {
+          "category": "Government",
+          "question": "How long can members of the House of Lords serve?",
+          "options": ["5 years", "10 years", "For life", "Until they retire at 65"],
+          "correct": 2,
+          "explanation": "Most members of the House of Lords serve for life, though they can retire."
+        },
+        {
+          "category": "History",
+          "question": "Who was Admiral Nelson?",
+          "options": ["A politician", "A naval officer who won the Battle of Trafalgar", "A scientist", "An explorer"],
+          "correct": 1,
+          "explanation": "Admiral Nelson was a naval hero who defeated the French at the Battle of Trafalgar in 1805."
+        },
+        {
+          "category": "History",
+          "question": "What is Trafalgar Square named after?",
+          "options": ["A king", "A battle", "A prime minister", "An explorer"],
+          "correct": 1,
+          "explanation": "Trafalgar Square is named after the Battle of Trafalgar, where Nelson defeated Napoleon's fleet."
+        },
+        {
+          "category": "Culture",
+          "question": "Which British band was known as the 'Fab Four'?",
+          "options": ["The Rolling Stones", "The Beatles", "The Who", "Led Zeppelin"],
+          "correct": 1,
+          "explanation": "The Beatles, from Liverpool, were known as the 'Fab Four' and were hugely influential in the 1960s."
+        },
+        {
+          "category": "Culture",
+          "question": "Who wrote the Harry Potter books?",
+          "options": ["J.R.R. Tolkien", "C.S. Lewis", "J.K. Rowling", "Philip Pullman"],
+          "correct": 2,
+          "explanation": "J.K. Rowling wrote the Harry Potter series, one of the best-selling book series ever."
+        },
+        {
+          "category": "History",
+          "question": "What was the 'D-Day' invasion?",
+          "options": ["German invasion of Britain", "British invasion of Germany", "Allied invasion of Normandy", "Japanese attack on Pearl Harbor"],
+          "correct": 2,
+          "explanation": "D-Day (6 June 1944) was the Allied invasion of Nazi-occupied France at Normandy."
+        },
+        {
+          "category": "History",
+          "question": "What does RAF stand for?",
+          "options": ["Royal Armed Forces", "Royal Air Force", "Regional Air Fleet", "Royal Artillery Force"],
+          "correct": 1,
+          "explanation": "RAF stands for Royal Air Force, the UK's aerial warfare service."
+        },
+        {
+          "category": "History",
+          "question": "What was the Battle of Britain?",
+          "options": ["A naval battle", "An air battle in World War II", "A medieval battle", "A battle in World War I"],
+          "correct": 1,
+          "explanation": "The Battle of Britain was an air campaign fought in summer 1940 when the RAF defended Britain from German attack."
+        },
+        {
+          "category": "Culture",
+          "question": "What is the BBC?",
+          "options": ["A political party", "The British Broadcasting Corporation", "A bank", "A charity"],
+          "correct": 1,
+          "explanation": "The BBC is the British Broadcasting Corporation, the UK's national public broadcaster."
+        },
+        {
+          "category": "Culture",
+          "question": "What is panto?",
+          "options": ["A type of bread", "A musical style", "A theatrical entertainment for children", "A dance"],
+          "correct": 2,
+          "explanation": "Pantomime (panto) is a traditional theatrical entertainment for families, usually performed at Christmas."
+        },
+        {
+          "category": "Geography",
+          "question": "What is the Lake District famous for?",
+          "options": ["Beaches", "Mountains and lakes", "Castles", "Theme parks"],
+          "correct": 1,
+          "explanation": "The Lake District in northwest England is famous for its beautiful mountains, lakes and literary connections."
+        },
+        {
+          "category": "Culture",
+          "question": "Who was William Wordsworth?",
+          "options": ["A painter", "A poet associated with the Lake District", "A composer", "A politician"],
+          "correct": 1,
+          "explanation": "William Wordsworth was a Romantic poet who lived in the Lake District."
+        },
+        {
+          "category": "History",
+          "question": "Who was Alexander Fleming?",
+          "options": ["A writer", "A scientist who discovered penicillin", "A politician", "An explorer"],
+          "correct": 1,
+          "explanation": "Alexander Fleming discovered penicillin in 1928, revolutionizing medicine."
+        },
+        {
+          "category": "History",
+          "question": "Who designed the Clifton Suspension Bridge?",
+          "options": ["Isambard Kingdom Brunel", "Thomas Telford", "George Stephenson", "Christopher Wren"],
+          "correct": 0,
+          "explanation": "Isambard Kingdom Brunel designed the Clifton Suspension Bridge and many other engineering projects."
+        },
+        {
+          "category": "Government",
+          "question": "What is the name of the Prime Minister's country house?",
+          "options": ["Buckingham Palace", "Chequers", "Windsor Castle", "Balmoral"],
+          "correct": 1,
+          "explanation": "Chequers is the Prime Minister's official country residence in Buckinghamshire."
+        },
+        {
+          "category": "History",
+          "question": "What was the Windrush?",
+          "options": ["A battle", "A ship that brought Caribbean migrants to the UK in 1948", "A trade agreement", "A political movement"],
+          "correct": 1,
+          "explanation": "The Empire Windrush brought Caribbean migrants to the UK in 1948, marking the beginning of modern British multiculturalism."
+        },
+        {
+          "category": "History",
+          "question": "When did Elizabeth II become Queen?",
+          "options": ["1945", "1952", "1953", "1960"],
+          "correct": 1,
+          "explanation": "Elizabeth II became Queen in 1952 when her father George VI died. Her coronation was in 1953."
+        },
+        {
+          "category": "History",
+          "question": "How long did Elizabeth II reign?",
+          "options": ["63 years", "70 years", "75 years", "80 years"],
+          "correct": 1,
+          "explanation": "Elizabeth II reigned for 70 years (1952-2022), the longest reign in British history."
+        },
+        {
+          "category": "Government",
+          "question": "Where does the Chancellor of the Exchequer live?",
+          "options": ["10 Downing Street", "11 Downing Street", "12 Downing Street", "The Treasury"],
+          "correct": 1,
+          "explanation": "The Chancellor of the Exchequer's official residence is 11 Downing Street."
+        },
+        {
+          "category": "Culture",
+          "question": "What is the name of the UK's national anthem?",
+          "options": ["Britannia", "Jerusalem", "God Save the King/Queen", "Land of Hope and Glory"],
+          "correct": 2,
+          "explanation": "The UK's national anthem is 'God Save the King' (or Queen, depending on the monarch)."
+        },
+        {
+          "category": "Culture",
+          "question": "What is Morris dancing?",
+          "options": ["A ballroom dance", "A traditional English folk dance", "A Scottish dance", "A modern dance style"],
+          "correct": 1,
+          "explanation": "Morris dancing is a traditional English folk dance performed by groups wearing bells and ribbons."
+        },
+        {
+          "category": "History",
+          "question": "What were the Troubles?",
+          "options": ["Economic problems in the 1930s", "A period of conflict in Northern Ireland", "Industrial disputes", "Food shortages in WWII"],
+          "correct": 1,
+          "explanation": "The Troubles refers to the period of conflict in Northern Ireland from the late 1960s to 1998."
+        },
+        {
+          "category": "History",
+          "question": "What is the Good Friday Agreement?",
+          "options": ["A trade agreement", "A peace agreement for Northern Ireland", "A religious document", "A workers' rights law"],
+          "correct": 1,
+          "explanation": "The Good Friday Agreement (1998) was a peace agreement that largely ended the Troubles in Northern Ireland."
+        },
+        {
+          "category": "Values",
+          "question": "Is it acceptable to force someone to marry against their will?",
+          "options": ["Yes, if it's a cultural tradition", "Yes, with parental consent", "No, it is illegal", "It depends on age"],
+          "correct": 2,
+          "explanation": "Forced marriage is illegal in the UK. Arranged marriages where both parties consent are legal."
+        },
+        {
+          "category": "Values",
+          "question": "What is female genital mutilation (FGM)?",
+          "options": ["Legal medical procedure", "Illegal harmful practice", "Cultural tradition that's allowed", "Optional cosmetic surgery"],
+          "correct": 1,
+          "explanation": "FGM is an illegal and harmful practice in the UK, with severe criminal penalties."
+        },
+        {
+          "category": "Government",
+          "question": "Who can stand for public office in the UK?",
+          "options": ["Only people born in the UK", "UK, Irish and Commonwealth citizens over 18", "Only UK citizens", "Any resident"],
+          "correct": 1,
+          "explanation": "UK, Irish and Commonwealth citizens over 18 can stand for public office (though MPs must be over 18)."
+        },
+        {
+          "category": "Government",
+          "question": "What is a civil servant?",
+          "options": ["An elected politician", "A government employee who works for ministers", "A military officer", "A judge"],
+          "correct": 1,
+          "explanation": "Civil servants are government employees who work for ministers and implement government policies."
+        },
+        {
+          "category": "History",
+          "question": "Who was Margaret Thatcher?",
+          "options": ["The first female Prime Minister", "A queen", "A suffragette", "A scientist"],
+          "correct": 0,
+          "explanation": "Margaret Thatcher was the UK's first female Prime Minister, serving from 1979 to 1990."
+        },
+        {
+          "category": "Culture",
+          "question": "What is the Proms?",
+          "options": ["A sporting event", "A series of classical music concerts", "A graduation ceremony", "A fashion show"],
+          "correct": 1,
+          "explanation": "The Proms is an annual series of classical music concerts held at the Royal Albert Hall in London."
+        },
+        {
+          "category": "Culture",
+          "question": "What happens at the Last Night of the Proms?",
+          "options": ["A firework display", "Patriotic songs are sung", "A royal visit", "An awards ceremony"],
+          "correct": 1,
+          "explanation": "The Last Night of the Proms features patriotic British songs like 'Land of Hope and Glory' and 'Jerusalem'."
+        },
+        {
+          "category": "Geography",
+          "question": "What is Giant's Causeway?",
+          "options": ["A bridge", "A natural rock formation in Northern Ireland", "A castle", "A road"],
+          "correct": 1,
+          "explanation": "The Giant's Causeway is a natural rock formation of hexagonal columns in Northern Ireland."
+        },
+        {
+          "category": "Geography",
+          "question": "Where is Loch Ness?",
+          "options": ["Wales", "Scotland", "Northern Ireland", "England"],
+          "correct": 1,
+          "explanation": "Loch Ness is a large, deep lake in the Scottish Highlands, famous for the legend of the Loch Ness Monster."
+        },
+        {
+          "category": "Sports",
+          "question": "What is snooker?",
+          "options": ["A card game", "A cue sport played on a table", "A board game", "A water sport"],
+          "correct": 1,
+          "explanation": "Snooker is a cue sport played on a table, similar to pool but with different rules and more balls."
+        },
+        {
+          "category": "History",
+          "question": "Who discovered the structure of DNA?",
+          "options": ["Isaac Newton", "Francis Crick and James Watson", "Alexander Fleming", "Charles Darwin"],
+          "correct": 1,
+          "explanation": "Francis Crick and James Watson discovered the structure of DNA in 1953, with crucial contributions from Rosalind Franklin."
+        },
+        {
+          "category": "History",
+          "question": "Who invented the television?",
+          "options": ["Alexander Graham Bell", "John Logie Baird", "Guglielmo Marconi", "Thomas Edison"],
+          "correct": 1,
+          "explanation": "John Logie Baird invented the television in the 1920s-1930s."
+        },
+        {
+          "category": "History",
+          "question": "Who invented the telephone?",
+          "options": ["Alexander Graham Bell", "Thomas Edison", "Nikola Tesla", "Guglielmo Marconi"],
+          "correct": 0,
+          "explanation": "Alexander Graham Bell is credited with inventing the telephone in 1876, though he was Scottish-born and lived in Canada/USA."
+        },
+        {
+          "category": "History",
+          "question": "Who invented the World Wide Web?",
+          "options": ["Bill Gates", "Steve Jobs", "Tim Berners-Lee", "Mark Zuckerberg"],
+          "correct": 2,
+          "explanation": "Sir Tim Berners-Lee, a British scientist, invented the World Wide Web in 1989 while working at CERN."
+        },
+        {
+          "category": "History",
+          "question": "Who developed radar?",
+          "options": ["Robert Watson-Watt", "Frank Whittle", "Alan Turing", "Barnes Wallis"],
+          "correct": 0,
+          "explanation": "Robert Watson-Watt developed radar, which was crucial in World War II."
+        },
+        {
+          "category": "History",
+          "question": "Who invented the jet engine?",
+          "options": ["Frank Whittle", "Robert Watson-Watt", "Barnes Wallis", "Isambard Kingdom Brunel"],
+          "correct": 0,
+          "explanation": "Sir Frank Whittle invented the jet engine in the 1930s."
+        },
+        {
+          "category": "History",
+          "question": "Who was Alan Turing?",
+          "options": ["A writer", "A mathematician who helped break Nazi codes", "A politician", "An explorer"],
+          "correct": 1,
+          "explanation": "Alan Turing was a mathematician and computer scientist who helped break Nazi codes at Bletchley Park during WWII."
+        },
+        {
+          "category": "History",
+          "question": "Who developed the theory of evolution?",
+          "options": ["Isaac Newton", "Albert Einstein", "Charles Darwin", "Stephen Hawking"],
+          "correct": 2,
+          "explanation": "Charles Darwin developed the theory of evolution through natural selection in his book 'On the Origin of Species' (1859)."
+        },
+        {
+          "category": "Culture",
+          "question": "What is the name of the Welsh language festival?",
+          "options": ["The Mod", "The Eisteddfod", "The Gaeltacht", "The Feis"],
+          "correct": 1,
+          "explanation": "The National Eisteddfod is an annual Welsh-language festival of literature, music and performance."
+        },
+        {
+          "category": "Culture",
+          "question": "What is Boxing Day?",
+          "options": ["A sports holiday", "The day after Christmas Day", "A shopping festival", "New Year's Eve"],
+          "correct": 1,
+          "explanation": "Boxing Day is 26 December, the day after Christmas Day, and is a bank holiday in the UK."
+        },
+        {
+          "category": "Government",
+          "question": "What is a pressure group?",
+          "options": ["A government department", "An organization that tries to influence government policy", "A type of election", "A parliamentary committee"],
+          "correct": 1,
+          "explanation": "Pressure groups (or interest groups) are organizations that try to influence government policy on specific issues."
+        },
+        {
+          "category": "Government",
+          "question": "What is a Green Paper?",
+          "options": ["An environmental law", "A consultation document on policy proposals", "A final law", "A budget document"],
+          "correct": 1,
+          "explanation": "A Green Paper is a government consultation document that sets out proposals for discussion."
+        },
+        {
+          "category": "Government",
+          "question": "What is a White Paper?",
+          "options": ["A consultation document", "A firm statement of government policy", "A budget report", "An environmental document"],
+          "correct": 1,
+          "explanation": "A White Paper is a firm statement of government policy that often leads to the introduction of new laws."
+        },
+        {
+          "category": "History",
+          "question": "What was the Peterloo Massacre?",
+          "options": ["A battle in a war", "A peaceful protest that ended in violence in 1819", "A sporting tragedy", "A natural disaster"],
+          "correct": 1,
+          "explanation": "The Peterloo Massacre occurred in Manchester in 1819 when cavalry charged a peaceful pro-democracy rally."
+        },
+        {
+          "category": "History",
+          "question": "What were the Corn Laws?",
+          "options": ["Agricultural regulations", "Laws restricting grain imports that kept food prices high", "Farming subsidies", "Environmental protection"],
+          "correct": 1,
+          "explanation": "The Corn Laws restricted grain imports to protect British farmers but kept food prices high. They were repealed in 1846."
+        },
+        {
+          "category": "History",
+          "question": "Who was Benjamin Disraeli?",
+          "options": ["A Victorian scientist", "A Victorian Prime Minister", "An artist", "A military leader"],
+          "correct": 1,
+          "explanation": "Benjamin Disraeli was Prime Minister twice during Victoria's reign and expanded the British Empire."
+        },
+        {
+          "category": "History",
+          "question": "Who was William Gladstone?",
+          "options": ["A Victorian Prime Minister", "A scientist", "An explorer", "An artist"],
+          "correct": 0,
+          "explanation": "William Gladstone was a reforming Liberal Prime Minister who served four terms during the Victorian era."
+        },
+        {
+          "category": "Culture",
+          "question": "Who wrote 'Frankenstein'?",
+          "options": ["Mary Shelley", "Jane Austen", "Emily Brontë", "George Eliot"],
+          "correct": 0,
+          "explanation": "Mary Shelley wrote 'Frankenstein' in 1818, one of the first science fiction novels."
+        },
+        {
+          "category": "Culture",
+          "question": "Who wrote 'Wuthering Heights'?",
+          "options": ["Charlotte Brontë", "Emily Brontë", "Anne Brontë", "Jane Austen"],
+          "correct": 1,
+          "explanation": "Emily Brontë wrote 'Wuthering Heights', a famous novel set on the Yorkshire moors."
+        },
+        {
+          "category": "Culture",
+          "question": "What is the name of Sherlock Holmes's assistant?",
+          "options": ["Watson", "Moriarty", "Lestrade", "Hudson"],
+          "correct": 0,
+          "explanation": "Dr. John Watson is Sherlock Holmes's friend and assistant in Arthur Conan Doyle's stories."
+        },
+        {
+          "category": "Geography",
+          "question": "What is the name of the famous shopping street in London?",
+          "options": ["Bond Street", "Oxford Street", "Regent Street", "All of the above"],
+          "correct": 3,
+          "explanation": "Bond Street, Oxford Street and Regent Street are all famous London shopping streets."
+        },
+        {
+          "category": "Culture",
+          "question": "What is a 'bank holiday'?",
+          "options": ["A day when banks are closed", "A public holiday when many businesses close", "A financial celebration", "A banking festival"],
+          "correct": 1,
+          "explanation": "A bank holiday is a public holiday when banks and many other businesses are closed."
+        },
+        {
+          "category": "Culture",
+          "question": "When is Easter Monday?",
+          "options": ["Fixed date in March", "Fixed date in April", "The Monday after Easter Sunday", "The last Monday in March"],
+          "correct": 2,
+          "explanation": "Easter Monday is the day after Easter Sunday and is a bank holiday. The date changes each year."
+        },
+        {
+          "category": "Government",
+          "question": "At what age can you buy alcohol in the UK?",
+          "options": ["16", "18", "21", "25"],
+          "correct": 1,
+          "explanation": "You must be 18 or over to buy alcohol in the UK (though 16-17 year olds can drink certain alcohol with a meal)."
+        },
+        {
+          "category": "Government",
+          "question": "At what age can you drive a car in the UK?",
+          "options": ["16", "17", "18", "21"],
+          "correct": 1,
+          "explanation": "You can apply for a provisional driving license and learn to drive at 17 in the UK."
+        },
+        {
+          "category": "Values",
+          "question": "What is the minimum wage?",
+          "options": ["A maximum pay limit", "The lowest hourly pay rate employers can legally pay", "A tax rate", "A pension contribution"],
+          "correct": 1,
+          "explanation": "The National Minimum Wage is the minimum hourly pay rate that employers must legally pay workers."
+        },
+        {
+          "category": "Government",
+          "question": "What is council tax?",
+          "options": ["A tax on income", "A tax paid to local authorities for services", "A business tax", "A sales tax"],
+          "correct": 1,
+          "explanation": "Council tax is a local tax paid to local authorities to pay for services like rubbish collection and libraries."
+        },
+        {
+          "category": "Government",
+          "question": "What is the police service's role?",
+          "options": ["To make laws", "To enforce laws and prevent crime", "To judge criminals", "To run prisons"],
+          "correct": 1,
+          "explanation": "The police enforce laws, prevent crime, protect the public and investigate crimes."
+        },
+        {
+          "category": "Government",
+          "question": "What is the role of magistrates?",
+          "options": ["To make laws", "To volunteer judges in minor criminal cases", "To run police stations", "To manage prisons"],
+          "correct": 1,
+          "explanation": "Magistrates are unpaid volunteers who judge minor criminal cases in magistrates' courts."
+        },
+        {
+          "category": "Government",
+          "question": "What is the Crown Court?",
+          "options": ["A royal palace", "A court for serious criminal cases", "A civil court", "A small claims court"],
+          "correct": 1,
+          "explanation": "The Crown Court deals with serious criminal cases, with a judge and jury."
+        },
+        {
+          "category": "Government",
+          "question": "What are small claims?",
+          "options": ["Criminal cases", "Civil disputes involving small amounts of money", "Traffic violations", "Tax disputes"],
+          "correct": 1,
+          "explanation": "Small claims are civil disputes involving small amounts of money, usually handled in county courts."
+        },
+        {
+          "category": "Government",
+          "question": "What is legal aid?",
+          "options": ["Free legal advice for everyone", "Government help with legal costs for those who can't afford it", "A type of lawyer", "A court system"],
+          "correct": 1,
+          "explanation": "Legal aid provides government funding for legal representation for people who cannot afford it."
+        },
+        {
+          "category": "Culture",
+          "question": "What is the BBC funded by?",
+          "options": ["Advertising", "Television licence fee", "Government grants", "Donations"],
+          "correct": 1,
+          "explanation": "The BBC is funded by the television licence fee paid by households with a TV."
+        },
+        {
+          "category": "Culture",
+          "question": "Who was Roald Dahl?",
+          "options": ["A politician", "A children's author", "A scientist", "An artist"],
+          "correct": 1,
+          "explanation": "Roald Dahl was a famous children's author who wrote 'Charlie and the Chocolate Factory' and many other books."
+        },
+        {
+          "category": "Culture",
+          "question": "Who wrote 'The Lord of the Rings'?",
+          "options": ["C.S. Lewis", "J.R.R. Tolkien", "J.K. Rowling", "Philip Pullman"],
+          "correct": 1,
+          "explanation": "J.R.R. Tolkien wrote 'The Lord of the Rings' trilogy and 'The Hobbit'."
+        },
+        {
+          "category": "Culture",
+          "question": "Who wrote 'The Lion, the Witch and the Wardrobe'?",
+          "options": ["J.R.R. Tolkien", "C.S. Lewis", "Roald Dahl", "A.A. Milne"],
+          "correct": 1,
+          "explanation": "C.S. Lewis wrote 'The Chronicles of Narnia' series, starting with 'The Lion, the Witch and the Wardrobe'."
+        },
+        {
+          "category": "Culture",
+          "question": "Who created Winnie-the-Pooh?",
+          "options": ["Roald Dahl", "A.A. Milne", "Beatrix Potter", "Enid Blyton"],
+          "correct": 1,
+          "explanation": "A.A. Milne created the beloved character Winnie-the-Pooh."
+        },
+        {
+          "category": "Culture",
+          "question": "Who created Peter Rabbit?",
+          "options": ["Roald Dahl", "Beatrix Potter", "A.A. Milne", "Enid Blyton"],
+          "correct": 1,
+          "explanation": "Beatrix Potter created Peter Rabbit and wrote many children's books about animals."
+        },
+        {
+          "category": "History",
+          "question": "Who was Sir Isaac Newton?",
+          "options": ["A writer", "A scientist who discovered gravity", "A politician", "An explorer"],
+          "correct": 1,
+          "explanation": "Sir Isaac Newton was a scientist who discovered the laws of gravity and motion."
+        },
+        {
+          "category": "History",
+          "question": "Who was Robert Burns?",
+          "options": ["An English poet", "A Scottish poet", "A Welsh poet", "An Irish poet"],
+          "correct": 1,
+          "explanation": "Robert Burns was Scotland's most famous poet, known for 'Auld Lang Syne' and other works."
+        },
+        {
+          "category": "Culture",
+          "question": "What is haggis?",
+          "options": ["A Welsh dish", "A Scottish dish", "An Irish dish", "An English dish"],
+          "correct": 1,
+          "explanation": "Haggis is a traditional Scottish dish made from sheep's organs mixed with oatmeal and spices."
+        },
+        {
+          "category": "Government",
+          "question": "At what age must children start school in the UK?",
+          "options": ["4", "5", "6", "7"],
+          "correct": 1,
+          "explanation": "Children must start school by the age of 5 in England, Wales and Scotland (4 in Northern Ireland)."
+        },
+        {
+          "category": "Government",
+          "question": "Until what age must children stay in education or training?",
+          "options": ["14", "16", "18", "21"],
+          "correct": 2,
+          "explanation": "In England, young people must stay in education or training until they are 18."
+        },
+        {
+          "category": "Government",
+          "question": "What are GCSEs?",
+          "options": ["University degrees", "Qualifications taken at age 15-16", "Job training certificates", "Driving licenses"],
+          "correct": 1,
+          "explanation": "GCSEs (General Certificate of Secondary Education) are qualifications usually taken at age 15-16."
+        },
+        {
+          "category": "Government",
+          "question": "What are A levels?",
+          "options": ["University qualifications", "Qualifications taken at age 17-18", "Job training", "Primary school tests"],
+          "correct": 1,
+          "explanation": "A levels are academic qualifications usually taken at age 17-18, often required for university."
+        },
+        {
+          "category": "Government",
+          "question": "What does NHS stand for?",
+          "options": ["National Hospital Service", "National Health Service", "National Healthcare System", "National Health Support"],
+          "correct": 1,
+          "explanation": "NHS stands for National Health Service, which provides free healthcare to UK residents."
+        },
+        {
+          "category": "Government",
+          "question": "How is the NHS funded?",
+          "options": ["Through insurance", "Through taxation", "Through patient fees", "Through donations"],
+          "correct": 1,
+          "explanation": "The NHS is funded through taxation and provides healthcare free at the point of use."
+        },
+        {
+          "category": "Government",
+          "question": "What is a GP?",
+          "options": ["A hospital doctor", "A general practitioner (family doctor)", "A nurse", "A surgeon"],
+          "correct": 1,
+          "explanation": "A GP (general practitioner) is a family doctor who provides primary healthcare."
+        },
+        {
+          "category": "Government",
+          "question": "How do you register with a GP?",
+          "options": ["Through the hospital", "Contact a local GP surgery", "Through the council", "Online only"],
+          "correct": 1,
+          "explanation": "You register with a GP by contacting a local GP surgery and completing a registration form."
+        },
+        {
+          "category": "Government",
+          "question": "What age must children start school in the UK?",
+          "options": ["3", "4", "5", "6"],
+          "correct": 2,
+          "explanation": "Children in the UK must start school by age 5, though many start at age 4."
+        },
+        {
+          "category": "Government",
+          "question": "Until what age must young people stay in education or training?",
+          "options": ["15", "16", "18", "21"],
+          "correct": 2,
+          "explanation": "Young people in England must stay in education or training until they are 18."
+        },
+        {
+          "category": "Government",
+          "question": "What is the non-emergency number for the police?",
+          "options": ["999", "111", "101", "911"],
+          "correct": 2,
+          "explanation": "101 is the non-emergency number for the police in the UK."
+        },
+        {
+          "category": "Government",
+          "question": "What is the emergency services number in the UK?",
+          "options": ["911", "999", "111", "112"],
+          "correct": 1,
+          "explanation": "999 is the emergency services number in the UK (112 also works)."
+        },
+        {
+          "category": "Government",
+          "question": "What is the NHS non-emergency number?",
+          "options": ["999", "111", "101", "911"],
+          "correct": 1,
+          "explanation": "111 is the NHS non-emergency helpline for medical advice."
+        },
+        {
+          "category": "Values",
+          "question": "Is it illegal to sell tobacco products to anyone under what age?",
+          "options": ["16", "18", "21", "25"],
+          "correct": 1,
+          "explanation": "It is illegal to sell tobacco products to anyone under 18 in the UK."
+        },
+        {
+          "category": "Government",
+          "question": "What is a tenancy agreement?",
+          "options": ["A job contract", "A rental contract between landlord and tenant", "A loan agreement", "A marriage certificate"],
+          "correct": 1,
+          "explanation": "A tenancy agreement is a contract between a landlord and tenant setting out terms of renting property."
+        },
+        {
+          "category": "Government",
+          "question": "What is a deposit when renting?",
+          "options": ["First month's rent", "Money held as security against damage", "A fee to the estate agent", "A council tax payment"],
+          "correct": 1,
+          "explanation": "A deposit is money held by the landlord as security against damage or unpaid rent."
+        },
+        {
+          "category": "Culture",
+          "question": "What is the Chelsea Flower Show?",
+          "options": ["A music festival", "A famous gardening show", "An art exhibition", "A food festival"],
+          "correct": 1,
+          "explanation": "The Chelsea Flower Show is a famous annual gardening and flower show held in London."
+        },
+        {
+          "category": "Culture",
+          "question": "What is Trooping the Colour?",
+          "options": ["A military parade for the monarch's birthday", "A sporting event", "A religious ceremony", "An art exhibition"],
+          "correct": 0,
+          "explanation": "Trooping the Colour is an annual military parade celebrating the monarch's official birthday."
+        },
+        {
+          "category": "Culture",
+          "question": "What is the Cenotaph?",
+          "options": ["A church", "A war memorial in London", "A castle", "A museum"],
+          "correct": 1,
+          "explanation": "The Cenotaph in Whitehall, London, is the UK's main war memorial."
+        },
+        {
+          "category": "History",
+          "question": "When is Armistice Day?",
+          "options": ["11 October", "11 November", "11 December", "11 September"],
+          "correct": 1,
+          "explanation": "Armistice Day is on 11 November, marking the end of World War I at 11am on 11/11/1918."
+        },
+        {
+          "category": "Culture",
+          "question": "What is a poppy worn for?",
+          "options": ["Fashion", "To remember those who died in war", "A political statement", "A charity badge"],
+          "correct": 1,
+          "explanation": "A poppy is worn to remember those who died in wars, especially around Remembrance Day."
+        },
+        {
+          "category": "Culture",
+          "question": "What is Diwali?",
+          "options": ["A Christian festival", "A Hindu and Sikh festival of lights", "A Muslim celebration", "A Jewish holiday"],
+          "correct": 1,
+          "explanation": "Diwali is the Hindu and Sikh festival of lights, celebrated by many people in the UK."
+        },
+        {
+          "category": "Culture",
+          "question": "What is Vaisakhi?",
+          "options": ["A Hindu festival", "A Sikh festival", "A Muslim celebration", "A Buddhist holiday"],
+          "correct": 1,
+          "explanation": "Vaisakhi is an important Sikh festival celebrating the Sikh community."
+        },
+        {
+          "category": "Culture",
+          "question": "What is Eid al-Fitr?",
+          "options": ["A Hindu festival", "A Christian celebration", "A Muslim festival marking the end of Ramadan", "A Jewish holiday"],
+          "correct": 2,
+          "explanation": "Eid al-Fitr is a Muslim festival celebrating the end of Ramadan, the month of fasting."
+        },
+        {
+          "category": "Culture",
+          "question": "What is Hanukkah?",
+          "options": ["A Christian festival", "A Muslim celebration", "A Hindu festival", "A Jewish festival of lights"],
+          "correct": 3,
+          "explanation": "Hanukkah is the Jewish festival of lights, usually celebrated in December."
+        },
+        {
+          "category": "Government",
+          "question": "Can you be forced to join a trade union?",
+          "options": ["Yes, always", "Yes, in some jobs", "No, it's voluntary", "Yes, if your employer requires it"],
+          "correct": 2,
+          "explanation": "Joining a trade union is voluntary - you cannot be forced to join or prevented from joining."
+        },
+        {
+          "category": "Government",
+          "question": "What is a trade union?",
+          "options": ["A business organization", "An organization that represents workers' interests", "A government department", "A type of company"],
+          "correct": 1,
+          "explanation": "A trade union is an organization that represents the interests and rights of employees."
+        },
+        {
+          "category": "Government",
+          "question": "What is National Insurance?",
+          "options": ["Health insurance", "A tax that pays for state benefits and pensions", "Car insurance", "Home insurance"],
+          "correct": 1,
+          "explanation": "National Insurance is a tax paid by workers and employers to fund state benefits, pensions and the NHS."
+        },
+        {
+          "category": "Government",
+          "question": "What is income tax?",
+          "options": ["A property tax", "A tax on earnings", "A sales tax", "A business tax"],
+          "correct": 1,
+          "explanation": "Income tax is a tax paid on earnings from employment or self-employment."
+        },
+        {
+          "category": "Government",
+          "question": "What is VAT?",
+          "options": ["A property tax", "An income tax", "Value Added Tax on goods and services", "A council tax"],
+          "correct": 2,
+          "explanation": "VAT (Value Added Tax) is a tax added to most goods and services."
+        },
+        {
+          "category": "Government",
+          "question": "What rights do volunteers have?",
+          "options": ["The same as employees", "No rights at all", "Safety protection and reimbursement of expenses", "Only insurance protection"],
+          "correct": 2,
+          "explanation": "Volunteers have rights to safety, protection from discrimination and reimbursement of expenses."
+        },
+        {
+          "category": "Government",
+          "question": "What is the role of a local councilor?",
+          "options": ["To make national laws", "To represent local residents and make decisions on local issues", "To judge court cases", "To run police stations"],
+          "correct": 1,
+          "explanation": "Local councilors are elected to represent residents and make decisions on local services."
+        },
+        {
+          "category": "Government",
+          "question": "How often are local elections held?",
+          "options": ["Every year", "Every 2 years", "Varies by area", "Every 5 years"],
+          "correct": 2,
+          "explanation": "Local elections are held at different intervals depending on the local area."
+        },
+        {
+          "category": "Government",
+          "question": "What is the electoral register?",
+          "options": ["A list of election results", "A list of people entitled to vote", "A list of MPs", "A voting system"],
+          "correct": 1,
+          "explanation": "The electoral register is an official list of people who are registered to vote."
+        },
+        {
+          "category": "Government",
+          "question": "Can EU citizens vote in UK general elections?",
+          "options": ["Yes, all EU citizens", "No, they cannot", "Only if they have lived in UK for 10 years", "Only Irish and Cypriot citizens"],
+          "correct": 3,
+          "explanation": "Irish and Cypriot citizens can vote in UK general elections, but other EU citizens cannot (though they can vote in local elections)."
+        },
+        {
+          "category": "Values",
+          "question": "What is domestic violence?",
+          "options": ["Household accidents", "Physical, psychological, sexual or financial abuse by a partner", "Noise complaints", "Property disputes"],
+          "correct": 1,
+          "explanation": "Domestic violence is any physical, psychological, sexual or financial abuse by a partner or family member."
+        },
+        {
+          "category": "Values",
+          "question": "Is it acceptable to discriminate against someone because of their age?",
+          "options": ["Yes, in all cases", "Yes, for employment", "No, it is illegal", "Yes, for under 18s"],
+          "correct": 2,
+          "explanation": "Age discrimination is illegal in the UK, with some limited exceptions."
+        },
+        {
+          "category": "Values",
+          "question": "Is it legal to hit a child as punishment?",
+          "options": ["Yes, always", "Yes, but not to cause injury", "No, it's always illegal", "Only in private"],
+          "correct": 1,
+          "explanation": "In England, Wales and Northern Ireland, physical punishment is legal if it doesn't cause injury. It's illegal in Scotland."
+        },
+        {
+          "category": "History",
+          "question": "Who was Sake Dean Mahomet?",
+          "options": ["A politician", "The first person to open an Indian restaurant in Britain", "A scientist", "A military leader"],
+          "correct": 1,
+          "explanation": "Sake Dean Mahomet opened the first Indian restaurant in Britain (the Hindoostane Coffee House) in 1810."
+        },
+        {
+          "category": "History",
+          "question": "Who was Mary Seacole?",
+          "options": ["A nurse who helped soldiers in the Crimean War", "A politician", "A writer", "A scientist"],
+          "correct": 0,
+          "explanation": "Mary Seacole was a Jamaican-British nurse who cared for soldiers during the Crimean War."
+        },
+        {
+          "category": "History",
+          "question": "What was the British Empire?",
+          "options": ["A trading company", "Territories around the world ruled or controlled by Britain", "A military alliance", "A religious organization"],
+          "correct": 1,
+          "explanation": "The British Empire consisted of territories around the world that were ruled or controlled by Britain."
+        },
+        {
+          "category": "History",
+          "question": "When was the height of the British Empire?",
+          "options": ["1700s", "Early 1900s", "1950s", "1066"],
+          "correct": 1,
+          "explanation": "The British Empire was at its largest in the early 1900s, covering a quarter of the world."
+        },
+        {
+          "category": "Culture",
+          "question": "Who was Dylan Thomas?",
+          "options": ["An English poet", "A Welsh poet", "A Scottish poet", "An Irish poet"],
+          "correct": 1,
+          "explanation": "Dylan Thomas was a famous Welsh poet and writer, known for 'Under Milk Wood'."
+        },
+        {
+          "category": "Culture",
+          "question": "Who composed 'The Water Music'?",
+          "options": ["Mozart", "Beethoven", "Handel", "Bach"],
+          "correct": 2,
+          "explanation": "George Frideric Handel, a German composer who lived in Britain, composed 'The Water Music'."
+        },
+        {
+          "category": "Culture",
+          "question": "Who composed 'Messiah'?",
+          "options": ["Handel", "Purcell", "Elgar", "Holst"],
+          "correct": 0,
+          "explanation": "Handel composed 'Messiah', famous for the 'Hallelujah' chorus."
+        },
+        {
+          "category": "Culture",
+          "question": "Who was Henry Purcell?",
+          "options": ["A playwright", "An organist and composer", "A painter", "A poet"],
+          "correct": 1,
+          "explanation": "Henry Purcell was an English organist and composer in the 17th century."
+        },
+        {
+          "category": "Culture",
+          "question": "Who wrote the opera 'Peter Grimes'?",
+          "options": ["Benjamin Britten", "Edward Elgar", "Henry Purcell", "Gustav Holst"],
+          "correct": 0,
+          "explanation": "Benjamin Britten composed the opera 'Peter Grimes' and other important British works."
+        },
+        {
+          "category": "Culture",
+          "question": "Which British architect designed St Paul's Cathedral?",
+          "options": ["Norman Foster", "Christopher Wren", "Inigo Jones", "John Nash"],
+          "correct": 1,
+          "explanation": "Sir Christopher Wren designed St Paul's Cathedral after the Great Fire of London."
+        },
+        {
+          "category": "Culture",
+          "question": "Who designed the Millennium Bridge in London?",
+          "options": ["Norman Foster", "Richard Rogers", "Zaha Hadid", "Nicholas Grimshaw"],
+          "correct": 0,
+          "explanation": "Norman Foster and his team designed the Millennium Bridge across the Thames."
+        },
+        {
+          "category": "Sports",
+          "question": "What is curling?",
+          "options": ["A water sport", "A winter sport on ice", "A ball game", "An athletic event"],
+          "correct": 1,
+          "explanation": "Curling is a winter sport played on ice, where players slide stones towards a target."
+        },
+        {
+          "category": "Sports",
+          "question": "What is shinty?",
+          "options": ["An English sport", "A Scottish sport similar to hockey", "A Welsh game", "An Irish dance"],
+          "correct": 1,
+          "explanation": "Shinty is a Scottish sport similar to hockey, played with sticks and a ball."
+        },
+        {
+          "category": "Sports",
+          "question": "Where did rugby originate?",
+          "options": ["Scotland", "Wales", "England (Rugby School)", "Ireland"],
+          "correct": 2,
+          "explanation": "Rugby originated at Rugby School in England in the early 19th century."
+        },
+        {
+          "category": "History",
+          "question": "Who was Sir Christopher Wren?",
+          "options": ["A military leader", "An architect who rebuilt London after the Great Fire", "A scientist", "A politician"],
+          "correct": 1,
+          "explanation": "Sir Christopher Wren was the architect who rebuilt much of London, including St Paul's Cathedral, after the Great Fire."
+        },
+        {
+          "category": "History",
+          "question": "Who was Samuel Pepys?",
+          "options": ["A king", "A diarist who wrote about London in the 1660s", "A playwright", "A scientist"],
+          "correct": 1,
+          "explanation": "Samuel Pepys kept a famous diary recording life in London, including the Great Plague and Fire."
+        }
+      ]
+    }
+  ]
+}
