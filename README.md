@@ -1,92 +1,160 @@
 # Life in the UK - Interactive Study App
 
-An engaging, interactive web application designed to help you study for the Life in the UK exam, with features specifically designed to make learning easier for people with ADHD.
+A modern, ADHD-friendly web application for studying Life in the UK exam materials. Features progressive topic unlocking, multiple difficulty modes, and smart answer matching.
 
-## 🎯 Features
+## ✨ Features
 
-### ADHD-Friendly Design
-- **Bite-sized questions**: Short, focused questions that don't overwhelm
-- **Instant feedback**: Immediate visual and textual feedback on answers
-- **Gamification**: Points, streaks, and levels to maintain motivation
-- **Visual progress**: Clear progress bars and statistics
-- **Variety**: Different quiz modes to prevent boredom
+### 🔒 Progressive Learning
+- Topics unlock sequentially - must pass each topic to move forward
+- Clear progress tracking with completion badges
+- Prevents rushing through material
 
-### Study Modes
-- **⚡ Quick Practice**: 10 random questions for short study sessions
-- **📚 Full Test**: 24 questions simulating the real exam
-- **🎯 Category Focus**: Practice specific topics (coming soon)
+### 📚 Study-First Approach
+- Read comprehensive study materials before testing
+- Each topic contains formatted content with key facts
+- Visual organization with headings, lists, and emphasis
 
-### Interactive Elements
-- Score tracking and level progression
-- Streak bonuses for consecutive correct answers
-- Achievement notifications
-- Detailed explanations for every answer
-- Skip option when you need a break
+### 🎯 Dual Difficulty Modes
+- **Normal Mode**: Multiple choice questions with 4 options
+- **Hard Mode**: Type-in answers with intelligent fuzzy matching
+  - 80-90% similarity threshold for spelling forgiveness
+  - Strict matching for dates and numbers
+  - Not case-sensitive
 
-### Question Categories
-- History (Battle of Hastings, Magna Carta, etc.)
-- Government (Elections, Parliament, Voting)
-- Culture (Shakespeare, National flowers, Celebrations)
-- Geography (Capitals, Rivers, Mountains)
-- Sports (Cricket, Golf, Olympics)
+### 🔄 Smart Question Randomization
+- Questions shuffled on every test attempt
+- Answer options randomized in normal mode
+- Fresh experience each time
+
+### 📱 Mobile-Friendly
+- Fully responsive design
+- Works perfectly on phones, tablets, and desktop
+- Clean, distraction-free interface for ADHD focus
+
+### 💾 Progress Persistence
+- Automatic progress saving via LocalStorage
+- Track best scores and completion status
+- Reset progress option available
 
 ## 🚀 Getting Started
 
-### Simple Setup
-1. Open `index.html` in any modern web browser
-2. No installation or server required!
+### For Hosting on Your Phone
 
-### Usage
-1. Choose your preferred study mode from the home screen
-2. Answer questions by clicking on options
-3. Get instant feedback with explanations
-4. Track your progress with scores, streaks, and levels
-5. Review your results at the end of each quiz
+#### Option 1: Using Python (Simplest)
+1. Open terminal/PowerShell in the project folder
+2. Run: `python -m http.server 8000`
+3. On your phone, connect to same WiFi network
+4. Open browser and go to: `http://YOUR_COMPUTER_IP:8000`
+5. Find your computer IP:
+   - Windows: `ipconfig` (look for IPv4 Address)
+   - Mac/Linux: `ifconfig` or `ip addr`
 
-## 📊 Scoring System
-- **+10 points** for each correct answer
-- **+5 bonus points** for 5+ correct answers in a row
-- **Level up** every 100 points
-- **Pass requirement**: 75% or higher (like the real exam)
+#### Option 2: Deploy to GitHub Pages (Free, Always Accessible)
+1. Create a GitHub repository
+2. Upload all files
+3. Go to Settings > Pages
+4. Enable GitHub Pages
+5. Access from anywhere at: `https://yourusername.github.io/repo-name`
 
-## 💡 Study Tips for ADHD
-- Use the **Quick Practice** mode for short, focused sessions
-- Take breaks between quizzes
-- Focus on your streak to build momentum
-- Celebrate small wins - each correct answer counts!
-- Review the explanations even when you get it right
+#### Option 3: Use Netlify/Vercel (Free, Professional)
+1. Sign up for free at netlify.com or vercel.com
+2. Drag and drop your project folder
+3. Get a permanent URL instantly
+4. Access from anywhere
 
-## 🎨 Customization
-The app saves your progress automatically in your browser, so you can pick up where you left off.
+### Local Testing
+Simply open `index.html` in any modern web browser.
 
-## 📝 Adding More Questions
-To add more questions, edit the `questionBank` array in `script.js`. Each question should follow this format:
+## 📝 Adding Your Content
 
-```javascript
-{
-    category: "Category Name",
-    question: "Your question here?",
-    options: ["Option 1", "Option 2", "Option 3", "Option 4"],
-    correct: 0, // Index of correct option (0-3)
-    explanation: "Explanation of the correct answer."
-}
-```
+Edit `topics.json` to add your official Life in the UK study materials:
 
-## 🔮 Future Enhancements
-- Category-specific practice mode
-- Timed exam mode
-- More question types (true/false, matching)
-- Progress analytics and weak area identification
-- Dark mode
-- Sound effects (optional)
-- Spaced repetition algorithm
+### JSON Structure
 
-## 📱 Mobile Friendly
-The app is fully responsive and works great on phones and tablets!
+\`\`\`json
+[
+  {
+    "title": "Topic Title",
+    "content": "HTML formatted study materials",
+    "questions": [
+      {
+        "question": "Your question here?",
+        "options": ["Option 1", "Option 2", "Option 3", "Option 4"],
+        "answer": "Option 2"
+      }
+    ]
+  }
+]
+\`\`\`
 
-## 🎓 About the Life in the UK Test
-The Life in the UK test is required for anyone applying for British citizenship or permanent residence. You need to score at least 75% (18 out of 24 questions) to pass.
+### Content Formatting Tips
+
+Use HTML tags in the `content` field:
+- `<h3>Heading</h3>` for section headings
+- `<p>Text</p>` for paragraphs
+- `<strong>Text</strong>` for emphasis
+- `<ul><li>Item</li></ul>` for bullet lists
+- `<ol><li>Item</li></ol>` for numbered lists
+
+### Question Guidelines
+
+1. **Normal Mode**: Provide 4 options (one correct)
+2. **Hard Mode**: Uses same `answer` field - students type it in
+3. **Dates/Numbers**: Must be exact match in hard mode
+4. **Text answers**: 80% similarity threshold allows minor typos
+5. **Case insensitive**: "London" = "london" = "LONDON"
+
+## 🎓 Passing Criteria
+
+- Must score **75% or higher** to pass a topic
+- Unlocks next topic upon passing
+- Can retry unlimited times
+- Progress saved automatically
+
+## 🛠️ Technical Details
+
+- **Pure HTML/CSS/JavaScript** - No frameworks needed
+- **No backend required** - Runs entirely in browser
+- **LocalStorage** for progress persistence
+- **Responsive design** - Mobile-first approach
+- **Fuzzy matching** using Levenshtein distance algorithm
+
+## 📊 Progress Tracking
+
+The app tracks:
+- Completed topics
+- Number of attempts per topic
+- Best score achieved
+- Current topic progress
+
+Reset progress anytime using the reset button (🔄) in the header.
+
+## 🎨 ADHD-Friendly Design
+
+- Clean, minimal interface
+- Clear visual hierarchy
+- Instant feedback
+- Progress indicators
+- No overwhelming animations
+- Focused content areas
+- Short, manageable sections
+
+## 📱 Browser Compatibility
+
+Works on all modern browsers:
+- Chrome/Edge
+- Firefox
+- Safari
+- Mobile browsers
+
+## 🔐 Privacy
+
+All data stored locally in your browser. Nothing sent to any server.
+
+## 📄 License
+
+Free to use for personal study purposes.
 
 ---
 
-Good luck with your studies! Remember: small, consistent practice sessions work best. 🇬🇧✨
+**Good luck with your exam! 🇬🇧**
