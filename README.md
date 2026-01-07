@@ -1,8 +1,15 @@
 # Life in the UK - Interactive Study App
 
-A modern, ADHD-friendly web application for studying Life in the UK exam materials. Features progressive topic unlocking, multiple difficulty modes, and smart answer matching.
+A modern, ADHD-friendly web application for studying Life in the UK exam materials. Features progressive topic unlocking, multiple difficulty modes, question variations to prevent memorization, and smart answer matching.
 
 ## ✨ Features
+
+### 🎲 Question Variations System (NEW!)
+- Multiple variations of the same question with different phrasings
+- Mix of **Multiple Choice** and **True/False** question types
+- Randomly selects ONE variation per test to prevent memorization
+- Tests understanding, not memory of specific question text
+- See [QUESTION_VARIATIONS.md](QUESTION_VARIATIONS.md) for details
 
 ### 🔒 Progressive Learning
 - Topics unlock sequentially - must pass each topic to move forward
@@ -15,7 +22,7 @@ A modern, ADHD-friendly web application for studying Life in the UK exam materia
 - Visual organization with headings, lists, and emphasis
 
 ### 🎯 Dual Difficulty Modes
-- **Normal Mode**: Multiple choice questions with 4 options
+- **Normal Mode**: Multiple choice and True/False questions
 - **Hard Mode**: Type-in answers with intelligent fuzzy matching
   - 80-90% similarity threshold for spelling forgiveness
   - Strict matching for dates and numbers
@@ -35,6 +42,20 @@ A modern, ADHD-friendly web application for studying Life in the UK exam materia
 - Automatic progress saving via LocalStorage
 - Track best scores and completion status
 - Reset progress option available
+
+## 📊 Question Bank
+
+**370 total questions** across 11 comprehensive topics covering:
+- UK values and citizenship requirements
+- Historical periods from Stone Age to modern times
+- Government structure and legal system
+- Culture, traditions, and modern society
+- Sports, leisure, and public services
+
+Questions include:
+- Regular multiple-choice questions
+- True/False statements
+- Question variations to test true understanding
 
 ## 🚀 Getting Started
 
