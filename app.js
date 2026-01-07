@@ -299,7 +299,18 @@ function setupEventListeners() {
     });
 
     // Result Buttons
-    document.getElementById('retryTest').addEventListener('click', () => {\n        showScreen('testScreen');\n        showDifficultySelection();\n    });\n\n    document.getElementById('backToStudy').addEventListener('click', () => {\n        if (state.isPracticeMode) {\n            showScreen('homeScreen');\n        } else {\n            showScreen('studyScreen');\n        }\n    });
+    document.getElementById('retryTest').addEventListener('click', () => {
+        showScreen('testScreen');
+        showDifficultySelection();
+    });
+
+    document.getElementById('backToStudy').addEventListener('click', () => {
+        if (state.isPracticeMode) {
+            showScreen('homeScreen');
+        } else {
+            showScreen('studyScreen');
+        }
+    });
 
     document.getElementById('nextTopic').addEventListener('click', () => {
         const nextIndex = state.currentTopicIndex + 1;
