@@ -32,6 +32,27 @@
             </div>
         </div>
 
+        <!-- Study or Test Choice Modal -->
+        <div id="studyChoiceModal" class="modal-overlay">
+            <div class="modal-content">
+                <h2 id="choiceModalTitle">Choose Your Learning Mode</h2>
+                <p class="modal-subtitle">How would you like to approach this topic?</p>
+                <div class="choice-buttons">
+                    <button id="choiceStudy" class="btn btn-choice">
+                        <span class="choice-icon">📚</span>
+                        <span class="choice-title">Study First</span>
+                        <span class="choice-desc">Read the materials, then take the test</span>
+                    </button>
+                    <button id="choicePractice" class="btn btn-choice">
+                        <span class="choice-icon">✏️</span>
+                        <span class="choice-title">Practice Test</span>
+                        <span class="choice-desc">Jump straight into testing</span>
+                    </button>
+                </div>
+                <button id="closeChoiceModal" class="btn-close">✕</button>
+            </div>
+        </div>
+
         <!-- Study Materials Screen -->
         <div id="studyScreen" class="screen">
             <div class="content-wrapper">
@@ -122,6 +143,13 @@
                                 <span id="finalPercentage" class="stat-value">0%</span>
                             </div>
                         </div>
+                        
+                        <!-- Adaptive Learning Info -->
+                        <div id="adaptiveLearningInfo" class="adaptive-info" style="display: none;">
+                            <p class="adaptive-title">📊 Adaptive Learning Active</p>
+                            <p class="adaptive-desc">Questions you struggle with will appear more frequently in your next practice test.</p>
+                        </div>
+                        
                         <div class="result-actions">
                             <button id="retryTest" class="btn btn-secondary">Try Again</button>
                             <button id="backToStudy" class="btn btn-primary" style="display: none;">Back to Study</button>

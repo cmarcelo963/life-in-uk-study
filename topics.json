@@ -3458,6 +3458,77 @@
         ],
         "answer": "31 October"
       }
+    ],
+    "questionGroups": [
+      {
+        "topic": "Bonfire Night Date",
+        "variations": [
+          {
+            "type": "multiple",
+            "question": "When is Bonfire Night?",
+            "options": [
+              "31 October",
+              "5 November",
+              "25 December",
+              "1 January"
+            ],
+            "answer": "5 November"
+          },
+          {
+            "type": "boolean",
+            "question": "Bonfire Night is celebrated on 5 November.",
+            "answer": true
+          },
+          {
+            "type": "boolean",
+            "question": "Guy Fawkes Night takes place on 31 October.",
+            "answer": false
+          },
+          {
+            "type": "multiple",
+            "question": "On which date do people celebrate Guy Fawkes Night?",
+            "options": [
+              "5 November",
+              "31 October",
+              "1 November",
+              "11 November"
+            ],
+            "answer": "5 November"
+          }
+        ]
+      },
+      {
+        "topic": "Guy Fawkes History",
+        "variations": [
+          {
+            "type": "multiple",
+            "question": "What happened on 5 November 1605?",
+            "options": [
+              "The Great Fire of London",
+              "Guy Fawkes tried to blow up Parliament",
+              "The Battle of Trafalgar",
+              "The signing of the Magna Carta"
+            ],
+            "answer": "Guy Fawkes tried to blow up Parliament"
+          },
+          {
+            "type": "boolean",
+            "question": "Guy Fawkes attempted to blow up the Houses of Parliament in 1605.",
+            "answer": true
+          },
+          {
+            "type": "multiple",
+            "question": "What was Guy Fawkes trying to do in 1605?",
+            "options": [
+              "Burn down London",
+              "Blow up Parliament",
+              "Assassinate the Queen",
+              "Start a revolution"
+            ],
+            "answer": "Blow up Parliament"
+          }
+        ]
+      }
     ]
   },
   {

@@ -6,13 +6,15 @@ let state = {
     currentQuestionIndex: 0,
     currentDifficulty: null,
     score: 0,
-    progress: {}
+    progress: {},
+    questionStats: {} // Track performance per question
 };
 
 // Initialize App
 async function init() {
     await loadTopics();
     loadProgress();
+    loadQuestionStats();
     renderTopicList();
     setupEventListeners();
 }
@@ -51,12 +53,98 @@ function saveProgress() {
     localStorage.setItem('lifeInUK_progress', JSON.stringify(state.progress));
 }
 
+// Load Question Statistics from LocalStorage
+function loadQuestionStats() {
+    const saved = localStorage.getItem('lifeInUK_questionStats');
+    if (saved) {
+        state.questionStats = JSON.parse(saved);
+    } else {
+        state.questionStats = {};
+    }
+}
+
+// Save Question Statistics to LocalStorage
+function saveQuestionStats() {
+    localStorage.setItem('lifeInUK_questionStats', JSON.stringify(state.questionStats));
+}
+
+// Get unique question ID
+function getQuestionId(question, topicIndex, questionIndex) {
+    // Create a unique ID based on question text (first 50 chars as hash)
+    const textHash = question.question.substring(0, 50).replace(/\s+/g, '_');
+    return `${topicIndex}_${questionIndex}_${textHash}`;
+}
+
+// Initialize question stats if not exists
+function initQuestionStats(questionId) {
+    if (!state.questionStats[questionId]) {
+        state.questionStats[questionId] = {
+            correct: 0,
+            incorrect: 0,
+            lastAsked: null,
+            weight: 1.0
+        };
+    }
+}
+
+// Update question stats after answer
+function updateQuestionStats(questionId, isCorrect) {
+    initQuestionStats(questionId);
+    
+    const stats = state.questionStats[questionId];
+    stats.lastAsked = Date.now();
+    
+    if (isCorrect) {
+        stats.correct++;
+        // Decrease weight (ask less frequently)
+        stats.weight = Math.max(0.1, stats.weight * 0.8);
+    } else {
+        stats.incorrect++;
+        // Increase weight (ask more frequently)
+        stats.weight = Math.min(5.0, stats.weight * 1.5);
+    }
+    
+    saveQuestionStats();
+}
+
+// Calculate question weight for adaptive learning
+function getQuestionWeight(questionId) {
+    if (!state.questionStats[questionId]) {
+        return 1.0; // Default weight for new questions
+    }
+    return state.questionStats[questionId].weight;
+}
+
 // Setup Event Listeners
 function setupEventListeners() {
+    // Study/Practice Choice Modal
+    document.getElementById('choiceStudy').addEventListener('click', () => {
+        hideChoiceModal();
+        showScreen('studyScreen');
+    });
+
+    document.getElementById('choicePractice').addEventListener('click', () => {
+        hideChoiceModal();
+        showScreen('testScreen');
+        showDifficultySelection();
+    });
+
+    document.getElementById('closeChoiceModal').addEventListener('click', () => {
+        hideChoiceModal();
+    });
+
+    // Close modal when clicking outside
+    document.getElementById('studyChoiceModal').addEventListener('click', (e) => {
+        if (e.target.id === 'studyChoiceModal') {
+            hideChoiceModal();
+        }
+    });
+
     // Reset Progress
     document.getElementById('resetProgress').addEventListener('click', () => {
-        if (confirm('Are you sure you want to reset all progress? This cannot be undone.')) {
+        if (confirm('Are you sure you want to reset all progress and question statistics? This cannot be undone.')) {
             localStorage.removeItem('lifeInUK_progress');
+            localStorage.removeItem('lifeInUK_questionStats');
             location.reload();
         }
     });
@@ -177,6 +265,7 @@ function openTopic(index) {
 
     document.getElementById('studyTopicTitle').textContent = topic.title;
     document.getElementById('studyContent').innerHTML = topic.content;
+    document.getElementById('choiceModalTitle').textContent = topic.title;
 
     // Update status badge
     const statusBadge = document.getElementById('studyTopicStatus');
@@ -191,7 +280,35 @@ function openTopic(index) {
         statusBadge.textContent = '';
     }
 
-    showScreen('studyScreen');
+    // Show choice modal instead of going directly to study screen
+    showChoiceModal();
+}
+
+// Show the study/practice choice modal
+function showChoiceModal() {
+    document.getElementById('studyChoiceModal').classList.add('active');
+}
+
+// Hide the choice modal
+function hideChoiceModal() {
+    document.getElementById('studyChoiceModal').classList.remove('active');
+}
+
+// Weighted question selection for adaptive learning
+function selectWeightedQuestions(questions, topicIndex) {
+    // Create array with questions and their weights
+    const weightedQuestions = questions.map((q, idx) => {
+        const questionId = getQuestionId(q, topicIndex, idx);
+        const weight = getQuestionWeight(questionId);
+        return { question: q, weight, id: questionId };
+    });
+    
+    // Sort by weight (descending) and take all questions
+    // Higher weight = answered incorrectly more = prioritized
+    weightedQuestions.sort((a, b) => b.weight - a.weight);
+    
+    // Return sorted questions (heavily weighted first)
+    return weightedQuestions.map(wq => wq.question);
 }
 
 // Show Screen
@@ -218,28 +335,40 @@ function startTest(difficulty) {
     state.score = 0;
 
     const topic = state.topics[state.currentTopicIndex];
+    const topicIndex = state.currentTopicIndex;
+    const attempts = state.progress[topicIndex].attempts;
     
     // Combine regular questions and question groups
     let allQuestions = [];
     
-    // Add regular questions
+    // Add regular questions with index tracking
     if (topic.questions) {
-        allQuestions = [...topic.questions];
+        topic.questions.forEach((q, idx) => {
+            allQuestions.push({ ...q, sourceIndex: idx });
+        });
     }
     
     // Add one random variation from each question group
     if (topic.questionGroups) {
-        topic.questionGroups.forEach(group => {
+        topic.questionGroups.forEach((group, groupIdx) => {
             if (group.variations && group.variations.length > 0) {
                 // Randomly select one variation from this group
                 const randomVariation = group.variations[Math.floor(Math.random() * group.variations.length)];
-                allQuestions.push(randomVariation);
+                allQuestions.push({ ...randomVariation, sourceIndex: `group_${groupIdx}` });
             }
         });
     }
     
-    // Shuffle all questions
-    state.currentQuestions = shuffleArray(allQuestions);
+    // Use weighted selection for subsequent attempts (adaptive learning)
+    if (attempts > 0) {
+        // Prioritize questions that were answered incorrectly
+        allQuestions = selectWeightedQuestions(allQuestions, topicIndex);
+    } else {
+        // First attempt: shuffle randomly
+        allQuestions = shuffleArray(allQuestions);
+    }
+    
+    state.currentQuestions = allQuestions;
 
     // Update attempt count
     state.progress[state.currentTopicIndex].attempts++;
@@ -391,6 +520,14 @@ function checkAnswer(userAnswer) {
     if (isCorrect) {
         state.score++;
     }
+    
+    // Track question performance for adaptive learning
+    const questionId = getQuestionId(
+        question,
+        state.currentTopicIndex,
+        state.currentQuestionIndex
+    );
+    updateQuestionStats(questionId, isCorrect);
 
     // Show feedback
     showFeedback(isCorrect, correctAnswer, userAnswer);
@@ -536,6 +673,14 @@ function showResults() {
 
     document.getElementById('finalScore').textContent = `${state.score}/${totalQuestions}`;
     document.getElementById('finalPercentage').textContent = `${percentage}%`;
+    
+    // Show adaptive learning info if this is not the first attempt
+    const attempts = state.progress[state.currentTopicIndex].attempts;
+    if (attempts > 1) {
+        document.getElementById('adaptiveLearningInfo').style.display = 'block';
+    } else {
+        document.getElementById('adaptiveLearningInfo').style.display = 'none';
+    }
 
     // Update topic list
     renderTopicList();
