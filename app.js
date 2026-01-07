@@ -146,10 +146,15 @@ function renderTopicList() {
             statusBadge = '<span class="status-badge in-progress">In Progress</span>';
         }
 
+        // Count total questions (regular + question groups)
+        const regularQuestions = topic.questions ? topic.questions.length : 0;
+        const groupedQuestions = topic.questionGroups ? topic.questionGroups.length : 0;
+        const totalQuestions = regularQuestions + groupedQuestions;
+
         card.innerHTML = `
             <div class="topic-info">
                 <div class="topic-title">${topic.title}</div>
-                <div class="topic-subtitle">${topic.questions.length} questions</div>
+                <div class="topic-subtitle">${totalQuestions} questions</div>
             </div>
             <div class="topic-status">
                 ${statusBadge}
@@ -214,8 +219,27 @@ function startTest(difficulty) {
 
     const topic = state.topics[state.currentTopicIndex];
     
-    // Shuffle questions
-    state.currentQuestions = shuffleArray([...topic.questions]);
+    // Combine regular questions and question groups
+    let allQuestions = [];
+    
+    // Add regular questions
+    if (topic.questions) {
+        allQuestions = [...topic.questions];
+    }
+    
+    // Add one random variation from each question group
+    if (topic.questionGroups) {
+        topic.questionGroups.forEach(group => {
+            if (group.variations && group.variations.length > 0) {
+                // Randomly select one variation from this group
+                const randomVariation = group.variations[Math.floor(Math.random() * group.variations.length)];
+                allQuestions.push(randomVariation);
+            }
+        });
+    }
+    
+    // Shuffle all questions
+    state.currentQuestions = shuffleArray(allQuestions);
 
     // Update attempt count
     state.progress[state.currentTopicIndex].attempts++;
@@ -249,9 +273,14 @@ function renderQuestion() {
     // Hide feedback
     document.getElementById('feedback').style.display = 'none';
 
-    // Render based on difficulty
+    // Render based on difficulty and question type
     if (state.currentDifficulty === 'normal') {
-        renderMultipleChoice(question);
+        // Check if this is a boolean (true/false) question or multiple choice
+        if (question.type === 'boolean') {
+            renderTrueFalse(question);
+        } else {
+            renderMultipleChoice(question);
+        }
     } else {
         renderTextInput();
     }
@@ -281,6 +310,28 @@ function renderMultipleChoice(question) {
     });
 }
 
+// Render True/False Question
+function renderTrueFalse(question) {
+    document.getElementById('multipleChoice').style.display = 'block';
+    document.getElementById('textInput').style.display = 'none';
+
+    const container = document.getElementById('multipleChoice');
+    container.innerHTML = '';
+
+    // Create True and False buttons
+    ['True', 'False'].forEach(option => {
+        const btn = document.createElement('button');
+        btn.className = 'option';
+        btn.textContent = option;
+        btn.addEventListener('click', () => {
+            if (!btn.classList.contains('disabled')) {
+                checkAnswer(option === 'True');
+            }
+        });
+        container.appendChild(btn);
+    });
+}
+
 // Render Text Input
 function renderTextInput() {
     document.getElementById('multipleChoice').style.display = 'none';
@@ -299,19 +350,38 @@ function checkAnswer(userAnswer) {
     let isCorrect = false;
 
     if (state.currentDifficulty === 'normal') {
-        isCorrect = userAnswer === correctAnswer;
-        
-        // Highlight options
-        const options = document.querySelectorAll('.option');
-        options.forEach(opt => {
-            opt.classList.add('disabled');
-            if (opt.textContent === correctAnswer) {
-                opt.classList.add('correct');
-            }
-            if (opt.textContent === userAnswer && !isCorrect) {
-                opt.classList.add('incorrect');
-            }
-        });
+        // Handle boolean questions
+        if (question.type === 'boolean') {
+            isCorrect = userAnswer === correctAnswer;
+            
+            // Highlight options
+            const options = document.querySelectorAll('.option');
+            options.forEach(opt => {
+                opt.classList.add('disabled');
+                const optValue = opt.textContent === 'True';
+                if (optValue === correctAnswer) {
+                    opt.classList.add('correct');
+                }
+                if (optValue === userAnswer && !isCorrect) {
+                    opt.classList.add('incorrect');
+                }
+            });
+        } else {
+            // Handle multiple choice questions
+            isCorrect = userAnswer === correctAnswer;
+            
+            // Highlight options
+            const options = document.querySelectorAll('.option');
+            options.forEach(opt => {
+                opt.classList.add('disabled');
+                if (opt.textContent === correctAnswer) {
+                    opt.classList.add('correct');
+                }
+                if (opt.textContent === userAnswer && !isCorrect) {
+                    opt.classList.add('incorrect');
+                }
+            });
+        }
     } else {
         // Hard mode: fuzzy matching
         isCorrect = fuzzyMatch(userAnswer, correctAnswer);
