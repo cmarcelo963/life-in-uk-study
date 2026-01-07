@@ -59,6 +59,62 @@ Questions include:
 
 ## 🚀 Getting Started
 
+### Quick Start (With Database Backend)
+1. **Install Node.js** if you haven't already
+2. **Install dependencies**: 
+   ```bash
+   npm install
+   ```
+3. **Start the server**: 
+   ```bash
+   npm start
+   ```
+   Or double-click `start.bat` (Windows)
+4. **Open in browser**: http://localhost:3000
+
+The app now saves your progress to a database file!
+
+### Alternative Methods
+
+#### Option 1: Using Python (Simplest)
+1. Open terminal/PowerShell in the project folder
+2. Run: `python -m http.server 8000`
+3. On your phone, connect to same WiFi network
+4. Open browser and go to: `http://YOUR_COMPUTER_IP:8000`
+5. Find your computer IP:
+   - Windows: `ipconfig` (look for IPv4 Address)
+   - Mac/Linux: `ifconfig` or `ip addr`
+
+#### Option 2: Deploy to GitHub Pages (Free, Always Accessible)
+1. Create a GitHub repository
+2. Upload all files
+3. Go to Settings > Pages
+4. Enable GitHub Pages
+5. Access from anywhere at: `https://yourusername.github.io/repo-name`
+
+#### Option 3: Use Netlify/Vercel (Free, Professional)
+1. Sign up for free at netlify.com or vercel.com
+2. Drag and drop your project folder
+3. Get a permanent URL instantly
+4. Access from anywhere
+
+## 📁 Data Storage
+
+### Backend Database (Recommended)
+- **Location**: `user-data/` folder
+- **Files**: 
+  - `progress.json` - Topic completion and scores
+  - `question-stats.json` - Adaptive learning data
+- **Backup**: Also saves to browser localStorage
+- **Security**: For personal use only - no authentication
+
+### API Endpoints
+- `GET /api/progress` - Get all progress
+- `POST /api/progress` - Save progress
+- `GET /api/stats` - Get question statistics
+- `POST /api/stats` - Save question statistics  
+- `POST /api/reset` - Reset all data
+
 ### For Hosting on Your Phone
 
 #### Option 1: Using Python (Simplest)

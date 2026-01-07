@@ -30,42 +30,89 @@ async function loadTopics() {
     }
 }
 
-// Load Progress from LocalStorage
-function loadProgress() {
-    const saved = localStorage.getItem('lifeInUK_progress');
-    if (saved) {
-        state.progress = JSON.parse(saved);
-    } else {
-        // Initialize progress for all topics
-        state.progress = {};
-        state.topics.forEach((topic, index) => {
-            state.progress[index] = {
-                completed: false,
-                attempts: 0,
-                bestScore: 0
-            };
+// Load Progress from Backend
+async function loadProgress() {
+    try {
+        const response = await fetch('http://localhost:3000/api/progress');
+        const data = await response.json();
+        if (data && Object.keys(data).length > 0) {
+            state.progress = data;
+        } else {
+            // Initialize progress for all topics
+            state.progress = {};
+            state.topics.forEach((topic, index) => {
+                state.progress[index] = {
+                    completed: false,
+                    attempts: 0,
+                    bestScore: 0
+                };
+            });
+        }
+    } catch (error) {
+        console.error('Error loading progress:', error);
+        // Fallback to localStorage
+        const saved = localStorage.getItem('lifeInUK_progress');
+        if (saved) {
+            state.progress = JSON.parse(saved);
+        } else {
+            state.progress = {};
+            state.topics.forEach((topic, index) => {
+                state.progress[index] = {
+                    completed: false,
+                    attempts: 0,
+                    bestScore: 0
+                };
+            });
+        }
+    }
+}
+
+// Save Progress to Backend
+async function saveProgress() {
+    try {
+        await fetch('http://localhost:3000/api/progress', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(state.progress)
         });
+        // Also save to localStorage as backup
+        localStorage.setItem('lifeInUK_progress', JSON.stringify(state.progress));
+    } catch (error) {
+        console.error('Error saving progress:', error);
+        // Fallback to localStorage only
+        localStorage.setItem('lifeInUK_progress', JSON.stringify(state.progress));
     }
 }
 
-// Save Progress to LocalStorage
-function saveProgress() {
-    localStorage.setItem('lifeInUK_progress', JSON.stringify(state.progress));
-}
-
-// Load Question Statistics from LocalStorage
-function loadQuestionStats() {
-    const saved = localStorage.getItem('lifeInUK_questionStats');
-    if (saved) {
-        state.questionStats = JSON.parse(saved);
-    } else {
-        state.questionStats = {};
+// Load Question Statistics from Backend
+async function loadQuestionStats() {
+    try {
+        const response = await fetch('http://localhost:3000/api/stats');
+        const data = await response.json();
+        state.questionStats = data || {};
+    } catch (error) {
+        console.error('Error loading stats:', error);
+        // Fallback to localStorage
+        const saved = localStorage.getItem('lifeInUK_questionStats');
+        state.questionStats = saved ? JSON.parse(saved) : {};
     }
 }
 
-// Save Question Statistics to LocalStorage
-function saveQuestionStats() {
-    localStorage.setItem('lifeInUK_questionStats', JSON.stringify(state.questionStats));
+// Save Question Statistics to Backend
+async function saveQuestionStats() {
+    try {
+        await fetch('http://localhost:3000/api/stats', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(state.questionStats)
+        });
+        // Also save to localStorage as backup
+        localStorage.setItem('lifeInUK_questionStats', JSON.stringify(state.questionStats));
+    } catch (error) {
+        console.error('Error saving stats:', error);
+        // Fallback to localStorage only
+        localStorage.setItem('lifeInUK_questionStats', JSON.stringify(state.questionStats));
+    }
 }
 
 // Get unique question ID
@@ -141,8 +188,13 @@ function setupEventListeners() {
     });
 
     // Reset Progress
-    document.getElementById('resetProgress').addEventListener('click', () => {
+    document.getElementById('resetProgress').addEventListener('click', async () => {
         if (confirm('Are you sure you want to reset all progress and question statistics? This cannot be undone.')) {
+            try {
+                await fetch('http://localhost:3000/api/reset', { method: 'POST' });
+            } catch (error) {
+                console.error('Error resetting backend data:', error);
+            }
             localStorage.removeItem('lifeInUK_progress');
             localStorage.removeItem('lifeInUK_questionStats');
             location.reload();
