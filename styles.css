@@ -431,6 +431,58 @@ h3 {
     color: var(--text-secondary);
 }
 
+/* Home Screen Choice Buttons */
+.home-choice-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    max-width: 600px;
+    margin: 2rem auto;
+}
+
+.btn-home-choice {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem;
+    text-align: center;
+    background: white;
+    border: 3px solid var(--border-color);
+    border-radius: 12px;
+    transition: all 0.3s;
+    cursor: pointer;
+}
+
+.btn-home-choice:hover {
+    border-color: var(--primary-color);
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    transform: translateY(-4px);
+    box-shadow: 0 8px 20px rgba(102, 126, 234, 0.3);
+}
+
+.btn-home-choice:hover .home-icon,
+.btn-home-choice:hover .home-title,
+.btn-home-choice:hover .home-desc {
+    color: white;
+}
+
+.home-icon {
+    font-size: 3.5rem;
+    margin-bottom: 0.75rem;
+}
+
+.home-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 0.5rem;
+}
+
+.home-desc {
+    font-size: 1rem;
+    color: var(--text-secondary);
+}
+
 .difficulty-selection {
     text-align: center;
     margin-top: 2rem;

@@ -7,7 +7,9 @@ let state = {
     currentDifficulty: null,
     score: 0,
     progress: {},
-    questionStats: {} // Track performance per question
+    questionStats: {}, // Track performance per question
+    isPracticeMode: false, // Track if in global practice mode
+    practiceStats: {} // Track which questions have been seen in practice mode
 };
 
 // Initialize App
@@ -15,6 +17,7 @@ async function init() {
     await loadTopics();
     loadProgress();
     loadQuestionStats();
+    loadPracticeStats();
     renderTopicList();
     setupEventListeners();
 }
@@ -162,8 +165,52 @@ function getQuestionWeight(questionId) {
     return state.questionStats[questionId].weight;
 }
 
+// Load Practice Statistics from Backend
+async function loadPracticeStats() {
+    try {
+        const response = await fetch('http://localhost:3000/api/practice-stats');
+        const data = await response.json();
+        state.practiceStats = data || { seenAll: false, questionsSeen: {} };
+    } catch (error) {
+        const saved = localStorage.getItem('lifeInUK_practiceStats');
+        state.practiceStats = saved ? JSON.parse(saved) : { seenAll: false, questionsSeen: {} };
+    }
+}
+
+// Save Practice Statistics
+async function savePracticeStats() {
+    try {
+        await fetch('http://localhost:3000/api/practice-stats', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(state.practiceStats)
+        });
+        localStorage.setItem('lifeInUK_practiceStats', JSON.stringify(state.practiceStats));
+    } catch (error) {
+        localStorage.setItem('lifeInUK_practiceStats', JSON.stringify(state.practiceStats));
+    }
+}
+
 // Setup Event Listeners
 function setupEventListeners() {
+    // Home Screen Choices
+    document.getElementById('homeStudy').addEventListener('click', () => {
+        state.isPracticeMode = false;
+        showScreen('topicScreen');
+    });
+
+    document.getElementById('homePractice').addEventListener('click', () => {
+        state.isPracticeMode = true;
+        state.currentTopicIndex = null;
+        showScreen('testScreen');
+        showDifficultySelection();
+    });
+
+    // Back to Home
+    document.getElementById('backToHome').addEventListener('click', () => {
+        showScreen('homeScreen');
+    });
+
     // Study/Practice Choice Modal
     document.getElementById('choiceStudy').addEventListener('click', () => {
         hideChoiceModal();
@@ -172,6 +219,7 @@ function setupEventListeners() {
 
     document.getElementById('choicePractice').addEventListener('click', () => {
         hideChoiceModal();
+        state.isPracticeMode = false;
         showScreen('testScreen');
         showDifficultySelection();
     });
@@ -197,18 +245,23 @@ function setupEventListeners() {
             }
             localStorage.removeItem('lifeInUK_progress');
             localStorage.removeItem('lifeInUK_questionStats');
+            localStorage.removeItem('lifeInUK_practiceStats');
             location.reload();
         }
     });
 
     // Back Buttons
     document.getElementById('backToTopics').addEventListener('click', () => {
-        showScreen('topicScreen');
+        showScreen('homeScreen');
     });
 
     document.getElementById('exitTest').addEventListener('click', () => {
         if (confirm('Are you sure you want to exit the test? Your progress will be lost.')) {
-            showScreen('studyScreen');
+            if (state.isPracticeMode) {
+                showScreen('homeScreen');
+            } else {
+                showScreen('studyScreen');
+            }
         }
     });
 
@@ -246,14 +299,7 @@ function setupEventListeners() {
     });
 
     // Result Buttons
-    document.getElementById('retryTest').addEventListener('click', () => {
-        showScreen('testScreen');
-        showDifficultySelection();
-    });
-
-    document.getElementById('backToStudy').addEventListener('click', () => {
-        showScreen('studyScreen');
-    });
+    document.getElementById('retryTest').addEventListener('click', () => {\n        showScreen('testScreen');\n        showDifficultySelection();\n    });\n\n    document.getElementById('backToStudy').addEventListener('click', () => {\n        if (state.isPracticeMode) {\n            showScreen('homeScreen');\n        } else {\n            showScreen('studyScreen');\n        }\n    });
 
     document.getElementById('nextTopic').addEventListener('click', () => {
         const nextIndex = state.currentTopicIndex + 1;
@@ -346,6 +392,72 @@ function hideChoiceModal() {
     document.getElementById('studyChoiceModal').classList.remove('active');
 }
 
+// Generate practice questions from all topics
+function generatePracticeQuestions(count = 24) {
+    let allQuestions = [];
+    
+    // Collect all questions from all topics
+    state.topics.forEach((topic, topicIndex) => {
+        // Add regular questions
+        if (topic.questions) {
+            topic.questions.forEach((q, idx) => {
+                allQuestions.push({ ...q, sourceIndex: idx, topicIndex });
+            });
+        }
+        
+        // Add one random variation from each question group
+        if (topic.questionGroups) {
+            topic.questionGroups.forEach((group, groupIdx) => {
+                if (group.variations && group.variations.length > 0) {
+                    const randomVariation = group.variations[Math.floor(Math.random() * group.variations.length)];
+                    allQuestions.push({ ...randomVariation, sourceIndex: `group_${groupIdx}`, topicIndex });
+                }
+            });
+        }
+    });
+    
+    // Check if user has seen all questions at least once
+    const totalQuestions = allQuestions.length;
+    const seenCount = Object.keys(state.practiceStats.questionsSeen || {}).length;
+    const hasSeenAll = seenCount >= totalQuestions;
+    
+    let selectedQuestions;
+    
+    if (hasSeenAll) {
+        // Use weighted selection based on performance
+        const weightedQuestions = allQuestions.map((q, idx) => {
+            const questionId = getQuestionId(q, q.topicIndex, idx);
+            const weight = getQuestionWeight(questionId);
+            return { question: q, weight, id: questionId };
+        });
+        
+        // Sort by weight (descending) - harder questions first
+        weightedQuestions.sort((a, b) => b.weight - a.weight);
+        
+        // Take top 24
+        selectedQuestions = weightedQuestions.slice(0, count).map(wq => wq.question);
+    } else {
+        // Random selection until all questions seen
+        const shuffled = shuffleArray(allQuestions);
+        selectedQuestions = shuffled.slice(0, count);
+        
+        // Mark these questions as seen
+        selectedQuestions.forEach((q, idx) => {
+            const questionId = getQuestionId(q, q.topicIndex, idx);
+            state.practiceStats.questionsSeen[questionId] = true;
+        });
+        
+        // Check if we've now seen all
+        if (Object.keys(state.practiceStats.questionsSeen).length >= totalQuestions) {
+            state.practiceStats.seenAll = true;
+        }
+        
+        savePracticeStats();
+    }
+    
+    return selectedQuestions;
+}
+
 // Weighted question selection for adaptive learning
 function selectWeightedQuestions(questions, topicIndex) {
     // Create array with questions and their weights
@@ -373,8 +485,12 @@ function showScreen(screenId) {
 
 // Show Difficulty Selection
 function showDifficultySelection() {
-    const topic = state.topics[state.currentTopicIndex];
-    document.getElementById('testTopicTitle').textContent = topic.title;
+    if (state.isPracticeMode) {
+        document.getElementById('testTopicTitle').textContent = 'Practice Test - 24 Questions';
+    } else {
+        const topic = state.topics[state.currentTopicIndex];
+        document.getElementById('testTopicTitle').textContent = topic.title;
+    }
     document.getElementById('difficultySelection').style.display = 'block';
     document.getElementById('testQuestions').style.display = 'none';
     document.getElementById('testResults').style.display = 'none';
@@ -386,44 +502,50 @@ function startTest(difficulty) {
     state.currentQuestionIndex = 0;
     state.score = 0;
 
-    const topic = state.topics[state.currentTopicIndex];
-    const topicIndex = state.currentTopicIndex;
-    const attempts = state.progress[topicIndex].attempts;
-    
-    // Combine regular questions and question groups
-    let allQuestions = [];
-    
-    // Add regular questions with index tracking
-    if (topic.questions) {
-        topic.questions.forEach((q, idx) => {
-            allQuestions.push({ ...q, sourceIndex: idx });
-        });
-    }
-    
-    // Add one random variation from each question group
-    if (topic.questionGroups) {
-        topic.questionGroups.forEach((group, groupIdx) => {
-            if (group.variations && group.variations.length > 0) {
-                // Randomly select one variation from this group
-                const randomVariation = group.variations[Math.floor(Math.random() * group.variations.length)];
-                allQuestions.push({ ...randomVariation, sourceIndex: `group_${groupIdx}` });
-            }
-        });
-    }
-    
-    // Use weighted selection for subsequent attempts (adaptive learning)
-    if (attempts > 0) {
-        // Prioritize questions that were answered incorrectly
-        allQuestions = selectWeightedQuestions(allQuestions, topicIndex);
+    if (state.isPracticeMode) {
+        // PRACTICE MODE: 24 questions from all topics
+        state.currentQuestions = generatePracticeQuestions(24);
     } else {
-        // First attempt: shuffle randomly
-        allQuestions = shuffleArray(allQuestions);
-    }
-    
-    state.currentQuestions = allQuestions;
+        // TOPIC MODE: All questions from current topic
+        const topic = state.topics[state.currentTopicIndex];
+        const topicIndex = state.currentTopicIndex;
+        const attempts = state.progress[topicIndex].attempts;
+        
+        // Combine regular questions and question groups
+        let allQuestions = [];
+        
+        // Add regular questions with index tracking
+        if (topic.questions) {
+            topic.questions.forEach((q, idx) => {
+                allQuestions.push({ ...q, sourceIndex: idx, topicIndex });
+            });
+        }
+        
+        // Add one random variation from each question group
+        if (topic.questionGroups) {
+            topic.questionGroups.forEach((group, groupIdx) => {
+                if (group.variations && group.variations.length > 0) {
+                    // Randomly select one variation from this group
+                    const randomVariation = group.variations[Math.floor(Math.random() * group.variations.length)];
+                    allQuestions.push({ ...randomVariation, sourceIndex: `group_${groupIdx}`, topicIndex });
+                }
+            });
+        }
+        
+        // Use weighted selection for subsequent attempts (adaptive learning)
+        if (attempts > 0) {
+            // Prioritize questions that were answered incorrectly
+            allQuestions = selectWeightedQuestions(allQuestions, topicIndex);
+        } else {
+            // First attempt: shuffle randomly
+            allQuestions = shuffleArray(allQuestions);
+        }
+        
+        state.currentQuestions = allQuestions;
 
-    // Update attempt count
-    state.progress[state.currentTopicIndex].attempts++;
+        // Update attempt count
+        state.progress[state.currentTopicIndex].attempts++;
+    }
     saveProgress();
 
     // Hide difficulty selection, show questions

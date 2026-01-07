@@ -13,6 +13,7 @@ app.use(express.static('.'));
 const DATA_DIR = path.join(__dirname, 'user-data');
 const PROGRESS_FILE = path.join(DATA_DIR, 'progress.json');
 const STATS_FILE = path.join(DATA_DIR, 'question-stats.json');
+const PRACTICE_STATS_FILE = path.join(DATA_DIR, 'practice-stats.json');
 
 // Ensure data directory exists
 async function initDataDir() {
@@ -30,6 +31,12 @@ async function initDataDir() {
             await fs.access(STATS_FILE);
         } catch {
             await fs.writeFile(STATS_FILE, '{}');
+        }
+        
+        try {
+            await fs.access(PRACTICE_STATS_FILE);
+        } catch {
+            await fs.writeFile(PRACTICE_STATS_FILE, '{"seenAll":false,"questionsSeen":{}}');
         }
     } catch (error) {
         console.error('Error initializing data directory:', error);
@@ -76,11 +83,32 @@ app.post('/api/stats', async (req, res) => {
     }
 });
 
+// Get practice stats
+app.get('/api/practice-stats', async (req, res) => {
+    try {
+        const data = await fs.readFile(PRACTICE_STATS_FILE, 'utf8');
+        res.json(JSON.parse(data));
+    } catch (error) {
+        res.json({ seenAll: false, questionsSeen: {} });
+    }
+});
+
+// Save practice stats
+app.post('/api/practice-stats', async (req, res) => {
+    try {
+        await fs.writeFile(PRACTICE_STATS_FILE, JSON.stringify(req.body, null, 2));
+        res.json({ success: true });
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+});
+
 // Reset all data
 app.post('/api/reset', async (req, res) => {
     try {
         await fs.writeFile(PROGRESS_FILE, '{}');
         await fs.writeFile(STATS_FILE, '{}');
+        await fs.writeFile(PRACTICE_STATS_FILE, '{"seenAll":false,"questionsSeen":{}}');
         res.json({ success: true });
     } catch (error) {
         res.status(500).json({ error: error.message });

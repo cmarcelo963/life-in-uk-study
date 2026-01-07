@@ -23,9 +23,30 @@
             </div>
         </header>
 
-        <!-- Topic Selection Screen -->
-        <div id="topicScreen" class="screen active">
+        <!-- Home Screen - Study or Practice Choice -->
+        <div id="homeScreen" class="screen active">
             <div class="content-wrapper">
+                <h2>Welcome to Life in the UK Study</h2>
+                <p class="subtitle">Choose your learning mode</p>
+                <div class="home-choice-buttons">
+                    <button id="homeStudy" class="btn btn-home-choice">
+                        <span class="home-icon">📚</span>
+                        <span class="home-title">Study by Topics</span>
+                        <span class="home-desc">Learn topics one by one, unlock as you progress</span>
+                    </button>
+                    <button id="homePractice" class="btn btn-home-choice">
+                        <span class="home-icon">🎯</span>
+                        <span class="home-title">Practice Test</span>
+                        <span class="home-desc">24 random questions from all topics</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Topic Selection Screen -->
+        <div id="topicScreen" class="screen">
+            <div class="content-wrapper">
+                <button id="backToHome" class="back-btn">← Back to Home</button>
                 <h2>Choose a Topic</h2>
                 <p class="subtitle">Complete each topic to unlock the next</p>
                 <div id="topicList" class="topic-list"></div>
