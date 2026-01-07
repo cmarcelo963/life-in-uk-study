@@ -39,6 +39,16 @@
                         <span class="home-title">Practice Test</span>
                         <span class="home-desc">24 random questions from all topics</span>
                     </button>
+                    <button id="homeFlashcards" class="btn btn-home-choice">
+                        <span class="home-icon">🃏</span>
+                        <span class="home-title">Flashcards</span>
+                        <span class="home-desc">Study with a helper - question & answer shown</span>
+                    </button>
+                    <button id="homeStats" class="btn btn-home-choice">
+                        <span class="home-icon">📊</span>
+                        <span class="home-title">Statistics</span>
+                        <span class="home-desc">View your performance on all questions</span>
+                    </button>
                 </div>
             </div>
         </div>
@@ -77,7 +87,7 @@
         <!-- Study Materials Screen -->
         <div id="studyScreen" class="screen">
             <div class="content-wrapper">
-                <button id="backToTopics" class="back-btn">← Back to Topics</button>
+                <button id="backToTopics" class="back-btn">← Back to Home</button>
                 <div class="study-header">
                     <h2 id="studyTopicTitle"></h2>
                     <span id="studyTopicStatus" class="status-badge"></span>
@@ -92,7 +102,7 @@
         <!-- Test Screen -->
         <div id="testScreen" class="screen">
             <div class="content-wrapper">
-                <button id="exitTest" class="back-btn">← Exit Test</button>
+                <button id="exitTest" class="back-btn">← Back to Home</button>
                 
                 <!-- Difficulty Selection -->
                 <div id="difficultySelection" class="difficulty-selection">
@@ -173,14 +183,117 @@
                         
                         <div class="result-actions">
                             <button id="retryTest" class="btn btn-secondary">Try Again</button>
-                            <button id="backToStudy" class="btn btn-primary" style="display: none;">Back to Study</button>
+                            <button id="backToStudy" class="btn btn-primary" style="display: none;">Back to Home</button>
                             <button id="nextTopic" class="btn btn-primary" style="display: none;">Next Topic →</button>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+
+        <!-- Flashcard Screen -->
+        <div id="flashcardScreen" class="screen">
+            <div class="content-wrapper">
+                <button id="exitFlashcards" class="back-btn">← Back to Home</button>
+                
+                <div class="flashcard-header">
+                    <h2>Flashcards</h2>
+                    <div class="flashcard-progress">
+                        <span id="flashcardCounter">Card 1 of 24</span>
+                        <span id="flashcardScore">Correct: 0 | Incorrect: 0</span>
+                    </div>
+                </div>
+
+                <div class="progress-bar">
+                    <div id="flashcardProgressBar" class="progress-fill"></div>
+                </div>
+
+                <div class="flashcard-card">
+                    <div class="flashcard-question">
+                        <p class="flashcard-label">Question:</p>
+                        <p id="flashcardQuestion" class="flashcard-text"></p>
+                    </div>
+                    
+                    <div class="flashcard-answer">
+                        <p class="flashcard-label">Answer:</p>
+                        <p id="flashcardAnswer" class="flashcard-text answer-text"></p>
+                    </div>
+
+                    <div class="flashcard-actions">
+                        <button id="flashcardSkip" class="btn btn-secondary">
+                            <span>⏭️</span>
+                            <span>Skip</span>
+                        </button>
+                        <button id="flashcardIncorrect" class="btn btn-error">
+                            <span>❌</span>
+                            <span>Incorrect</span>
+                        </button>
+                        <button id="flashcardCorrect" class="btn btn-success">
+                            <span>✓</span>
+                            <span>Correct</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Flashcard Results -->
+                <div id="flashcardResults" class="test-results" style="display: none;">
+                    <div class="results-card">
+                        <div class="result-icon">🎉</div>
+                        <h2>Flashcard Session Complete!</h2>
+                        <div class="result-stats">
+                            <div class="stat">
+                                <span class="stat-label">Correct</span>
+                                <span id="flashcardFinalCorrect" class="stat-value">0</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-label">Incorrect</span>
+                                <span id="flashcardFinalIncorrect" class="stat-value">0</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-label">Skipped</span>
+                                <span id="flashcardFinalSkipped" class="stat-value">0</span>
+                            </div>
+                        </div>
+                        <div class="result-actions">
+                            <button id="retryFlashcards" class="btn btn-secondary">Start Over</button>
+                            <button id="backToHomeFromFlashcards" class="btn btn-primary">Back to Home</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Statistics Screen -->
+        <div id="statsScreen" class="screen">
+            <div class="content-wrapper">
+                <button id="backToHomeFromStats" class="back-btn">← Back to Home</button>
+                <h2>Question Statistics</h2>
+                <p class="subtitle">Your performance on all questions</p>
+                
+                <div class="stats-summary">
+                    <div class="stat-box">
+                        <span class="stat-box-value" id="totalQuestionsTracked">0</span>
+                        <span class="stat-box-label">Questions Attempted</span>
+                    </div>
+                    <div class="stat-box">
+                        <span class="stat-box-value" id="avgAccuracy">0%</span>
+                        <span class="stat-box-label">Average Accuracy</span>
+                    </div>
+                </div>
+
+                <div class="stats-filters">
+                    <button id="filterAll" class="filter-btn active">All</button>
+                    <button id="filterWeak" class="filter-btn">Needs Work</button>
+                    <button id="filterStrong" class="filter-btn">Strong</button>
+                </div>
+
+                <div id="statsList" class="stats-list"></div>
+            </div>
+        </div>
     </div>
+
+    <!-- Debug Toast -->
+    <div id="debugToast" class="debug-toast" style="display:none;"></div>
 
     <script src="app.js"></script>
 </body>

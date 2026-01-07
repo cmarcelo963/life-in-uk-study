@@ -9,8 +9,13 @@ let state = {
     progress: {},
     questionStats: {}, // Track performance per question
     isPracticeMode: false, // Track if in global practice mode
-    practiceStats: {} // Track which questions have been seen in practice mode
+    practiceStats: {}, // Track which questions have been seen in practice mode
+    isFlashcardMode: false, // Track if in flashcard mode
+    flashcardStats: { correct: 0, incorrect: 0, skipped: 0 } // Track flashcard session stats
 };
+
+// Debug flag for on-screen instrumentation
+const DEBUG_MODE = true;
 
 // Initialize App
 async function init() {
@@ -122,7 +127,8 @@ async function saveQuestionStats() {
 function getQuestionId(question, topicIndex, questionIndex) {
     // Create a unique ID based on question text (first 50 chars as hash)
     const textHash = question.question.substring(0, 50).replace(/\s+/g, '_');
-    return `${topicIndex}_${questionIndex}_${textHash}`;
+    const indexPart = (question && question.sourceIndex !== undefined) ? question.sourceIndex : questionIndex;
+    return `${topicIndex}_${indexPart}_${textHash}`;
 }
 
 // Initialize question stats if not exists
@@ -194,49 +200,80 @@ async function savePracticeStats() {
 // Setup Event Listeners
 function setupEventListeners() {
     // Home Screen Choices
-    document.getElementById('homeStudy').addEventListener('click', () => {
+    const homeStudy = document.getElementById('homeStudy');
+    if (homeStudy) homeStudy.addEventListener('click', () => {
         state.isPracticeMode = false;
+        state.isFlashcardMode = false;
         showScreen('topicScreen');
     });
 
-    document.getElementById('homePractice').addEventListener('click', () => {
+    const homePractice = document.getElementById('homePractice');
+    if (homePractice) homePractice.addEventListener('click', () => {
         state.isPracticeMode = true;
+        state.isFlashcardMode = false;
         state.currentTopicIndex = null;
         showScreen('testScreen');
         showDifficultySelection();
     });
 
+    const homeFlashcards = document.getElementById('homeFlashcards');
+    if (homeFlashcards) homeFlashcards.addEventListener('click', () => {
+        state.isFlashcardMode = true;
+        state.isPracticeMode = false;
+        state.currentTopicIndex = null;
+        startFlashcards();
+    });
+
+    const homeStats = document.getElementById('homeStats');
+    if (homeStats) homeStats.addEventListener('click', () => {
+        showScreen('statsScreen');
+        try {
+            renderStatistics();
+        } catch (err) {
+            console.error('Failed to render statistics:', err);
+            const list = document.getElementById('statsList');
+            if (list) {
+                list.innerHTML = '<div class="stats-empty">Unable to load statistics right now.</div>';
+            }
+        }
+    });
+
     // Back to Home
-    document.getElementById('backToHome').addEventListener('click', () => {
+    const backToHome = document.getElementById('backToHome');
+    if (backToHome) backToHome.addEventListener('click', () => {
         showScreen('homeScreen');
     });
 
     // Study/Practice Choice Modal
-    document.getElementById('choiceStudy').addEventListener('click', () => {
+    const choiceStudy = document.getElementById('choiceStudy');
+    if (choiceStudy) choiceStudy.addEventListener('click', () => {
         hideChoiceModal();
         showScreen('studyScreen');
     });
 
-    document.getElementById('choicePractice').addEventListener('click', () => {
+    const choicePractice = document.getElementById('choicePractice');
+    if (choicePractice) choicePractice.addEventListener('click', () => {
         hideChoiceModal();
         state.isPracticeMode = false;
         showScreen('testScreen');
         showDifficultySelection();
     });
 
-    document.getElementById('closeChoiceModal').addEventListener('click', () => {
+    const closeChoiceModal = document.getElementById('closeChoiceModal');
+    if (closeChoiceModal) closeChoiceModal.addEventListener('click', () => {
         hideChoiceModal();
     });
 
-    // Close modal when clicking outside
-    document.getElementById('studyChoiceModal').addEventListener('click', (e) => {
+    const studyChoiceModal = document.getElementById('studyChoiceModal');
+    if (studyChoiceModal) studyChoiceModal.addEventListener('click', (e) => {
         if (e.target.id === 'studyChoiceModal') {
             hideChoiceModal();
         }
     });
 
     // Reset Progress
-    document.getElementById('resetProgress').addEventListener('click', async () => {
+    const resetBtn = document.getElementById('resetProgress');
+    if (resetBtn) resetBtn.addEventListener('click', async () => {
         if (confirm('Are you sure you want to reset all progress and question statistics? This cannot be undone.')) {
             try {
                 await fetch('http://localhost:3000/api/reset', { method: 'POST' });
@@ -251,22 +288,33 @@ function setupEventListeners() {
     });
 
     // Back Buttons
-    document.getElementById('backToTopics').addEventListener('click', () => {
+    const backToTopics = document.getElementById('backToTopics');
+    if (backToTopics) backToTopics.addEventListener('click', () => {
         showScreen('homeScreen');
     });
 
-    document.getElementById('exitTest').addEventListener('click', () => {
-        if (confirm('Are you sure you want to exit the test? Your progress will be lost.')) {
-            if (state.isPracticeMode) {
+    const exitBtn = document.getElementById('exitTest');
+    if (exitBtn) exitBtn.addEventListener('click', () => {
+        try {
+            if (confirm('Are you sure you want to go back to Home? Your test progress will be lost.')) {
+                // Reset any test state and navigate home
+                state.isPracticeMode = false;
+                state.currentQuestions = [];
+                state.currentQuestionIndex = 0;
+                document.getElementById('difficultySelection').style.display = 'block';
+                document.getElementById('testQuestions').style.display = 'none';
+                document.getElementById('testResults').style.display = 'none';
                 showScreen('homeScreen');
-            } else {
-                showScreen('studyScreen');
             }
+        } catch (err) {
+            console.error('Exit test failed:', err);
+            showScreen('homeScreen');
         }
     });
 
     // Start Test Button
-    document.getElementById('startTest').addEventListener('click', () => {
+    const startTestBtn = document.getElementById('startTest');
+    if (startTestBtn) startTestBtn.addEventListener('click', () => {
         showScreen('testScreen');
         showDifficultySelection();
     });
@@ -280,13 +328,14 @@ function setupEventListeners() {
     });
 
     // Submit Answer (Hard Mode)
-    document.getElementById('submitAnswer').addEventListener('click', () => {
+    const submitAnswerBtn = document.getElementById('submitAnswer');
+    if (submitAnswerBtn) submitAnswerBtn.addEventListener('click', () => {
         const input = document.getElementById('answerInput');
         checkAnswer(input.value.trim());
     });
 
-    // Enter key for text input
-    document.getElementById('answerInput').addEventListener('keypress', (e) => {
+    const answerInput = document.getElementById('answerInput');
+    if (answerInput) answerInput.addEventListener('keypress', (e) => {
         if (e.key === 'Enter') {
             const input = document.getElementById('answerInput');
             checkAnswer(input.value.trim());
@@ -294,31 +343,83 @@ function setupEventListeners() {
     });
 
     // Next Question Button
-    document.getElementById('nextQuestion').addEventListener('click', () => {
+    const nextQuestionBtn = document.getElementById('nextQuestion');
+    if (nextQuestionBtn) nextQuestionBtn.addEventListener('click', () => {
         nextQuestion();
     });
 
     // Result Buttons
-    document.getElementById('retryTest').addEventListener('click', () => {
+    const retryTestBtn = document.getElementById('retryTest');
+    if (retryTestBtn) retryTestBtn.addEventListener('click', () => {
         showScreen('testScreen');
         showDifficultySelection();
     });
 
-    document.getElementById('backToStudy').addEventListener('click', () => {
-        if (state.isPracticeMode) {
-            showScreen('homeScreen');
-        } else {
-            showScreen('studyScreen');
-        }
+    const backToStudyBtn = document.getElementById('backToStudy');
+    if (backToStudyBtn) backToStudyBtn.addEventListener('click', () => {
+        showScreen('homeScreen');
     });
 
-    document.getElementById('nextTopic').addEventListener('click', () => {
+    const nextTopicBtn = document.getElementById('nextTopic');
+    if (nextTopicBtn) nextTopicBtn.addEventListener('click', () => {
         const nextIndex = state.currentTopicIndex + 1;
         if (nextIndex < state.topics.length) {
             openTopic(nextIndex);
         } else {
             showScreen('topicScreen');
         }
+    });
+
+    // Flashcard Controls
+    const exitFlashcardsBtn = document.getElementById('exitFlashcards');
+    if (exitFlashcardsBtn) exitFlashcardsBtn.addEventListener('click', () => {
+        showScreen('homeScreen');
+    });
+
+    const flashcardCorrectBtn = document.getElementById('flashcardCorrect');
+    if (flashcardCorrectBtn) flashcardCorrectBtn.addEventListener('click', () => {
+        handleFlashcardResponse('correct');
+    });
+
+    const flashcardIncorrectBtn = document.getElementById('flashcardIncorrect');
+    if (flashcardIncorrectBtn) flashcardIncorrectBtn.addEventListener('click', () => {
+        handleFlashcardResponse('incorrect');
+    });
+
+    const flashcardSkipBtn = document.getElementById('flashcardSkip');
+    if (flashcardSkipBtn) flashcardSkipBtn.addEventListener('click', () => {
+        handleFlashcardResponse('skip');
+    });
+
+    const retryFlashcardsBtn = document.getElementById('retryFlashcards');
+    if (retryFlashcardsBtn) retryFlashcardsBtn.addEventListener('click', () => {
+        startFlashcards();
+    });
+
+    const backToHomeFromFlashcardsBtn = document.getElementById('backToHomeFromFlashcards');
+    if (backToHomeFromFlashcardsBtn) backToHomeFromFlashcardsBtn.addEventListener('click', () => {
+        showScreen('homeScreen');
+    });
+
+    const backToHomeFromStatsBtn = document.getElementById('backToHomeFromStats');
+    if (backToHomeFromStatsBtn) backToHomeFromStatsBtn.addEventListener('click', () => {
+        showScreen('homeScreen');
+    });
+
+    // Statistics filter buttons
+    const filterAllBtn = document.getElementById('filterAll');
+    if (filterAllBtn) filterAllBtn.addEventListener('click', () => {
+        setStatsFilter('all');
+    });
+
+    const filterWeakBtn = document.getElementById('filterWeak');
+    if (filterWeakBtn) filterWeakBtn.addEventListener('click', () => {
+        setStatsFilter('weak');
+    });
+
+    const filterStrongBtn = document.getElementById('filterStrong');
+    if (filterStrongBtn) filterStrongBtn.addEventListener('click', () => {
+        setStatsFilter('strong');
     });
 }
 
@@ -436,8 +537,8 @@ function generatePracticeQuestions(count = 24) {
     
     if (hasSeenAll) {
         // Use weighted selection based on performance
-        const weightedQuestions = allQuestions.map((q, idx) => {
-            const questionId = getQuestionId(q, q.topicIndex, idx);
+        const weightedQuestions = allQuestions.map((q) => {
+            const questionId = getQuestionId(q, q.topicIndex, q.sourceIndex);
             const weight = getQuestionWeight(questionId);
             return { question: q, weight, id: questionId };
         });
@@ -453,8 +554,8 @@ function generatePracticeQuestions(count = 24) {
         selectedQuestions = shuffled.slice(0, count);
         
         // Mark these questions as seen
-        selectedQuestions.forEach((q, idx) => {
-            const questionId = getQuestionId(q, q.topicIndex, idx);
+        selectedQuestions.forEach((q) => {
+            const questionId = getQuestionId(q, q.topicIndex, q.sourceIndex);
             state.practiceStats.questionsSeen[questionId] = true;
         });
         
@@ -472,8 +573,8 @@ function generatePracticeQuestions(count = 24) {
 // Weighted question selection for adaptive learning
 function selectWeightedQuestions(questions, topicIndex) {
     // Create array with questions and their weights
-    const weightedQuestions = questions.map((q, idx) => {
-        const questionId = getQuestionId(q, topicIndex, idx);
+    const weightedQuestions = questions.map((q) => {
+        const questionId = getQuestionId(q, topicIndex, q.sourceIndex);
         const weight = getQuestionWeight(questionId);
         return { question: q, weight, id: questionId };
     });
@@ -492,6 +593,10 @@ function showScreen(screenId) {
         screen.classList.remove('active');
     });
     document.getElementById(screenId).classList.add('active');
+    if (DEBUG_MODE) {
+        console.log('[UI] showScreen', screenId);
+        showDebug('Show screen', { screenId });
+    }
 }
 
 // Show Difficulty Selection
@@ -586,7 +691,7 @@ function renderQuestion() {
 
     // Update counters
     document.getElementById('questionCounter').textContent = `Question ${currentNum} of ${totalQuestions}`;
-    document.getElementById('scoreCounter').textContent = `Score: ${state.score}/${state.currentQuestionIndex}`;
+    document.getElementById('scoreCounter').textContent = `Score: ${state.score}/${totalQuestions}`;
 
     // Set question text
     document.getElementById('questionText').textContent = question.question;
@@ -717,7 +822,7 @@ function checkAnswer(userAnswer) {
     const questionId = getQuestionId(
         question,
         state.currentTopicIndex,
-        state.currentQuestionIndex
+        question.sourceIndex
     );
     updateQuestionStats(questionId, isCorrect);
 
@@ -888,5 +993,252 @@ function shuffleArray(array) {
     return shuffled;
 }
 
+// ==================== FLASHCARD MODE ====================
+
+// Start Flashcards
+function startFlashcards() {
+    state.currentQuestionIndex = 0;
+    state.flashcardStats = { correct: 0, incorrect: 0, skipped: 0 };
+    
+    // Generate questions (use same adaptive logic as practice mode)
+    state.currentQuestions = generatePracticeQuestions(24);
+    
+    showScreen('flashcardScreen');
+    document.getElementById('flashcardResults').style.display = 'none';
+    document.querySelector('.flashcard-card').style.display = 'block';
+    document.querySelector('.flashcard-header').style.display = 'block';
+    
+    renderFlashcard();
+}
+
+// Render current flashcard
+function renderFlashcard() {
+    const question = state.currentQuestions[state.currentQuestionIndex];
+    const totalQuestions = state.currentQuestions.length;
+    const currentNum = state.currentQuestionIndex + 1;
+    
+    // Update progress bar
+    const progress = (currentNum / totalQuestions) * 100;
+    document.getElementById('flashcardProgressBar').style.width = `${progress}%`;
+    
+    // Update counters
+    document.getElementById('flashcardCounter').textContent = `Card ${currentNum} of ${totalQuestions}`;
+    document.getElementById('flashcardScore').textContent = 
+        `Correct: ${state.flashcardStats.correct} | Incorrect: ${state.flashcardStats.incorrect}`;
+    
+    // Set question and answer
+    document.getElementById('flashcardQuestion').textContent = question.question;
+    document.getElementById('flashcardAnswer').textContent = question.answer;
+}
+
+// Handle flashcard response
+function handleFlashcardResponse(response) {
+    const question = state.currentQuestions[state.currentQuestionIndex];
+    
+    // Track in adaptive learning system
+    if (response === 'correct' || response === 'incorrect') {
+        const questionId = getQuestionId(
+            question,
+            question.topicIndex || 0,
+            question.sourceIndex
+        );
+        const isCorrect = response === 'correct';
+        updateQuestionStats(questionId, isCorrect);
+        
+        // Update session stats
+        state.flashcardStats[response]++;
+    } else if (response === 'skip') {
+        state.flashcardStats.skipped++;
+    }
+    
+    // Move to next question or show results
+    state.currentQuestionIndex++;
+    
+    if (state.currentQuestionIndex < state.currentQuestions.length) {
+        renderFlashcard();
+    } else {
+        showFlashcardResults();
+    }
+}
+
+// Show flashcard results
+function showFlashcardResults() {
+    document.querySelector('.flashcard-card').style.display = 'none';
+    document.querySelector('.flashcard-header').style.display = 'none';
+    document.getElementById('flashcardResults').style.display = 'block';
+    
+    document.getElementById('flashcardFinalCorrect').textContent = state.flashcardStats.correct;
+    document.getElementById('flashcardFinalIncorrect').textContent = state.flashcardStats.incorrect;
+    document.getElementById('flashcardFinalSkipped').textContent = state.flashcardStats.skipped;
+}
+
 // Initialize on load
 document.addEventListener('DOMContentLoaded', init);
+
+// ==================== STATISTICS ====================
+// ==================== GLOBAL ERROR CAPTURE ====================
+window.addEventListener('error', (event) => {
+    console.error('[GlobalError]', event.error || event.message);
+    showDebug('Error occurred', { message: event.message });
+});
+
+window.addEventListener('unhandledrejection', (event) => {
+    console.error('[UnhandledRejection]', event.reason);
+    showDebug('Unhandled promise rejection', { reason: String(event.reason) });
+});
+
+// ==================== CLICK DELEGATION (Back buttons) ====================
+document.addEventListener('click', (e) => {
+    const backTarget = e.target.closest('#exitTest, #backToHome, #backToHomeFromFlashcards, #backToHomeFromStats, #exitFlashcards, #backToTopics');
+    if (backTarget) {
+        console.log('[UI] Delegated Back click', backTarget.id);
+        showDebug('Back click', { id: backTarget.id });
+    }
+});
+// ==================== DEBUG TOAST ====================
+function showDebug(message, extra = null) {
+    try {
+        const toast = document.getElementById('debugToast');
+        if (!toast) return;
+        const now = new Date().toLocaleTimeString();
+        const extraText = extra ? `\n${JSON.stringify(extra)}` : '';
+        toast.textContent = `[${now}] ${message}${extraText}`;
+        toast.style.display = 'block';
+        clearTimeout(showDebug._timer);
+        showDebug._timer = setTimeout(() => {
+            toast.style.display = 'none';
+        }, 3000);
+    } catch (e) {
+        console.error('showDebug failed', e);
+    }
+}
+
+let currentStatsFilter = 'all';
+
+function renderStatistics() {
+    // Get all questions with stats
+    const questionStats = [];
+    
+    // Iterate through all topics and questions using consistent question IDs
+    state.topics.forEach((topic, tIdx) => {
+        if (topic.questions) {
+            topic.questions.forEach((q, qIdx) => {
+                const qId = getQuestionId(q, tIdx, qIdx);
+                const stats = state.questionStats[qId] || null;
+                if (!stats) return; // Only include attempted questions
+                const total = stats.correct + stats.incorrect;
+                const accuracy = total > 0 ? (stats.correct / total * 100) : 0;
+                questionStats.push({
+                    question: q.question,
+                    correct: stats.correct,
+                    incorrect: stats.incorrect,
+                    accuracy,
+                    total
+                });
+            });
+        }
+        // Include question group variations that have been attempted
+        if (topic.questionGroups) {
+            topic.questionGroups.forEach((group, groupIdx) => {
+                if (group.variations && group.variations.length > 0) {
+                    group.variations.forEach(variation => {
+                        const qObj = { question: variation.question, sourceIndex: `group_${groupIdx}` };
+                        const qId = getQuestionId(qObj, tIdx, `group_${groupIdx}`);
+                        const stats = state.questionStats[qId] || null;
+                        if (!stats) return;
+                        const total = stats.correct + stats.incorrect;
+                        const accuracy = total > 0 ? (stats.correct / total * 100) : 0;
+                        questionStats.push({
+                            question: variation.question,
+                            correct: stats.correct,
+                            incorrect: stats.incorrect,
+                            accuracy,
+                            total
+                        });
+                    });
+                }
+            });
+        }
+    });
+    
+    // Sort by incorrect count descending (most wrong first), then by accuracy ascending
+    questionStats.sort((a, b) => {
+        if (b.incorrect !== a.incorrect) {
+            return b.incorrect - a.incorrect;
+        }
+        return a.accuracy - b.accuracy;
+    });
+    
+    // Calculate summary stats
+    const tracked = questionStats.filter(q => q.total > 0);
+    const totalTracked = tracked.length;
+    const avgAccuracy = totalTracked > 0 
+        ? tracked.reduce((sum, q) => sum + q.accuracy, 0) / totalTracked 
+        : 0;
+    
+    // Update summary boxes
+    document.getElementById('totalQuestionsTracked').textContent = totalTracked;
+    document.getElementById('avgAccuracy').textContent = avgAccuracy.toFixed(1) + '%';
+    
+    // Render list based on filter
+    renderStatsList(questionStats);
+}
+
+function setStatsFilter(filter) {
+    currentStatsFilter = filter;
+    
+    // Update active button
+    document.querySelectorAll('.filter-btn').forEach(btn => {
+        btn.classList.remove('active');
+    });
+    document.getElementById('filter' + filter.charAt(0).toUpperCase() + filter.slice(1)).classList.add('active');
+    
+    // Re-render with new filter
+    renderStatistics();
+}
+
+function renderStatsList(questionStats) {
+    const statsList = document.getElementById('statsList');
+    
+    // Filter questions based on current filter
+    let filteredStats = questionStats.filter(q => q.total > 0); // Only show questions that have been attempted
+    
+    if (currentStatsFilter === 'weak') {
+        // Show questions with accuracy < 50% or more incorrect than correct
+        filteredStats = filteredStats.filter(q => q.accuracy < 50);
+    } else if (currentStatsFilter === 'strong') {
+        // Show questions with accuracy >= 80%
+        filteredStats = filteredStats.filter(q => q.accuracy >= 80);
+    }
+    
+    // Clear list
+    statsList.innerHTML = '';
+    
+    if (filteredStats.length === 0) {
+        statsList.innerHTML = '<div class="stats-empty">No questions to display. Start studying to see statistics!</div>';
+        return;
+    }
+    
+    // Render each question
+    filteredStats.forEach(stat => {
+        const item = document.createElement('div');
+        item.className = 'stat-item';
+        
+        // Add color coding
+        if (stat.accuracy < 50) {
+            item.classList.add('weak');
+        } else if (stat.accuracy >= 80) {
+            item.classList.add('strong');
+        }
+        
+        item.innerHTML = `
+            <div class="stat-item-question">${stat.question}</div>
+            <div class="stat-item-performance">
+                <div class="stat-item-accuracy ${stat.accuracy < 50 ? 'weak' : stat.accuracy >= 80 ? 'strong' : ''}">${stat.accuracy.toFixed(0)}%</div>
+                <div class="stat-item-count">✓${stat.correct} ✗${stat.incorrect}</div>
+            </div>
+        `;
+        
+        statsList.appendChild(item);
+    });
+}
