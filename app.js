@@ -556,13 +556,20 @@ function startTest(difficulty) {
 
         // Update attempt count
         state.progress[state.currentTopicIndex].attempts++;
+        saveProgress();
     }
-    saveProgress();
 
     // Hide difficulty selection, show questions
     document.getElementById('difficultySelection').style.display = 'none';
     document.getElementById('testQuestions').style.display = 'block';
-    document.getElementById('questionTopicTitle').textContent = topic.title;
+    
+    // Set title based on mode
+    if (state.isPracticeMode) {
+        document.getElementById('questionTopicTitle').textContent = 'Practice Test - 24 Questions';
+    } else {
+        const topic = state.topics[state.currentTopicIndex];
+        document.getElementById('questionTopicTitle').textContent = topic.title;
+    }
 
     renderQuestion();
 }
