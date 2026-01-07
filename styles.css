@@ -1068,18 +1068,4 @@ h3 {
     color: var(--text-secondary);
 }
 
-/* Debug Toast */
-.debug-toast {
-    position: fixed;
-    bottom: 16px;
-    right: 16px;
-    background: var(--card-bg);
-    color: var(--text-primary);
-    border: 2px solid var(--border);
-    border-radius: 8px;
-    padding: 0.75rem 1rem;
-    box-shadow: var(--shadow-lg);
-    max-width: 320px;
-    z-index: 10000;
-    font-size: 0.9rem;
-}
+/* Debug Toast removed */

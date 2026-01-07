@@ -14,8 +14,6 @@ let state = {
     flashcardStats: { correct: 0, incorrect: 0, skipped: 0 } // Track flashcard session stats
 };
 
-// Debug flag for on-screen instrumentation
-const DEBUG_MODE = true;
 
 // Initialize App
 async function init() {
@@ -593,10 +591,6 @@ function showScreen(screenId) {
         screen.classList.remove('active');
     });
     document.getElementById(screenId).classList.add('active');
-    if (DEBUG_MODE) {
-        console.log('[UI] showScreen', screenId);
-        showDebug('Show screen', { screenId });
-    }
 }
 
 // Show Difficulty Selection
@@ -1079,39 +1073,16 @@ document.addEventListener('DOMContentLoaded', init);
 // ==================== GLOBAL ERROR CAPTURE ====================
 window.addEventListener('error', (event) => {
     console.error('[GlobalError]', event.error || event.message);
-    showDebug('Error occurred', { message: event.message });
 });
 
 window.addEventListener('unhandledrejection', (event) => {
     console.error('[UnhandledRejection]', event.reason);
-    showDebug('Unhandled promise rejection', { reason: String(event.reason) });
 });
 
 // ==================== CLICK DELEGATION (Back buttons) ====================
-document.addEventListener('click', (e) => {
-    const backTarget = e.target.closest('#exitTest, #backToHome, #backToHomeFromFlashcards, #backToHomeFromStats, #exitFlashcards, #backToTopics');
-    if (backTarget) {
-        console.log('[UI] Delegated Back click', backTarget.id);
-        showDebug('Back click', { id: backTarget.id });
-    }
-});
+// Removed delegated click debug instrumentation
 // ==================== DEBUG TOAST ====================
-function showDebug(message, extra = null) {
-    try {
-        const toast = document.getElementById('debugToast');
-        if (!toast) return;
-        const now = new Date().toLocaleTimeString();
-        const extraText = extra ? `\n${JSON.stringify(extra)}` : '';
-        toast.textContent = `[${now}] ${message}${extraText}`;
-        toast.style.display = 'block';
-        clearTimeout(showDebug._timer);
-        showDebug._timer = setTimeout(() => {
-            toast.style.display = 'none';
-        }, 3000);
-    } catch (e) {
-        console.error('showDebug failed', e);
-    }
-}
+// Removed showDebug helper (debug-only)
 
 let currentStatsFilter = 'all';
 
