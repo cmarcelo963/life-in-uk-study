@@ -164,18 +164,26 @@ function updateQuestionStats(questionId, isCorrect) {
         stats.incorrect++;
         stats.points -= 2;  // -2 points for incorrect
     }
+
+    // Cap upper bound so mastered questions can be retired
+    stats.points = Math.min(stats.points, 100);
     
     saveQuestionStats();
 }
 
 // Calculate question weight for adaptive learning
-// Lower/negative points = higher priority (needs more practice)
 function getQuestionWeight(questionId) {
-    if (!state.questionStats[questionId]) {
-        return 0; // Default weight for new questions (neutral priority)
-    }
-    // Return negative points so lower scores = higher weight
-    return -state.questionStats[questionId].points;
+    const points = state.questionStats[questionId]?.points ?? 0;
+
+    // Priority: neutral (0) first, then lowest points, then highest points
+    if (points === 0) return 100000; // Very high weight for neutral
+    if (points >= 100) return Number.NEGATIVE_INFINITY; // Retired questions sink to the bottom
+    return -points;
+}
+
+// Stop serving questions that have reached the mastery cap
+function isQuestionRetired(questionId) {
+    return !!(state.questionStats[questionId] && state.questionStats[questionId].points >= 100);
 }
 
 // Load Practice Statistics from Backend
@@ -549,11 +557,18 @@ function generatePracticeQuestions(count = 24) {
             });
         }
     });
+
+    // Remove questions that have hit the mastery cap
+    allQuestions = allQuestions.filter((q) => {
+        const questionId = getQuestionId(q, q.topicIndex, q.sourceIndex);
+        return !isQuestionRetired(questionId);
+    });
     
     // Check if user has seen all questions at least once
-    const totalQuestions = allQuestions.length;
-    const seenCount = Object.keys(state.practiceStats.questionsSeen || {}).length;
-    const hasSeenAll = seenCount >= totalQuestions;
+    const availableIds = new Set(allQuestions.map((q) => getQuestionId(q, q.topicIndex, q.sourceIndex)));
+    const totalAvailable = availableIds.size;
+    const seenCount = [...availableIds].filter((id) => state.practiceStats.questionsSeen?.[id]).length;
+    const hasSeenAll = totalAvailable > 0 && seenCount >= totalAvailable;
     
     let selectedQuestions;
     
@@ -582,7 +597,8 @@ function generatePracticeQuestions(count = 24) {
         });
         
         // Check if we've now seen all
-        if (Object.keys(state.practiceStats.questionsSeen).length >= totalQuestions) {
+        const updatedSeenCount = [...availableIds].filter((id) => state.practiceStats.questionsSeen?.[id]).length;
+        if (totalAvailable > 0 && updatedSeenCount >= totalAvailable) {
             state.practiceStats.seenAll = true;
         }
         
@@ -594,15 +610,21 @@ function generatePracticeQuestions(count = 24) {
 
 // Weighted question selection for adaptive learning
 function selectWeightedQuestions(questions, topicIndex) {
+    // Skip questions that have reached mastery
+    const availableQuestions = questions.filter((q) => {
+        const questionId = getQuestionId(q, topicIndex, q.sourceIndex);
+        return !isQuestionRetired(questionId);
+    });
+
     // Create array with questions and their weights
-    const weightedQuestions = questions.map((q) => {
+    const weightedQuestions = availableQuestions.map((q) => {
         const questionId = getQuestionId(q, topicIndex, q.sourceIndex);
         const weight = getQuestionWeight(questionId);
         return { question: q, weight, id: questionId };
     });
     
     // Sort by weight (descending) and take all questions
-    // Higher weight = answered incorrectly more = prioritized
+    // Priority: neutral first, then lowest points, then highest points
     weightedQuestions.sort((a, b) => b.weight - a.weight);
     
     // Return sorted questions (heavily weighted first)
@@ -671,6 +693,12 @@ function startTest(difficulty) {
                 }
             });
         }
+
+        // Remove questions that have hit the mastery cap
+        allQuestions = allQuestions.filter((q) => {
+            const questionId = getQuestionId(q, topicIndex, q.sourceIndex);
+            return !isQuestionRetired(questionId);
+        });
         
         // Use weighted selection for subsequent attempts (adaptive learning)
         if (attempts > 0) {
