@@ -894,7 +894,7 @@ function renderMultipleAnswer(question) {
 
     // Shuffle options
     const options = shuffleArray([...question.options]);
-    const numAnswers = question.answers.length;
+    const numAnswers = question.numRequired || (question.answers ? question.answers.length : 2);
 
     // Create instruction text
     const instruction = document.createElement('div');
@@ -976,27 +976,51 @@ function checkAnswer(userAnswer) {
     if (state.currentDifficulty === 'normal') {
         // Handle multiple answer questions
         if (question.type === 'multipleAnswer') {
-            // Compare arrays
-            const sortedUser = Array.isArray(userAnswer) ? [...userAnswer].sort() : [];
-            const sortedCorrect = Array.isArray(correctAnswer) ? [...correctAnswer].sort() : [];
-            isCorrect = sortedUser.length === sortedCorrect.length && 
-                       sortedUser.every((val, idx) => val === sortedCorrect[idx]);
-            
-            // Highlight options
-            const options = document.querySelectorAll('.option:not(.submit-multi-answer)');
-            options.forEach(opt => {
-                opt.classList.add('disabled');
-                opt.style.backgroundColor = '';
-                opt.style.borderColor = '';
-                opt.dataset.selected = 'false';
+            // If correctOptions is defined, check if all selected are valid
+            if (question.correctOptions) {
+                const allCorrect = Array.isArray(userAnswer) && 
+                    userAnswer.length === (question.numRequired || 2) &&
+                    userAnswer.every(ans => question.correctOptions.includes(ans));
+                isCorrect = allCorrect;
                 
-                if (correctAnswer.includes(opt.textContent)) {
-                    opt.classList.add('correct');
-                }
-                if (Array.isArray(userAnswer) && userAnswer.includes(opt.textContent) && !correctAnswer.includes(opt.textContent)) {
-                    opt.classList.add('incorrect');
-                }
-            });
+                // Highlight options
+                const options = document.querySelectorAll('.option:not(.submit-multi-answer)');
+                options.forEach(opt => {
+                    opt.classList.add('disabled');
+                    opt.style.backgroundColor = '';
+                    opt.style.borderColor = '';
+                    opt.dataset.selected = 'false';
+                    
+                    if (question.correctOptions.includes(opt.textContent)) {
+                        opt.classList.add('correct');
+                    }
+                    if (Array.isArray(userAnswer) && userAnswer.includes(opt.textContent) && !question.correctOptions.includes(opt.textContent)) {
+                        opt.classList.add('incorrect');
+                    }
+                });
+            } else {
+                // Legacy: Compare arrays for exact match
+                const sortedUser = Array.isArray(userAnswer) ? [...userAnswer].sort() : [];
+                const sortedCorrect = Array.isArray(correctAnswer) ? [...correctAnswer].sort() : [];
+                isCorrect = sortedUser.length === sortedCorrect.length && 
+                           sortedUser.every((val, idx) => val === sortedCorrect[idx]);
+                
+                // Highlight options
+                const options = document.querySelectorAll('.option:not(.submit-multi-answer)');
+                options.forEach(opt => {
+                    opt.classList.add('disabled');
+                    opt.style.backgroundColor = '';
+                    opt.style.borderColor = '';
+                    opt.dataset.selected = 'false';
+                    
+                    if (correctAnswer.includes(opt.textContent)) {
+                        opt.classList.add('correct');
+                    }
+                    if (Array.isArray(userAnswer) && userAnswer.includes(opt.textContent) && !correctAnswer.includes(opt.textContent)) {
+                        opt.classList.add('incorrect');
+                    }
+                });
+            }
             
             // Remove submit button
             const submitBtn = document.querySelector('.submit-multi-answer');

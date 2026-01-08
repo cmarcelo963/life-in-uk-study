@@ -7353,10 +7353,14 @@
                                                                           "The MRI scanner"
                                                                       ],
                                                           "question":  "Which TWO of the following were British inventions of the 20th century?",
-                                                          "answers":  [
+                                                          "correctOptions":  [
+                                                                          "Television",
                                                                           "Radar",
-                                                                          "The jet engine"
-                                                                      ]
+                                                                          "The jet engine",
+                                                                          "The hovercraft",
+                                                                          "The ATM (cash machine)"
+                                                                      ],
+                                                          "numRequired":  2
                                                       },
                                                       {
                                                           "type":  "boolean",
@@ -7374,10 +7378,14 @@
                                                                           "The MRI scanner"
                                                                       ],
                                                           "question":  "Which TWO of the following were British inventions of the 20th century in the UK?",
-                                                          "answers":  [
+                                                          "correctOptions":  [
+                                                                          "Television",
                                                                           "Radar",
-                                                                          "The jet engine"
-                                                                      ]
+                                                                          "The jet engine",
+                                                                          "The hovercraft",
+                                                                          "The ATM (cash machine)"
+                                                                      ],
+                                                          "numRequired":  2
                                                       }
                                                   ]
                                },
