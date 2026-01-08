@@ -1653,6 +1653,23 @@ function renderAdventureTopic() {
     const contentEl = document.getElementById('adventureStudyContent');
     if (contentEl && topic.content) {
         contentEl.innerHTML = `<h3>${topic.title}</h3>${topic.content}`;
+        
+        // Handle image loading errors
+        const images = contentEl.querySelectorAll('img');
+        images.forEach(img => {
+            img.addEventListener('error', function() {
+                console.warn('Failed to load image:', this.src);
+                this.style.display = 'none';
+                const caption = this.nextElementSibling;
+                if (caption && caption.classList.contains('image-caption')) {
+                    caption.style.display = 'none';
+                }
+            });
+            
+            img.addEventListener('load', function() {
+                console.log('Image loaded successfully:', this.src);
+            });
+        });
     }
     
     // Show/hide navigation buttons
