@@ -548,8 +548,8 @@ const additionalQuestions = {
       "answer": "A group of Protestants advocating strict religious doctrine"
     },
     {
-      "question": "What were supporters of the king called in the Civil War?",
-      "options": ["Roundheads", "Cavaliers", "Puritans", "Royalists"],
+      "question": "What nickname were supporters of the king called in the Civil War?",
+      "options": ["Roundheads", "Cavaliers", "Puritans", "Parliamentarians"],
       "answer": "Cavaliers"
     },
     {
@@ -1038,8 +1038,8 @@ const additionalQuestions = {
     },
     {
       "question": "What was the Irish Free State later called?",
-      "options": ["Republic of Ireland", "Eire", "Southern Ireland", "Both A and B"],
-      "answer": "Both A and B"
+      "options": ["Republic of Ireland (also known as Eire)", "Eire", "Southern Ireland", "Ulster"],
+      "answer": "Republic of Ireland (also known as Eire)"
     },
     {
       "question": "What remained part of the UK after 1921?",
@@ -1186,8 +1186,8 @@ const additionalQuestions = {
     },
     {
       "question": "What is the period after WWII when people came to the UK from overseas called?",
-      "options": ["Migration", "Immigration", "Both of these", "Neither"],
-      "answer": "Both of these"
+      "options": ["Migration and immigration", "Immigration", "Emigration", "Migration"],
+      "answer": "Migration and immigration"
     },
     {
       "question": "Where did the 'Windrush generation' come from?",

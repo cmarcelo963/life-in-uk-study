@@ -1880,12 +1880,12 @@
         "answer": "A group of Protestants advocating strict religious doctrine"
       },
       {
-        "question": "What were supporters of the king called in the Civil War?",
+        "question": "What nickname were supporters of the king called in the Civil War?",
         "options": [
           "Roundheads",
           "Cavaliers",
           "Puritans",
-          "Royalists"
+          "Parliamentarians"
         ],
         "answer": "Cavaliers"
       },
@@ -2249,11 +2249,11 @@
         "question": "What was Charles Edward Stuart also known as?",
         "options": [
           "The Black Prince",
-          "Bonnie Prince Charlie",
+          "Bonnie Prince Charlie and The Young Pretender",
           "The Young Pretender",
-          "Both B and C"
+          "The Red Prince"
         ],
-        "answer": "Both B and C"
+        "answer": "Bonnie Prince Charlie and The Young Pretender"
       },
       {
         "question": "Where was the Jacobite army defeated?",
@@ -2980,12 +2980,12 @@
       {
         "question": "What was the 1998 agreement that helped bring peace to Northern Ireland?",
         "options": [
-          "The Belfast Agreement",
+          "The Belfast Agreement (also known as Good Friday Agreement)",
           "The Good Friday Agreement",
           "The Peace Agreement",
-          "Both A and B"
+          "The Ulster Agreement"
         ],
-        "answer": "Both A and B"
+        "answer": "The Belfast Agreement (also known as Good Friday Agreement)"
       }
     ]
   },
@@ -3137,11 +3137,11 @@
         "question": "Who is the head of the Church of England?",
         "options": [
           "The Prime Minister",
-          "The Archbishop of Canterbury",
-          "The monarch",
-          "Both B and C"
+          "The monarch (as Supreme Governor)",
+          "The Archbishop of Canterbury (spiritual leader)",
+          "The Parliament"
         ],
-        "answer": "Both B and C"
+        "answer": "The monarch (as Supreme Governor)"
       },
       {
         "question": "Which is the largest religious group in the UK?",
@@ -3166,12 +3166,12 @@
       {
         "question": "Which famous British bands are mentioned?",
         "options": [
-          "The Beatles",
-          "The Rolling Stones",
-          "Both A and B",
+          "The Beatles and The Rolling Stones",
+          "The Rolling Stones only",
+          "The Beatles only",
           "Neither"
         ],
-        "answer": "Both A and B"
+        "answer": "The Beatles and The Rolling Stones"
       },
       {
         "question": "What is the Turner Prize awarded for?",

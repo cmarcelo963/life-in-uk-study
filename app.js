@@ -151,11 +151,11 @@ function updateQuestionStats(questionId, isCorrect) {
     if (isCorrect) {
         stats.correct++;
         // Decrease weight (ask less frequently)
-        stats.weight = Math.max(0.1, stats.weight * 0.8);
+        stats.weight = stats.weight * 0.8;
     } else {
         stats.incorrect++;
         // Increase weight (ask more frequently)
-        stats.weight = Math.min(5.0, stats.weight * 1.5);
+        stats.weight = stats.weight * 1.5;
     }
     
     saveQuestionStats();
@@ -427,7 +427,8 @@ function renderTopicList() {
     container.innerHTML = '';
 
     state.topics.forEach((topic, index) => {
-        const isLocked = index > 0 && !state.progress[index - 1]?.completed;
+        // Topics are unlocked if: it's the first topic, OR the previous topic has been attempted
+        const isLocked = index > 0 && (!state.progress[index - 1] || state.progress[index - 1].attempts === 0);
         const progress = state.progress[index] || { completed: false, attempts: 0 };
 
         const card = document.createElement('div');
@@ -921,15 +922,30 @@ function showResults() {
     const percentage = Math.round((state.score / totalQuestions) * 100);
     const passed = percentage >= 75; // 75% to pass
 
-    // Update progress
-    const topicProgress = state.progress[state.currentTopicIndex];
-    topicProgress.bestScore = Math.max(topicProgress.bestScore, percentage);
-    
-    if (passed && !topicProgress.completed) {
-        topicProgress.completed = true;
+    // Update progress (only for non-practice mode)
+    if (!state.isPracticeMode) {
+        const topicProgress = state.progress[state.currentTopicIndex];
+        topicProgress.bestScore = Math.max(topicProgress.bestScore, percentage);
+        
+        // Mark as completed if passed
+        if (passed && !topicProgress.completed) {
+            topicProgress.completed = true;
+        }
+        
+        // Unlock next topic after any attempt (regardless of pass/fail)
+        const nextIndex = state.currentTopicIndex + 1;
+        if (nextIndex < state.topics.length) {
+            if (!state.progress[nextIndex]) {
+                state.progress[nextIndex] = {
+                    completed: false,
+                    attempts: 0,
+                    bestScore: 0
+                };
+            }
+        }
+        
+        saveProgress();
     }
-    
-    saveProgress();
 
     // Hide questions, show results
     document.getElementById('testQuestions').style.display = 'none';
@@ -944,14 +960,20 @@ function showResults() {
         resultTitle.textContent = 'Congratulations!';
         resultTitle.style.color = 'var(--success)';
         
-        // Show appropriate button
-        document.getElementById('backToStudy').style.display = 'none';
-        document.getElementById('nextTopic').style.display = 'inline-flex';
-        
-        // If last topic, show back to study
-        if (state.currentTopicIndex === state.topics.length - 1) {
-            document.getElementById('nextTopic').style.display = 'none';
+        // Show appropriate buttons based on mode
+        if (state.isPracticeMode) {
+            // For practice mode, show back to study button
             document.getElementById('backToStudy').style.display = 'inline-flex';
+            document.getElementById('nextTopic').style.display = 'none';
+        } else {
+            document.getElementById('backToStudy').style.display = 'none';
+            document.getElementById('nextTopic').style.display = 'inline-flex';
+            
+            // If last topic, show back to study
+            if (state.currentTopicIndex === state.topics.length - 1) {
+                document.getElementById('nextTopic').style.display = 'none';
+                document.getElementById('backToStudy').style.display = 'inline-flex';
+            }
         }
     } else {
         resultIcon.textContent = '📚';
@@ -965,9 +987,8 @@ function showResults() {
     document.getElementById('finalScore').textContent = `${state.score}/${totalQuestions}`;
     document.getElementById('finalPercentage').textContent = `${percentage}%`;
     
-    // Show adaptive learning info if this is not the first attempt
-    const attempts = state.progress[state.currentTopicIndex].attempts;
-    if (attempts > 1) {
+    // Show adaptive learning info if this is not the first attempt and not practice mode
+    if (!state.isPracticeMode && state.progress[state.currentTopicIndex].attempts > 1) {
         document.getElementById('adaptiveLearningInfo').style.display = 'block';
     } else {
         document.getElementById('adaptiveLearningInfo').style.display = 'none';
