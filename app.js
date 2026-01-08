@@ -157,7 +157,7 @@ async function saveQuestionStats() {
 function getQuestionId(question, topicIndex, questionIndex) {
     if (!question) {
         console.error('getQuestionId: null/undefined question');
-        return `${topicIndex}_${questionIndex}_unknown`;
+            return `${topicIndex}_${(typeof question.topicIndex === 'number' ? question.topicIndex : questionIndex)}_unknown`;
     }
     if (question.groupId) {
         return `${topicIndex}_group_${question.groupId}`;
@@ -187,7 +187,7 @@ function initQuestionStats(questionId) {
 function updateQuestionStats(questionId, isCorrect) {
     console.log('=== updateQuestionStats ===');
     console.log('ID:', questionId);
-    console.log('Correct:', isCorrect);
+        console.log('Correct:', isCorrect ? 'Yes' : 'No');
     initQuestionStats(questionId);
     
     const stats = state.questionStats[questionId];
@@ -1163,7 +1163,8 @@ function checkAnswer(userAnswer) {
     // Track question performance for adaptive learning
     const questionId = getQuestionId(
         question,
-        state.currentTopicIndex,
+        // Use the question's own topic index to ensure consistency in Practice Mode
+        (typeof question.topicIndex === 'number' ? question.topicIndex : state.currentTopicIndex),
         question.sourceIndex
     );
     updateQuestionStats(questionId, isCorrect);
