@@ -1654,17 +1654,43 @@ function renderAdventureTopic() {
     if (contentEl && topic.content) {
         contentEl.innerHTML = `<h3>${topic.title}</h3>${topic.content}`;
         
-        // Handle image loading errors
+        // Handle image loading with fallback sources
         const images = contentEl.querySelectorAll('img');
         images.forEach(img => {
-            img.addEventListener('error', function() {
-                console.warn('Failed to load image:', this.src);
-                this.style.display = 'none';
-                const caption = this.nextElementSibling;
+            const originalSrc = img.src;
+            let attemptCount = 0;
+            
+            const tryFallback = () => {
+                attemptCount++;
+                
+                if (attemptCount === 1) {
+                    // First failure - try Wikimedia Commons version (without upload.wikimedia.org subdomain)
+                    if (originalSrc.includes('upload.wikimedia.org')) {
+                        const fallbackSrc = originalSrc.replace('upload.wikimedia.org', 'commons.wikimedia.org');
+                        console.log('Trying fallback source:', fallbackSrc);
+                        img.src = fallbackSrc;
+                        return;
+                    }
+                } else if (attemptCount === 2) {
+                    // Second failure - try thumbnail version
+                    if (originalSrc.includes('/commons/')) {
+                        const thumbSrc = originalSrc.replace('/commons/', '/commons/thumb/') + '/400px-' + originalSrc.split('/').pop();
+                        console.log('Trying thumbnail version:', thumbSrc);
+                        img.src = thumbSrc;
+                        return;
+                    }
+                }
+                
+                // All attempts failed - hide image gracefully
+                console.warn('All image sources failed for:', originalSrc);
+                img.style.display = 'none';
+                const caption = img.nextElementSibling;
                 if (caption && caption.classList.contains('image-caption')) {
                     caption.style.display = 'none';
                 }
-            });
+            };
+            
+            img.addEventListener('error', tryFallback);
             
             img.addEventListener('load', function() {
                 console.log('Image loaded successfully:', this.src);
