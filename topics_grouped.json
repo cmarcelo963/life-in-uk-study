@@ -7353,7 +7353,10 @@
                                                                           "The MRI scanner"
                                                                       ],
                                                           "question":  "Which TWO of the following were British inventions of the 20th century?",
-                                                          "answer":  null
+                                                          "answers":  [
+                                                                          "Radar",
+                                                                          "The jet engine"
+                                                                      ]
                                                       },
                                                       {
                                                           "type":  "boolean",
@@ -7371,7 +7374,10 @@
                                                                           "The MRI scanner"
                                                                       ],
                                                           "question":  "Which TWO of the following were British inventions of the 20th century in the UK?",
-                                                          "answer":  null
+                                                          "answers":  [
+                                                                          "Radar",
+                                                                          "The jet engine"
+                                                                      ]
                                                       }
                                                   ]
                                },

@@ -1,0 +1,1684 @@
+====================================================================================================
+ALL 336 BOOLEAN QUESTIONS - TRANSFORMED FORMAT
+====================================================================================================
+
+#1
+ANSWER: TRUE
+QUESTION: How many questions are in the Life in the UK test: 24 questions
+----------------------------------------------------------------------------------------------------
+
+#2
+ANSWER: TRUE
+QUESTION: What pledge do new citizens make at the citizenship ceremony: To uphold democratic values and observe laws faithfully
+----------------------------------------------------------------------------------------------------
+
+#3
+ANSWER: FALSE
+QUESTION: It is FALSE that: Where can you book the Life in the UK test: Online at www.gov.uk/life-in-the-uk-test
+----------------------------------------------------------------------------------------------------
+
+#4
+ANSWER: TRUE
+QUESTION: ESOL Entry Level 3 equivalent to in the Common European Framework is B1
+----------------------------------------------------------------------------------------------------
+
+#5
+ANSWER: TRUE
+QUESTION: Which of the following is a responsibility of UK residents: To look after the area in which you live
+----------------------------------------------------------------------------------------------------
+
+#6
+ANSWER: TRUE
+QUESTION: How many test centres are there in the UK: Over 30
+----------------------------------------------------------------------------------------------------
+
+#7
+ANSWER: TRUE
+QUESTION: Is there a place for extremism in British society: No
+----------------------------------------------------------------------------------------------------
+
+#8
+ANSWER: TRUE
+QUESTION: one of the rights offered by the UK is A right to a fair trial
+----------------------------------------------------------------------------------------------------
+
+#9
+ANSWER: TRUE
+QUESTION: What must you bring to take the Life in the UK test: Identification and proof of address
+----------------------------------------------------------------------------------------------------
+
+#10
+ANSWER: TRUE
+QUESTION: Will you need to remember dates of birth or death for the test: No
+----------------------------------------------------------------------------------------------------
+
+#11
+ANSWER: TRUE
+QUESTION: one of the freedoms the UK offers its residents is Freedom of belief and religion
+----------------------------------------------------------------------------------------------------
+
+#12
+ANSWER: TRUE
+QUESTION: Which UK responsibility requires residents to follow the law: Respect and obey the law
+----------------------------------------------------------------------------------------------------
+
+#13
+ANSWER: TRUE
+QUESTION: Which freedom protects people's ability to express opinions in the UK: Freedom of speech
+----------------------------------------------------------------------------------------------------
+
+#14
+ANSWER: TRUE
+QUESTION: Where must you take the Life in the UK test so the certificate is accepted: At a registered and approved test centre
+----------------------------------------------------------------------------------------------------
+
+#15
+ANSWER: TRUE
+QUESTION: Which country's flag shows a dragon: Wales
+----------------------------------------------------------------------------------------------------
+
+#16
+ANSWER: FALSE
+QUESTION: It is FALSE that: Is the Republic of Ireland part of the UK: No
+----------------------------------------------------------------------------------------------------
+
+#17
+ANSWER: TRUE
+QUESTION: What are St Helena and the Falkland Islands: British overseas territories
+----------------------------------------------------------------------------------------------------
+
+#18
+ANSWER: TRUE
+QUESTION: Which parliament governs the UK: The parliament sitting in Westminster
+----------------------------------------------------------------------------------------------------
+
+#19
+ANSWER: TRUE
+QUESTION: What are the denominations of UK notes: £5, £10, £20, £50
+----------------------------------------------------------------------------------------------------
+
+#20
+ANSWER: TRUE
+QUESTION: the official name of the UK is United Kingdom of Great Britain and Northern Ireland
+----------------------------------------------------------------------------------------------------
+
+#21
+ANSWER: FALSE
+QUESTION: the capital city of the UK is NOT London
+----------------------------------------------------------------------------------------------------
+
+#22
+ANSWER: TRUE
+QUESTION: What are the denominations of UK coins: 1p, 2p, 5p, 10p, 20p, 50p, £1 and £2
+----------------------------------------------------------------------------------------------------
+
+#23
+ANSWER: FALSE
+QUESTION: the name of the UK's national flag is NOT The Union Flag (Union Jack)
+----------------------------------------------------------------------------------------------------
+
+#24
+ANSWER: FALSE
+QUESTION: It is FALSE that: In this book, who is included when it says "Britain" or "British Isles": Everyone in the UK
+----------------------------------------------------------------------------------------------------
+
+#25
+ANSWER: FALSE
+QUESTION: Maiden Castle is NOT An Iron Age hill fort
+----------------------------------------------------------------------------------------------------
+
+#26
+ANSWER: FALSE
+QUESTION: It is FALSE that: Around when did people learn to make bronze: 4,000 years ago
+----------------------------------------------------------------------------------------------------
+
+#27
+ANSWER: TRUE
+QUESTION: the basis of modern-day English is Languages spoken by Angles and Saxons
+----------------------------------------------------------------------------------------------------
+
+#28
+ANSWER: TRUE
+QUESTION: By when were Anglo-Saxon kingdoms established: AD 600
+----------------------------------------------------------------------------------------------------
+
+#29
+ANSWER: TRUE
+QUESTION: Who became the patron saint of Ireland: St Patrick
+----------------------------------------------------------------------------------------------------
+
+#30
+ANSWER: TRUE
+QUESTION: Who united Scotland under one king: Kenneth MacAlpin
+----------------------------------------------------------------------------------------------------
+
+#31
+ANSWER: FALSE
+QUESTION: It is FALSE that: Who were the Picts: Ancestors of the Scottish people
+----------------------------------------------------------------------------------------------------
+
+#32
+ANSWER: TRUE
+QUESTION: Where is Maiden Castle located: Dorset
+----------------------------------------------------------------------------------------------------
+
+#33
+ANSWER: TRUE
+QUESTION: When did the first farmers arrive in Britain: 6,000 years ago
+----------------------------------------------------------------------------------------------------
+
+#34
+ANSWER: TRUE
+QUESTION: Where did St Columba found a monastery: Iona
+----------------------------------------------------------------------------------------------------
+
+#35
+ANSWER: TRUE
+QUESTION: Where is Skara Brae located: Orkney, Scotland
+----------------------------------------------------------------------------------------------------
+
+#36
+ANSWER: TRUE
+QUESTION: the Domesday Book is A record of towns, villages and land ownership
+----------------------------------------------------------------------------------------------------
+
+#37
+ANSWER: FALSE
+QUESTION: Skara Brae is NOT The best preserved prehistoric village in northern Europe
+----------------------------------------------------------------------------------------------------
+
+#38
+ANSWER: TRUE
+QUESTION: Where is Stonehenge located: Wiltshire, England
+----------------------------------------------------------------------------------------------------
+
+#39
+ANSWER: FALSE
+QUESTION: It is FALSE that: When did Britain become permanently separated from the continent: 10,000 years ago
+----------------------------------------------------------------------------------------------------
+
+#40
+ANSWER: FALSE
+QUESTION: It is FALSE that: Which Viking king ruled England: Cnut (Canute)
+----------------------------------------------------------------------------------------------------
+
+#41
+ANSWER: FALSE
+QUESTION: the first Archbishop of Canterbury is NOT St Augustine
+----------------------------------------------------------------------------------------------------
+
+#42
+ANSWER: FALSE
+QUESTION: It is FALSE that: What influenced the development of modern English: Norman French and Anglo-Saxon
+----------------------------------------------------------------------------------------------------
+
+#43
+ANSWER: TRUE
+QUESTION: Where is Sutton Hoo: Suffolk
+----------------------------------------------------------------------------------------------------
+
+#44
+ANSWER: TRUE
+QUESTION: the area of Viking settlement called is Danelaw
+----------------------------------------------------------------------------------------------------
+
+#45
+ANSWER: FALSE
+QUESTION: It is FALSE that: What language family did Iron Age people speak: Celtic
+----------------------------------------------------------------------------------------------------
+
+#46
+ANSWER: FALSE
+QUESTION: It is FALSE that: How did Britain's earliest Stone Age inhabitants live: As hunter-gatherers following herds
+----------------------------------------------------------------------------------------------------
+
+#47
+ANSWER: TRUE
+QUESTION: When and from where did the first farmers come to Britain: About 6,000 years ago from south-east Europe
+----------------------------------------------------------------------------------------------------
+
+#48
+ANSWER: FALSE
+QUESTION: Stonehenge thought to have been used for is NOT A special gathering place for seasonal ceremonies
+----------------------------------------------------------------------------------------------------
+
+#49
+ANSWER: TRUE
+QUESTION: How did Bronze Age people in Britain commonly bury their dead: In round barrows
+----------------------------------------------------------------------------------------------------
+
+#50
+ANSWER: TRUE
+QUESTION: What marked the beginnings of British history in the Iron Age: First coins minted in Britain, some with kings' names
+----------------------------------------------------------------------------------------------------
+
+#51
+ANSWER: FALSE
+QUESTION: It is FALSE that: When did Christian communities first appear in Britain: In the 3rd and 4th centuries AD
+----------------------------------------------------------------------------------------------------
+
+#52
+ANSWER: TRUE
+QUESTION: How did Viking settlers integrate into Britain: They mixed with local communities and some converted to Christianity
+----------------------------------------------------------------------------------------------------
+
+#53
+ANSWER: TRUE
+QUESTION: the long war between England and France called is The Hundred Years War
+----------------------------------------------------------------------------------------------------
+
+#54
+ANSWER: TRUE
+QUESTION: England's most important export in the Middle Ages is Wool
+----------------------------------------------------------------------------------------------------
+
+#55
+ANSWER: TRUE
+QUESTION: What did the Statute of Rhuddlan do: Annexed Wales to the Crown of England
+----------------------------------------------------------------------------------------------------
+
+#56
+ANSWER: FALSE
+QUESTION: It is FALSE that: Which castles were built to maintain English power in Wales: Conwy and Caernarvon
+----------------------------------------------------------------------------------------------------
+
+#57
+ANSWER: FALSE
+QUESTION: It is FALSE that: Who became king after the Battle of Bosworth Field: Henry Tudor (Henry VII)
+----------------------------------------------------------------------------------------------------
+
+#58
+ANSWER: FALSE
+QUESTION: It is FALSE that: Who won the Battle of Agincourt: King Henry V of England
+----------------------------------------------------------------------------------------------------
+
+#59
+ANSWER: TRUE
+QUESTION: the first person in England to print books using a printing press is William Caxton
+----------------------------------------------------------------------------------------------------
+
+#60
+ANSWER: TRUE
+QUESTION: What were the three Houses of the Scottish Parliament called: Estates
+----------------------------------------------------------------------------------------------------
+
+#61
+ANSWER: FALSE
+QUESTION: The Bruce about is NOT The Battle of Bannockburn
+----------------------------------------------------------------------------------------------------
+
+#62
+ANSWER: FALSE
+QUESTION: It is FALSE that: Who sat in the House of Commons: Knights and wealthy people from towns and cities
+----------------------------------------------------------------------------------------------------
+
+#63
+ANSWER: TRUE
+QUESTION: By when was English the preferred language of the royal court: 1400
+----------------------------------------------------------------------------------------------------
+
+#64
+ANSWER: TRUE
+QUESTION: the area around Dublin controlled by the English called is The Pale
+----------------------------------------------------------------------------------------------------
+
+#65
+ANSWER: FALSE
+QUESTION: It is FALSE that: In which year did Edward I introduce the Statute of Rhuddlan: 1284
+----------------------------------------------------------------------------------------------------
+
+#66
+ANSWER: TRUE
+QUESTION: Which cathedrals have famous stained glass windows: York Minster and Lincoln
+----------------------------------------------------------------------------------------------------
+
+#67
+ANSWER: TRUE
+QUESTION: the system of land ownership in the Middle Ages called is Feudalism
+----------------------------------------------------------------------------------------------------
+
+#68
+ANSWER: TRUE
+QUESTION: the symbol of the House of Tudor is A red rose with a white rose inside
+----------------------------------------------------------------------------------------------------
+
+#69
+ANSWER: FALSE
+QUESTION: It is FALSE that: What were peasants who could not move away from their lord's land called: Serfs
+----------------------------------------------------------------------------------------------------
+
+#70
+ANSWER: TRUE
+QUESTION: Who sat in the House of Lords: Nobility, great landowners and bishops
+----------------------------------------------------------------------------------------------------
+
+#71
+ANSWER: FALSE
+QUESTION: It is FALSE that: What did John Barbour write: The Bruce
+----------------------------------------------------------------------------------------------------
+
+#72
+ANSWER: FALSE
+QUESTION: It is FALSE that: How many Houses did the Scottish Parliament have: Three
+----------------------------------------------------------------------------------------------------
+
+#73
+ANSWER: TRUE
+QUESTION: common law is Law developed by judges through precedence
+----------------------------------------------------------------------------------------------------
+
+#74
+ANSWER: TRUE
+QUESTION: How long did the Hundred Years War actually last: 116 years
+----------------------------------------------------------------------------------------------------
+
+#75
+ANSWER: TRUE
+QUESTION: Which statute annexed Wales to England in 1284: The Statute of Rhuddlan
+----------------------------------------------------------------------------------------------------
+
+#76
+ANSWER: FALSE
+QUESTION: It is FALSE that: Who led the Scots to victory at Bannockburn in 1314: Robert the Bruce
+----------------------------------------------------------------------------------------------------
+
+#77
+ANSWER: FALSE
+QUESTION: It is FALSE that: About what fraction of Britain's population died in the Black Death of 1348: About one third
+----------------------------------------------------------------------------------------------------
+
+#78
+ANSWER: FALSE
+QUESTION: It is FALSE that: Which 1215 charter first limited the king by law: Magna Carta
+----------------------------------------------------------------------------------------------------
+
+#79
+ANSWER: TRUE
+QUESTION: In which battle of 1415 did Henry V defeat France: The Battle of Agincourt
+----------------------------------------------------------------------------------------------------
+
+#80
+ANSWER: TRUE
+QUESTION: Which work by Chaucer was among the first printed by William Caxton: The Canterbury Tales
+----------------------------------------------------------------------------------------------------
+
+#81
+ANSWER: TRUE
+QUESTION: Where did many Protestants settle in Ireland during James I's reign: Ulster
+----------------------------------------------------------------------------------------------------
+
+#82
+ANSWER: TRUE
+QUESTION: England called after the execution of Charles I is The Commonwealth
+----------------------------------------------------------------------------------------------------
+
+#83
+ANSWER: TRUE
+QUESTION: written during Edward VI's reign for use in the Church of England is The Book of Common Prayer
+----------------------------------------------------------------------------------------------------
+
+#84
+ANSWER: TRUE
+QUESTION: Who would have the power to appoint bishops in the Church of England: The king
+----------------------------------------------------------------------------------------------------
+
+#85
+ANSWER: TRUE
+QUESTION: Who succeeded Elizabeth I: James VI of Scotland
+----------------------------------------------------------------------------------------------------
+
+#86
+ANSWER: TRUE
+QUESTION: When was the Habeas Corpus Act passed: 1679
+----------------------------------------------------------------------------------------------------
+
+#87
+ANSWER: FALSE
+QUESTION: Elizabeth I's religion is NOT Protestant
+----------------------------------------------------------------------------------------------------
+
+#88
+ANSWER: TRUE
+QUESTION: Where was Charles I executed: Whitehall
+----------------------------------------------------------------------------------------------------
+
+#89
+ANSWER: TRUE
+QUESTION: When was Charles II restored to the throne: 1660
+----------------------------------------------------------------------------------------------------
+
+#90
+ANSWER: TRUE
+QUESTION: the Reformation is A movement against the authority of the Pope
+----------------------------------------------------------------------------------------------------
+
+#91
+ANSWER: TRUE
+QUESTION: What did Isaac Newton discover about white light: It's made up of the colours of the rainbow
+----------------------------------------------------------------------------------------------------
+
+#92
+ANSWER: TRUE
+QUESTION: Mary I's religion is Catholic
+----------------------------------------------------------------------------------------------------
+
+#93
+ANSWER: FALSE
+QUESTION: It is FALSE that: Who kept a famous diary recording the Great Fire and plague: Samuel Pepys
+----------------------------------------------------------------------------------------------------
+
+#94
+ANSWER: TRUE
+QUESTION: in command of the English fleet at Trafalgar is Admiral Nelson
+----------------------------------------------------------------------------------------------------
+
+#95
+ANSWER: TRUE
+QUESTION: the mother of Queen Elizabeth I is Anne Boleyn
+----------------------------------------------------------------------------------------------------
+
+#96
+ANSWER: TRUE
+QUESTION: In which year was the Spanish Armada defeated: 1588
+----------------------------------------------------------------------------------------------------
+
+#97
+ANSWER: TRUE
+QUESTION: Where did English settlers first begin to colonise in Elizabeth I's time: Eastern coast of America
+----------------------------------------------------------------------------------------------------
+
+#98
+ANSWER: FALSE
+QUESTION: Isaac Newton's most famous work is NOT Philosophiae Naturalis Principia Mathematica
+----------------------------------------------------------------------------------------------------
+
+#99
+ANSWER: TRUE
+QUESTION: Which wife survived Henry VIII: Catherine Parr
+----------------------------------------------------------------------------------------------------
+
+#100
+ANSWER: FALSE
+QUESTION: the Globe Theatre is NOT A modern copy of theatres where Shakespeare's plays were performed
+----------------------------------------------------------------------------------------------------
+
+#101
+ANSWER: FALSE
+QUESTION: It is FALSE that: Who designed the new St Paul's Cathedral: Sir Christopher Wren
+----------------------------------------------------------------------------------------------------
+
+#102
+ANSWER: TRUE
+QUESTION: Where is the Globe Theatre: London
+----------------------------------------------------------------------------------------------------
+
+#103
+ANSWER: FALSE
+QUESTION: Henry VIII's first wife is NOT Catherine of Aragon
+----------------------------------------------------------------------------------------------------
+
+#104
+ANSWER: FALSE
+QUESTION: It is FALSE that: When did the English Civil War begin: 1642
+----------------------------------------------------------------------------------------------------
+
+#105
+ANSWER: TRUE
+QUESTION: How many wives did Henry VIII have: Six
+----------------------------------------------------------------------------------------------------
+
+#106
+ANSWER: FALSE
+QUESTION: It is FALSE that: Why did Henry VIII want to divorce Catherine of Aragon: She couldn't give him a son to be his heir
+----------------------------------------------------------------------------------------------------
+
+#107
+ANSWER: TRUE
+QUESTION: Why was Mary I called 'Bloody Mary': She persecuted Protestants
+----------------------------------------------------------------------------------------------------
+
+#108
+ANSWER: TRUE
+QUESTION: Henry VIII is famous for marrying six times and breaking away from the Church of Rome.
+----------------------------------------------------------------------------------------------------
+
+#109
+ANSWER: FALSE
+QUESTION: It is FALSE that: Henry VIII is famous for marrying six times and breaking away from the Church of Rome.
+----------------------------------------------------------------------------------------------------
+
+#110
+ANSWER: TRUE
+QUESTION: Who wrote plays including Hamlet, Macbeth and Romeo and Juliet: William Shakespeare
+----------------------------------------------------------------------------------------------------
+
+#111
+ANSWER: FALSE
+QUESTION: It is FALSE that: Where did Charles II famously hide from Cromwell's forces: In an oak tree
+----------------------------------------------------------------------------------------------------
+
+#112
+ANSWER: TRUE
+QUESTION: James II's religion is Catholic
+----------------------------------------------------------------------------------------------------
+
+#113
+ANSWER: FALSE
+QUESTION: It is FALSE that: What were these settlements in Ireland called: Plantations
+----------------------------------------------------------------------------------------------------
+
+#114
+ANSWER: TRUE
+QUESTION: Which Shakespeare play features 'To be or not to be': Hamlet
+----------------------------------------------------------------------------------------------------
+
+#115
+ANSWER: TRUE
+QUESTION: What did Charles I believe in: The Divine Right of Kings
+----------------------------------------------------------------------------------------------------
+
+#116
+ANSWER: TRUE
+QUESTION: What nickname were supporters of the king called in the Civil War: Cavaliers
+----------------------------------------------------------------------------------------------------
+
+#117
+ANSWER: FALSE
+QUESTION: It is FALSE that: Which organisation promoted 'natural knowledge': The Royal Society
+----------------------------------------------------------------------------------------------------
+
+#118
+ANSWER: TRUE
+QUESTION: When did the Church of Scotland become Protestant: 1560
+----------------------------------------------------------------------------------------------------
+
+#119
+ANSWER: TRUE
+QUESTION: Which church did Henry VIII establish: Church of England
+----------------------------------------------------------------------------------------------------
+
+#120
+ANSWER: TRUE
+QUESTION: the King James Bible also called is The Authorised Version
+----------------------------------------------------------------------------------------------------
+
+#121
+ANSWER: FALSE
+QUESTION: It is FALSE that: What event in 1688 is known as the Glorious Revolution: William of Orange becoming king
+----------------------------------------------------------------------------------------------------
+
+#122
+ANSWER: TRUE
+QUESTION: Sir Francis Drake's ship called is The Golden Hind
+----------------------------------------------------------------------------------------------------
+
+#123
+ANSWER: TRUE
+QUESTION: For how many years did Charles I rule without Parliament: 11 years
+----------------------------------------------------------------------------------------------------
+
+#124
+ANSWER: TRUE
+QUESTION: Which wife gave Henry VIII a son, Edward: Jane Seymour
+----------------------------------------------------------------------------------------------------
+
+#125
+ANSWER: FALSE
+QUESTION: It is FALSE that: Which fleet did England defeat in 1588: The Spanish Armada
+----------------------------------------------------------------------------------------------------
+
+#126
+ANSWER: FALSE
+QUESTION: It is FALSE that: What were the Puritans: A group of Protestants advocating strict religious doctrine
+----------------------------------------------------------------------------------------------------
+
+#127
+ANSWER: FALSE
+QUESTION: It is FALSE that: Who predicted the return of Halley's Comet: Edmund Halley
+----------------------------------------------------------------------------------------------------
+
+#128
+ANSWER: TRUE
+QUESTION: given the title of Lord Protector is Oliver Cromwell
+----------------------------------------------------------------------------------------------------
+
+#129
+ANSWER: TRUE
+QUESTION: Which two of Henry VIII's wives were executed: Anne Boleyn and Catherine Howard
+----------------------------------------------------------------------------------------------------
+
+#130
+ANSWER: FALSE
+QUESTION: It is FALSE that: Which young king authorized the Book of Common Prayer: Edward VI
+----------------------------------------------------------------------------------------------------
+
+#131
+ANSWER: FALSE
+QUESTION: It is FALSE that: In what year did Elizabeth I defeat the Spanish Armada: 1588
+----------------------------------------------------------------------------------------------------
+
+#132
+ANSWER: TRUE
+QUESTION: Which monarch was nicknamed "Bloody Mary": Mary I
+----------------------------------------------------------------------------------------------------
+
+#133
+ANSWER: FALSE
+QUESTION: It is FALSE that: Under which monarch was the Authorised (King James) Bible produced: James I
+----------------------------------------------------------------------------------------------------
+
+#134
+ANSWER: FALSE
+QUESTION: It is FALSE that: Which 1679 law ensured prisoners must be presented in court: The Habeas Corpus Act
+----------------------------------------------------------------------------------------------------
+
+#135
+ANSWER: FALSE
+QUESTION: It is FALSE that: Which scientific society founded under Charles II included Halley and Newton: The Royal Society
+----------------------------------------------------------------------------------------------------
+
+#136
+ANSWER: FALSE
+QUESTION: It is FALSE that: Which work set out the law of universal gravitation: Philosophiae Naturalis Principia Mathematica
+----------------------------------------------------------------------------------------------------
+
+#137
+ANSWER: TRUE
+QUESTION: Who defeated James II at the Battle of the Boyne in 1690: William of Orange (William III)
+----------------------------------------------------------------------------------------------------
+
+#138
+ANSWER: TRUE
+QUESTION: When was the Bill of Rights enacted: 1689
+----------------------------------------------------------------------------------------------------
+
+#139
+ANSWER: FALSE
+QUESTION: It is FALSE that: Where did Admiral Nelson defeat the French fleet: Battle of Trafalgar
+----------------------------------------------------------------------------------------------------
+
+#140
+ANSWER: FALSE
+QUESTION: the Duke of Wellington known as is NOT The Iron Duke
+----------------------------------------------------------------------------------------------------
+
+#141
+ANSWER: TRUE
+QUESTION: Where was the Jacobite army defeated: Battle of Culloden
+----------------------------------------------------------------------------------------------------
+
+#142
+ANSWER: TRUE
+QUESTION: a pioneer of steam power is James Watt
+----------------------------------------------------------------------------------------------------
+
+#143
+ANSWER: FALSE
+QUESTION: It is FALSE that: Where did the Hanoverian kings come from: Germany
+----------------------------------------------------------------------------------------------------
+
+#144
+ANSWER: FALSE
+QUESTION: It is FALSE that: Who defeated Napoleon at Waterloo: The Duke of Wellington
+----------------------------------------------------------------------------------------------------
+
+#145
+ANSWER: FALSE
+QUESTION: the patron saint of Northern Ireland is NOT St Patrick
+----------------------------------------------------------------------------------------------------
+
+#146
+ANSWER: TRUE
+QUESTION: How long did Queen Victoria reign: Almost 64 years
+----------------------------------------------------------------------------------------------------
+
+#147
+ANSWER: TRUE
+QUESTION: What happened after the Battle of Culloden: The clan system was destroyed
+----------------------------------------------------------------------------------------------------
+
+#148
+ANSWER: TRUE
+QUESTION: another name for the Union Flag is The Union Jack
+----------------------------------------------------------------------------------------------------
+
+#149
+ANSWER: FALSE
+QUESTION: It is FALSE that: Who led the French army in the wars with France: Napoleon Bonaparte
+----------------------------------------------------------------------------------------------------
+
+#150
+ANSWER: TRUE
+QUESTION: Who defeated Napoleon at the Battle of Waterloo: Duke of Wellington
+----------------------------------------------------------------------------------------------------
+
+#151
+ANSWER: FALSE
+QUESTION: It is FALSE that: In which year was the Battle of Culloden: 1746
+----------------------------------------------------------------------------------------------------
+
+#152
+ANSWER: FALSE
+QUESTION: It is FALSE that: When was the Act of Union between England and Scotland agreed: 1707
+----------------------------------------------------------------------------------------------------
+
+#153
+ANSWER: TRUE
+QUESTION: Britain's first 'Prime Minister' is Robert Walpole
+----------------------------------------------------------------------------------------------------
+
+#154
+ANSWER: TRUE
+QUESTION: Charles Edward Stuart also known as is Bonnie Prince Charlie and The Young Pretender
+----------------------------------------------------------------------------------------------------
+
+#155
+ANSWER: FALSE
+QUESTION: It is FALSE that: When was slavery abolished throughout the British Empire: 1833
+----------------------------------------------------------------------------------------------------
+
+#156
+ANSWER: TRUE
+QUESTION: Which famous column commemorates Admiral Nelson: Nelson's Column
+----------------------------------------------------------------------------------------------------
+
+#157
+ANSWER: TRUE
+QUESTION: What color is St Patrick's cross: A diagonal red cross on a white ground
+----------------------------------------------------------------------------------------------------
+
+#158
+ANSWER: TRUE
+QUESTION: Why doesn't the Welsh dragon appear on the Union Flag: Wales was already united with England when the flag was created
+----------------------------------------------------------------------------------------------------
+
+#159
+ANSWER: FALSE
+QUESTION: It is FALSE that: What color is St Andrew's cross: A diagonal white cross on a blue ground
+----------------------------------------------------------------------------------------------------
+
+#160
+ANSWER: TRUE
+QUESTION: When did the American colonies declare independence: 1776
+----------------------------------------------------------------------------------------------------
+
+#161
+ANSWER: FALSE
+QUESTION: It is FALSE that: In which part of the British Empire did the Boer War of 1899–1902 take place: South Africa
+----------------------------------------------------------------------------------------------------
+
+#162
+ANSWER: FALSE
+QUESTION: It is FALSE that: When did Britain's slave trade become illegal: 1807
+----------------------------------------------------------------------------------------------------
+
+#163
+ANSWER: FALSE
+QUESTION: It is FALSE that: Who wrote 'Auld Lang Syne': Robert Burns
+----------------------------------------------------------------------------------------------------
+
+#164
+ANSWER: TRUE
+QUESTION: When did the Act of Union create the Kingdom of Great Britain: 1707
+----------------------------------------------------------------------------------------------------
+
+#165
+ANSWER: FALSE
+QUESTION: It is FALSE that: When did Britain's colonies in America declare independence: 1776
+----------------------------------------------------------------------------------------------------
+
+#166
+ANSWER: TRUE
+QUESTION: Who succeeded Queen Anne: George I
+----------------------------------------------------------------------------------------------------
+
+#167
+ANSWER: FALSE
+QUESTION: It is FALSE that: Who invented the Rocket: George Stephenson
+----------------------------------------------------------------------------------------------------
+
+#168
+ANSWER: TRUE
+QUESTION: What changed about Parliament during Anne's reign: Newspapers began to report on proceedings
+----------------------------------------------------------------------------------------------------
+
+#169
+ANSWER: TRUE
+QUESTION: the first Prime Minister is Robert Walpole
+----------------------------------------------------------------------------------------------------
+
+#170
+ANSWER: TRUE
+QUESTION: What happened to the Scottish Parliament after the Act of Union: It abolished
+----------------------------------------------------------------------------------------------------
+
+#171
+ANSWER: TRUE
+QUESTION: What color is St George's cross: A red cross on a white ground
+----------------------------------------------------------------------------------------------------
+
+#172
+ANSWER: TRUE
+QUESTION: When did Anne become queen: 1702
+----------------------------------------------------------------------------------------------------
+
+#173
+ANSWER: FALSE
+QUESTION: It is FALSE that: What are the three crosses on the Union Flag: St George, St Andrew and St Patrick
+----------------------------------------------------------------------------------------------------
+
+#174
+ANSWER: TRUE
+QUESTION: Who wrote The Wealth of Nations: Adam Smith
+----------------------------------------------------------------------------------------------------
+
+#175
+ANSWER: TRUE
+QUESTION: Who supported James II's son in claiming the throne: The Jacobites
+----------------------------------------------------------------------------------------------------
+
+#176
+ANSWER: TRUE
+QUESTION: In what year was the Bill of Rights passed: 1689
+----------------------------------------------------------------------------------------------------
+
+#177
+ANSWER: TRUE
+QUESTION: From which year could newspapers operate without a government licence: 1695
+----------------------------------------------------------------------------------------------------
+
+#178
+ANSWER: TRUE
+QUESTION: Which refugee group arrived from France between 1680 and 1720: Huguenots
+----------------------------------------------------------------------------------------------------
+
+#179
+ANSWER: TRUE
+QUESTION: Who opened Britain's first curry house, and when: Sake Dean Mahomet in 1810
+----------------------------------------------------------------------------------------------------
+
+#180
+ANSWER: TRUE
+QUESTION: Which Act abolished slavery across the British Empire: The Emancipation Act of 1833
+----------------------------------------------------------------------------------------------------
+
+#181
+ANSWER: FALSE
+QUESTION: the British Prime Minister during much of WWII is NOT Winston Churchill
+----------------------------------------------------------------------------------------------------
+
+#182
+ANSWER: TRUE
+QUESTION: How many British soldiers died in WWI: Over 2 million
+----------------------------------------------------------------------------------------------------
+
+#183
+ANSWER: FALSE
+QUESTION: It is FALSE that: What do people wear on Remembrance Day: Poppies
+----------------------------------------------------------------------------------------------------
+
+#184
+ANSWER: FALSE
+QUESTION: Remembrance Day also known as is NOT Armistice Day
+----------------------------------------------------------------------------------------------------
+
+#185
+ANSWER: TRUE
+QUESTION: What does VE Day stand for: Victory in Europe
+----------------------------------------------------------------------------------------------------
+
+#186
+ANSWER: TRUE
+QUESTION: When did Ireland become two countries: 1921
+----------------------------------------------------------------------------------------------------
+
+#187
+ANSWER: FALSE
+QUESTION: It is FALSE that: When is VE Day celebrated: 8 May
+----------------------------------------------------------------------------------------------------
+
+#188
+ANSWER: TRUE
+QUESTION: When do people observe a two-minute silence: At 11:00 am on 11 November
+----------------------------------------------------------------------------------------------------
+
+#189
+ANSWER: TRUE
+QUESTION: At what time on which date did the First World War end: 11.00 am on 11th November 1918
+----------------------------------------------------------------------------------------------------
+
+#190
+ANSWER: TRUE
+QUESTION: the Blitz is German bombing of British cities
+----------------------------------------------------------------------------------------------------
+
+#191
+ANSWER: TRUE
+QUESTION: What did Alexander Fleming discover: Penicillin
+----------------------------------------------------------------------------------------------------
+
+#192
+ANSWER: FALSE
+QUESTION: It is FALSE that: What famous speeches did Churchill make: 'We shall fight on the beaches'
+----------------------------------------------------------------------------------------------------
+
+#193
+ANSWER: FALSE
+QUESTION: It is FALSE that: What were the areas between the trenches called: No man's land
+----------------------------------------------------------------------------------------------------
+
+#194
+ANSWER: TRUE
+QUESTION: On which date did Allied forces land in Normandy (D-Day): 6 June 1944
+----------------------------------------------------------------------------------------------------
+
+#195
+ANSWER: TRUE
+QUESTION: When did Germany surrender, ending the war in Europe: 8 May 1945
+----------------------------------------------------------------------------------------------------
+
+#196
+ANSWER: FALSE
+QUESTION: the leader of the suffragette movement is NOT Emmeline Pankhurst
+----------------------------------------------------------------------------------------------------
+
+#197
+ANSWER: TRUE
+QUESTION: Who discovered penicillin: Alexander Fleming
+----------------------------------------------------------------------------------------------------
+
+#198
+ANSWER: FALSE
+QUESTION: It is FALSE that: Who became Prime Minister in 1940: Winston Churchill
+----------------------------------------------------------------------------------------------------
+
+#199
+ANSWER: FALSE
+QUESTION: It is FALSE that: When did WWII end: 1945
+----------------------------------------------------------------------------------------------------
+
+#200
+ANSWER: FALSE
+QUESTION: It is FALSE that: In what year was conscription introduced in WWI: 1916
+----------------------------------------------------------------------------------------------------
+
+#201
+ANSWER: TRUE
+QUESTION: About how many British soldiers were lost on the first day of the Somme: About 60,000
+----------------------------------------------------------------------------------------------------
+
+#202
+ANSWER: TRUE
+QUESTION: When did the BBC begin regular radio broadcasts: 1922
+----------------------------------------------------------------------------------------------------
+
+#203
+ANSWER: TRUE
+QUESTION: Approximately how many men were evacuated from Dunkirk in 1940: Over 300,000
+----------------------------------------------------------------------------------------------------
+
+#204
+ANSWER: TRUE
+QUESTION: Which attack brought the US into WWII, and when: The Japanese attack on Pearl Harbor in December 1941
+----------------------------------------------------------------------------------------------------
+
+#205
+ANSWER: FALSE
+QUESTION: It is FALSE that: When did the UK officially leave the European Union: 31 January 2020
+----------------------------------------------------------------------------------------------------
+
+#206
+ANSWER: TRUE
+QUESTION: What did Clement Attlee's government introduce: The welfare state
+----------------------------------------------------------------------------------------------------
+
+#207
+ANSWER: FALSE
+QUESTION: elected as Prime Minister immediately after WWII is NOT Clement Attlee
+----------------------------------------------------------------------------------------------------
+
+#208
+ANSWER: TRUE
+QUESTION: Which TWO of the following were British inventions of the 20th century.
+----------------------------------------------------------------------------------------------------
+
+#209
+ANSWER: TRUE
+QUESTION: When did Britain join the European Economic Community (EEC): 1973
+----------------------------------------------------------------------------------------------------
+
+#210
+ANSWER: TRUE
+QUESTION: When was the Brexit referendum held: 2016
+----------------------------------------------------------------------------------------------------
+
+#211
+ANSWER: FALSE
+QUESTION: It is FALSE that: When did India and Pakistan become independent: 1947
+----------------------------------------------------------------------------------------------------
+
+#212
+ANSWER: TRUE
+QUESTION: Who invented the World Wide Web: Tim Berners-Lee
+----------------------------------------------------------------------------------------------------
+
+#213
+ANSWER: TRUE
+QUESTION: When did Margaret Thatcher serve as Prime Minister: 1979-1990
+----------------------------------------------------------------------------------------------------
+
+#214
+ANSWER: TRUE
+QUESTION: Where did the 'Windrush generation' come from: The Caribbean
+----------------------------------------------------------------------------------------------------
+
+#215
+ANSWER: FALSE
+QUESTION: It is FALSE that: What does the NHS provide: Free healthcare for all residents
+----------------------------------------------------------------------------------------------------
+
+#216
+ANSWER: TRUE
+QUESTION: British scientists were the first to clone a mammal successfully.
+----------------------------------------------------------------------------------------------------
+
+#217
+ANSWER: TRUE
+QUESTION: British scientists were the first to clone a mammal successfully.
+----------------------------------------------------------------------------------------------------
+
+#218
+ANSWER: TRUE
+QUESTION: the first woman Prime Minister of the UK is Margaret Thatcher
+----------------------------------------------------------------------------------------------------
+
+#219
+ANSWER: FALSE
+QUESTION: It is FALSE that: How many countries are in the Commonwealth: Over 50
+----------------------------------------------------------------------------------------------------
+
+#220
+ANSWER: TRUE
+QUESTION: the Commonwealth is An association of countries supporting democracy and development
+----------------------------------------------------------------------------------------------------
+
+#221
+ANSWER: TRUE
+QUESTION: When did the UK join the European Economic Community (EEC): 1973
+----------------------------------------------------------------------------------------------------
+
+#222
+ANSWER: FALSE
+QUESTION: It is FALSE that: In what year did people vote to leave the EU: 2016
+----------------------------------------------------------------------------------------------------
+
+#223
+ANSWER: FALSE
+QUESTION: It is FALSE that: In which year did Margaret Thatcher become Prime Minister: 1979
+----------------------------------------------------------------------------------------------------
+
+#224
+ANSWER: FALSE
+QUESTION: It is FALSE that: Which report named the five "Giant Evils" and what were they: The 1942 Beveridge Report: Want, Disease, Ignorance, Squalor, Idleness
+----------------------------------------------------------------------------------------------------
+
+#225
+ANSWER: TRUE
+QUESTION: Who introduced the NHS, and when did it start: Aneurin (Nye) Bevan; 1948
+----------------------------------------------------------------------------------------------------
+
+#226
+ANSWER: TRUE
+QUESTION: In which year did the UK help found NATO: 1949
+----------------------------------------------------------------------------------------------------
+
+#227
+ANSWER: TRUE
+QUESTION: Which Act brought in free secondary education in England and Wales, and when: The 1944 Butler (Education) Act
+----------------------------------------------------------------------------------------------------
+
+#228
+ANSWER: TRUE
+QUESTION: In what year did Concorde make its first flight: 1969
+----------------------------------------------------------------------------------------------------
+
+#229
+ANSWER: FALSE
+QUESTION: It is FALSE that: In which year did the Falklands War take place: 1982
+----------------------------------------------------------------------------------------------------
+
+#230
+ANSWER: TRUE
+QUESTION: Where is the National Gallery: London
+----------------------------------------------------------------------------------------------------
+
+#231
+ANSWER: TRUE
+QUESTION: Is there an established Church in Scotland: Yes, the Church of Scotland
+----------------------------------------------------------------------------------------------------
+
+#232
+ANSWER: TRUE
+QUESTION: What flower is associated with England: Rose
+----------------------------------------------------------------------------------------------------
+
+#233
+ANSWER: TRUE
+QUESTION: What percentage of the UK population makes up Northern Ireland: Less than 3%
+----------------------------------------------------------------------------------------------------
+
+#234
+ANSWER: TRUE
+QUESTION: Where in Scotland is Gaelic spoken: Some parts of the Highlands and Islands
+----------------------------------------------------------------------------------------------------
+
+#235
+ANSWER: TRUE
+QUESTION: When is St David's Day: 1 March
+----------------------------------------------------------------------------------------------------
+
+#236
+ANSWER: TRUE
+QUESTION: the head of the Church of England is The monarch (as Supreme Governor)
+----------------------------------------------------------------------------------------------------
+
+#237
+ANSWER: FALSE
+QUESTION: the minimum age to buy alcohol in the UK is NOT 18
+----------------------------------------------------------------------------------------------------
+
+#238
+ANSWER: FALSE
+QUESTION: It is FALSE that: What has caused people in the UK to live longer: Improved living standards and better health care
+----------------------------------------------------------------------------------------------------
+
+#239
+ANSWER: FALSE
+QUESTION: the established Church in England is NOT The Church of England
+----------------------------------------------------------------------------------------------------
+
+#240
+ANSWER: TRUE
+QUESTION: the most common ethnic description in UK surveys is White
+----------------------------------------------------------------------------------------------------
+
+#241
+ANSWER: TRUE
+QUESTION: In which year did the UK host the Olympic Games most recently: 2012
+----------------------------------------------------------------------------------------------------
+
+#242
+ANSWER: TRUE
+QUESTION: Which is the largest religious group in the UK: Christians
+----------------------------------------------------------------------------------------------------
+
+#243
+ANSWER: TRUE
+QUESTION: Which famous British bands are mentioned: The Beatles and The Rolling Stones
+----------------------------------------------------------------------------------------------------
+
+#244
+ANSWER: TRUE
+QUESTION: What impact does an ageing population have: Impact on the cost of pensions and health care
+----------------------------------------------------------------------------------------------------
+
+#245
+ANSWER: FALSE
+QUESTION: the Turner Prize awarded for is NOT Contemporary art
+----------------------------------------------------------------------------------------------------
+
+#246
+ANSWER: TRUE
+QUESTION: the second largest religious group is Muslims
+----------------------------------------------------------------------------------------------------
+
+#247
+ANSWER: FALSE
+QUESTION: It is FALSE that: When is St George's Day: 23 April
+----------------------------------------------------------------------------------------------------
+
+#248
+ANSWER: TRUE
+QUESTION: About how far is it from John O'Groats to Land's End: About 870 miles (around 1,400 km)
+----------------------------------------------------------------------------------------------------
+
+#249
+ANSWER: FALSE
+QUESTION: It is FALSE that: How many pence are in one pound sterling: 100 pence
+----------------------------------------------------------------------------------------------------
+
+#250
+ANSWER: TRUE
+QUESTION: What share of people reported no religion in the 2011 Census: 25%
+----------------------------------------------------------------------------------------------------
+
+#251
+ANSWER: FALSE
+QUESTION: the spiritual leader of the Church of England is NOT The Archbishop of Canterbury
+----------------------------------------------------------------------------------------------------
+
+#252
+ANSWER: FALSE
+QUESTION: It is FALSE that: What happens at 11:00 am on Remembrance Day: A two-minute silence and wreaths at the Cenotaph
+----------------------------------------------------------------------------------------------------
+
+#253
+ANSWER: TRUE
+QUESTION: How long is the Grand National horse race: Over 4 miles
+----------------------------------------------------------------------------------------------------
+
+#254
+ANSWER: TRUE
+QUESTION: Bonfire Night also called is Guy Fawkes Night
+----------------------------------------------------------------------------------------------------
+
+#255
+ANSWER: FALSE
+QUESTION: It is FALSE that: When does the Notting Hill Carnival take place: Every summer on a bank holiday weekend in August
+----------------------------------------------------------------------------------------------------
+
+#256
+ANSWER: TRUE
+QUESTION: Where is Royal Ascot held: Berkshire
+----------------------------------------------------------------------------------------------------
+
+#257
+ANSWER: TRUE
+QUESTION: Hogmanay is Scottish New Year celebrations
+----------------------------------------------------------------------------------------------------
+
+#258
+ANSWER: TRUE
+QUESTION: When is Halloween: 31 October
+----------------------------------------------------------------------------------------------------
+
+#259
+ANSWER: FALSE
+QUESTION: the name of the famous tennis tournament held in the UK is NOT Wimbledon
+----------------------------------------------------------------------------------------------------
+
+#260
+ANSWER: TRUE
+QUESTION: Where is the Grand National held: Aintree, near Liverpool
+----------------------------------------------------------------------------------------------------
+
+#261
+ANSWER: TRUE
+QUESTION: What happened on 5 November 1605: Guy Fawkes tried to blow up Parliament
+----------------------------------------------------------------------------------------------------
+
+#262
+ANSWER: FALSE
+QUESTION: It is FALSE that: How many days can a Test Match last in cricket: Up to 5 days
+----------------------------------------------------------------------------------------------------
+
+#263
+ANSWER: FALSE
+QUESTION: It is FALSE that: Where is the Notting Hill Carnival held: London
+----------------------------------------------------------------------------------------------------
+
+#264
+ANSWER: FALSE
+QUESTION: It is FALSE that: What do children do on Halloween: Dress up and go trick-or-treating
+----------------------------------------------------------------------------------------------------
+
+#265
+ANSWER: FALSE
+QUESTION: It is FALSE that: Which sport is particularly associated with Scotland: Golf
+----------------------------------------------------------------------------------------------------
+
+#266
+ANSWER: FALSE
+QUESTION: the Ashes is NOT A cricket competition between England and Australia
+----------------------------------------------------------------------------------------------------
+
+#267
+ANSWER: TRUE
+QUESTION: the most famous tennis tournament in the UK is Wimbledon
+----------------------------------------------------------------------------------------------------
+
+#268
+ANSWER: TRUE
+QUESTION: When is St Andrew's Day: 30 November
+----------------------------------------------------------------------------------------------------
+
+#269
+ANSWER: FALSE
+QUESTION: the day before Lent called is NOT Shrove Tuesday or Pancake Day
+----------------------------------------------------------------------------------------------------
+
+#270
+ANSWER: TRUE
+QUESTION: Which famous sailing event started in 1851: America's Cup
+----------------------------------------------------------------------------------------------------
+
+#271
+ANSWER: TRUE
+QUESTION: Only one patron saint's day is an official holiday in the UK. Which one: St Patrick's Day in Northern Ireland
+----------------------------------------------------------------------------------------------------
+
+#272
+ANSWER: FALSE
+QUESTION: the Eden Project is NOT Giant greenhouses in Cornwall
+----------------------------------------------------------------------------------------------------
+
+#273
+ANSWER: TRUE
+QUESTION: Where were the first rules of modern football established: London
+----------------------------------------------------------------------------------------------------
+
+#274
+ANSWER: FALSE
+QUESTION: It is FALSE that: When is Bonfire Night: 5 November
+----------------------------------------------------------------------------------------------------
+
+#275
+ANSWER: FALSE
+QUESTION: It is FALSE that: Which sport is associated with St Andrews in Scotland: Golf
+----------------------------------------------------------------------------------------------------
+
+#276
+ANSWER: TRUE
+QUESTION: When is Boxing Day: 26 December
+----------------------------------------------------------------------------------------------------
+
+#277
+ANSWER: TRUE
+QUESTION: When is St Patrick's Day: 17 March
+----------------------------------------------------------------------------------------------------
+
+#278
+ANSWER: TRUE
+QUESTION: Where is the home of golf: St Andrews
+----------------------------------------------------------------------------------------------------
+
+#279
+ANSWER: TRUE
+QUESTION: When is Christmas Day: 25 December
+----------------------------------------------------------------------------------------------------
+
+#280
+ANSWER: TRUE
+QUESTION: an allotment used for is A rented plot to grow fruit and vegetables
+----------------------------------------------------------------------------------------------------
+
+#281
+ANSWER: TRUE
+QUESTION: the national flower of Wales is The daffodil
+----------------------------------------------------------------------------------------------------
+
+#282
+ANSWER: TRUE
+QUESTION: How many national parks are there in England, Wales and Scotland: 15
+----------------------------------------------------------------------------------------------------
+
+#283
+ANSWER: FALSE
+QUESTION: It is FALSE that: When was the National Trust founded: 1895
+----------------------------------------------------------------------------------------------------
+
+#284
+ANSWER: FALSE
+QUESTION: It is FALSE that: About how old is the Giant's Causeway formation: About 50 million years
+----------------------------------------------------------------------------------------------------
+
+#285
+ANSWER: TRUE
+QUESTION: How tall is the London Eye: 443 feet (135 metres)
+----------------------------------------------------------------------------------------------------
+
+#286
+ANSWER: FALSE
+QUESTION: It is FALSE that: What must drivers have by law: Insurance
+----------------------------------------------------------------------------------------------------
+
+#287
+ANSWER: FALSE
+QUESTION: It is FALSE that: At what age must you pay Council Tax: 18
+----------------------------------------------------------------------------------------------------
+
+#288
+ANSWER: FALSE
+QUESTION: It is FALSE that: Who sits in the House of Commons: Members of Parliament (MPs)
+----------------------------------------------------------------------------------------------------
+
+#289
+ANSWER: TRUE
+QUESTION: Which nations have devolved administrations: Scotland, Wales and Northern Ireland
+----------------------------------------------------------------------------------------------------
+
+#290
+ANSWER: FALSE
+QUESTION: It is FALSE that: What are the two chambers of Parliament: House of Lords and House of Commons
+----------------------------------------------------------------------------------------------------
+
+#291
+ANSWER: TRUE
+QUESTION: Can the House of Lords stop new laws: No, they can only delay them
+----------------------------------------------------------------------------------------------------
+
+#292
+ANSWER: TRUE
+QUESTION: Where does the Senedd sit: Cardiff
+----------------------------------------------------------------------------------------------------
+
+#293
+ANSWER: TRUE
+QUESTION: the voting age in the UK is 18
+----------------------------------------------------------------------------------------------------
+
+#294
+ANSWER: FALSE
+QUESTION: the official home of the Prime Minister is NOT 10 Downing Street
+----------------------------------------------------------------------------------------------------
+
+#295
+ANSWER: FALSE
+QUESTION: the minimum age to drive a car in the UK is NOT 17
+----------------------------------------------------------------------------------------------------
+
+#296
+ANSWER: TRUE
+QUESTION: the leader of the government called is The Prime Minister
+----------------------------------------------------------------------------------------------------
+
+#297
+ANSWER: TRUE
+QUESTION: How many members does a jury have in Scotland: 15
+----------------------------------------------------------------------------------------------------
+
+#298
+ANSWER: TRUE
+QUESTION: How many parliamentary constituencies are there: 646
+----------------------------------------------------------------------------------------------------
+
+#299
+ANSWER: TRUE
+QUESTION: the highest court in the UK is The Supreme Court
+----------------------------------------------------------------------------------------------------
+
+#300
+ANSWER: FALSE
+QUESTION: It is FALSE that: Can EU citizens stand as candidates in local elections: Yes, EU and Commonwealth citizens can
+----------------------------------------------------------------------------------------------------
+
+#301
+ANSWER: TRUE
+QUESTION: Is it illegal to carry a weapon for self-defence in the UK: Yes
+----------------------------------------------------------------------------------------------------
+
+#302
+ANSWER: TRUE
+QUESTION: the head of state in the UK is The King
+----------------------------------------------------------------------------------------------------
+
+#303
+ANSWER: TRUE
+QUESTION: the number for non-emergency police matters is 101
+----------------------------------------------------------------------------------------------------
+
+#304
+ANSWER: FALSE
+QUESTION: Prime Minister's Questions (PMQs) is NOT When the PM answers questions from MPs
+----------------------------------------------------------------------------------------------------
+
+#305
+ANSWER: TRUE
+QUESTION: Where does the UK Parliament sit: Westminster
+----------------------------------------------------------------------------------------------------
+
+#306
+ANSWER: TRUE
+QUESTION: the current monarch is King Charles III
+----------------------------------------------------------------------------------------------------
+
+#307
+ANSWER: FALSE
+QUESTION: the minimum age to stand as an MP is NOT 18
+----------------------------------------------------------------------------------------------------
+
+#308
+ANSWER: TRUE
+QUESTION: What must all bills receive to become law: Royal Assent
+----------------------------------------------------------------------------------------------------
+
+#309
+ANSWER: TRUE
+QUESTION: What are the two principles of British criminal law: Innocent until proven guilty
+----------------------------------------------------------------------------------------------------
+
+#310
+ANSWER: FALSE
+QUESTION: the maximum fine for not having a TV licence is NOT £1,000
+----------------------------------------------------------------------------------------------------
+
+#311
+ANSWER: TRUE
+QUESTION: How many member countries does the Commonwealth have: 54
+----------------------------------------------------------------------------------------------------
+
+#312
+ANSWER: TRUE
+QUESTION: How many Senedd members (SMs) are there in Wales: 60
+----------------------------------------------------------------------------------------------------
+
+#313
+ANSWER: FALSE
+QUESTION: It is FALSE that: How are MPs chosen: Elected by voters
+----------------------------------------------------------------------------------------------------
+
+#314
+ANSWER: TRUE
+QUESTION: Who chairs debates in the House of Commons: The Speaker
+----------------------------------------------------------------------------------------------------
+
+#315
+ANSWER: FALSE
+QUESTION: It is FALSE that: Is the BBC independent of government: Yes, although it receives some state funding
+----------------------------------------------------------------------------------------------------
+
+#316
+ANSWER: FALSE
+QUESTION: the emergency services number in the UK is NOT 999
+----------------------------------------------------------------------------------------------------
+
+#317
+ANSWER: FALSE
+QUESTION: It is FALSE that: Can members of the Senedd speak in Welsh: Yes, members can speak in either Welsh or English
+----------------------------------------------------------------------------------------------------
+
+#318
+ANSWER: TRUE
+QUESTION: Who opens the new parliamentary session each year: The King
+----------------------------------------------------------------------------------------------------
+
+#319
+ANSWER: FALSE
+QUESTION: It is FALSE that: How many chambers does Parliament have: Two
+----------------------------------------------------------------------------------------------------
+
+#320
+ANSWER: FALSE
+QUESTION: It is FALSE that: What must you have to watch TV or use BBC iPlayer: A television licence
+----------------------------------------------------------------------------------------------------
+
+#321
+ANSWER: TRUE
+QUESTION: What type of monarchy does the UK have: Constitutional monarchy
+----------------------------------------------------------------------------------------------------
+
+#322
+ANSWER: TRUE
+QUESTION: Who can get a 50% discount on their TV licence: Blind people
+----------------------------------------------------------------------------------------------------
+
+#323
+ANSWER: TRUE
+QUESTION: Where does the Scottish Parliament sit: Edinburgh
+----------------------------------------------------------------------------------------------------
+
+#324
+ANSWER: FALSE
+QUESTION: It is FALSE that: What type of democracy is the UK: Parliamentary democracy
+----------------------------------------------------------------------------------------------------
+
+#325
+ANSWER: FALSE
+QUESTION: It is FALSE that: At what age can you do jury service: 18-70 (18-75 in England and Wales)
+----------------------------------------------------------------------------------------------------
+
+#326
+ANSWER: FALSE
+QUESTION: It is FALSE that: How many Members of the Scottish Parliament (MSPs) are there: 129
+----------------------------------------------------------------------------------------------------
+
+#327
+ANSWER: FALSE
+QUESTION: It is FALSE that: At what age do people usually receive the state retirement pension: 68
+----------------------------------------------------------------------------------------------------
+
+#328
+ANSWER: FALSE
+QUESTION: It is FALSE that: What does BBC stand for: British Broadcasting Corporation
+----------------------------------------------------------------------------------------------------
+
+#329
+ANSWER: TRUE
+QUESTION: How many key reforms did the Chartists demand: Six
+----------------------------------------------------------------------------------------------------
+
+#330
+ANSWER: FALSE
+QUESTION: It is FALSE that: In what year was the UK voting age lowered to 18: 1969
+----------------------------------------------------------------------------------------------------
+
+#331
+ANSWER: TRUE
+QUESTION: Why is the UK constitution called "unwritten": It is not in one document; it is built from laws and conventions over time
+----------------------------------------------------------------------------------------------------
+
+#332
+ANSWER: TRUE
+QUESTION: the Prime Minister's official country house called is Chequers
+----------------------------------------------------------------------------------------------------
+
+#333
+ANSWER: FALSE
+QUESTION: It is FALSE that: How many MLAs sit in the Northern Ireland Assembly: 90
+----------------------------------------------------------------------------------------------------
+
+#334
+ANSWER: FALSE
+QUESTION: It is FALSE that: When were Police and Crime Commissioners first elected: November 2012
+----------------------------------------------------------------------------------------------------
+
+#335
+ANSWER: TRUE
+QUESTION: What are UK polling station hours and what must voters show: Open 7:00 am–10:00 pm; voters must show acceptable photo ID
+----------------------------------------------------------------------------------------------------
+
+#336
+ANSWER: TRUE
+QUESTION: What does UK law say about FGM: It is a criminal offence, including arranging it abroad
+----------------------------------------------------------------------------------------------------
+

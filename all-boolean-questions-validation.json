@@ -1,0 +1,2037 @@
+{
+  "summary": {
+    "total_questions": 336,
+    "true_count": 205,
+    "false_count": 131,
+    "pattern_distribution": {
+      "Who is/was": 17,
+      "What is/was": 61,
+      "Which": 35,
+      "When": 39,
+      "Why": 4,
+      "Where": 26,
+      "How many": 17,
+      "Question:": 2,
+      "Which TWO": 1,
+      "Other": 134
+    }
+  },
+  "all_questions": [
+    {
+      "original": "24 questions is the correct answer to: How many questions are in the Life in the UK test?",
+      "transformed": "How many questions are in the Life in the UK test: 24 questions",
+      "answer": "TRUE",
+      "inverted": false
+    },
+    {
+      "original": "To uphold democratic values and observe laws faithfully is the correct answer to: What pledge do new citizens make at the citizenship ceremony?",
+      "transformed": "What pledge do new citizens make at the citizenship ceremony: To uphold democratic values and observe laws faithfully",
+      "answer": "TRUE",
+      "inverted": false
+    },
+    {
+      "original": "Online at www.gov.uk/life-in-the-uk-test is the correct answer to: Where can you book the Life in the UK test?",
+      "transformed": "It is FALSE that: Where can you book the Life in the UK test: Online at www.gov.uk/life-in-the-uk-test",
+      "answer": "FALSE",
+      "inverted": true
+    },
+    {
+      "original": "B1 is the correct answer to: What is ESOL Entry Level 3 equivalent to in the Common European Framework?",
+      "transformed": "ESOL Entry Level 3 equivalent to in the Common European Framework is B1",
+      "answer": "TRUE",
+      "inverted": false
+    },
+    {
+      "original": "To look after the area in which you live is the correct answer to: Which of the following is a responsibility of UK residents?",
+      "transformed": "Which of the following is a responsibility of UK residents: To look after the area in which you live",
+      "answer": "TRUE",
+      "inverted": false
+    },
+    {
+      "original": "Over 30 is the correct answer to: How many test centres are there in the UK?",
+      "transformed": "How many test centres are there in the UK: Over 30",
+      "answer": "TRUE",
+      "inverted": false
+    },
+    {
+      "original": "No is the correct answer to: Is there a place for extremism in British society?",
+      "transformed": "Is there a place for extremism in British society: No",
+      "answer": "TRUE",
+      "inverted": false
+    },
+    {
+      "original": "A right to a fair trial is the correct answer to: What is one of the rights offered by the UK?",
+      "transformed": "one of the rights offered by the UK is A right to a fair trial",
+      "answer": "TRUE",
+      "inverted": false
+    },
+    {
+      "original": "Identification and proof of address is the correct answer to: What must you bring to take the Life in the UK test?",
+      "transformed": "What must you bring to take the Life in the UK test: Identification and proof of address",
+      "answer": "TRUE",
+      "inverted": false
+    },
+    {
+      "original": "No is the correct answer to: Will you need to remember dates of birth or death for the test?",
+      "transformed": "Will you need to remember dates of birth or death for the test: No",
+      "answer": "TRUE",
+      "inverted": false
+    },
+    {
+      "original": "Freedom of belief and religion is the correct answer to: What is one of the freedoms the UK offers its residents?",
+      "transformed": "one of the freedoms the UK offers its residents is Freedom of belief and religion",
+      "answer": "TRUE",
+      "inverted": false
+    },
+    {
+      "original": "Respect and obey the law is the correct answer to: Which UK responsibility requires residents to follow the law?",
+      "transformed": "Which UK responsibility requires residents to follow the law: Respect and obey the law",
+      "answer": "TRUE",
+      "inverted": false
+    },
+    {
+      "original": "Freedom of speech is the correct answer to: Which freedom protects people's ability to express opinions in the UK?",
+      "transformed": "Which freedom protects people's ability to express opinions in the UK: Freedom of speech",
+      "answer": "TRUE",
+      "inverted": false
+    },
+    {
+      "original": "At a registered and approved test centre is the correct answer to: Where must you take the Life in the UK test so the certificate is accepted?",
+      "transformed": "Where must you take the Life in the UK test so the certificate is accepted: At a registered and approved test centre",
+      "answer": "TRUE",
+      "inverted": false
+    },
+    {
+      "original": "Wales is the correct answer to: Which country's flag shows a dragon?",
+      "transformed": "Which country's flag shows a dragon: Wales",
+      "answer": "TRUE",
+      "inverted": false
+    },
+    {
+      "original": "No is the correct answer to: Is the Republic of Ireland part of the UK?",
+      "transformed": "It is FALSE that: Is the Republic of Ireland part of the UK: No",
+      "answer": "FALSE",
+      "inverted": true
+    },
+    {
+      "original": "British overseas territories is the correct answer to: What are St Helena and the Falkland Islands?",
+      "transformed": "What are St Helena and the Falkland Islands: British overseas territories",
+      "answer": "TRUE",
+      "inverted": false
+    },
+    {
+      "original": "The parliament sitting in Westminster is the correct answer to: Which parliament governs the UK?",
+      "transformed": "Which parliament governs the UK: The parliament sitting in Westminster",
+      "answer": "TRUE",
+      "inverted": false
+    },
+    {
+      "original": "£5, £10, £20, £50 is the correct answer to: What are the denominations of UK notes?",
+      "transformed": "What are the denominations of UK notes: £5, £10, £20, £50",
+      "answer": "TRUE",
+      "inverted": false
+    },
+    {
+      "original": "United Kingdom of Great Britain and Northern Ireland is the correct answer to: What is the official name of the UK?",
+      "transformed": "the official name of the UK is United Kingdom of Great Britain and Northern Ireland",
+      "answer": "TRUE",
+      "inverted": false
+    },
+    {
+      "original": "London is the correct answer to: What is the capital city of the UK?",
+      "transformed": "the capital city of the UK is NOT London",
+      "answer": "FALSE",
+      "inverted": true
+    },
+    {
+      "original": "1p, 2p, 5p, 10p, 20p, 50p, £1 and £2 is the correct answer to: What are the denominations of UK coins?",
+      "transformed": "What are the denominations of UK coins: 1p, 2p, 5p, 10p, 20p, 50p, £1 and £2",
+      "answer": "TRUE",
+      "inverted": false
+    },
+    {
+      "original": "The Union Flag (Union Jack) is the correct answer to: What is the name of the UK's national flag?",
+      "transformed": "the name of the UK's national flag is NOT The Union Flag (Union Jack)",
+      "answer": "FALSE",
+      "inverted": true
+    },
+    {
+      "original": "Everyone in the UK is the correct answer to: In this book, who is included when it says \"Britain\" or \"British Isles\"?",
+      "transformed": "It is FALSE that: In this book, who is included when it says \"Britain\" or \"British Isles\": Everyone in the UK",
+      "answer": "FALSE",
+      "inverted": true
+    },
+    {
+      "original": "An Iron Age hill fort is the correct answer to: What is Maiden Castle?",
+      "transformed": "Maiden Castle is NOT An Iron Age hill fort",
+      "answer": "FALSE",
+      "inverted": true
+    },
+    {
+      "original": "4,000 years ago is the correct answer to: Around when did people learn to make bronze?",
+      "transformed": "It is FALSE that: Around when did people learn to make bronze: 4,000 years ago",
+      "answer": "FALSE",
+      "inverted": true
+    },
+    {
+      "original": "Languages spoken by Angles and Saxons is the correct answer to: What is the basis of modern-day English?",
+      "transformed": "the basis of modern-day English is Languages spoken by Angles and Saxons",
+      "answer": "TRUE",
+      "inverted": false
+    },
+    {
+      "original": "AD 600 is the correct answer to: By when were Anglo-Saxon kingdoms established?",
+      "transformed": "By when were Anglo-Saxon kingdoms established: AD 600",
+      "answer": "TRUE",
+      "inverted": false
+    },
+    {
+      "original": "St Patrick is the correct answer to: Who became the patron saint of Ireland?",
+      "transformed": "Who became the patron saint of Ireland: St Patrick",
+      "answer": "TRUE",
+      "inverted": false
+    },
+    {
+      "original": "Kenneth MacAlpin is the correct answer to: Who united Scotland under one king?",
+      "transformed": "Who united Scotland under one king: Kenneth MacAlpin",
+      "answer": "TRUE",
+      "inverted": false
+    },
+    {
+      "original": "Ancestors of the Scottish people is the correct answer to: Who were the Picts?",
+      "transformed": "It is FALSE that: Who were the Picts: Ancestors of the Scottish people",
+      "answer": "FALSE",
+      "inverted": true
+    },
+    {
+      "original": "Dorset is the correct answer to: Where is Maiden Castle located?",
+      "transformed": "Where is Maiden Castle located: Dorset",
+      "answer": "TRUE",
+      "inverted": false
+    },
+    {
+      "original": "6,000 years ago is the correct answer to: When did the first farmers arrive in Britain?",
+      "transformed": "When did the first farmers arrive in Britain: 6,000 years ago",
+      "answer": "TRUE",
+      "inverted": false
+    },
+    {
+      "original": "Iona is the correct answer to: Where did St Columba found a monastery?",
+      "transformed": "Where did St Columba found a monastery: Iona",
+      "answer": "TRUE",
+      "inverted": false
+    },
+    {
+      "original": "Orkney, Scotland is the correct answer to: Where is Skara Brae located?",
+      "transformed": "Where is Skara Brae located: Orkney, Scotland",
+      "answer": "TRUE",
+      "inverted": false
+    },
+    {
+      "original": "A record of towns, villages and land ownership is the correct answer to: What is the Domesday Book?",
+      "transformed": "the Domesday Book is A record of towns, villages and land ownership",
+      "answer": "TRUE",
+      "inverted": false
+    },
+    {
+      "original": "The best preserved prehistoric village in northern Europe is the correct answer to: What is Skara Brae?",
+      "transformed": "Skara Brae is NOT The best preserved prehistoric village in northern Europe",
+      "answer": "FALSE",
+      "inverted": true
+    },
+    {
+      "original": "Wiltshire, England is the correct answer to: Where is Stonehenge located?",
+      "transformed": "Where is Stonehenge located: Wiltshire, England",
+      "answer": "TRUE",
+      "inverted": false
+    },
+    {
+      "original": "10,000 years ago is the correct answer to: When did Britain become permanently separated from the continent?",
+      "transformed": "It is FALSE that: When did Britain become permanently separated from the continent: 10,000 years ago",
+      "answer": "FALSE",
+      "inverted": true
+    },
+    {
+      "original": "Cnut (Canute) is the correct answer to: Which Viking king ruled England?",
+      "transformed": "It is FALSE that: Which Viking king ruled England: Cnut (Canute)",
+      "answer": "FALSE",
+      "inverted": true
+    },
+    {
+      "original": "St Augustine is the correct answer to: Who was the first Archbishop of Canterbury?",
+      "transformed": "the first Archbishop of Canterbury is NOT St Augustine",
+      "answer": "FALSE",
+      "inverted": true
+    },
+    {
+      "original": "Norman French and Anglo-Saxon is the correct answer to: What influenced the development of modern English?",
+      "transformed": "It is FALSE that: What influenced the development of modern English: Norman French and Anglo-Saxon",
+      "answer": "FALSE",
+      "inverted": true
+    },
+    {
+      "original": "Suffolk is the correct answer to: Where is Sutton Hoo?",
+      "transformed": "Where is Sutton Hoo: Suffolk",
+      "answer": "TRUE",
+      "inverted": false
+    },
+    {
+      "original": "Danelaw is the correct answer to: What was the area of Viking settlement called?",
+      "transformed": "the area of Viking settlement called is Danelaw",
+      "answer": "TRUE",
+      "inverted": false
+    },
+    {
+      "original": "Celtic is the correct answer to: What language family did Iron Age people speak?",
+      "transformed": "It is FALSE that: What language family did Iron Age people speak: Celtic",
+      "answer": "FALSE",
+      "inverted": true
+    },
+    {
+      "original": "As hunter-gatherers following herds is the correct answer to: How did Britain's earliest Stone Age inhabitants live?",
+      "transformed": "It is FALSE that: How did Britain's earliest Stone Age inhabitants live: As hunter-gatherers following herds",
+      "answer": "FALSE",
+      "inverted": true
+    },
+    {
+      "original": "About 6,000 years ago from south-east Europe is the correct answer to: When and from where did the first farmers come to Britain?",
+      "transformed": "When and from where did the first farmers come to Britain: About 6,000 years ago from south-east Europe",
+      "answer": "TRUE",
+      "inverted": false
+    },
+    {
+      "original": "A special gathering place for seasonal ceremonies is the correct answer to: What is Stonehenge thought to have been used for?",
+      "transformed": "Stonehenge thought to have been used for is NOT A special gathering place for seasonal ceremonies",
+      "answer": "FALSE",
+      "inverted": true
+    },
+    {
+      "original": "In round barrows is the correct answer to: How did Bronze Age people in Britain commonly bury their dead?",
+      "transformed": "How did Bronze Age people in Britain commonly bury their dead: In round barrows",
+      "answer": "TRUE",
+      "inverted": false
+    },
+    {
+      "original": "First coins minted in Britain, some with kings' names is the correct answer to: What marked the beginnings of British history in the Iron Age?",
+      "transformed": "What marked the beginnings of British history in the Iron Age: First coins minted in Britain, some with kings' names",
+      "answer": "TRUE",
+      "inverted": false
+    },
+    {
+      "original": "In the 3rd and 4th centuries AD is the correct answer to: When did Christian communities first appear in Britain?",
+      "transformed": "It is FALSE that: When did Christian communities first appear in Britain: In the 3rd and 4th centuries AD",
+      "answer": "FALSE",
+      "inverted": true
+    },
+    {
+      "original": "They mixed with local communities and some converted to Christianity is the correct answer to: How did Viking settlers integrate into Britain?",
+      "transformed": "How did Viking settlers integrate into Britain: They mixed with local communities and some converted to Christianity",
+      "answer": "TRUE",
+      "inverted": false
+    },
+    {
+      "original": "The Hundred Years War is the correct answer to: What was the long war between England and France called?",
+      "transformed": "the long war between England and France called is The Hundred Years War",
+      "answer": "TRUE",
+      "inverted": false
+    },
+    {
+      "original": "Wool is the correct answer to: What was England's most important export in the Middle Ages?",
+      "transformed": "England's most important export in the Middle Ages is Wool",
+      "answer": "TRUE",
+      "inverted": false
+    },
+    {
+      "original": "Annexed Wales to the Crown of England is the correct answer to: What did the Statute of Rhuddlan do?",
+      "transformed": "What did the Statute of Rhuddlan do: Annexed Wales to the Crown of England",
+      "answer": "TRUE",
+      "inverted": false
+    },
+    {
+      "original": "Conwy and Caernarvon is the correct answer to: Which castles were built to maintain English power in Wales?",
+      "transformed": "It is FALSE that: Which castles were built to maintain English power in Wales: Conwy and Caernarvon",
+      "answer": "FALSE",
+      "inverted": true
+    },
+    {
+      "original": "Henry Tudor (Henry VII) is the correct answer to: Who became king after the Battle of Bosworth Field?",
+      "transformed": "It is FALSE that: Who became king after the Battle of Bosworth Field: Henry Tudor (Henry VII)",
+      "answer": "FALSE",
+      "inverted": true
+    },
+    {
+      "original": "King Henry V of England is the correct answer to: Who won the Battle of Agincourt?",
+      "transformed": "It is FALSE that: Who won the Battle of Agincourt: King Henry V of England",
+      "answer": "FALSE",
+      "inverted": true
+    },
+    {
+      "original": "William Caxton is the correct answer to: Who was the first person in England to print books using a printing press?",
+      "transformed": "the first person in England to print books using a printing press is William Caxton",
+      "answer": "TRUE",
+      "inverted": false
+    },
+    {
+      "original": "Estates is the correct answer to: What were the three Houses of the Scottish Parliament called?",
+      "transformed": "What were the three Houses of the Scottish Parliament called: Estates",
+      "answer": "TRUE",
+      "inverted": false
+    },
+    {
+      "original": "The Battle of Bannockburn is the correct answer to: What was The Bruce about?",
+      "transformed": "The Bruce about is NOT The Battle of Bannockburn",
+      "answer": "FALSE",
+      "inverted": true
+    },
+    {
+      "original": "Knights and wealthy people from towns and cities is the correct answer to: Who sat in the House of Commons?",
+      "transformed": "It is FALSE that: Who sat in the House of Commons: Knights and wealthy people from towns and cities",
+      "answer": "FALSE",
+      "inverted": true
+    },
+    {
+      "original": "1400 is the correct answer to: By when was English the preferred language of the royal court?",
+      "transformed": "By when was English the preferred language of the royal court: 1400",
+      "answer": "TRUE",
+      "inverted": false
+    },
+    {
+      "original": "The Pale is the correct answer to: What was the area around Dublin controlled by the English called?",
+      "transformed": "the area around Dublin controlled by the English called is The Pale",
+      "answer": "TRUE",
+      "inverted": false
+    },
+    {
+      "original": "1284 is the correct answer to: In which year did Edward I introduce the Statute of Rhuddlan?",
+      "transformed": "It is FALSE that: In which year did Edward I introduce the Statute of Rhuddlan: 1284",
+      "answer": "FALSE",
+      "inverted": true
+    },
+    {
+      "original": "York Minster and Lincoln is the correct answer to: Which cathedrals have famous stained glass windows?",
+      "transformed": "Which cathedrals have famous stained glass windows: York Minster and Lincoln",
+      "answer": "TRUE",
+      "inverted": false
+    },
+    {
+      "original": "Feudalism is the correct answer to: What was the system of land ownership in the Middle Ages called?",
+      "transformed": "the system of land ownership in the Middle Ages called is Feudalism",
+      "answer": "TRUE",
+      "inverted": false
+    },
+    {
+      "original": "A red rose with a white rose inside is the correct answer to: What was the symbol of the House of Tudor?",
+      "transformed": "the symbol of the House of Tudor is A red rose with a white rose inside",
+      "answer": "TRUE",
+      "inverted": false
+    },
+    {
+      "original": "Serfs is the correct answer to: What were peasants who could not move away from their lord's land called?",
+      "transformed": "It is FALSE that: What were peasants who could not move away from their lord's land called: Serfs",
+      "answer": "FALSE",
+      "inverted": true
+    },
+    {
+      "original": "Nobility, great landowners and bishops is the correct answer to: Who sat in the House of Lords?",
+      "transformed": "Who sat in the House of Lords: Nobility, great landowners and bishops",
+      "answer": "TRUE",
+      "inverted": false
+    },
+    {
+      "original": "The Bruce is the correct answer to: What did John Barbour write?",
+      "transformed": "It is FALSE that: What did John Barbour write: The Bruce",
+      "answer": "FALSE",
+      "inverted": true
+    },
+    {
+      "original": "Three is the correct answer to: How many Houses did the Scottish Parliament have?",
+      "transformed": "It is FALSE that: How many Houses did the Scottish Parliament have: Three",
+      "answer": "FALSE",
+      "inverted": true
+    },
+    {
+      "original": "Law developed by judges through precedence is the correct answer to: What is common law?",
+      "transformed": "common law is Law developed by judges through precedence",
+      "answer": "TRUE",
+      "inverted": false
+    },
+    {
+      "original": "116 years is the correct answer to: How long did the Hundred Years War actually last?",
+      "transformed": "How long did the Hundred Years War actually last: 116 years",
+      "answer": "TRUE",
+      "inverted": false
+    },
+    {
+      "original": "The Statute of Rhuddlan is the correct answer to: Which statute annexed Wales to England in 1284?",
+      "transformed": "Which statute annexed Wales to England in 1284: The Statute of Rhuddlan",
+      "answer": "TRUE",
+      "inverted": false
+    },
+    {
+      "original": "Robert the Bruce is the correct answer to: Who led the Scots to victory at Bannockburn in 1314?",
+      "transformed": "It is FALSE that: Who led the Scots to victory at Bannockburn in 1314: Robert the Bruce",
+      "answer": "FALSE",
+      "inverted": true
+    },
+    {
+      "original": "About one third is the correct answer to: About what fraction of Britain's population died in the Black Death of 1348?",
+      "transformed": "It is FALSE that: About what fraction of Britain's population died in the Black Death of 1348: About one third",
+      "answer": "FALSE",
+      "inverted": true
+    },
+    {
+      "original": "Magna Carta is the correct answer to: Which 1215 charter first limited the king by law?",
+      "transformed": "It is FALSE that: Which 1215 charter first limited the king by law: Magna Carta",
+      "answer": "FALSE",
+      "inverted": true
+    },
+    {
+      "original": "The Battle of Agincourt is the correct answer to: In which battle of 1415 did Henry V defeat France?",
+      "transformed": "In which battle of 1415 did Henry V defeat France: The Battle of Agincourt",
+      "answer": "TRUE",
+      "inverted": false
+    },
+    {
+      "original": "The Canterbury Tales is the correct answer to: Which work by Chaucer was among the first printed by William Caxton?",
+      "transformed": "Which work by Chaucer was among the first printed by William Caxton: The Canterbury Tales",
+      "answer": "TRUE",
+      "inverted": false
+    },
+    {
+      "original": "Ulster is the correct answer to: Where did many Protestants settle in Ireland during James I's reign?",
+      "transformed": "Where did many Protestants settle in Ireland during James I's reign: Ulster",
+      "answer": "TRUE",
+      "inverted": false
+    },
+    {
+      "original": "The Commonwealth is the correct answer to: What was England called after the execution of Charles I?",
+      "transformed": "England called after the execution of Charles I is The Commonwealth",
+      "answer": "TRUE",
+      "inverted": false
+    },
+    {
+      "original": "The Book of Common Prayer is the correct answer to: What was written during Edward VI's reign for use in the Church of England?",
+      "transformed": "written during Edward VI's reign for use in the Church of England is The Book of Common Prayer",
+      "answer": "TRUE",
+      "inverted": false
+    },
+    {
+      "original": "The king is the correct answer to: Who would have the power to appoint bishops in the Church of England?",
+      "transformed": "Who would have the power to appoint bishops in the Church of England: The king",
+      "answer": "TRUE",
+      "inverted": false
+    },
+    {
+      "original": "James VI of Scotland is the correct answer to: Who succeeded Elizabeth I?",
+      "transformed": "Who succeeded Elizabeth I: James VI of Scotland",
+      "answer": "TRUE",
+      "inverted": false
+    },
+    {
+      "original": "1679 is the correct answer to: When was the Habeas Corpus Act passed?",
+      "transformed": "When was the Habeas Corpus Act passed: 1679",
+      "answer": "TRUE",
+      "inverted": false
+    },
+    {
+      "original": "Protestant is the correct answer to: What was Elizabeth I's religion?",
+      "transformed": "Elizabeth I's religion is NOT Protestant",
+      "answer": "FALSE",
+      "inverted": true
+    },
+    {
+      "original": "Whitehall is the correct answer to: Where was Charles I executed?",
+      "transformed": "Where was Charles I executed: Whitehall",
+      "answer": "TRUE",
+      "inverted": false
+    },
+    {
+      "original": "1660 is the correct answer to: When was Charles II restored to the throne?",
+      "transformed": "When was Charles II restored to the throne: 1660",
+      "answer": "TRUE",
+      "inverted": false
+    },
+    {
+      "original": "A movement against the authority of the Pope is the correct answer to: What was the Reformation?",
+      "transformed": "the Reformation is A movement against the authority of the Pope",
+      "answer": "TRUE",
+      "inverted": false
+    },
+    {
+      "original": "It's made up of the colours of the rainbow is the correct answer to: What did Isaac Newton discover about white light?",
+      "transformed": "What did Isaac Newton discover about white light: It's made up of the colours of the rainbow",
+      "answer": "TRUE",
+      "inverted": false
+    },
+    {
+      "original": "Catholic is the correct answer to: What was Mary I's religion?",
+      "transformed": "Mary I's religion is Catholic",
+      "answer": "TRUE",
+      "inverted": false
+    },
+    {
+      "original": "Samuel Pepys is the correct answer to: Who kept a famous diary recording the Great Fire and plague?",
+      "transformed": "It is FALSE that: Who kept a famous diary recording the Great Fire and plague: Samuel Pepys",
+      "answer": "FALSE",
+      "inverted": true
+    },
+    {
+      "original": "Admiral Nelson is the correct answer to: Who was in command of the English fleet at Trafalgar?",
+      "transformed": "in command of the English fleet at Trafalgar is Admiral Nelson",
+      "answer": "TRUE",
+      "inverted": false
+    },
+    {
+      "original": "Anne Boleyn is the correct answer to: Who was the mother of Queen Elizabeth I?",
+      "transformed": "the mother of Queen Elizabeth I is Anne Boleyn",
+      "answer": "TRUE",
+      "inverted": false
+    },
+    {
+      "original": "1588 is the correct answer to: In which year was the Spanish Armada defeated?",
+      "transformed": "In which year was the Spanish Armada defeated: 1588",
+      "answer": "TRUE",
+      "inverted": false
+    },
+    {
+      "original": "Eastern coast of America is the correct answer to: Where did English settlers first begin to colonise in Elizabeth I's time?",
+      "transformed": "Where did English settlers first begin to colonise in Elizabeth I's time: Eastern coast of America",
+      "answer": "TRUE",
+      "inverted": false
+    },
+    {
+      "original": "Philosophiae Naturalis Principia Mathematica is the correct answer to: What was Isaac Newton's most famous work?",
+      "transformed": "Isaac Newton's most famous work is NOT Philosophiae Naturalis Principia Mathematica",
+      "answer": "FALSE",
+      "inverted": true
+    },
+    {
+      "original": "Catherine Parr is the correct answer to: Which wife survived Henry VIII?",
+      "transformed": "Which wife survived Henry VIII: Catherine Parr",
+      "answer": "TRUE",
+      "inverted": false
+    },
+    {
+      "original": "A modern copy of theatres where Shakespeare's plays were performed is the correct answer to: What is the Globe Theatre?",
+      "transformed": "the Globe Theatre is NOT A modern copy of theatres where Shakespeare's plays were performed",
+      "answer": "FALSE",
+      "inverted": true
+    },
+    {
+      "original": "Sir Christopher Wren is the correct answer to: Who designed the new St Paul's Cathedral?",
+      "transformed": "It is FALSE that: Who designed the new St Paul's Cathedral: Sir Christopher Wren",
+      "answer": "FALSE",
+      "inverted": true
+    },
+    {
+      "original": "London is the correct answer to: Where is the Globe Theatre?",
+      "transformed": "Where is the Globe Theatre: London",
+      "answer": "TRUE",
+      "inverted": false
+    },
+    {
+      "original": "Catherine of Aragon is the correct answer to: Who was Henry VIII's first wife?",
+      "transformed": "Henry VIII's first wife is NOT Catherine of Aragon",
+      "answer": "FALSE",
+      "inverted": true
+    },
+    {
+      "original": "1642 is the correct answer to: When did the English Civil War begin?",
+      "transformed": "It is FALSE that: When did the English Civil War begin: 1642",
+      "answer": "FALSE",
+      "inverted": true
+    },
+    {
+      "original": "Six is the correct answer to: How many wives did Henry VIII have?",
+      "transformed": "How many wives did Henry VIII have: Six",
+      "answer": "TRUE",
+      "inverted": false
+    },
+    {
+      "original": "She couldn't give him a son to be his heir is the correct answer to: Why did Henry VIII want to divorce Catherine of Aragon?",
+      "transformed": "It is FALSE that: Why did Henry VIII want to divorce Catherine of Aragon: She couldn't give him a son to be his heir",
+      "answer": "FALSE",
+      "inverted": true
+    },
+    {
+      "original": "She persecuted Protestants is the correct answer to: Why was Mary I called 'Bloody Mary'?",
+      "transformed": "Why was Mary I called 'Bloody Mary': She persecuted Protestants",
+      "answer": "TRUE",
+      "inverted": false
+    },
+    {
+      "original": "Henry VIII is famous for marrying six times and breaking away from the Church of Rome.",
+      "transformed": "Henry VIII is famous for marrying six times and breaking away from the Church of Rome.",
+      "answer": "TRUE",
+      "inverted": false
+    },
+    {
+      "original": "Question: Henry VIII is famous for marrying six times and breaking away from the Church of Rome.",
+      "transformed": "It is FALSE that: Henry VIII is famous for marrying six times and breaking away from the Church of Rome.",
+      "answer": "FALSE",
+      "inverted": true
+    },
+    {
+      "original": "William Shakespeare is the correct answer to: Who wrote plays including Hamlet, Macbeth and Romeo and Juliet?",
+      "transformed": "Who wrote plays including Hamlet, Macbeth and Romeo and Juliet: William Shakespeare",
+      "answer": "TRUE",
+      "inverted": false
+    },
+    {
+      "original": "In an oak tree is the correct answer to: Where did Charles II famously hide from Cromwell's forces?",
+      "transformed": "It is FALSE that: Where did Charles II famously hide from Cromwell's forces: In an oak tree",
+      "answer": "FALSE",
+      "inverted": true
+    },
+    {
+      "original": "Catholic is the correct answer to: What was James II's religion?",
+      "transformed": "James II's religion is Catholic",
+      "answer": "TRUE",
+      "inverted": false
+    },
+    {
+      "original": "Plantations is the correct answer to: What were these settlements in Ireland called?",
+      "transformed": "It is FALSE that: What were these settlements in Ireland called: Plantations",
+      "answer": "FALSE",
+      "inverted": true
+    },
+    {
+      "original": "Hamlet is the correct answer to: Which Shakespeare play features 'To be or not to be'?",
+      "transformed": "Which Shakespeare play features 'To be or not to be': Hamlet",
+      "answer": "TRUE",
+      "inverted": false
+    },
+    {
+      "original": "The Divine Right of Kings is the correct answer to: What did Charles I believe in?",
+      "transformed": "What did Charles I believe in: The Divine Right of Kings",
+      "answer": "TRUE",
+      "inverted": false
+    },
+    {
+      "original": "Cavaliers is the correct answer to: What nickname were supporters of the king called in the Civil War?",
+      "transformed": "What nickname were supporters of the king called in the Civil War: Cavaliers",
+      "answer": "TRUE",
+      "inverted": false
+    },
+    {
+      "original": "The Royal Society is the correct answer to: Which organisation promoted 'natural knowledge'?",
+      "transformed": "It is FALSE that: Which organisation promoted 'natural knowledge': The Royal Society",
+      "answer": "FALSE",
+      "inverted": true
+    },
+    {
+      "original": "1560 is the correct answer to: When did the Church of Scotland become Protestant?",
+      "transformed": "When did the Church of Scotland become Protestant: 1560",
+      "answer": "TRUE",
+      "inverted": false
+    },
+    {
+      "original": "Church of England is the correct answer to: Which church did Henry VIII establish?",
+      "transformed": "Which church did Henry VIII establish: Church of England",
+      "answer": "TRUE",
+      "inverted": false
+    },
+    {
+      "original": "The Authorised Version is the correct answer to: What is the King James Bible also called?",
+      "transformed": "the King James Bible also called is The Authorised Version",
+      "answer": "TRUE",
+      "inverted": false
+    },
+    {
+      "original": "William of Orange becoming king is the correct answer to: What event in 1688 is known as the Glorious Revolution?",
+      "transformed": "It is FALSE that: What event in 1688 is known as the Glorious Revolution: William of Orange becoming king",
+      "answer": "FALSE",
+      "inverted": true
+    },
+    {
+      "original": "The Golden Hind is the correct answer to: What was Sir Francis Drake's ship called?",
+      "transformed": "Sir Francis Drake's ship called is The Golden Hind",
+      "answer": "TRUE",
+      "inverted": false
+    },
+    {
+      "original": "11 years is the correct answer to: For how many years did Charles I rule without Parliament?",
+      "transformed": "For how many years did Charles I rule without Parliament: 11 years",
+      "answer": "TRUE",
+      "inverted": false
+    },
+    {
+      "original": "Jane Seymour is the correct answer to: Which wife gave Henry VIII a son, Edward?",
+      "transformed": "Which wife gave Henry VIII a son, Edward: Jane Seymour",
+      "answer": "TRUE",
+      "inverted": false
+    },
+    {
+      "original": "The Spanish Armada is the correct answer to: Which fleet did England defeat in 1588?",
+      "transformed": "It is FALSE that: Which fleet did England defeat in 1588: The Spanish Armada",
+      "answer": "FALSE",
+      "inverted": true
+    },
+    {
+      "original": "A group of Protestants advocating strict religious doctrine is the correct answer to: What were the Puritans?",
+      "transformed": "It is FALSE that: What were the Puritans: A group of Protestants advocating strict religious doctrine",
+      "answer": "FALSE",
+      "inverted": true
+    },
+    {
+      "original": "Edmund Halley is the correct answer to: Who predicted the return of Halley's Comet?",
+      "transformed": "It is FALSE that: Who predicted the return of Halley's Comet: Edmund Halley",
+      "answer": "FALSE",
+      "inverted": true
+    },
+    {
+      "original": "Oliver Cromwell is the correct answer to: Who was given the title of Lord Protector?",
+      "transformed": "given the title of Lord Protector is Oliver Cromwell",
+      "answer": "TRUE",
+      "inverted": false
+    },
+    {
+      "original": "Anne Boleyn and Catherine Howard is the correct answer to: Which two of Henry VIII's wives were executed?",
+      "transformed": "Which two of Henry VIII's wives were executed: Anne Boleyn and Catherine Howard",
+      "answer": "TRUE",
+      "inverted": false
+    },
+    {
+      "original": "Edward VI is the correct answer to: Which young king authorized the Book of Common Prayer?",
+      "transformed": "It is FALSE that: Which young king authorized the Book of Common Prayer: Edward VI",
+      "answer": "FALSE",
+      "inverted": true
+    },
+    {
+      "original": "1588 is the correct answer to: In what year did Elizabeth I defeat the Spanish Armada?",
+      "transformed": "It is FALSE that: In what year did Elizabeth I defeat the Spanish Armada: 1588",
+      "answer": "FALSE",
+      "inverted": true
+    },
+    {
+      "original": "Mary I is the correct answer to: Which monarch was nicknamed \"Bloody Mary\"?",
+      "transformed": "Which monarch was nicknamed \"Bloody Mary\": Mary I",
+      "answer": "TRUE",
+      "inverted": false
+    },
+    {
+      "original": "James I is the correct answer to: Under which monarch was the Authorised (King James) Bible produced?",
+      "transformed": "It is FALSE that: Under which monarch was the Authorised (King James) Bible produced: James I",
+      "answer": "FALSE",
+      "inverted": true
+    },
+    {
+      "original": "The Habeas Corpus Act is the correct answer to: Which 1679 law ensured prisoners must be presented in court?",
+      "transformed": "It is FALSE that: Which 1679 law ensured prisoners must be presented in court: The Habeas Corpus Act",
+      "answer": "FALSE",
+      "inverted": true
+    },
+    {
+      "original": "The Royal Society is the correct answer to: Which scientific society founded under Charles II included Halley and Newton?",
+      "transformed": "It is FALSE that: Which scientific society founded under Charles II included Halley and Newton: The Royal Society",
+      "answer": "FALSE",
+      "inverted": true
+    },
+    {
+      "original": "Philosophiae Naturalis Principia Mathematica is the correct answer to: Which work set out the law of universal gravitation?",
+      "transformed": "It is FALSE that: Which work set out the law of universal gravitation: Philosophiae Naturalis Principia Mathematica",
+      "answer": "FALSE",
+      "inverted": true
+    },
+    {
+      "original": "William of Orange (William III) is the correct answer to: Who defeated James II at the Battle of the Boyne in 1690?",
+      "transformed": "Who defeated James II at the Battle of the Boyne in 1690: William of Orange (William III)",
+      "answer": "TRUE",
+      "inverted": false
+    },
+    {
+      "original": "1689 is the correct answer to: When was the Bill of Rights enacted?",
+      "transformed": "When was the Bill of Rights enacted: 1689",
+      "answer": "TRUE",
+      "inverted": false
+    },
+    {
+      "original": "Battle of Trafalgar is the correct answer to: Where did Admiral Nelson defeat the French fleet?",
+      "transformed": "It is FALSE that: Where did Admiral Nelson defeat the French fleet: Battle of Trafalgar",
+      "answer": "FALSE",
+      "inverted": true
+    },
+    {
+      "original": "The Iron Duke is the correct answer to: What was the Duke of Wellington known as?",
+      "transformed": "the Duke of Wellington known as is NOT The Iron Duke",
+      "answer": "FALSE",
+      "inverted": true
+    },
+    {
+      "original": "Battle of Culloden is the correct answer to: Where was the Jacobite army defeated?",
+      "transformed": "Where was the Jacobite army defeated: Battle of Culloden",
+      "answer": "TRUE",
+      "inverted": false
+    },
+    {
+      "original": "James Watt is the correct answer to: Who was a pioneer of steam power?",
+      "transformed": "a pioneer of steam power is James Watt",
+      "answer": "TRUE",
+      "inverted": false
+    },
+    {
+      "original": "Germany is the correct answer to: Where did the Hanoverian kings come from?",
+      "transformed": "It is FALSE that: Where did the Hanoverian kings come from: Germany",
+      "answer": "FALSE",
+      "inverted": true
+    },
+    {
+      "original": "The Duke of Wellington is the correct answer to: Who defeated Napoleon at Waterloo?",
+      "transformed": "It is FALSE that: Who defeated Napoleon at Waterloo: The Duke of Wellington",
+      "answer": "FALSE",
+      "inverted": true
+    },
+    {
+      "original": "St Patrick is the correct answer to: What is the patron saint of Northern Ireland?",
+      "transformed": "the patron saint of Northern Ireland is NOT St Patrick",
+      "answer": "FALSE",
+      "inverted": true
+    },
+    {
+      "original": "Almost 64 years is the correct answer to: How long did Queen Victoria reign?",
+      "transformed": "How long did Queen Victoria reign: Almost 64 years",
+      "answer": "TRUE",
+      "inverted": false
+    },
+    {
+      "original": "The clan system was destroyed is the correct answer to: What happened after the Battle of Culloden?",
+      "transformed": "What happened after the Battle of Culloden: The clan system was destroyed",
+      "answer": "TRUE",
+      "inverted": false
+    },
+    {
+      "original": "The Union Jack is the correct answer to: What is another name for the Union Flag?",
+      "transformed": "another name for the Union Flag is The Union Jack",
+      "answer": "TRUE",
+      "inverted": false
+    },
+    {
+      "original": "Napoleon Bonaparte is the correct answer to: Who led the French army in the wars with France?",
+      "transformed": "It is FALSE that: Who led the French army in the wars with France: Napoleon Bonaparte",
+      "answer": "FALSE",
+      "inverted": true
+    },
+    {
+      "original": "Duke of Wellington is the correct answer to: Who defeated Napoleon at the Battle of Waterloo?",
+      "transformed": "Who defeated Napoleon at the Battle of Waterloo: Duke of Wellington",
+      "answer": "TRUE",
+      "inverted": false
+    },
+    {
+      "original": "1746 is the correct answer to: In which year was the Battle of Culloden?",
+      "transformed": "It is FALSE that: In which year was the Battle of Culloden: 1746",
+      "answer": "FALSE",
+      "inverted": true
+    },
+    {
+      "original": "1707 is the correct answer to: When was the Act of Union between England and Scotland agreed?",
+      "transformed": "It is FALSE that: When was the Act of Union between England and Scotland agreed: 1707",
+      "answer": "FALSE",
+      "inverted": true
+    },
+    {
+      "original": "Robert Walpole is the correct answer to: Who was Britain's first 'Prime Minister'?",
+      "transformed": "Britain's first 'Prime Minister' is Robert Walpole",
+      "answer": "TRUE",
+      "inverted": false
+    },
+    {
+      "original": "Bonnie Prince Charlie and The Young Pretender is the correct answer to: What was Charles Edward Stuart also known as?",
+      "transformed": "Charles Edward Stuart also known as is Bonnie Prince Charlie and The Young Pretender",
+      "answer": "TRUE",
+      "inverted": false
+    },
+    {
+      "original": "1833 is the correct answer to: When was slavery abolished throughout the British Empire?",
+      "transformed": "It is FALSE that: When was slavery abolished throughout the British Empire: 1833",
+      "answer": "FALSE",
+      "inverted": true
+    },
+    {
+      "original": "Nelson's Column is the correct answer to: Which famous column commemorates Admiral Nelson?",
+      "transformed": "Which famous column commemorates Admiral Nelson: Nelson's Column",
+      "answer": "TRUE",
+      "inverted": false
+    },
+    {
+      "original": "A diagonal red cross on a white ground is the correct answer to: What color is St Patrick's cross?",
+      "transformed": "What color is St Patrick's cross: A diagonal red cross on a white ground",
+      "answer": "TRUE",
+      "inverted": false
+    },
+    {
+      "original": "Wales was already united with England when the flag was created is the correct answer to: Why doesn't the Welsh dragon appear on the Union Flag?",
+      "transformed": "Why doesn't the Welsh dragon appear on the Union Flag: Wales was already united with England when the flag was created",
+      "answer": "TRUE",
+      "inverted": false
+    },
+    {
+      "original": "A diagonal white cross on a blue ground is the correct answer to: What color is St Andrew's cross?",
+      "transformed": "It is FALSE that: What color is St Andrew's cross: A diagonal white cross on a blue ground",
+      "answer": "FALSE",
+      "inverted": true
+    },
+    {
+      "original": "1776 is the correct answer to: When did the American colonies declare independence?",
+      "transformed": "When did the American colonies declare independence: 1776",
+      "answer": "TRUE",
+      "inverted": false
+    },
+    {
+      "original": "South Africa is the correct answer to: In which part of the British Empire did the Boer War of 1899–1902 take place?",
+      "transformed": "It is FALSE that: In which part of the British Empire did the Boer War of 1899–1902 take place: South Africa",
+      "answer": "FALSE",
+      "inverted": true
+    },
+    {
+      "original": "1807 is the correct answer to: When did Britain's slave trade become illegal?",
+      "transformed": "It is FALSE that: When did Britain's slave trade become illegal: 1807",
+      "answer": "FALSE",
+      "inverted": true
+    },
+    {
+      "original": "Robert Burns is the correct answer to: Who wrote 'Auld Lang Syne'?",
+      "transformed": "It is FALSE that: Who wrote 'Auld Lang Syne': Robert Burns",
+      "answer": "FALSE",
+      "inverted": true
+    },
+    {
+      "original": "1707 is the correct answer to: When did the Act of Union create the Kingdom of Great Britain?",
+      "transformed": "When did the Act of Union create the Kingdom of Great Britain: 1707",
+      "answer": "TRUE",
+      "inverted": false
+    },
+    {
+      "original": "1776 is the correct answer to: When did Britain's colonies in America declare independence?",
+      "transformed": "It is FALSE that: When did Britain's colonies in America declare independence: 1776",
+      "answer": "FALSE",
+      "inverted": true
+    },
+    {
+      "original": "George I is the correct answer to: Who succeeded Queen Anne?",
+      "transformed": "Who succeeded Queen Anne: George I",
+      "answer": "TRUE",
+      "inverted": false
+    },
+    {
+      "original": "George Stephenson is the correct answer to: Who invented the Rocket?",
+      "transformed": "It is FALSE that: Who invented the Rocket: George Stephenson",
+      "answer": "FALSE",
+      "inverted": true
+    },
+    {
+      "original": "Newspapers began to report on proceedings is the correct answer to: What changed about Parliament during Anne's reign?",
+      "transformed": "What changed about Parliament during Anne's reign: Newspapers began to report on proceedings",
+      "answer": "TRUE",
+      "inverted": false
+    },
+    {
+      "original": "Robert Walpole is the correct answer to: Who was the first Prime Minister?",
+      "transformed": "the first Prime Minister is Robert Walpole",
+      "answer": "TRUE",
+      "inverted": false
+    },
+    {
+      "original": "It abolished is the correct answer to: What happened to the Scottish Parliament after the Act of Union?",
+      "transformed": "What happened to the Scottish Parliament after the Act of Union: It abolished",
+      "answer": "TRUE",
+      "inverted": false
+    },
+    {
+      "original": "A red cross on a white ground is the correct answer to: What color is St George's cross?",
+      "transformed": "What color is St George's cross: A red cross on a white ground",
+      "answer": "TRUE",
+      "inverted": false
+    },
+    {
+      "original": "1702 is the correct answer to: When did Anne become queen?",
+      "transformed": "When did Anne become queen: 1702",
+      "answer": "TRUE",
+      "inverted": false
+    },
+    {
+      "original": "St George, St Andrew and St Patrick is the correct answer to: What are the three crosses on the Union Flag?",
+      "transformed": "It is FALSE that: What are the three crosses on the Union Flag: St George, St Andrew and St Patrick",
+      "answer": "FALSE",
+      "inverted": true
+    },
+    {
+      "original": "Adam Smith is the correct answer to: Who wrote The Wealth of Nations?",
+      "transformed": "Who wrote The Wealth of Nations: Adam Smith",
+      "answer": "TRUE",
+      "inverted": false
+    },
+    {
+      "original": "The Jacobites is the correct answer to: Who supported James II's son in claiming the throne?",
+      "transformed": "Who supported James II's son in claiming the throne: The Jacobites",
+      "answer": "TRUE",
+      "inverted": false
+    },
+    {
+      "original": "1689 is the correct answer to: In what year was the Bill of Rights passed?",
+      "transformed": "In what year was the Bill of Rights passed: 1689",
+      "answer": "TRUE",
+      "inverted": false
+    },
+    {
+      "original": "1695 is the correct answer to: From which year could newspapers operate without a government licence?",
+      "transformed": "From which year could newspapers operate without a government licence: 1695",
+      "answer": "TRUE",
+      "inverted": false
+    },
+    {
+      "original": "Huguenots is the correct answer to: Which refugee group arrived from France between 1680 and 1720?",
+      "transformed": "Which refugee group arrived from France between 1680 and 1720: Huguenots",
+      "answer": "TRUE",
+      "inverted": false
+    },
+    {
+      "original": "Sake Dean Mahomet in 1810 is the correct answer to: Who opened Britain's first curry house, and when?",
+      "transformed": "Who opened Britain's first curry house, and when: Sake Dean Mahomet in 1810",
+      "answer": "TRUE",
+      "inverted": false
+    },
+    {
+      "original": "The Emancipation Act of 1833 is the correct answer to: Which Act abolished slavery across the British Empire?",
+      "transformed": "Which Act abolished slavery across the British Empire: The Emancipation Act of 1833",
+      "answer": "TRUE",
+      "inverted": false
+    },
+    {
+      "original": "Winston Churchill is the correct answer to: Who was the British Prime Minister during much of WWII?",
+      "transformed": "the British Prime Minister during much of WWII is NOT Winston Churchill",
+      "answer": "FALSE",
+      "inverted": true
+    },
+    {
+      "original": "Over 2 million is the correct answer to: How many British soldiers died in WWI?",
+      "transformed": "How many British soldiers died in WWI: Over 2 million",
+      "answer": "TRUE",
+      "inverted": false
+    },
+    {
+      "original": "Poppies is the correct answer to: What do people wear on Remembrance Day?",
+      "transformed": "It is FALSE that: What do people wear on Remembrance Day: Poppies",
+      "answer": "FALSE",
+      "inverted": true
+    },
+    {
+      "original": "Armistice Day is the correct answer to: What is Remembrance Day also known as?",
+      "transformed": "Remembrance Day also known as is NOT Armistice Day",
+      "answer": "FALSE",
+      "inverted": true
+    },
+    {
+      "original": "Victory in Europe is the correct answer to: What does VE Day stand for?",
+      "transformed": "What does VE Day stand for: Victory in Europe",
+      "answer": "TRUE",
+      "inverted": false
+    },
+    {
+      "original": "1921 is the correct answer to: When did Ireland become two countries?",
+      "transformed": "When did Ireland become two countries: 1921",
+      "answer": "TRUE",
+      "inverted": false
+    },
+    {
+      "original": "8 May is the correct answer to: When is VE Day celebrated?",
+      "transformed": "It is FALSE that: When is VE Day celebrated: 8 May",
+      "answer": "FALSE",
+      "inverted": true
+    },
+    {
+      "original": "At 11:00 am on 11 November is the correct answer to: When do people observe a two-minute silence?",
+      "transformed": "When do people observe a two-minute silence: At 11:00 am on 11 November",
+      "answer": "TRUE",
+      "inverted": false
+    },
+    {
+      "original": "11.00 am on 11th November 1918 is the correct answer to: At what time on which date did the First World War end?",
+      "transformed": "At what time on which date did the First World War end: 11.00 am on 11th November 1918",
+      "answer": "TRUE",
+      "inverted": false
+    },
+    {
+      "original": "German bombing of British cities is the correct answer to: What was the Blitz?",
+      "transformed": "the Blitz is German bombing of British cities",
+      "answer": "TRUE",
+      "inverted": false
+    },
+    {
+      "original": "Penicillin is the correct answer to: What did Alexander Fleming discover?",
+      "transformed": "What did Alexander Fleming discover: Penicillin",
+      "answer": "TRUE",
+      "inverted": false
+    },
+    {
+      "original": "'We shall fight on the beaches' is the correct answer to: What famous speeches did Churchill make?",
+      "transformed": "It is FALSE that: What famous speeches did Churchill make: 'We shall fight on the beaches'",
+      "answer": "FALSE",
+      "inverted": true
+    },
+    {
+      "original": "No man's land is the correct answer to: What were the areas between the trenches called?",
+      "transformed": "It is FALSE that: What were the areas between the trenches called: No man's land",
+      "answer": "FALSE",
+      "inverted": true
+    },
+    {
+      "original": "6 June 1944 is the correct answer to: On which date did Allied forces land in Normandy (D-Day)?",
+      "transformed": "On which date did Allied forces land in Normandy (D-Day): 6 June 1944",
+      "answer": "TRUE",
+      "inverted": false
+    },
+    {
+      "original": "8 May 1945 is the correct answer to: When did Germany surrender, ending the war in Europe?",
+      "transformed": "When did Germany surrender, ending the war in Europe: 8 May 1945",
+      "answer": "TRUE",
+      "inverted": false
+    },
+    {
+      "original": "Emmeline Pankhurst is the correct answer to: Who was the leader of the suffragette movement?",
+      "transformed": "the leader of the suffragette movement is NOT Emmeline Pankhurst",
+      "answer": "FALSE",
+      "inverted": true
+    },
+    {
+      "original": "Alexander Fleming is the correct answer to: Who discovered penicillin?",
+      "transformed": "Who discovered penicillin: Alexander Fleming",
+      "answer": "TRUE",
+      "inverted": false
+    },
+    {
+      "original": "Winston Churchill is the correct answer to: Who became Prime Minister in 1940?",
+      "transformed": "It is FALSE that: Who became Prime Minister in 1940: Winston Churchill",
+      "answer": "FALSE",
+      "inverted": true
+    },
+    {
+      "original": "1945 is the correct answer to: When did WWII end?",
+      "transformed": "It is FALSE that: When did WWII end: 1945",
+      "answer": "FALSE",
+      "inverted": true
+    },
+    {
+      "original": "1916 is the correct answer to: In what year was conscription introduced in WWI?",
+      "transformed": "It is FALSE that: In what year was conscription introduced in WWI: 1916",
+      "answer": "FALSE",
+      "inverted": true
+    },
+    {
+      "original": "About 60,000 is the correct answer to: About how many British soldiers were lost on the first day of the Somme?",
+      "transformed": "About how many British soldiers were lost on the first day of the Somme: About 60,000",
+      "answer": "TRUE",
+      "inverted": false
+    },
+    {
+      "original": "1922 is the correct answer to: When did the BBC begin regular radio broadcasts?",
+      "transformed": "When did the BBC begin regular radio broadcasts: 1922",
+      "answer": "TRUE",
+      "inverted": false
+    },
+    {
+      "original": "Over 300,000 is the correct answer to: Approximately how many men were evacuated from Dunkirk in 1940?",
+      "transformed": "Approximately how many men were evacuated from Dunkirk in 1940: Over 300,000",
+      "answer": "TRUE",
+      "inverted": false
+    },
+    {
+      "original": "The Japanese attack on Pearl Harbor in December 1941 is the correct answer to: Which attack brought the US into WWII, and when?",
+      "transformed": "Which attack brought the US into WWII, and when: The Japanese attack on Pearl Harbor in December 1941",
+      "answer": "TRUE",
+      "inverted": false
+    },
+    {
+      "original": "31 January 2020 is the correct answer to: When did the UK officially leave the European Union?",
+      "transformed": "It is FALSE that: When did the UK officially leave the European Union: 31 January 2020",
+      "answer": "FALSE",
+      "inverted": true
+    },
+    {
+      "original": "The welfare state is the correct answer to: What did Clement Attlee's government introduce?",
+      "transformed": "What did Clement Attlee's government introduce: The welfare state",
+      "answer": "TRUE",
+      "inverted": false
+    },
+    {
+      "original": "Clement Attlee is the correct answer to: Who was elected as Prime Minister immediately after WWII?",
+      "transformed": "elected as Prime Minister immediately after WWII is NOT Clement Attlee",
+      "answer": "FALSE",
+      "inverted": true
+    },
+    {
+      "original": "Which TWO of the following were British inventions of the 20th century.",
+      "transformed": "Which TWO of the following were British inventions of the 20th century.",
+      "answer": "TRUE",
+      "inverted": false
+    },
+    {
+      "original": "1973 is the correct answer to: When did Britain join the European Economic Community (EEC)?",
+      "transformed": "When did Britain join the European Economic Community (EEC): 1973",
+      "answer": "TRUE",
+      "inverted": false
+    },
+    {
+      "original": "2016 is the correct answer to: When was the Brexit referendum held?",
+      "transformed": "When was the Brexit referendum held: 2016",
+      "answer": "TRUE",
+      "inverted": false
+    },
+    {
+      "original": "1947 is the correct answer to: When did India and Pakistan become independent?",
+      "transformed": "It is FALSE that: When did India and Pakistan become independent: 1947",
+      "answer": "FALSE",
+      "inverted": true
+    },
+    {
+      "original": "Tim Berners-Lee is the correct answer to: Who invented the World Wide Web?",
+      "transformed": "Who invented the World Wide Web: Tim Berners-Lee",
+      "answer": "TRUE",
+      "inverted": false
+    },
+    {
+      "original": "1979-1990 is the correct answer to: When did Margaret Thatcher serve as Prime Minister?",
+      "transformed": "When did Margaret Thatcher serve as Prime Minister: 1979-1990",
+      "answer": "TRUE",
+      "inverted": false
+    },
+    {
+      "original": "The Caribbean is the correct answer to: Where did the 'Windrush generation' come from?",
+      "transformed": "Where did the 'Windrush generation' come from: The Caribbean",
+      "answer": "TRUE",
+      "inverted": false
+    },
+    {
+      "original": "Free healthcare for all residents is the correct answer to: What does the NHS provide?",
+      "transformed": "It is FALSE that: What does the NHS provide: Free healthcare for all residents",
+      "answer": "FALSE",
+      "inverted": true
+    },
+    {
+      "original": "British scientists were the first to clone a mammal successfully.",
+      "transformed": "British scientists were the first to clone a mammal successfully.",
+      "answer": "TRUE",
+      "inverted": false
+    },
+    {
+      "original": "Question: British scientists were the first to clone a mammal successfully.",
+      "transformed": "British scientists were the first to clone a mammal successfully.",
+      "answer": "TRUE",
+      "inverted": false
+    },
+    {
+      "original": "Margaret Thatcher is the correct answer to: Who was the first woman Prime Minister of the UK?",
+      "transformed": "the first woman Prime Minister of the UK is Margaret Thatcher",
+      "answer": "TRUE",
+      "inverted": false
+    },
+    {
+      "original": "Over 50 is the correct answer to: How many countries are in the Commonwealth?",
+      "transformed": "It is FALSE that: How many countries are in the Commonwealth: Over 50",
+      "answer": "FALSE",
+      "inverted": true
+    },
+    {
+      "original": "An association of countries supporting democracy and development is the correct answer to: What is the Commonwealth?",
+      "transformed": "the Commonwealth is An association of countries supporting democracy and development",
+      "answer": "TRUE",
+      "inverted": false
+    },
+    {
+      "original": "1973 is the correct answer to: When did the UK join the European Economic Community (EEC)?",
+      "transformed": "When did the UK join the European Economic Community (EEC): 1973",
+      "answer": "TRUE",
+      "inverted": false
+    },
+    {
+      "original": "2016 is the correct answer to: In what year did people vote to leave the EU?",
+      "transformed": "It is FALSE that: In what year did people vote to leave the EU: 2016",
+      "answer": "FALSE",
+      "inverted": true
+    },
+    {
+      "original": "1979 is the correct answer to: In which year did Margaret Thatcher become Prime Minister?",
+      "transformed": "It is FALSE that: In which year did Margaret Thatcher become Prime Minister: 1979",
+      "answer": "FALSE",
+      "inverted": true
+    },
+    {
+      "original": "The 1942 Beveridge Report: Want, Disease, Ignorance, Squalor, Idleness is the correct answer to: Which report named the five \"Giant Evils\" and what were they?",
+      "transformed": "It is FALSE that: Which report named the five \"Giant Evils\" and what were they: The 1942 Beveridge Report: Want, Disease, Ignorance, Squalor, Idleness",
+      "answer": "FALSE",
+      "inverted": true
+    },
+    {
+      "original": "Aneurin (Nye) Bevan; 1948 is the correct answer to: Who introduced the NHS, and when did it start?",
+      "transformed": "Who introduced the NHS, and when did it start: Aneurin (Nye) Bevan; 1948",
+      "answer": "TRUE",
+      "inverted": false
+    },
+    {
+      "original": "1949 is the correct answer to: In which year did the UK help found NATO?",
+      "transformed": "In which year did the UK help found NATO: 1949",
+      "answer": "TRUE",
+      "inverted": false
+    },
+    {
+      "original": "The 1944 Butler (Education) Act is the correct answer to: Which Act brought in free secondary education in England and Wales, and when?",
+      "transformed": "Which Act brought in free secondary education in England and Wales, and when: The 1944 Butler (Education) Act",
+      "answer": "TRUE",
+      "inverted": false
+    },
+    {
+      "original": "1969 is the correct answer to: In what year did Concorde make its first flight?",
+      "transformed": "In what year did Concorde make its first flight: 1969",
+      "answer": "TRUE",
+      "inverted": false
+    },
+    {
+      "original": "1982 is the correct answer to: In which year did the Falklands War take place?",
+      "transformed": "It is FALSE that: In which year did the Falklands War take place: 1982",
+      "answer": "FALSE",
+      "inverted": true
+    },
+    {
+      "original": "London is the correct answer to: Where is the National Gallery?",
+      "transformed": "Where is the National Gallery: London",
+      "answer": "TRUE",
+      "inverted": false
+    },
+    {
+      "original": "Yes, the Church of Scotland is the correct answer to: Is there an established Church in Scotland?",
+      "transformed": "Is there an established Church in Scotland: Yes, the Church of Scotland",
+      "answer": "TRUE",
+      "inverted": false
+    },
+    {
+      "original": "Rose is the correct answer to: What flower is associated with England?",
+      "transformed": "What flower is associated with England: Rose",
+      "answer": "TRUE",
+      "inverted": false
+    },
+    {
+      "original": "Less than 3% is the correct answer to: What percentage of the UK population makes up Northern Ireland?",
+      "transformed": "What percentage of the UK population makes up Northern Ireland: Less than 3%",
+      "answer": "TRUE",
+      "inverted": false
+    },
+    {
+      "original": "Some parts of the Highlands and Islands is the correct answer to: Where in Scotland is Gaelic spoken?",
+      "transformed": "Where in Scotland is Gaelic spoken: Some parts of the Highlands and Islands",
+      "answer": "TRUE",
+      "inverted": false
+    },
+    {
+      "original": "1 March is the correct answer to: When is St David's Day?",
+      "transformed": "When is St David's Day: 1 March",
+      "answer": "TRUE",
+      "inverted": false
+    },
+    {
+      "original": "The monarch (as Supreme Governor) is the correct answer to: Who is the head of the Church of England?",
+      "transformed": "the head of the Church of England is The monarch (as Supreme Governor)",
+      "answer": "TRUE",
+      "inverted": false
+    },
+    {
+      "original": "18 is the correct answer to: What is the minimum age to buy alcohol in the UK?",
+      "transformed": "the minimum age to buy alcohol in the UK is NOT 18",
+      "answer": "FALSE",
+      "inverted": true
+    },
+    {
+      "original": "Improved living standards and better health care is the correct answer to: What has caused people in the UK to live longer?",
+      "transformed": "It is FALSE that: What has caused people in the UK to live longer: Improved living standards and better health care",
+      "answer": "FALSE",
+      "inverted": true
+    },
+    {
+      "original": "The Church of England is the correct answer to: What is the established Church in England?",
+      "transformed": "the established Church in England is NOT The Church of England",
+      "answer": "FALSE",
+      "inverted": true
+    },
+    {
+      "original": "White is the correct answer to: What is the most common ethnic description in UK surveys?",
+      "transformed": "the most common ethnic description in UK surveys is White",
+      "answer": "TRUE",
+      "inverted": false
+    },
+    {
+      "original": "2012 is the correct answer to: In which year did the UK host the Olympic Games most recently?",
+      "transformed": "In which year did the UK host the Olympic Games most recently: 2012",
+      "answer": "TRUE",
+      "inverted": false
+    },
+    {
+      "original": "Christians is the correct answer to: Which is the largest religious group in the UK?",
+      "transformed": "Which is the largest religious group in the UK: Christians",
+      "answer": "TRUE",
+      "inverted": false
+    },
+    {
+      "original": "The Beatles and The Rolling Stones is the correct answer to: Which famous British bands are mentioned?",
+      "transformed": "Which famous British bands are mentioned: The Beatles and The Rolling Stones",
+      "answer": "TRUE",
+      "inverted": false
+    },
+    {
+      "original": "Impact on the cost of pensions and health care is the correct answer to: What impact does an ageing population have?",
+      "transformed": "What impact does an ageing population have: Impact on the cost of pensions and health care",
+      "answer": "TRUE",
+      "inverted": false
+    },
+    {
+      "original": "Contemporary art is the correct answer to: What is the Turner Prize awarded for?",
+      "transformed": "the Turner Prize awarded for is NOT Contemporary art",
+      "answer": "FALSE",
+      "inverted": true
+    },
+    {
+      "original": "Muslims is the correct answer to: What is the second largest religious group?",
+      "transformed": "the second largest religious group is Muslims",
+      "answer": "TRUE",
+      "inverted": false
+    },
+    {
+      "original": "23 April is the correct answer to: When is St George's Day?",
+      "transformed": "It is FALSE that: When is St George's Day: 23 April",
+      "answer": "FALSE",
+      "inverted": true
+    },
+    {
+      "original": "About 870 miles (around 1,400 km) is the correct answer to: About how far is it from John O'Groats to Land's End?",
+      "transformed": "About how far is it from John O'Groats to Land's End: About 870 miles (around 1,400 km)",
+      "answer": "TRUE",
+      "inverted": false
+    },
+    {
+      "original": "100 pence is the correct answer to: How many pence are in one pound sterling?",
+      "transformed": "It is FALSE that: How many pence are in one pound sterling: 100 pence",
+      "answer": "FALSE",
+      "inverted": true
+    },
+    {
+      "original": "25% is the correct answer to: What share of people reported no religion in the 2011 Census?",
+      "transformed": "What share of people reported no religion in the 2011 Census: 25%",
+      "answer": "TRUE",
+      "inverted": false
+    },
+    {
+      "original": "The Archbishop of Canterbury is the correct answer to: Who is the spiritual leader of the Church of England?",
+      "transformed": "the spiritual leader of the Church of England is NOT The Archbishop of Canterbury",
+      "answer": "FALSE",
+      "inverted": true
+    },
+    {
+      "original": "A two-minute silence and wreaths at the Cenotaph is the correct answer to: What happens at 11:00 am on Remembrance Day?",
+      "transformed": "It is FALSE that: What happens at 11:00 am on Remembrance Day: A two-minute silence and wreaths at the Cenotaph",
+      "answer": "FALSE",
+      "inverted": true
+    },
+    {
+      "original": "Over 4 miles is the correct answer to: How long is the Grand National horse race?",
+      "transformed": "How long is the Grand National horse race: Over 4 miles",
+      "answer": "TRUE",
+      "inverted": false
+    },
+    {
+      "original": "Guy Fawkes Night is the correct answer to: What is Bonfire Night also called?",
+      "transformed": "Bonfire Night also called is Guy Fawkes Night",
+      "answer": "TRUE",
+      "inverted": false
+    },
+    {
+      "original": "Every summer on a bank holiday weekend in August is the correct answer to: When does the Notting Hill Carnival take place?",
+      "transformed": "It is FALSE that: When does the Notting Hill Carnival take place: Every summer on a bank holiday weekend in August",
+      "answer": "FALSE",
+      "inverted": true
+    },
+    {
+      "original": "Berkshire is the correct answer to: Where is Royal Ascot held?",
+      "transformed": "Where is Royal Ascot held: Berkshire",
+      "answer": "TRUE",
+      "inverted": false
+    },
+    {
+      "original": "Scottish New Year celebrations is the correct answer to: What is Hogmanay?",
+      "transformed": "Hogmanay is Scottish New Year celebrations",
+      "answer": "TRUE",
+      "inverted": false
+    },
+    {
+      "original": "31 October is the correct answer to: When is Halloween?",
+      "transformed": "When is Halloween: 31 October",
+      "answer": "TRUE",
+      "inverted": false
+    },
+    {
+      "original": "Wimbledon is the correct answer to: What is the name of the famous tennis tournament held in the UK?",
+      "transformed": "the name of the famous tennis tournament held in the UK is NOT Wimbledon",
+      "answer": "FALSE",
+      "inverted": true
+    },
+    {
+      "original": "Aintree, near Liverpool is the correct answer to: Where is the Grand National held?",
+      "transformed": "Where is the Grand National held: Aintree, near Liverpool",
+      "answer": "TRUE",
+      "inverted": false
+    },
+    {
+      "original": "Guy Fawkes tried to blow up Parliament is the correct answer to: What happened on 5 November 1605?",
+      "transformed": "What happened on 5 November 1605: Guy Fawkes tried to blow up Parliament",
+      "answer": "TRUE",
+      "inverted": false
+    },
+    {
+      "original": "Up to 5 days is the correct answer to: How many days can a Test Match last in cricket?",
+      "transformed": "It is FALSE that: How many days can a Test Match last in cricket: Up to 5 days",
+      "answer": "FALSE",
+      "inverted": true
+    },
+    {
+      "original": "London is the correct answer to: Where is the Notting Hill Carnival held?",
+      "transformed": "It is FALSE that: Where is the Notting Hill Carnival held: London",
+      "answer": "FALSE",
+      "inverted": true
+    },
+    {
+      "original": "Dress up and go trick-or-treating is the correct answer to: What do children do on Halloween?",
+      "transformed": "It is FALSE that: What do children do on Halloween: Dress up and go trick-or-treating",
+      "answer": "FALSE",
+      "inverted": true
+    },
+    {
+      "original": "Golf is the correct answer to: Which sport is particularly associated with Scotland?",
+      "transformed": "It is FALSE that: Which sport is particularly associated with Scotland: Golf",
+      "answer": "FALSE",
+      "inverted": true
+    },
+    {
+      "original": "A cricket competition between England and Australia is the correct answer to: What is the Ashes?",
+      "transformed": "the Ashes is NOT A cricket competition between England and Australia",
+      "answer": "FALSE",
+      "inverted": true
+    },
+    {
+      "original": "Wimbledon is the correct answer to: What is the most famous tennis tournament in the UK?",
+      "transformed": "the most famous tennis tournament in the UK is Wimbledon",
+      "answer": "TRUE",
+      "inverted": false
+    },
+    {
+      "original": "30 November is the correct answer to: When is St Andrew's Day?",
+      "transformed": "When is St Andrew's Day: 30 November",
+      "answer": "TRUE",
+      "inverted": false
+    },
+    {
+      "original": "Shrove Tuesday or Pancake Day is the correct answer to: What is the day before Lent called?",
+      "transformed": "the day before Lent called is NOT Shrove Tuesday or Pancake Day",
+      "answer": "FALSE",
+      "inverted": true
+    },
+    {
+      "original": "America's Cup is the correct answer to: Which famous sailing event started in 1851?",
+      "transformed": "Which famous sailing event started in 1851: America's Cup",
+      "answer": "TRUE",
+      "inverted": false
+    },
+    {
+      "original": "St Patrick's Day in Northern Ireland is the correct answer to: Only one patron saint's day is an official holiday in the UK. Which one?",
+      "transformed": "Only one patron saint's day is an official holiday in the UK. Which one: St Patrick's Day in Northern Ireland",
+      "answer": "TRUE",
+      "inverted": false
+    },
+    {
+      "original": "Giant greenhouses in Cornwall is the correct answer to: What is the Eden Project?",
+      "transformed": "the Eden Project is NOT Giant greenhouses in Cornwall",
+      "answer": "FALSE",
+      "inverted": true
+    },
+    {
+      "original": "London is the correct answer to: Where were the first rules of modern football established?",
+      "transformed": "Where were the first rules of modern football established: London",
+      "answer": "TRUE",
+      "inverted": false
+    },
+    {
+      "original": "5 November is the correct answer to: When is Bonfire Night?",
+      "transformed": "It is FALSE that: When is Bonfire Night: 5 November",
+      "answer": "FALSE",
+      "inverted": true
+    },
+    {
+      "original": "Golf is the correct answer to: Which sport is associated with St Andrews in Scotland?",
+      "transformed": "It is FALSE that: Which sport is associated with St Andrews in Scotland: Golf",
+      "answer": "FALSE",
+      "inverted": true
+    },
+    {
+      "original": "26 December is the correct answer to: When is Boxing Day?",
+      "transformed": "When is Boxing Day: 26 December",
+      "answer": "TRUE",
+      "inverted": false
+    },
+    {
+      "original": "17 March is the correct answer to: When is St Patrick's Day?",
+      "transformed": "When is St Patrick's Day: 17 March",
+      "answer": "TRUE",
+      "inverted": false
+    },
+    {
+      "original": "St Andrews is the correct answer to: Where is the home of golf?",
+      "transformed": "Where is the home of golf: St Andrews",
+      "answer": "TRUE",
+      "inverted": false
+    },
+    {
+      "original": "25 December is the correct answer to: When is Christmas Day?",
+      "transformed": "When is Christmas Day: 25 December",
+      "answer": "TRUE",
+      "inverted": false
+    },
+    {
+      "original": "A rented plot to grow fruit and vegetables is the correct answer to: What is an allotment used for?",
+      "transformed": "an allotment used for is A rented plot to grow fruit and vegetables",
+      "answer": "TRUE",
+      "inverted": false
+    },
+    {
+      "original": "The daffodil is the correct answer to: What is the national flower of Wales?",
+      "transformed": "the national flower of Wales is The daffodil",
+      "answer": "TRUE",
+      "inverted": false
+    },
+    {
+      "original": "15 is the correct answer to: How many national parks are there in England, Wales and Scotland?",
+      "transformed": "How many national parks are there in England, Wales and Scotland: 15",
+      "answer": "TRUE",
+      "inverted": false
+    },
+    {
+      "original": "1895 is the correct answer to: When was the National Trust founded?",
+      "transformed": "It is FALSE that: When was the National Trust founded: 1895",
+      "answer": "FALSE",
+      "inverted": true
+    },
+    {
+      "original": "About 50 million years is the correct answer to: About how old is the Giant's Causeway formation?",
+      "transformed": "It is FALSE that: About how old is the Giant's Causeway formation: About 50 million years",
+      "answer": "FALSE",
+      "inverted": true
+    },
+    {
+      "original": "443 feet (135 metres) is the correct answer to: How tall is the London Eye?",
+      "transformed": "How tall is the London Eye: 443 feet (135 metres)",
+      "answer": "TRUE",
+      "inverted": false
+    },
+    {
+      "original": "Insurance is the correct answer to: What must drivers have by law?",
+      "transformed": "It is FALSE that: What must drivers have by law: Insurance",
+      "answer": "FALSE",
+      "inverted": true
+    },
+    {
+      "original": "18 is the correct answer to: At what age must you pay Council Tax?",
+      "transformed": "It is FALSE that: At what age must you pay Council Tax: 18",
+      "answer": "FALSE",
+      "inverted": true
+    },
+    {
+      "original": "Members of Parliament (MPs) is the correct answer to: Who sits in the House of Commons?",
+      "transformed": "It is FALSE that: Who sits in the House of Commons: Members of Parliament (MPs)",
+      "answer": "FALSE",
+      "inverted": true
+    },
+    {
+      "original": "Scotland, Wales and Northern Ireland is the correct answer to: Which nations have devolved administrations?",
+      "transformed": "Which nations have devolved administrations: Scotland, Wales and Northern Ireland",
+      "answer": "TRUE",
+      "inverted": false
+    },
+    {
+      "original": "House of Lords and House of Commons is the correct answer to: What are the two chambers of Parliament?",
+      "transformed": "It is FALSE that: What are the two chambers of Parliament: House of Lords and House of Commons",
+      "answer": "FALSE",
+      "inverted": true
+    },
+    {
+      "original": "No, they can only delay them is the correct answer to: Can the House of Lords stop new laws?",
+      "transformed": "Can the House of Lords stop new laws: No, they can only delay them",
+      "answer": "TRUE",
+      "inverted": false
+    },
+    {
+      "original": "Cardiff is the correct answer to: Where does the Senedd sit?",
+      "transformed": "Where does the Senedd sit: Cardiff",
+      "answer": "TRUE",
+      "inverted": false
+    },
+    {
+      "original": "18 is the correct answer to: What is the voting age in the UK?",
+      "transformed": "the voting age in the UK is 18",
+      "answer": "TRUE",
+      "inverted": false
+    },
+    {
+      "original": "10 Downing Street is the correct answer to: What is the official home of the Prime Minister?",
+      "transformed": "the official home of the Prime Minister is NOT 10 Downing Street",
+      "answer": "FALSE",
+      "inverted": true
+    },
+    {
+      "original": "17 is the correct answer to: What is the minimum age to drive a car in the UK?",
+      "transformed": "the minimum age to drive a car in the UK is NOT 17",
+      "answer": "FALSE",
+      "inverted": true
+    },
+    {
+      "original": "The Prime Minister is the correct answer to: What is the leader of the government called?",
+      "transformed": "the leader of the government called is The Prime Minister",
+      "answer": "TRUE",
+      "inverted": false
+    },
+    {
+      "original": "15 is the correct answer to: How many members does a jury have in Scotland?",
+      "transformed": "How many members does a jury have in Scotland: 15",
+      "answer": "TRUE",
+      "inverted": false
+    },
+    {
+      "original": "646 is the correct answer to: How many parliamentary constituencies are there?",
+      "transformed": "How many parliamentary constituencies are there: 646",
+      "answer": "TRUE",
+      "inverted": false
+    },
+    {
+      "original": "The Supreme Court is the correct answer to: What is the highest court in the UK?",
+      "transformed": "the highest court in the UK is The Supreme Court",
+      "answer": "TRUE",
+      "inverted": false
+    },
+    {
+      "original": "Yes, EU and Commonwealth citizens can is the correct answer to: Can EU citizens stand as candidates in local elections?",
+      "transformed": "It is FALSE that: Can EU citizens stand as candidates in local elections: Yes, EU and Commonwealth citizens can",
+      "answer": "FALSE",
+      "inverted": true
+    },
+    {
+      "original": "Yes is the correct answer to: Is it illegal to carry a weapon for self-defence in the UK?",
+      "transformed": "Is it illegal to carry a weapon for self-defence in the UK: Yes",
+      "answer": "TRUE",
+      "inverted": false
+    },
+    {
+      "original": "The King is the correct answer to: Who is the head of state in the UK?",
+      "transformed": "the head of state in the UK is The King",
+      "answer": "TRUE",
+      "inverted": false
+    },
+    {
+      "original": "101 is the correct answer to: What is the number for non-emergency police matters?",
+      "transformed": "the number for non-emergency police matters is 101",
+      "answer": "TRUE",
+      "inverted": false
+    },
+    {
+      "original": "When the PM answers questions from MPs is the correct answer to: What is Prime Minister's Questions (PMQs)?",
+      "transformed": "Prime Minister's Questions (PMQs) is NOT When the PM answers questions from MPs",
+      "answer": "FALSE",
+      "inverted": true
+    },
+    {
+      "original": "Westminster is the correct answer to: Where does the UK Parliament sit?",
+      "transformed": "Where does the UK Parliament sit: Westminster",
+      "answer": "TRUE",
+      "inverted": false
+    },
+    {
+      "original": "King Charles III is the correct answer to: Who is the current monarch?",
+      "transformed": "the current monarch is King Charles III",
+      "answer": "TRUE",
+      "inverted": false
+    },
+    {
+      "original": "18 is the correct answer to: What is the minimum age to stand as an MP?",
+      "transformed": "the minimum age to stand as an MP is NOT 18",
+      "answer": "FALSE",
+      "inverted": true
+    },
+    {
+      "original": "Royal Assent is the correct answer to: What must all bills receive to become law?",
+      "transformed": "What must all bills receive to become law: Royal Assent",
+      "answer": "TRUE",
+      "inverted": false
+    },
+    {
+      "original": "Innocent until proven guilty is the correct answer to: What are the two principles of British criminal law?",
+      "transformed": "What are the two principles of British criminal law: Innocent until proven guilty",
+      "answer": "TRUE",
+      "inverted": false
+    },
+    {
+      "original": "£1,000 is the correct answer to: What is the maximum fine for not having a TV licence?",
+      "transformed": "the maximum fine for not having a TV licence is NOT £1,000",
+      "answer": "FALSE",
+      "inverted": true
+    },
+    {
+      "original": "54 is the correct answer to: How many member countries does the Commonwealth have?",
+      "transformed": "How many member countries does the Commonwealth have: 54",
+      "answer": "TRUE",
+      "inverted": false
+    },
+    {
+      "original": "60 is the correct answer to: How many Senedd members (SMs) are there in Wales?",
+      "transformed": "How many Senedd members (SMs) are there in Wales: 60",
+      "answer": "TRUE",
+      "inverted": false
+    },
+    {
+      "original": "Elected by voters is the correct answer to: How are MPs chosen?",
+      "transformed": "It is FALSE that: How are MPs chosen: Elected by voters",
+      "answer": "FALSE",
+      "inverted": true
+    },
+    {
+      "original": "The Speaker is the correct answer to: Who chairs debates in the House of Commons?",
+      "transformed": "Who chairs debates in the House of Commons: The Speaker",
+      "answer": "TRUE",
+      "inverted": false
+    },
+    {
+      "original": "Yes, although it receives some state funding is the correct answer to: Is the BBC independent of government?",
+      "transformed": "It is FALSE that: Is the BBC independent of government: Yes, although it receives some state funding",
+      "answer": "FALSE",
+      "inverted": true
+    },
+    {
+      "original": "999 is the correct answer to: What is the emergency services number in the UK?",
+      "transformed": "the emergency services number in the UK is NOT 999",
+      "answer": "FALSE",
+      "inverted": true
+    },
+    {
+      "original": "Yes, members can speak in either Welsh or English is the correct answer to: Can members of the Senedd speak in Welsh?",
+      "transformed": "It is FALSE that: Can members of the Senedd speak in Welsh: Yes, members can speak in either Welsh or English",
+      "answer": "FALSE",
+      "inverted": true
+    },
+    {
+      "original": "The King is the correct answer to: Who opens the new parliamentary session each year?",
+      "transformed": "Who opens the new parliamentary session each year: The King",
+      "answer": "TRUE",
+      "inverted": false
+    },
+    {
+      "original": "Two is the correct answer to: How many chambers does Parliament have?",
+      "transformed": "It is FALSE that: How many chambers does Parliament have: Two",
+      "answer": "FALSE",
+      "inverted": true
+    },
+    {
+      "original": "A television licence is the correct answer to: What must you have to watch TV or use BBC iPlayer?",
+      "transformed": "It is FALSE that: What must you have to watch TV or use BBC iPlayer: A television licence",
+      "answer": "FALSE",
+      "inverted": true
+    },
+    {
+      "original": "Constitutional monarchy is the correct answer to: What type of monarchy does the UK have?",
+      "transformed": "What type of monarchy does the UK have: Constitutional monarchy",
+      "answer": "TRUE",
+      "inverted": false
+    },
+    {
+      "original": "Blind people is the correct answer to: Who can get a 50% discount on their TV licence?",
+      "transformed": "Who can get a 50% discount on their TV licence: Blind people",
+      "answer": "TRUE",
+      "inverted": false
+    },
+    {
+      "original": "Edinburgh is the correct answer to: Where does the Scottish Parliament sit?",
+      "transformed": "Where does the Scottish Parliament sit: Edinburgh",
+      "answer": "TRUE",
+      "inverted": false
+    },
+    {
+      "original": "Parliamentary democracy is the correct answer to: What type of democracy is the UK?",
+      "transformed": "It is FALSE that: What type of democracy is the UK: Parliamentary democracy",
+      "answer": "FALSE",
+      "inverted": true
+    },
+    {
+      "original": "18-70 (18-75 in England and Wales) is the correct answer to: At what age can you do jury service?",
+      "transformed": "It is FALSE that: At what age can you do jury service: 18-70 (18-75 in England and Wales)",
+      "answer": "FALSE",
+      "inverted": true
+    },
+    {
+      "original": "129 is the correct answer to: How many Members of the Scottish Parliament (MSPs) are there?",
+      "transformed": "It is FALSE that: How many Members of the Scottish Parliament (MSPs) are there: 129",
+      "answer": "FALSE",
+      "inverted": true
+    },
+    {
+      "original": "68 is the correct answer to: At what age do people usually receive the state retirement pension?",
+      "transformed": "It is FALSE that: At what age do people usually receive the state retirement pension: 68",
+      "answer": "FALSE",
+      "inverted": true
+    },
+    {
+      "original": "British Broadcasting Corporation is the correct answer to: What does BBC stand for?",
+      "transformed": "It is FALSE that: What does BBC stand for: British Broadcasting Corporation",
+      "answer": "FALSE",
+      "inverted": true
+    },
+    {
+      "original": "Six is the correct answer to: How many key reforms did the Chartists demand?",
+      "transformed": "How many key reforms did the Chartists demand: Six",
+      "answer": "TRUE",
+      "inverted": false
+    },
+    {
+      "original": "1969 is the correct answer to: In what year was the UK voting age lowered to 18?",
+      "transformed": "It is FALSE that: In what year was the UK voting age lowered to 18: 1969",
+      "answer": "FALSE",
+      "inverted": true
+    },
+    {
+      "original": "It is not in one document; it is built from laws and conventions over time is the correct answer to: Why is the UK constitution called \"unwritten\"?",
+      "transformed": "Why is the UK constitution called \"unwritten\": It is not in one document; it is built from laws and conventions over time",
+      "answer": "TRUE",
+      "inverted": false
+    },
+    {
+      "original": "Chequers is the correct answer to: What is the Prime Minister's official country house called?",
+      "transformed": "the Prime Minister's official country house called is Chequers",
+      "answer": "TRUE",
+      "inverted": false
+    },
+    {
+      "original": "90 is the correct answer to: How many MLAs sit in the Northern Ireland Assembly?",
+      "transformed": "It is FALSE that: How many MLAs sit in the Northern Ireland Assembly: 90",
+      "answer": "FALSE",
+      "inverted": true
+    },
+    {
+      "original": "November 2012 is the correct answer to: When were Police and Crime Commissioners first elected?",
+      "transformed": "It is FALSE that: When were Police and Crime Commissioners first elected: November 2012",
+      "answer": "FALSE",
+      "inverted": true
+    },
+    {
+      "original": "Open 7:00 am–10:00 pm; voters must show acceptable photo ID is the correct answer to: What are UK polling station hours and what must voters show?",
+      "transformed": "What are UK polling station hours and what must voters show: Open 7:00 am–10:00 pm; voters must show acceptable photo ID",
+      "answer": "TRUE",
+      "inverted": false
+    },
+    {
+      "original": "It is a criminal offence, including arranging it abroad is the correct answer to: What does UK law say about FGM?",
+      "transformed": "What does UK law say about FGM: It is a criminal offence, including arranging it abroad",
+      "answer": "TRUE",
+      "inverted": false
+    }
+  ]
+}

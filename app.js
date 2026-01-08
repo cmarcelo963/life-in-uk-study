@@ -779,7 +779,7 @@ function renderQuestion() {
                     const subject = originalQuestion.replace(/^what (is|was)\s+/i, '');
                     questionText = `${subject.charAt(0).toUpperCase() + subject.slice(1)} is NOT ${answer}.`;
                 } else {
-                    // For other types, prepend "It is false that" or use NOT
+                    // For all other question types, use "It is FALSE that:"
                     questionText = `It is FALSE that: ${originalQuestion}: ${answer}.`;
                 }
             } else {
@@ -794,11 +794,13 @@ function renderQuestion() {
                     const subject = originalQuestion.replace(/^what (is|was)\s+/i, '');
                     questionText = `${subject.charAt(0).toUpperCase() + subject.slice(1)} is ${answer}.`;
                 } else if (lowerQuestion.startsWith('which')) {
-                    questionText = `${answer}: ${originalQuestion.replace(/^which\s+/i, '')}.`;
+                    // Keep "Which" for context
+                    questionText = `${originalQuestion}: ${answer}.`;
                 } else if (lowerQuestion.startsWith('when')) {
-                    questionText = `${originalQuestion.replace(/^when\s+/i, '')}: ${answer}.`;
+                    // Keep "When" for context
+                    questionText = `${originalQuestion}: ${answer}.`;
                 } else if (lowerQuestion.startsWith('why')) {
-                    questionText = `${originalQuestion.replace(/^why\s+/i, '')}: ${answer}.`;
+                    questionText = `${originalQuestion}: ${answer}.`;
                 } else if (lowerQuestion.startsWith('how many')) {
                     questionText = `${originalQuestion}: ${answer}.`;
                 } else if (lowerQuestion.startsWith('where')) {
