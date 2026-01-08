@@ -1683,6 +1683,7 @@ function setupAdventureButtons() {
                 saveAdventureProgress();
                 updateAdventureProgressDisplay();
                 renderAdventureTopic();
+                // Stay at bottom when going back - no scroll
             }
         });
     }
@@ -1692,6 +1693,8 @@ function setupAdventureButtons() {
         nextBtn.replaceWith(nextBtn.cloneNode(true));
         document.getElementById('adventureNext').addEventListener('click', () => {
             advanceToNextTopic();
+            // Scroll to top when advancing
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         });
     }
 }
