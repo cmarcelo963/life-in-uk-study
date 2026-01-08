@@ -752,19 +752,64 @@ function renderQuestion() {
 
     // Set question text with formatting for boolean questions
     let questionText = question.question;
+    let expectedAnswer = question.answer;
     
     // Transform awkward boolean format "[ANSWER] is the correct answer to: [QUESTION]" 
-    // into a cleaner format by removing the meta-question part
+    // into a cleaner format by combining both parts into a statement
     if (question.type === 'boolean') {
         const match = questionText.match(/^(.+?)\s+is the correct answer to:\s+(.+)$/i);
         if (match) {
             const answer = match[1].trim();
-            const originalQuestion = match[2].trim();
+            const originalQuestion = match[2].trim().replace(/\?$/, '');
             
-            // Create a simple statement: "Answer - Question"
-            // E.g., "24 questions - How many questions are in the Life in the UK test?"
-            // Or better: Just show the answer as the statement
-            questionText = answer.charAt(0).toUpperCase() + answer.slice(1) + (answer.endsWith('.') ? '' : '.');
+            // Randomly invert 40% of boolean questions to add variety (since all originals are "true")
+            // Use a deterministic random based on question text so same question always gets same treatment
+            const hash = question.question.split('').reduce((acc, char) => acc + char.charCodeAt(0), 0);
+            const shouldInvert = (hash % 100) < 40;
+            
+            if (shouldInvert) {
+                expectedAnswer = false;
+                // Add "not" or modify the statement to make it false
+                const lowerQuestion = originalQuestion.toLowerCase();
+                
+                if (lowerQuestion.startsWith('who is') || lowerQuestion.startsWith('who was')) {
+                    const subject = originalQuestion.replace(/^who (is|was)\s+/i, '');
+                    questionText = `${subject.charAt(0).toUpperCase() + subject.slice(1)} is NOT ${answer}.`;
+                } else if (lowerQuestion.startsWith('what is') || lowerQuestion.startsWith('what was')) {
+                    const subject = originalQuestion.replace(/^what (is|was)\s+/i, '');
+                    questionText = `${subject.charAt(0).toUpperCase() + subject.slice(1)} is NOT ${answer}.`;
+                } else {
+                    // For other types, prepend "It is false that" or use NOT
+                    questionText = `It is FALSE that: ${originalQuestion}: ${answer}.`;
+                }
+            } else {
+                // Keep as true statement
+                const lowerQuestion = originalQuestion.toLowerCase();
+                
+                // Try to create natural statements
+                if (lowerQuestion.startsWith('who is') || lowerQuestion.startsWith('who was')) {
+                    const subject = originalQuestion.replace(/^who (is|was)\s+/i, '');
+                    questionText = `${subject.charAt(0).toUpperCase() + subject.slice(1)} is ${answer}.`;
+                } else if (lowerQuestion.startsWith('what is') || lowerQuestion.startsWith('what was')) {
+                    const subject = originalQuestion.replace(/^what (is|was)\s+/i, '');
+                    questionText = `${subject.charAt(0).toUpperCase() + subject.slice(1)} is ${answer}.`;
+                } else if (lowerQuestion.startsWith('which')) {
+                    questionText = `${answer}: ${originalQuestion.replace(/^which\s+/i, '')}.`;
+                } else if (lowerQuestion.startsWith('when')) {
+                    questionText = `${originalQuestion.replace(/^when\s+/i, '')}: ${answer}.`;
+                } else if (lowerQuestion.startsWith('why')) {
+                    questionText = `${originalQuestion.replace(/^why\s+/i, '')}: ${answer}.`;
+                } else if (lowerQuestion.startsWith('how many')) {
+                    questionText = `${originalQuestion}: ${answer}.`;
+                } else if (lowerQuestion.startsWith('where')) {
+                    questionText = `${originalQuestion}: ${answer}.`;
+                } else {
+                    questionText = `${originalQuestion}: ${answer}.`;
+                }
+            }
+            
+            // Store the expected answer for this rendering
+            question._renderedAnswer = expectedAnswer;
         }
     }
     
@@ -919,7 +964,10 @@ function renderTextInput() {
 // Check Answer
 function checkAnswer(userAnswer) {
     const question = state.currentQuestions[state.currentQuestionIndex];
-    const correctAnswer = question.answer || question.answers;
+    // For boolean questions that were inverted during rendering, use the rendered answer
+    const correctAnswer = question.type === 'boolean' && question._renderedAnswer !== undefined 
+        ? question._renderedAnswer 
+        : (question.answer || question.answers);
 
     let isCorrect = false;
 
