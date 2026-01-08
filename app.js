@@ -102,31 +102,54 @@ async function saveProgress() {
 // Load Question Statistics from Backend
 async function loadQuestionStats() {
     try {
-        const response = await fetch('http://localhost:3000/api/stats');
-        const data = await response.json();
-        state.questionStats = data || {};
+        // Try localStorage first (works on mobile)
+        const saved = localStorage.getItem('lifeInUK_questionStats');
+        if (saved) {
+            state.questionStats = JSON.parse(saved);
+            console.log('Loaded question stats from localStorage:', Object.keys(state.questionStats).length, 'entries');
+        } else {
+            state.questionStats = {};
+        }
+        
+        // Try to sync with backend if available (desktop only)
+        try {
+            const response = await fetch('http://localhost:3000/api/stats', { timeout: 1000 });
+            if (response.ok) {
+                const data = await response.json();
+                state.questionStats = data || state.questionStats;
+                console.log('Synced question stats from backend');
+            }
+        } catch (backendError) {
+            // Backend not available (expected on mobile), continue with localStorage
+            console.log('Backend not available, using localStorage');
+        }
     } catch (error) {
         console.error('Error loading stats:', error);
-        // Fallback to localStorage
-        const saved = localStorage.getItem('lifeInUK_questionStats');
-        state.questionStats = saved ? JSON.parse(saved) : {};
+        state.questionStats = {};
     }
 }
 
 // Save Question Statistics to Backend
 async function saveQuestionStats() {
+    // Always save to localStorage first (works on mobile)
+    try {
+        localStorage.setItem('lifeInUK_questionStats', JSON.stringify(state.questionStats));
+        console.log('Saved question stats to localStorage');
+    } catch (localError) {
+        console.error('Error saving to localStorage:', localError);
+    }
+    
+    // Try to sync with backend if available (desktop only)
     try {
         await fetch('http://localhost:3000/api/stats', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(state.questionStats)
         });
-        // Also save to localStorage as backup
-        localStorage.setItem('lifeInUK_questionStats', JSON.stringify(state.questionStats));
+        console.log('Synced question stats to backend');
     } catch (error) {
-        console.error('Error saving stats:', error);
-        // Fallback to localStorage only
-        localStorage.setItem('lifeInUK_questionStats', JSON.stringify(state.questionStats));
+        // Backend not available (expected on mobile), localStorage already saved
+        console.log('Backend not available for sync');
     }
 }
 
@@ -193,26 +216,52 @@ function isQuestionRetired(questionId) {
 // Load Practice Statistics from Backend
 async function loadPracticeStats() {
     try {
-        const response = await fetch('http://localhost:3000/api/practice-stats');
-        const data = await response.json();
-        state.practiceStats = data || { seenAll: false, questionsSeen: {} };
-    } catch (error) {
+        // Try localStorage first (works on mobile)
         const saved = localStorage.getItem('lifeInUK_practiceStats');
-        state.practiceStats = saved ? JSON.parse(saved) : { seenAll: false, questionsSeen: {} };
+        if (saved) {
+            state.practiceStats = JSON.parse(saved);
+            console.log('Loaded practice stats from localStorage');
+        } else {
+            state.practiceStats = { seenAll: false, questionsSeen: {} };
+        }
+        
+        // Try to sync with backend if available (desktop only)
+        try {
+            const response = await fetch('http://localhost:3000/api/practice-stats', { timeout: 1000 });
+            if (response.ok) {
+                const data = await response.json();
+                state.practiceStats = data || state.practiceStats;
+                console.log('Synced practice stats from backend');
+            }
+        } catch (backendError) {
+            console.log('Backend not available, using localStorage');
+        }
+    } catch (error) {
+        console.error('Error loading practice stats:', error);
+        state.practiceStats = { seenAll: false, questionsSeen: {} };
     }
 }
 
 // Save Practice Statistics
 async function savePracticeStats() {
+    // Always save to localStorage first (works on mobile)
+    try {
+        localStorage.setItem('lifeInUK_practiceStats', JSON.stringify(state.practiceStats));
+        console.log('Saved practice stats to localStorage');
+    } catch (localError) {
+        console.error('Error saving to localStorage:', localError);
+    }
+    
+    // Try to sync with backend if available (desktop only)
     try {
         await fetch('http://localhost:3000/api/practice-stats', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(state.practiceStats)
         });
-        localStorage.setItem('lifeInUK_practiceStats', JSON.stringify(state.practiceStats));
+        console.log('Synced practice stats to backend');
     } catch (error) {
-        localStorage.setItem('lifeInUK_practiceStats', JSON.stringify(state.practiceStats));
+        console.log('Backend not available for sync');
     }
 }
 
