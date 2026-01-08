@@ -244,9 +244,14 @@ function setupEventListeners() {
     });
 
     const homeStats = document.getElementById('homeStats');
-    if (homeStats) homeStats.addEventListener('click', () => {
+    if (homeStats) homeStats.addEventListener('click', async () => {
         showScreen('statsScreen');
         try {
+            // Ensure data is loaded before rendering
+            await Promise.all([
+                loadQuestionStats(),
+                loadTopics()
+            ]);
             renderStatistics();
         } catch (err) {
             console.error('Failed to render statistics:', err);
@@ -745,8 +750,25 @@ function renderQuestion() {
     document.getElementById('questionCounter').textContent = `Question ${currentNum} of ${totalQuestions}`;
     document.getElementById('scoreCounter').textContent = `Score: ${state.score}/${totalQuestions}`;
 
-    // Set question text
-    document.getElementById('questionText').textContent = question.question;
+    // Set question text with formatting for boolean questions
+    let questionText = question.question;
+    
+    // Transform awkward boolean format "[ANSWER] is the correct answer to: [QUESTION]" 
+    // into a cleaner format by removing the meta-question part
+    if (question.type === 'boolean') {
+        const match = questionText.match(/^(.+?)\s+is the correct answer to:\s+(.+)$/i);
+        if (match) {
+            const answer = match[1].trim();
+            const originalQuestion = match[2].trim();
+            
+            // Create a simple statement: "Answer - Question"
+            // E.g., "24 questions - How many questions are in the Life in the UK test?"
+            // Or better: Just show the answer as the statement
+            questionText = answer.charAt(0).toUpperCase() + answer.slice(1) + (answer.endsWith('.') ? '' : '.');
+        }
+    }
+    
+    document.getElementById('questionText').textContent = questionText;
 
     // Hide feedback
     document.getElementById('feedback').style.display = 'none';
@@ -1205,9 +1227,34 @@ function renderFlashcard() {
     document.getElementById('flashcardScore').textContent = 
         `Correct: ${state.flashcardStats.correct} | Incorrect: ${state.flashcardStats.incorrect}`;
     
-    // Set question and answer
-    document.getElementById('flashcardQuestion').textContent = question.question;
-    document.getElementById('flashcardAnswer').textContent = question.answer;
+    // Set question text (apply same transformation as renderQuestion for boolean)
+    let questionText = question.question;
+    if (question.type === 'boolean') {
+        const match = questionText.match(/^(.+?)\s+is the correct answer to:\s+(.+)$/i);
+        if (match) {
+            const answer = match[1].trim();
+            const originalQuestion = match[2].trim();
+            // For flashcards, show the original question as the "question" side
+            questionText = originalQuestion;
+        }
+    }
+    document.getElementById('flashcardQuestion').textContent = questionText;
+    
+    // Set answer (handle boolean type properly)
+    let answerText = question.answer;
+    if (question.type === 'boolean') {
+        const match = question.question.match(/^(.+?)\s+is the correct answer to:\s+(.+)$/i);
+        if (match) {
+            const answer = match[1].trim();
+            // Show the extracted answer as the answer side
+            answerText = answer.charAt(0).toUpperCase() + answer.slice(1);
+        } else {
+            answerText = question.answer === true ? 'True' : 'False';
+        }
+    } else if (Array.isArray(answerText)) {
+        answerText = answerText.join(', ');
+    }
+    document.getElementById('flashcardAnswer').textContent = answerText;
 }
 
 // Handle flashcard response
@@ -1275,6 +1322,16 @@ window.addEventListener('unhandledrejection', (event) => {
 let currentStatsFilter = 'all';
 
 function renderStatistics() {
+    // Safety check: ensure topics are loaded
+    if (!state.topics || state.topics.length === 0) {
+        console.warn('Topics not loaded yet');
+        const statsList = document.getElementById('statsList');
+        if (statsList) {
+            statsList.innerHTML = '<div class="stats-empty">Loading statistics...</div>';
+        }
+        return;
+    }
+    
     // Get all questions with stats
     const questionStats = [];
     
@@ -1287,8 +1344,21 @@ function renderStatistics() {
                 if (!stats) return; // Only include attempted questions
                 const total = stats.correct + stats.incorrect;
                 const accuracy = total > 0 ? (stats.correct / total * 100) : 0;
+                
+                // Format question text for display (especially boolean questions)
+                let displayQuestion = q.question;
+                if (q.type === 'boolean') {
+                    const match = displayQuestion.match(/^(.+?)\s+is the correct answer to:\s+(.+)$/i);
+                    if (match) {
+                        const answer = match[1].trim();
+                        const originalQuestion = match[2].trim();
+                        // Show as "Question: Answer"
+                        displayQuestion = `${originalQuestion} → ${answer}`;
+                    }
+                }
+                
                 questionStats.push({
-                    question: q.question,
+                    question: displayQuestion,
                     correct: stats.correct,
                     incorrect: stats.incorrect,
                     accuracy,
