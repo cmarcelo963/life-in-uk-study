@@ -1,4 +1,4 @@
-const CACHE_NAME = 'life-in-uk-v19'; // Change version number when updating app files
+const CACHE_NAME = 'life-in-uk-v20'; // Change version number when updating app files
 const urlsToCache = [
   '/',
   '/index.html',

@@ -155,11 +155,17 @@ async function saveQuestionStats() {
 
 // Get unique question ID
 function getQuestionId(question, topicIndex, questionIndex) {
-    // If question has a groupId, use that for tracking (all variations tracked together)
+    if (!question) {
+        console.error('getQuestionId: null/undefined question');
+        return `${topicIndex}_${questionIndex}_unknown`;
+    }
     if (question.groupId) {
         return `${topicIndex}_group_${question.groupId}`;
     }
-    // Legacy: Create a unique ID based on question text (first 50 chars as hash)
+    if (!question.question) {
+        console.warn('Question missing .question:', question);
+        return `${topicIndex}_${questionIndex}_no_text`;
+    }
     const textHash = question.question.substring(0, 50).replace(/\s+/g, '_');
     const indexPart = (question && question.sourceIndex !== undefined) ? question.sourceIndex : questionIndex;
     return `${topicIndex}_${indexPart}_${textHash}`;
@@ -179,7 +185,9 @@ function initQuestionStats(questionId) {
 
 // Update question stats after answer
 function updateQuestionStats(questionId, isCorrect) {
-    console.log('Updating question stats:', questionId, 'isCorrect:', isCorrect);
+    console.log('=== updateQuestionStats ===');
+    console.log('ID:', questionId);
+    console.log('Correct:', isCorrect);
     initQuestionStats(questionId);
     
     const stats = state.questionStats[questionId];
@@ -196,8 +204,17 @@ function updateQuestionStats(questionId, isCorrect) {
     // Cap upper bound so mastered questions can be retired
     stats.points = Math.min(stats.points, 100);
     
-    console.log('Updated stats for', questionId, ':', stats);
-    console.log('Total stats entries:', Object.keys(state.questionStats).length);
+    console.log('New stats:', stats);
+    console.log('Total entries:', Object.keys(state.questionStats).length);
+    console.log('Sample keys:', Object.keys(state.questionStats).slice(0, 3));
+    // Test localStorage
+    try {
+        localStorage.setItem('TEST_KEY', 'test');
+        const test = localStorage.getItem('TEST_KEY');
+        console.log('localStorage works:', test === 'test');
+    } catch (e) {
+        console.error('localStorage FAILED:', e);
+    }
     saveQuestionStats();
 }
 
