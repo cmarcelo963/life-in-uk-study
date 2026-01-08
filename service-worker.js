@@ -1,4 +1,4 @@
-const CACHE_NAME = 'life-in-uk-v18'; // Change version number when updating app files
+const CACHE_NAME = 'life-in-uk-v19'; // Change version number when updating app files
 const urlsToCache = [
   '/',
   '/index.html',
@@ -10,12 +10,36 @@ const urlsToCache = [
 
 // Install event - cache files
 self.addEventListener('install', (event) => {
+  console.log('[ServiceWorker] Installing version:', CACHE_NAME);
+  // Force the waiting service worker to become the active service worker
+  self.skipWaiting();
+  
   event.waitUntil(
     caches.open(CACHE_NAME)
       .then((cache) => {
         console.log('Opened cache');
         return cache.addAll(urlsToCache);
       })
+  );
+});
+
+// Activate event - clean up old caches
+self.addEventListener('activate', (event) => {
+  console.log('[ServiceWorker] Activating version:', CACHE_NAME);
+  event.waitUntil(
+    caches.keys().then((cacheNames) => {
+      return Promise.all(
+        cacheNames.map((cacheName) => {
+          if (cacheName !== CACHE_NAME) {
+            console.log('[ServiceWorker] Deleting old cache:', cacheName);
+            return caches.delete(cacheName);
+          }
+        })
+      );
+    }).then(() => {
+      // Take control of all pages immediately
+      return self.clients.claim();
+    })
   );
 });
 
@@ -53,21 +77,5 @@ self.addEventListener('fetch', (event) => {
           return caches.match('/index.html');
         });
       })
-  );
-});
-
-// Activate event - clean up old caches
-self.addEventListener('activate', (event) => {
-  const cacheWhitelist = [CACHE_NAME];
-  event.waitUntil(
-    caches.keys().then((cacheNames) => {
-      return Promise.all(
-        cacheNames.map((cacheName) => {
-          if (cacheWhitelist.indexOf(cacheName) === -1) {
-            return caches.delete(cacheName);
-          }
-        })
-      );
-    })
   );
 });

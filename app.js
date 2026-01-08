@@ -179,6 +179,7 @@ function initQuestionStats(questionId) {
 
 // Update question stats after answer
 function updateQuestionStats(questionId, isCorrect) {
+    console.log('Updating question stats:', questionId, 'isCorrect:', isCorrect);
     initQuestionStats(questionId);
     
     const stats = state.questionStats[questionId];
@@ -195,6 +196,8 @@ function updateQuestionStats(questionId, isCorrect) {
     // Cap upper bound so mastered questions can be retired
     stats.points = Math.min(stats.points, 100);
     
+    console.log('Updated stats for', questionId, ':', stats);
+    console.log('Total stats entries:', Object.keys(state.questionStats).length);
     saveQuestionStats();
 }
 
@@ -298,13 +301,24 @@ function setupEventListeners() {
 
     const homeStats = document.getElementById('homeStats');
     if (homeStats) homeStats.addEventListener('click', async () => {
+        console.log('=== Opening Statistics Screen ===');
         showScreen('statsScreen');
+        
+        const statsList = document.getElementById('statsList');
+        if (statsList) {
+            statsList.innerHTML = '<div class="stats-empty">Loading statistics...</div>';
+        }
+        
         try {
+            console.log('Loading question stats and topics...');
             // Ensure data is loaded before rendering
             await Promise.all([
                 loadQuestionStats(),
                 loadTopics()
             ]);
+            console.log('Topics loaded:', state.topics?.length || 0);
+            console.log('Question stats entries:', Object.keys(state.questionStats || {}).length);
+            console.log('Sample stats:', Object.entries(state.questionStats || {}).slice(0, 3));
             renderStatistics();
         } catch (err) {
             console.error('Failed to render statistics:', err);
