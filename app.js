@@ -1488,6 +1488,161 @@ window.addEventListener('unhandledrejection', (event) => {
 
 let currentStatsFilter = 'all';
 
+// Build text hash the same way IDs were built historically
+function buildTextHash(text) {
+    if (!text || typeof text !== 'string') return '';
+    return text.substring(0, 50).replace(/\s+/g, '_');
+}
+
+// Create indexes to help migrate legacy stats keys
+function buildQuestionIndex() {
+    const byHash = new Map(); // textHash -> { question, topicIndex, sourceIndex, groupId }
+    const groupIdxToId = new Map(); // topicIndex -> Map(groupIdx -> groupId)
+
+    state.topics.forEach((topic, tIdx) => {
+        // Regular questions
+        if (topic.questions) {
+            topic.questions.forEach((q, qIdx) => {
+                const hash = buildTextHash(q.question);
+                byHash.set(hash, { question: q, topicIndex: tIdx, sourceIndex: qIdx, groupId: null });
+            });
+        }
+
+        // Question groups
+        if (topic.questionGroups) {
+            const map = new Map();
+            topic.questionGroups.forEach((group, gIdx) => {
+                map.set(gIdx, group.id);
+                if (group.variations) {
+                    group.variations.forEach((v) => {
+                        const hash = buildTextHash(v.question);
+                        byHash.set(hash, { question: v, topicIndex: tIdx, sourceIndex: `group_${gIdx}`, groupId: group.id });
+                    });
+                }
+            });
+            groupIdxToId.set(tIdx, map);
+        }
+    });
+
+    return { byHash, groupIdxToId };
+}
+
+// Migrate legacy stats keys to new consistent IDs
+function migrateLegacyQuestionStats() {
+    try {
+        if (!state.topics || state.topics.length === 0) return; // need topics
+        if (!state.questionStats || Object.keys(state.questionStats).length === 0) return; // nothing to migrate
+
+        const { byHash, groupIdxToId } = buildQuestionIndex();
+        const originalKeys = Object.keys(state.questionStats);
+        let migratedCount = 0;
+        let removedCount = 0;
+
+        originalKeys.forEach((key) => {
+            // Skip if key already matches a valid new format for groups: <topic>_group_<groupId>
+            if (/^\d+_group_.+/.test(key)) {
+                return;
+            }
+
+            // Pattern: <topicIndex>_<indexPart>_<textHash>
+            const parts = key.split('_');
+            if (parts.length >= 3) {
+                const topicPart = parts[0];
+                const indexPart = parts[1];
+                const textHash = parts.slice(2).join('_');
+
+                const entry = state.questionStats[key];
+
+                // Try to resolve by text hash across all topics
+                const match = byHash.get(textHash);
+                if (match) {
+                    const newKey = getQuestionId(match.question, match.topicIndex, match.sourceIndex);
+                    if (newKey !== key) {
+                        // Merge stats if newKey already exists
+                        const existing = state.questionStats[newKey];
+                        if (existing) {
+                            existing.correct += (entry.correct || 0);
+                            existing.incorrect += (entry.incorrect || 0);
+                            existing.points = Math.max(existing.points || 0, entry.points || 0);
+                            existing.lastAsked = existing.lastAsked || entry.lastAsked || null;
+                        } else {
+                            state.questionStats[newKey] = entry;
+                        }
+                        delete state.questionStats[key];
+                        migratedCount++;
+                    }
+                    return;
+                }
+
+                // If indexPart looks like group_<number>, and topicPart is numeric, try mapping groupIdx -> groupId
+                if (/^group_\d+$/.test(indexPart) && /^\d+$/.test(topicPart)) {
+                    const gIdx = Number(indexPart.replace('group_', ''));
+                    const tIdx = Number(topicPart);
+                    const map = groupIdxToId.get(tIdx);
+                    if (map && map.has(gIdx)) {
+                        const groupId = map.get(gIdx);
+                        const newKey = `${tIdx}_group_${groupId}`;
+                        if (newKey !== key) {
+                            const existing = state.questionStats[newKey];
+                            const entry2 = state.questionStats[key];
+                            if (existing) {
+                                existing.correct += (entry2.correct || 0);
+                                existing.incorrect += (entry2.incorrect || 0);
+                                existing.points = Math.max(existing.points || 0, entry2.points || 0);
+                                existing.lastAsked = existing.lastAsked || entry2.lastAsked || null;
+                            } else {
+                                state.questionStats[newKey] = entry2;
+                            }
+                            delete state.questionStats[key];
+                            migratedCount++;
+                        }
+                        return;
+                    }
+                }
+
+                // If we cannot resolve, leave as is for now
+                return;
+            }
+
+            // Pattern: <topicIndex>_group_<number> without text hash
+            const groupMatch = key.match(/^(\d+)_group_(\d+)$/);
+            if (groupMatch) {
+                const tIdx = Number(groupMatch[1]);
+                const gIdx = Number(groupMatch[2]);
+                const map = groupIdxToId.get(tIdx);
+                if (map && map.has(gIdx)) {
+                    const groupId = map.get(gIdx);
+                    const newKey = `${tIdx}_group_${groupId}`;
+                    if (newKey !== key) {
+                        const entry3 = state.questionStats[key];
+                        const existing = state.questionStats[newKey];
+                        if (existing) {
+                            existing.correct += (entry3.correct || 0);
+                            existing.incorrect += (entry3.incorrect || 0);
+                            existing.points = Math.max(existing.points || 0, entry3.points || 0);
+                            existing.lastAsked = existing.lastAsked || entry3.lastAsked || null;
+                        } else {
+                            state.questionStats[newKey] = entry3;
+                        }
+                        delete state.questionStats[key];
+                        migratedCount++;
+                    }
+                }
+            }
+        });
+
+        if (migratedCount > 0 || removedCount > 0) {
+            console.log(`[StatsMigration] Migrated: ${migratedCount}, Removed: ${removedCount}`);
+            // Persist after migration
+            saveQuestionStats();
+        } else {
+            console.log('[StatsMigration] No legacy keys found to migrate');
+        }
+    } catch (e) {
+        console.error('[StatsMigration] Failed:', e);
+    }
+}
+
 function renderStatistics() {
     // Safety check: ensure topics are loaded
     if (!state.topics || state.topics.length === 0) {
@@ -1497,6 +1652,12 @@ function renderStatistics() {
             statsList.innerHTML = '<div class="stats-empty">Loading statistics...</div>';
         }
         return;
+    }
+
+    // Run a one-time migration to normalize legacy keys (after topics are loaded)
+    if (!state._statsMigrated) {
+        migrateLegacyQuestionStats();
+        state._statsMigrated = true;
     }
     
     // Get all questions with stats
