@@ -7340,7 +7340,7 @@
                                },
                                {
                                    "id":  "which_following_were",
-                                   "baseQuestion":  "Which TWO of the following were British inventions of the 20th century?",
+                                   "baseQuestion":  "Which of the following were British inventions of the 20th century?",
                                    "variations":  [
                                                       {
                                                           "type":  "multipleAnswer",
@@ -7352,7 +7352,7 @@
                                                                           "The ATM (cash machine)",
                                                                           "The MRI scanner"
                                                                       ],
-                                                          "question":  "Which TWO of the following were British inventions of the 20th century?",
+                                                          "question":  "Which of the following were British inventions of the 20th century?",
                                                           "correctOptions":  [
                                                                           "Television",
                                                                           "Radar",
@@ -7360,12 +7360,12 @@
                                                                           "The hovercraft",
                                                                           "The ATM (cash machine)"
                                                                       ],
-                                                          "numRequired":  2
+                                                          "numRequired":  5
                                                       },
                                                       {
                                                           "type":  "boolean",
                                                           "answer":  true,
-                                                          "question":  "Which TWO of the following were British inventions of the 20th century."
+                                                          "question":  "Which of the following were British inventions of the 20th century."
                                                       },
                                                       {
                                                           "type":  "multipleAnswer",
@@ -7377,7 +7377,7 @@
                                                                           "The ATM (cash machine)",
                                                                           "The MRI scanner"
                                                                       ],
-                                                          "question":  "Which TWO of the following were British inventions of the 20th century in the UK?",
+                                                          "question":  "Which of the following were British inventions of the 20th century?",
                                                           "correctOptions":  [
                                                                           "Television",
                                                                           "Radar",
@@ -7385,7 +7385,7 @@
                                                                           "The hovercraft",
                                                                           "The ATM (cash machine)"
                                                                       ],
-                                                          "numRequired":  2
+                                                          "numRequired":  5
                                                       }
                                                   ]
                                },
