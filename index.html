@@ -37,6 +37,12 @@
                 <h2>Welcome to Life in the UK Study</h2>
                 <p class="subtitle">Choose your learning mode</p>
                 <div class="home-choice-buttons">
+                    <button id="homeAdventure" class="btn btn-home-choice btn-adventure">
+                        <span class="home-icon">🗺️</span>
+                        <span class="home-title">Adventure Mode</span>
+                        <span class="home-desc">Journey through UK history in chronological order</span>
+                        <span id="adventureProgress" class="adventure-progress"></span>
+                    </button>
                     <button id="homeStudy" class="btn btn-home-choice">
                         <span class="home-icon">📚</span>
                         <span class="home-title">Study by Topics</span>
@@ -193,6 +199,84 @@
                             <button id="retryTest" class="btn btn-secondary">Try Again</button>
                             <button id="backToStudy" class="btn btn-primary" style="display: none;">Back to Home</button>
                             <button id="nextTopic" class="btn btn-primary" style="display: none;">Next Topic →</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Adventure Mode Screen -->
+        <div id="adventureScreen" class="screen">
+            <div class="content-wrapper">
+                <button id="backToHomeFromAdventure" class="back-btn">← Back to Home</button>
+                
+                <div class="adventure-header">
+                    <h2>🗺️ Adventure Mode</h2>
+                    <p class="subtitle">Journey through UK history in chronological order</p>
+                    <div class="adventure-progress-bar">
+                        <div id="adventureProgressFill" class="progress-fill"></div>
+                    </div>
+                    <p id="adventureProgressText" class="adventure-progress-text">Topic 1 of 11</p>
+                </div>
+
+                <div id="adventureContent" class="adventure-content">
+                    <!-- Current topic content will be shown here -->
+                    <div class="study-content" id="adventureStudyContent"></div>
+                    
+                    <div class="adventure-actions">
+                        <button id="adventurePrevious" class="btn btn-secondary" style="display: none;">← Previous Topic</button>
+                        <button id="adventureTest" class="btn btn-primary">Take Test</button>
+                        <button id="adventureNext" class="btn btn-primary" style="display: none;">Next Topic →</button>
+                    </div>
+                </div>
+
+                <!-- Adventure Test Section (similar to regular test but embedded) -->
+                <div id="adventureTestSection" style="display: none;">
+                    <div class="test-header">
+                        <h3 id="adventureQuestionTopicTitle"></h3>
+                        <div class="test-progress">
+                            <span id="adventureQuestionCounter">Question 1 of 10</span>
+                            <span id="adventureScoreCounter">Score: 0/0</span>
+                        </div>
+                    </div>
+
+                    <div class="progress-bar">
+                        <div id="adventureTestProgressBar" class="progress-fill"></div>
+                    </div>
+
+                    <div id="adventureQuestionCard" class="question-card">
+                        <p id="adventureQuestionText" class="question-text"></p>
+                        
+                        <div id="adventureMultipleChoice" class="options-container"></div>
+                        
+                        <div id="adventureFeedback" class="feedback" style="display: none;">
+                            <div class="feedback-content">
+                                <p id="adventureFeedbackMessage" class="feedback-message"></p>
+                                <p id="adventureCorrectAnswer" class="correct-answer"></p>
+                            </div>
+                            <button id="adventureNextQuestion" class="btn btn-primary">Next Question</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Adventure Test Results -->
+                <div id="adventureTestResults" style="display: none;">
+                    <div class="results-card">
+                        <div id="adventureResultIcon" class="result-icon"></div>
+                        <h2 id="adventureResultTitle"></h2>
+                        <div class="result-stats">
+                            <div class="stat">
+                                <span class="stat-label">Score</span>
+                                <span id="adventureFinalScore" class="stat-value">0/0</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-label">Percentage</span>
+                                <span id="adventureFinalPercentage" class="stat-value">0%</span>
+                            </div>
+                        </div>
+                        <div class="result-actions">
+                            <button id="adventureRetryTest" class="btn btn-secondary">Retry Test</button>
+                            <button id="adventureContinue" class="btn btn-primary">Continue Adventure →</button>
                         </div>
                     </div>
                 </div>

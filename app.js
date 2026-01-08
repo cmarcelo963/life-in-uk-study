@@ -12,7 +12,9 @@ let state = {
     practiceStats: {}, // Track which questions have been seen in practice mode
     isFlashcardMode: false, // Track if in flashcard mode
     flashcardStats: { correct: 0, incorrect: 0, skipped: 0 }, // Track flashcard session stats
-    selectedAnswers: [] // Track selected answers for multi-answer questions
+    selectedAnswers: [], // Track selected answers for multi-answer questions
+    isAdventureMode: false, // Track if in adventure mode
+    adventureProgress: { currentTopicIndex: 0, topicsCompleted: [] } // Track adventure progress
 };
 
 
@@ -22,7 +24,9 @@ async function init() {
     loadProgress();
     loadQuestionStats();
     loadPracticeStats();
+    loadAdventureProgress();
     renderTopicList();
+    updateAdventureProgressDisplay();
     setupEventListeners();
 }
 
@@ -260,6 +264,14 @@ function setupEventListeners() {
                 list.innerHTML = '<div class="stats-empty">Unable to load statistics right now.</div>';
             }
         }
+    });
+
+    const homeAdventure = document.getElementById('homeAdventure');
+    if (homeAdventure) homeAdventure.addEventListener('click', () => {
+        state.isAdventureMode = true;
+        state.isPracticeMode = false;
+        state.isFlashcardMode = false;
+        startAdventureMode();
     });
 
     // Back to Home
@@ -1563,6 +1575,545 @@ function renderStatsList(questionStats) {
         
         statsList.appendChild(item);
     });
+}
+
+// ==================== ADVENTURE MODE FUNCTIONS ====================
+
+// Load Adventure Progress
+function loadAdventureProgress() {
+    try {
+        const saved = localStorage.getItem('lifeInUK_adventureProgress');
+        if (saved) {
+            state.adventureProgress = JSON.parse(saved);
+        } else {
+            state.adventureProgress = { currentTopicIndex: 0, topicsCompleted: [] };
+        }
+    } catch (error) {
+        console.error('Error loading adventure progress:', error);
+        state.adventureProgress = { currentTopicIndex: 0, topicsCompleted: [] };
+    }
+}
+
+// Save Adventure Progress
+function saveAdventureProgress() {
+    try {
+        localStorage.setItem('lifeInUK_adventureProgress', JSON.stringify(state.adventureProgress));
+    } catch (error) {
+        console.error('Error saving adventure progress:', error);
+    }
+}
+
+// Update Adventure Progress Display on Home Screen
+function updateAdventureProgressDisplay() {
+    const progressEl = document.getElementById('adventureProgress');
+    if (!progressEl) return;
+    
+    const currentIdx = state.adventureProgress.currentTopicIndex;
+    const totalTopics = state.topics.length;
+    
+    if (currentIdx > 0 || state.adventureProgress.topicsCompleted.length > 0) {
+        const topicTitle = state.topics[currentIdx]?.title || 'Unknown Topic';
+        progressEl.textContent = `Continue: ${topicTitle}`;
+        progressEl.style.display = 'block';
+    } else {
+        progressEl.textContent = 'Start your journey!';
+        progressEl.style.display = 'block';
+    }
+}
+
+// Start Adventure Mode
+function startAdventureMode() {
+    showScreen('adventureScreen');
+    renderAdventureTopic();
+}
+
+// Render Current Adventure Topic
+function renderAdventureTopic() {
+    const currentIdx = state.adventureProgress.currentTopicIndex;
+    const topic = state.topics[currentIdx];
+    
+    if (!topic) {
+        // Completed all topics!
+        showAdventureComplete();
+        return;
+    }
+    
+    state.currentTopicIndex = currentIdx;
+    
+    // Update progress bar
+    const progressFill = document.getElementById('adventureProgressFill');
+    const progressText = document.getElementById('adventureProgressText');
+    const totalTopics = state.topics.length;
+    const percentage = (currentIdx / totalTopics) * 100;
+    
+    if (progressFill) progressFill.style.width = `${percentage}%`;
+    if (progressText) progressText.textContent = `Topic ${currentIdx + 1} of ${totalTopics}`;
+    
+    // Show study content
+    const contentEl = document.getElementById('adventureStudyContent');
+    if (contentEl && topic.content) {
+        contentEl.innerHTML = `<h3>${topic.title}</h3>${topic.content}`;
+    }
+    
+    // Show/hide navigation buttons
+    document.getElementById('adventurePrevious').style.display = currentIdx > 0 ? 'inline-block' : 'none';
+    document.getElementById('adventureNext').style.display = 'none';
+    
+    // Show main content, hide test sections
+    document.getElementById('adventureContent').style.display = 'block';
+    document.getElementById('adventureTestSection').style.display = 'none';
+    document.getElementById('adventureTestResults').style.display = 'none';
+    
+    // Setup button handlers
+    setupAdventureButtons();
+}
+
+// Setup Adventure Mode Button Handlers
+function setupAdventureButtons() {
+    const backBtn = document.getElementById('backToHomeFromAdventure');
+    if (backBtn) {
+        backBtn.replaceWith(backBtn.cloneNode(true));
+        document.getElementById('backToHomeFromAdventure').addEventListener('click', () => {
+            state.isAdventureMode = false;
+            showScreen('homeScreen');
+        });
+    }
+    
+    const testBtn = document.getElementById('adventureTest');
+    if (testBtn) {
+        testBtn.replaceWith(testBtn.cloneNode(true));
+        document.getElementById('adventureTest').addEventListener('click', () => {
+            startAdventureTest();
+        });
+    }
+    
+    const prevBtn = document.getElementById('adventurePrevious');
+    if (prevBtn) {
+        prevBtn.replaceWith(prevBtn.cloneNode(true));
+        document.getElementById('adventurePrevious').addEventListener('click', () => {
+            if (state.adventureProgress.currentTopicIndex > 0) {
+                state.adventureProgress.currentTopicIndex--;
+                saveAdventureProgress();
+                renderAdventureTopic();
+            }
+        });
+    }
+    
+    const nextBtn = document.getElementById('adventureNext');
+    if (nextBtn) {
+        nextBtn.replaceWith(nextBtn.cloneNode(true));
+        document.getElementById('adventureNext').addEventListener('click', () => {
+            advanceToNextTopic();
+        });
+    }
+}
+
+// Start Adventure Test
+function startAdventureTest() {
+    state.currentDifficulty = 'normal';
+    state.currentQuestionIndex = 0;
+    state.score = 0;
+    
+    const topic = state.topics[state.currentTopicIndex];
+    const topicIndex = state.currentTopicIndex;
+    
+    // Combine regular questions and question groups
+    let allQuestions = [];
+    
+    if (topic.questions) {
+        topic.questions.forEach((q, idx) => {
+            allQuestions.push({ ...q, sourceIndex: idx, topicIndex });
+        });
+    }
+    
+    if (topic.questionGroups) {
+        topic.questionGroups.forEach((group, groupIdx) => {
+            if (group.variations && group.variations.length > 0) {
+                const randomVariation = group.variations[Math.floor(Math.random() * group.variations.length)];
+                allQuestions.push({ 
+                    ...randomVariation, 
+                    sourceIndex: `group_${groupIdx}`, 
+                    groupId: group.id,
+                    topicIndex 
+                });
+            }
+        });
+    }
+    
+    state.currentQuestions = allQuestions;
+    
+    // Hide content, show test
+    document.getElementById('adventureContent').style.display = 'none';
+    document.getElementById('adventureTestSection').style.display = 'block';
+    document.getElementById('adventureTestResults').style.display = 'none';
+    
+    document.getElementById('adventureQuestionTopicTitle').textContent = topic.title;
+    
+    renderAdventureQuestion();
+}
+
+// Render Adventure Question
+function renderAdventureQuestion() {
+    const question = state.currentQuestions[state.currentQuestionIndex];
+    
+    // Update counters
+    document.getElementById('adventureQuestionCounter').textContent = 
+        `Question ${state.currentQuestionIndex + 1} of ${state.currentQuestions.length}`;
+    document.getElementById('adventureScoreCounter').textContent = 
+        `Score: ${state.score}/${state.currentQuestionIndex}`;
+    
+    // Update progress bar
+    const progress = ((state.currentQuestionIndex + 1) / state.currentQuestions.length) * 100;
+    document.getElementById('adventureTestProgressBar').style.width = `${progress}%`;
+    
+    // Set question text
+    let questionText = question.question;
+    
+    // Transform boolean questions (same logic as main renderQuestion)
+    if (question.type === 'boolean') {
+        const matchAnswer = question.question.split(' is the correct answer to: ');
+        if (matchAnswer.length === 2) {
+            const answer = matchAnswer[0];
+            const questionPart = matchAnswer[1];
+            const hash = hashCode(question.question);
+            const shouldInvert = (Math.abs(hash) % 100) < 40;
+            
+            // Apply same transformation logic...
+            if (questionPart.startsWith("Who is ") || questionPart.startsWith("Who was ")) {
+                const prefix = questionPart.startsWith("Who is ") ? "Who is " : "Who was ";
+                const rest = questionPart.substring(prefix.length);
+                questionText = shouldInvert ? `${rest.replace(/\?$/, '')} is NOT ${answer}` : `${rest.replace(/\?$/, '')} is ${answer}`;
+                question._renderedAnswer = !shouldInvert;
+            } else if (questionPart.startsWith("What is ") || questionPart.startsWith("What was ")) {
+                const prefix = questionPart.startsWith("What is ") ? "What is " : "What was ";
+                const rest = questionPart.substring(prefix.length);
+                questionText = shouldInvert ? `${rest.replace(/\?$/, '')} is NOT ${answer}` : `${rest.replace(/\?$/, '')} is ${answer}`;
+                question._renderedAnswer = !shouldInvert;
+            } else {
+                questionText = shouldInvert ? `It is FALSE that: ${questionPart.replace(/\?$/, '')}: ${answer}` : `${questionPart.replace(/\?$/, '')}: ${answer}`;
+                question._renderedAnswer = !shouldInvert;
+            }
+        } else if (question.question.startsWith("Question: ")) {
+            const statement = question.question.substring(10);
+            const hash = hashCode(question.question);
+            const shouldInvert = (Math.abs(hash) % 100) < 40;
+            questionText = shouldInvert ? `It is FALSE that: ${statement}` : statement;
+            question._renderedAnswer = !shouldInvert;
+        }
+    }
+    
+    document.getElementById('adventureQuestionText').textContent = questionText;
+    
+    // Hide feedback
+    document.getElementById('adventureFeedback').style.display = 'none';
+    
+    // Render question based on type
+    if (question.type === 'boolean') {
+        renderAdventureTrueFalse(question);
+    } else if (question.type === 'multipleAnswer') {
+        renderAdventureMultipleAnswer(question);
+    } else {
+        renderAdventureMultipleChoice(question);
+    }
+}
+
+// Render Adventure Multiple Choice
+function renderAdventureMultipleChoice(question) {
+    const container = document.getElementById('adventureMultipleChoice');
+    container.innerHTML = '';
+    const options = [...question.options].sort(() => Math.random() - 0.5);
+    
+    options.forEach(option => {
+        const btn = document.createElement('button');
+        btn.className = 'option';
+        btn.textContent = option;
+        btn.addEventListener('click', () => {
+            if (!btn.classList.contains('disabled')) {
+                checkAdventureAnswer(option);
+            }
+        });
+        container.appendChild(btn);
+    });
+}
+
+// Render Adventure True/False
+function renderAdventureTrueFalse(question) {
+    const container = document.getElementById('adventureMultipleChoice');
+    container.innerHTML = '';
+    
+    ['True', 'False'].forEach(option => {
+        const btn = document.createElement('button');
+        btn.className = 'option';
+        btn.textContent = option;
+        btn.addEventListener('click', () => {
+            if (!btn.classList.contains('disabled')) {
+                checkAdventureAnswer(option === 'True');
+            }
+        });
+        container.appendChild(btn);
+    });
+}
+
+// Render Adventure Multiple Answer
+function renderAdventureMultipleAnswer(question) {
+    const container = document.getElementById('adventureMultipleChoice');
+    container.innerHTML = '';
+    state.selectedAnswers = [];
+    
+    const options = [...question.options].sort(() => Math.random() - 0.5);
+    const numAnswers = question.numRequired || (question.answers ? question.answers.length : 2);
+    
+    const instruction = document.createElement('div');
+    instruction.style.cssText = 'margin-bottom: 1rem; font-size: 0.9rem; color: #dcddde;';
+    instruction.textContent = `Select ${numAnswers} answers`;
+    container.appendChild(instruction);
+    
+    options.forEach(option => {
+        const btn = document.createElement('button');
+        btn.className = 'option';
+        btn.textContent = option;
+        btn.dataset.selected = 'false';
+        
+        btn.addEventListener('click', () => {
+            if (btn.classList.contains('disabled')) return;
+            
+            if (btn.dataset.selected === 'true') {
+                btn.dataset.selected = 'false';
+                btn.style.backgroundColor = '';
+                btn.style.borderColor = '';
+                const index = state.selectedAnswers.indexOf(option);
+                if (index > -1) state.selectedAnswers.splice(index, 1);
+            } else {
+                if (state.selectedAnswers.length < numAnswers) {
+                    btn.dataset.selected = 'true';
+                    btn.style.backgroundColor = '#5865f2';
+                    btn.style.borderColor = '#5865f2';
+                    state.selectedAnswers.push(option);
+                }
+            }
+            
+            if (state.selectedAnswers.length === numAnswers) {
+                let submitBtn = container.querySelector('.submit-multi-answer');
+                if (!submitBtn) {
+                    submitBtn = document.createElement('button');
+                    submitBtn.className = 'option submit-multi-answer';
+                    submitBtn.textContent = 'Submit Answers';
+                    submitBtn.style.cssText = 'background-color: #3ba55d; border-color: #3ba55d; margin-top: 1rem;';
+                    submitBtn.addEventListener('click', () => {
+                        checkAdventureAnswer(state.selectedAnswers);
+                    });
+                    container.appendChild(submitBtn);
+                }
+            } else {
+                const submitBtn = container.querySelector('.submit-multi-answer');
+                if (submitBtn) submitBtn.remove();
+            }
+        });
+        
+        container.appendChild(btn);
+    });
+}
+
+// Check Adventure Answer
+function checkAdventureAnswer(userAnswer) {
+    const question = state.currentQuestions[state.currentQuestionIndex];
+    const correctAnswer = question.type === 'boolean' && question._renderedAnswer !== undefined 
+        ? question._renderedAnswer 
+        : (question.answer || question.answers || question.correctOptions);
+
+    let isCorrect = false;
+
+    if (question.type === 'multipleAnswer') {
+        if (question.correctOptions) {
+            isCorrect = Array.isArray(userAnswer) && 
+                userAnswer.length === (question.numRequired || 2) &&
+                userAnswer.every(ans => question.correctOptions.includes(ans));
+        } else {
+            const sortedUser = Array.isArray(userAnswer) ? [...userAnswer].sort() : [];
+            const sortedCorrect = Array.isArray(correctAnswer) ? [...correctAnswer].sort() : [];
+            isCorrect = sortedUser.length === sortedCorrect.length && 
+                       sortedUser.every((val, idx) => val === sortedCorrect[idx]);
+        }
+        
+        const options = document.querySelectorAll('#adventureMultipleChoice .option:not(.submit-multi-answer)');
+        options.forEach(opt => {
+            opt.classList.add('disabled');
+            opt.style.backgroundColor = '';
+            opt.style.borderColor = '';
+            
+            const correctOpts = question.correctOptions || correctAnswer;
+            if (Array.isArray(correctOpts) && correctOpts.includes(opt.textContent)) {
+                opt.classList.add('correct');
+            }
+            if (Array.isArray(userAnswer) && userAnswer.includes(opt.textContent) && 
+                !(Array.isArray(correctOpts) && correctOpts.includes(opt.textContent))) {
+                opt.classList.add('incorrect');
+            }
+        });
+        
+        const submitBtn = document.querySelector('#adventureMultipleChoice .submit-multi-answer');
+        if (submitBtn) submitBtn.remove();
+    } else if (question.type === 'boolean') {
+        isCorrect = userAnswer === correctAnswer;
+        
+        const options = document.querySelectorAll('#adventureMultipleChoice .option');
+        options.forEach(opt => {
+            opt.classList.add('disabled');
+            const optValue = opt.textContent === 'True';
+            if (optValue === correctAnswer) {
+                opt.classList.add('correct');
+            }
+            if (optValue === userAnswer && !isCorrect) {
+                opt.classList.add('incorrect');
+            }
+        });
+    } else {
+        isCorrect = userAnswer === correctAnswer;
+        
+        const options = document.querySelectorAll('#adventureMultipleChoice .option');
+        options.forEach(opt => {
+            opt.classList.add('disabled');
+            if (opt.textContent === correctAnswer) {
+                opt.classList.add('correct');
+            }
+            if (opt.textContent === userAnswer && !isCorrect) {
+                opt.classList.add('incorrect');
+            }
+        });
+    }
+
+    if (isCorrect) state.score++;
+
+    // Update question stats
+    const questionId = getQuestionId(question, question.topicIndex, question.sourceIndex);
+    updateQuestionStat(questionId, isCorrect, question.question);
+
+    // Show feedback
+    const feedbackEl = document.getElementById('adventureFeedback');
+    const messageEl = document.getElementById('adventureFeedbackMessage');
+    const correctAnswerEl = document.getElementById('adventureCorrectAnswer');
+    
+    feedbackEl.style.display = 'block';
+    messageEl.textContent = isCorrect ? '✓ Correct!' : '✗ Incorrect';
+    messageEl.className = `feedback-message ${isCorrect ? 'correct' : 'incorrect'}`;
+    
+    if (!isCorrect) {
+        let correctText = '';
+        if (question.type === 'multipleAnswer') {
+            const correctOpts = question.correctOptions || correctAnswer;
+            correctText = Array.isArray(correctOpts) ? correctOpts.join(', ') : correctOpts;
+        } else {
+            correctText = correctAnswer;
+        }
+        correctAnswerEl.textContent = `Correct answer: ${correctText}`;
+        correctAnswerEl.style.display = 'block';
+    } else {
+        correctAnswerEl.style.display = 'none';
+    }
+    
+    // Setup next button
+    const nextBtn = document.getElementById('adventureNextQuestion');
+    nextBtn.replaceWith(nextBtn.cloneNode(true));
+    document.getElementById('adventureNextQuestion').addEventListener('click', () => {
+        state.currentQuestionIndex++;
+        if (state.currentQuestionIndex < state.currentQuestions.length) {
+            renderAdventureQuestion();
+        } else {
+            showAdventureTestResults();
+        }
+    });
+}
+
+// Show Adventure Test Results
+function showAdventureTestResults() {
+    const percentage = (state.score / state.currentQuestions.length) * 100;
+    const passed = percentage >= 75;
+    
+    document.getElementById('adventureTestSection').style.display = 'none';
+    document.getElementById('adventureTestResults').style.display = 'block';
+    
+    document.getElementById('adventureResultIcon').textContent = passed ? '🎉' : '📚';
+    document.getElementById('adventureResultTitle').textContent = passed ? 'Well Done!' : 'Keep Practicing!';
+    document.getElementById('adventureFinalScore').textContent = `${state.score}/${state.currentQuestions.length}`;
+    document.getElementById('adventureFinalPercentage').textContent = `${percentage.toFixed(0)}%`;
+    
+    // Setup buttons
+    const retryBtn = document.getElementById('adventureRetryTest');
+    retryBtn.replaceWith(retryBtn.cloneNode(true));
+    document.getElementById('adventureRetryTest').addEventListener('click', () => {
+        startAdventureTest();
+    });
+    
+    const continueBtn = document.getElementById('adventureContinue');
+    continueBtn.replaceWith(continueBtn.cloneNode(true));
+    document.getElementById('adventureContinue').addEventListener('click', () => {
+        if (passed) {
+            // Mark topic as completed and advance
+            const currentIdx = state.adventureProgress.currentTopicIndex;
+            if (!state.adventureProgress.topicsCompleted.includes(currentIdx)) {
+                state.adventureProgress.topicsCompleted.push(currentIdx);
+            }
+            advanceToNextTopic();
+        } else {
+            // Just show the option to continue or retry
+            renderAdventureTopic();
+        }
+    });
+}
+
+// Advance to Next Topic
+function advanceToNextTopic() {
+    state.adventureProgress.currentTopicIndex++;
+    saveAdventureProgress();
+    updateAdventureProgressDisplay();
+    
+    if (state.adventureProgress.currentTopicIndex >= state.topics.length) {
+        showAdventureComplete();
+    } else {
+        renderAdventureTopic();
+    }
+}
+
+// Show Adventure Complete
+function showAdventureComplete() {
+    document.getElementById('adventureContent').innerHTML = `
+        <div class="results-card">
+            <div class="result-icon">🏆</div>
+            <h2>Adventure Complete!</h2>
+            <p>You've completed your journey through UK history!</p>
+            <div class="result-actions">
+                <button id="restartAdventure" class="btn btn-secondary">Restart Adventure</button>
+                <button id="backHomeComplete" class="btn btn-primary">Back to Home</button>
+            </div>
+        </div>
+    `;
+    document.getElementById('adventureTestSection').style.display = 'none';
+    document.getElementById('adventureTestResults').style.display = 'none';
+    
+    const restartBtn = document.getElementById('restartAdventure');
+    if (restartBtn) restartBtn.addEventListener('click', () => {
+        state.adventureProgress = { currentTopicIndex: 0, topicsCompleted: [] };
+        saveAdventureProgress();
+        updateAdventureProgressDisplay();
+        renderAdventureTopic();
+    });
+    
+    const backBtn = document.getElementById('backHomeComplete');
+    if (backBtn) backBtn.addEventListener('click', () => {
+        state.isAdventureMode = false;
+        showScreen('homeScreen');
+    });
+}
+
+// Hash code function for deterministic randomization
+function hashCode(str) {
+    let hash = 0;
+    for (let i = 0; i < str.length; i++) {
+        const char = str.charCodeAt(i);
+        hash = ((hash << 5) - hash) + char;
+        hash = hash & hash;
+    }
+    return hash;
 }
 
 // Start the app

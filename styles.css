@@ -1098,4 +1098,66 @@ h3 {
     }
 }
 
-/* Debug Toast removed */
+/* Adventure Mode Styles */
+.btn-adventure {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border: 2px solid #667eea;
+}
+
+.btn-adventure:hover {
+    background: linear-gradient(135deg, #5568d3 0%, #663a91 100%);
+    border-color: #5568d3;
+    transform: translateY(-2px);
+}
+
+.adventure-progress {
+    display: none;
+    margin-top: 0.5rem;
+    font-size: 0.75rem;
+    color: var(--primary-light);
+    font-weight: 600;
+}
+
+.adventure-header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.adventure-progress-bar {
+    height: 8px;
+    background: var(--card-bg);
+    border-radius: 10px;
+    overflow: hidden;
+    margin: 1rem auto;
+    max-width: 500px;
+}
+
+.adventure-progress-text {
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+    margin-top: 0.5rem;
+}
+
+.adventure-content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.adventure-actions {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    margin-top: 2rem;
+    flex-wrap: wrap;
+}
+
+#adventureTestSection {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+#adventureTestResults {
+    max-width: 600px;
+    margin: 2rem auto;
+}
+
