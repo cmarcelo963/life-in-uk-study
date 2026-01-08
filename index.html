@@ -3,10 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#4A90E2">
+    <meta name="description" content="Interactive study app for the Life in the UK citizenship test">
     <title>Life in the UK Study</title>
+    <link rel="manifest" href="manifest.json">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <!-- Offline Indicator -->
+    <div id="offlineIndicator" class="offline-indicator" style="display: none;">
+        📡 Offline Mode - Changes saved locally
+    </div>
+
     <div class="app-container">
         <!-- Header -->
         <header class="header">
@@ -276,6 +284,18 @@
                         <span class="stat-box-label">Questions Attempted</span>
                     </div>
                     <div class="stat-box">
+                        <span class="stat-box-value" id="questionsNotAnswered">0</span>
+                        <span class="stat-box-label">Not Yet Answered</span>
+                    </div>
+                    <div class="stat-box">
+                        <span class="stat-box-value" id="totalCorrect">0</span>
+                        <span class="stat-box-label">Total Correct</span>
+                    </div>
+                    <div class="stat-box">
+                        <span class="stat-box-value" id="totalIncorrect">0</span>
+                        <span class="stat-box-label">Total Incorrect</span>
+                    </div>
+                    <div class="stat-box">
                         <span class="stat-box-value" id="avgAccuracy">0%</span>
                         <span class="stat-box-label">Average Accuracy</span>
                     </div>
@@ -292,7 +312,35 @@
         </div>
     </div>
 
-    
+    <script>
+        // Register service worker for offline functionality
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/service-worker.js')
+                    .then(registration => {
+                        console.log('ServiceWorker registered:', registration.scope);
+                    })
+                    .catch(err => {
+                        console.log('ServiceWorker registration failed:', err);
+                    });
+            });
+        }
+
+        // Show/hide offline indicator
+        const offlineIndicator = document.getElementById('offlineIndicator');
+        
+        function updateOnlineStatus() {
+            if (navigator.onLine) {
+                offlineIndicator.style.display = 'none';
+            } else {
+                offlineIndicator.style.display = 'block';
+            }
+        }
+        
+        window.addEventListener('online', updateOnlineStatus);
+        window.addEventListener('offline', updateOnlineStatus);
+        window.addEventListener('load', updateOnlineStatus);
+    </script>
 
     <script src="app.js"></script>
 </body>

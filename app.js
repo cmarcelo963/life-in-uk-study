@@ -11,7 +11,8 @@ let state = {
     isPracticeMode: false, // Track if in global practice mode
     practiceStats: {}, // Track which questions have been seen in practice mode
     isFlashcardMode: false, // Track if in flashcard mode
-    flashcardStats: { correct: 0, incorrect: 0, skipped: 0 } // Track flashcard session stats
+    flashcardStats: { correct: 0, incorrect: 0, skipped: 0 }, // Track flashcard session stats
+    selectedAnswers: [] // Track selected answers for multi-answer questions
 };
 
 
@@ -28,7 +29,11 @@ async function init() {
 // Load Topics from JSON
 async function loadTopics() {
     try {
-        const response = await fetch('topics.json');
+        // Try loading grouped topics first, fallback to old structure
+        let response = await fetch('topics_grouped.json');
+        if (!response.ok) {
+            response = await fetch('topics.json');
+        }
         state.topics = await response.json();
     } catch (error) {
         console.error('Error loading topics:', error);
@@ -123,7 +128,11 @@ async function saveQuestionStats() {
 
 // Get unique question ID
 function getQuestionId(question, topicIndex, questionIndex) {
-    // Create a unique ID based on question text (first 50 chars as hash)
+    // If question has a groupId, use that for tracking (all variations tracked together)
+    if (question.groupId) {
+        return `${topicIndex}_group_${question.groupId}`;
+    }
+    // Legacy: Create a unique ID based on question text (first 50 chars as hash)
     const textHash = question.question.substring(0, 50).replace(/\s+/g, '_');
     const indexPart = (question && question.sourceIndex !== undefined) ? question.sourceIndex : questionIndex;
     return `${topicIndex}_${indexPart}_${textHash}`;
@@ -136,7 +145,7 @@ function initQuestionStats(questionId) {
             correct: 0,
             incorrect: 0,
             lastAsked: null,
-            weight: 1.0
+            points: 0  // Points system: +1 correct, -2 incorrect
         };
     }
 }
@@ -150,23 +159,23 @@ function updateQuestionStats(questionId, isCorrect) {
     
     if (isCorrect) {
         stats.correct++;
-        // Decrease weight (ask less frequently)
-        stats.weight = stats.weight * 0.8;
+        stats.points += 1;  // +1 point for correct
     } else {
         stats.incorrect++;
-        // Increase weight (ask more frequently)
-        stats.weight = stats.weight * 1.5;
+        stats.points -= 2;  // -2 points for incorrect
     }
     
     saveQuestionStats();
 }
 
 // Calculate question weight for adaptive learning
+// Lower/negative points = higher priority (needs more practice)
 function getQuestionWeight(questionId) {
     if (!state.questionStats[questionId]) {
-        return 1.0; // Default weight for new questions
+        return 0; // Default weight for new questions (neutral priority)
     }
-    return state.questionStats[questionId].weight;
+    // Return negative points so lower scores = higher weight
+    return -state.questionStats[questionId].points;
 }
 
 // Load Practice Statistics from Backend
@@ -196,7 +205,11 @@ async function savePracticeStats() {
 }
 
 // Setup Event Listeners
+let listenersSetup = false;
 function setupEventListeners() {
+    if (listenersSetup) return;
+    listenersSetup = true;
+    
     // Home Screen Choices
     const homeStudy = document.getElementById('homeStudy');
     if (homeStudy) homeStudy.addEventListener('click', () => {
@@ -294,16 +307,14 @@ function setupEventListeners() {
     const exitBtn = document.getElementById('exitTest');
     if (exitBtn) exitBtn.addEventListener('click', () => {
         try {
-            if (confirm('Are you sure you want to go back to Home? Your test progress will be lost.')) {
-                // Reset any test state and navigate home
-                state.isPracticeMode = false;
-                state.currentQuestions = [];
-                state.currentQuestionIndex = 0;
-                document.getElementById('difficultySelection').style.display = 'block';
-                document.getElementById('testQuestions').style.display = 'none';
-                document.getElementById('testResults').style.display = 'none';
-                showScreen('homeScreen');
-            }
+            // Reset any test state and navigate home
+            state.isPracticeMode = false;
+            state.currentQuestions = [];
+            state.currentQuestionIndex = 0;
+            document.getElementById('difficultySelection').style.display = 'block';
+            document.getElementById('testQuestions').style.display = 'none';
+            document.getElementById('testResults').style.display = 'none';
+            showScreen('homeScreen');
         } catch (err) {
             console.error('Exit test failed:', err);
             showScreen('homeScreen');
@@ -375,17 +386,23 @@ function setupEventListeners() {
     });
 
     const flashcardCorrectBtn = document.getElementById('flashcardCorrect');
-    if (flashcardCorrectBtn) flashcardCorrectBtn.addEventListener('click', () => {
+    if (flashcardCorrectBtn) flashcardCorrectBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
         handleFlashcardResponse('correct');
     });
 
     const flashcardIncorrectBtn = document.getElementById('flashcardIncorrect');
-    if (flashcardIncorrectBtn) flashcardIncorrectBtn.addEventListener('click', () => {
+    if (flashcardIncorrectBtn) flashcardIncorrectBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
         handleFlashcardResponse('incorrect');
     });
 
     const flashcardSkipBtn = document.getElementById('flashcardSkip');
-    if (flashcardSkipBtn) flashcardSkipBtn.addEventListener('click', () => {
+    if (flashcardSkipBtn) flashcardSkipBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
         handleFlashcardResponse('skip');
     });
 
@@ -521,7 +538,13 @@ function generatePracticeQuestions(count = 24) {
             topic.questionGroups.forEach((group, groupIdx) => {
                 if (group.variations && group.variations.length > 0) {
                     const randomVariation = group.variations[Math.floor(Math.random() * group.variations.length)];
-                    allQuestions.push({ ...randomVariation, sourceIndex: `group_${groupIdx}`, topicIndex });
+                    // Attach groupId so all variations are tracked together
+                    allQuestions.push({ 
+                        ...randomVariation, 
+                        sourceIndex: `group_${groupIdx}`, 
+                        groupId: group.id,
+                        topicIndex 
+                    });
                 }
             });
         }
@@ -638,7 +661,13 @@ function startTest(difficulty) {
                 if (group.variations && group.variations.length > 0) {
                     // Randomly select one variation from this group
                     const randomVariation = group.variations[Math.floor(Math.random() * group.variations.length)];
-                    allQuestions.push({ ...randomVariation, sourceIndex: `group_${groupIdx}`, topicIndex });
+                    // Attach groupId so all variations are tracked together
+                    allQuestions.push({ 
+                        ...randomVariation, 
+                        sourceIndex: `group_${groupIdx}`, 
+                        groupId: group.id,
+                        topicIndex 
+                    });
                 }
             });
         }
@@ -694,11 +723,16 @@ function renderQuestion() {
     // Hide feedback
     document.getElementById('feedback').style.display = 'none';
 
+    // Reset selected answers for multi-answer questions
+    state.selectedAnswers = [];
+
     // Render based on difficulty and question type
     if (state.currentDifficulty === 'normal') {
         // Check if this is a boolean (true/false) question or multiple choice
         if (question.type === 'boolean') {
             renderTrueFalse(question);
+        } else if (question.type === 'multipleAnswer') {
+            renderMultipleAnswer(question);
         } else {
             renderMultipleChoice(question);
         }
@@ -753,6 +787,75 @@ function renderTrueFalse(question) {
     });
 }
 
+// Render Multiple Answer Question (select TWO or more)
+function renderMultipleAnswer(question) {
+    document.getElementById('multipleChoice').style.display = 'block';
+    document.getElementById('textInput').style.display = 'none';
+
+    const container = document.getElementById('multipleChoice');
+    container.innerHTML = '';
+
+    // Shuffle options
+    const options = shuffleArray([...question.options]);
+    const numAnswers = question.answers.length;
+
+    // Create instruction text
+    const instruction = document.createElement('div');
+    instruction.style.cssText = 'margin-bottom: 1rem; font-size: 0.9rem; color: #dcddde;';
+    instruction.textContent = `Select ${numAnswers} answers`;
+    container.appendChild(instruction);
+
+    // Create options
+    options.forEach(option => {
+        const btn = document.createElement('button');
+        btn.className = 'option';
+        btn.textContent = option;
+        btn.dataset.selected = 'false';
+        
+        btn.addEventListener('click', () => {
+            if (btn.classList.contains('disabled')) return;
+            
+            // Toggle selection
+            if (btn.dataset.selected === 'true') {
+                btn.dataset.selected = 'false';
+                btn.style.backgroundColor = '';
+                btn.style.borderColor = '';
+                const index = state.selectedAnswers.indexOf(option);
+                if (index > -1) state.selectedAnswers.splice(index, 1);
+            } else {
+                if (state.selectedAnswers.length < numAnswers) {
+                    btn.dataset.selected = 'true';
+                    btn.style.backgroundColor = '#5865f2';
+                    btn.style.borderColor = '#5865f2';
+                    state.selectedAnswers.push(option);
+                }
+            }
+            
+            // If correct number selected, show submit button
+            if (state.selectedAnswers.length === numAnswers) {
+                // Check if submit button already exists
+                let submitBtn = container.querySelector('.submit-multi-answer');
+                if (!submitBtn) {
+                    submitBtn = document.createElement('button');
+                    submitBtn.className = 'option submit-multi-answer';
+                    submitBtn.textContent = 'Submit Answers';
+                    submitBtn.style.cssText = 'background-color: #3ba55d; border-color: #3ba55d; margin-top: 1rem;';
+                    submitBtn.addEventListener('click', () => {
+                        checkAnswer(state.selectedAnswers);
+                    });
+                    container.appendChild(submitBtn);
+                }
+            } else {
+                // Remove submit button if it exists
+                const submitBtn = container.querySelector('.submit-multi-answer');
+                if (submitBtn) submitBtn.remove();
+            }
+        });
+        
+        container.appendChild(btn);
+    });
+}
+
 // Render Text Input
 function renderTextInput() {
     document.getElementById('multipleChoice').style.display = 'none';
@@ -766,13 +869,41 @@ function renderTextInput() {
 // Check Answer
 function checkAnswer(userAnswer) {
     const question = state.currentQuestions[state.currentQuestionIndex];
-    const correctAnswer = question.answer;
+    const correctAnswer = question.answer || question.answers;
 
     let isCorrect = false;
 
     if (state.currentDifficulty === 'normal') {
+        // Handle multiple answer questions
+        if (question.type === 'multipleAnswer') {
+            // Compare arrays
+            const sortedUser = Array.isArray(userAnswer) ? [...userAnswer].sort() : [];
+            const sortedCorrect = Array.isArray(correctAnswer) ? [...correctAnswer].sort() : [];
+            isCorrect = sortedUser.length === sortedCorrect.length && 
+                       sortedUser.every((val, idx) => val === sortedCorrect[idx]);
+            
+            // Highlight options
+            const options = document.querySelectorAll('.option:not(.submit-multi-answer)');
+            options.forEach(opt => {
+                opt.classList.add('disabled');
+                opt.style.backgroundColor = '';
+                opt.style.borderColor = '';
+                opt.dataset.selected = 'false';
+                
+                if (correctAnswer.includes(opt.textContent)) {
+                    opt.classList.add('correct');
+                }
+                if (Array.isArray(userAnswer) && userAnswer.includes(opt.textContent) && !correctAnswer.includes(opt.textContent)) {
+                    opt.classList.add('incorrect');
+                }
+            });
+            
+            // Remove submit button
+            const submitBtn = document.querySelector('.submit-multi-answer');
+            if (submitBtn) submitBtn.remove();
+        }
         // Handle boolean questions
-        if (question.type === 'boolean') {
+        else if (question.type === 'boolean') {
             isCorrect = userAnswer === correctAnswer;
             
             // Highlight options
@@ -901,7 +1032,12 @@ function showFeedback(isCorrect, correctAnswer, userAnswer) {
         correctAnswerEl.textContent = '';
     } else {
         message.textContent = '✗ Incorrect';
-        correctAnswerEl.textContent = `The correct answer is: ${correctAnswer}`;
+        // Format correct answer (handle arrays for multi-answer questions)
+        if (Array.isArray(correctAnswer)) {
+            correctAnswerEl.textContent = `The correct answers are: ${correctAnswer.join(' and ')}`;
+        } else {
+            correctAnswerEl.textContent = `The correct answer is: ${correctAnswer}`;
+        }
     }
 }
 
@@ -1048,6 +1184,8 @@ function renderFlashcard() {
 
 // Handle flashcard response
 function handleFlashcardResponse(response) {
+    console.log('handleFlashcardResponse called with:', response, 'current index:', state.currentQuestionIndex);
+    
     const question = state.currentQuestions[state.currentQuestionIndex];
     
     // Track in adaptive learning system
@@ -1068,6 +1206,7 @@ function handleFlashcardResponse(response) {
     
     // Move to next question or show results
     state.currentQuestionIndex++;
+    console.log('After increment, index is now:', state.currentQuestionIndex);
     
     if (state.currentQuestionIndex < state.currentQuestions.length) {
         renderFlashcard();
@@ -1125,28 +1264,29 @@ function renderStatistics() {
                     correct: stats.correct,
                     incorrect: stats.incorrect,
                     accuracy,
-                    total
+                    total,
+                    points: stats.points || 0
                 });
             });
         }
-        // Include question group variations that have been attempted
+        // Include question groups (tracked as one unit, not individual variations)
         if (topic.questionGroups) {
-            topic.questionGroups.forEach((group, groupIdx) => {
+            topic.questionGroups.forEach((group) => {
                 if (group.variations && group.variations.length > 0) {
-                    group.variations.forEach(variation => {
-                        const qObj = { question: variation.question, sourceIndex: `group_${groupIdx}` };
-                        const qId = getQuestionId(qObj, tIdx, `group_${groupIdx}`);
-                        const stats = state.questionStats[qId] || null;
-                        if (!stats) return;
-                        const total = stats.correct + stats.incorrect;
-                        const accuracy = total > 0 ? (stats.correct / total * 100) : 0;
-                        questionStats.push({
-                            question: variation.question,
-                            correct: stats.correct,
-                            incorrect: stats.incorrect,
-                            accuracy,
-                            total
-                        });
+                    // Use groupId for tracking
+                    const qObj = { groupId: group.id };
+                    const qId = getQuestionId(qObj, tIdx, null);
+                    const stats = state.questionStats[qId] || null;
+                    if (!stats) return; // Only include attempted groups
+                    const total = stats.correct + stats.incorrect;
+                    const accuracy = total > 0 ? (stats.correct / total * 100) : 0;
+                    questionStats.push({
+                        question: group.baseQuestion || group.variations[0].question,
+                        correct: stats.correct,
+                        incorrect: stats.incorrect,
+                        accuracy,
+                        total,
+                        points: stats.points || 0
                     });
                 }
             });
@@ -1168,8 +1308,26 @@ function renderStatistics() {
         ? tracked.reduce((sum, q) => sum + q.accuracy, 0) / totalTracked 
         : 0;
     
+    // Calculate total correct and incorrect across all questions
+    const totalCorrect = tracked.reduce((sum, q) => sum + q.correct, 0);
+    const totalIncorrect = tracked.reduce((sum, q) => sum + q.incorrect, 0);
+    
+    // Calculate total questions vs answered
+    let totalQuestions = 0;
+    state.topics.forEach((topic) => {
+        if (topic.questions) totalQuestions += topic.questions.length;
+        // Count each question group as ONE question (not all variations)
+        if (topic.questionGroups) {
+            totalQuestions += topic.questionGroups.length;
+        }
+    });
+    const questionsNotAnswered = totalQuestions - totalTracked;
+    
     // Update summary boxes
     document.getElementById('totalQuestionsTracked').textContent = totalTracked;
+    document.getElementById('questionsNotAnswered').textContent = questionsNotAnswered;
+    document.getElementById('totalCorrect').textContent = totalCorrect;
+    document.getElementById('totalIncorrect').textContent = totalIncorrect;
     document.getElementById('avgAccuracy').textContent = avgAccuracy.toFixed(1) + '%';
     
     // Render list based on filter
@@ -1227,10 +1385,14 @@ function renderStatsList(questionStats) {
             <div class="stat-item-question">${stat.question}</div>
             <div class="stat-item-performance">
                 <div class="stat-item-accuracy ${stat.accuracy < 50 ? 'weak' : stat.accuracy >= 80 ? 'strong' : ''}">${stat.accuracy.toFixed(0)}%</div>
-                <div class="stat-item-count">✓${stat.correct} ✗${stat.incorrect}</div>
+                <div class="stat-item-count">✓${stat.correct} ✗${stat.incorrect} | ${stat.points >= 0 ? '+' : ''}${stat.points}pts</div>
             </div>
         `;
         
         statsList.appendChild(item);
     });
 }
+
+// Start the app
+init();
+
