@@ -53,6 +53,11 @@
                         <span class="home-title">Practice Test</span>
                         <span class="home-desc">24 random questions from all topics</span>
                     </button>
+                    <button id="homeInfinitePractice" class="btn btn-home-choice">
+                        <span class="home-icon">♾️</span>
+                        <span class="home-title">Infinite Practice</span>
+                        <span class="home-desc">Practice unlimited questions, save anytime</span>
+                    </button>
                     <button id="homeFlashcards" class="btn btn-home-choice">
                         <span class="home-icon">🃏</span>
                         <span class="home-title">Flashcards</span>
@@ -73,6 +78,15 @@
                 <button id="backToHome" class="back-btn">← Back to Home</button>
                 <h2>Choose a Topic</h2>
                 <p class="subtitle">Complete each topic to unlock the next</p>
+                <div class="topic-controls" style="margin: 0.5rem 0 1rem; display: flex; gap: 1rem; align-items: center; flex-wrap: wrap;">
+                    <label style="display: flex; gap: 0.5rem; align-items: center; font-size: 0.9rem;">
+                        <input type="checkbox" id="togglePracticeFirst" />
+                        <span>Practice topics at top</span>
+                    </label>
+                    <button id="filterPracticeOnly" class="btn" style="padding: 0.4rem 0.8rem; font-size: 0.9rem; background: transparent; border: 1px solid #5865f2; color: #5865f2; border-radius: 4px; cursor: pointer;">
+                        🎯 Practice Only
+                    </button>
+                </div>
                 <div id="topicList" class="topic-list"></div>
             </div>
         </div>
@@ -151,6 +165,10 @@
                     </div>
 
                     <div id="questionCard" class="question-card">
+                        <div id="infinitePracticeStats" style="display: none; position: absolute; top: 1.5rem; right: 1.5rem; font-size: 0.9rem; color: #5865f2; font-weight: 600; text-align: right;">
+                            <div id="questionCounterInline"></div>
+                            <div id="scoreCounterInline"></div>
+                        </div>
                         <p id="questionText" class="question-text"></p>
                         
                         <!-- Multiple Choice Options (Normal Mode) -->
@@ -202,6 +220,11 @@
                         </div>
                     </div>
                 </div>
+
+                <!-- Floating Save & Exit Button (Infinite Practice Mode) -->
+                <button id="saveExitPractice" class="btn btn-secondary" style="display: none; position: fixed; bottom: 2rem; right: 2rem; z-index: 1000; padding: 0.75rem 1.5rem; font-size: 1rem;">
+                    💾 Save & Exit
+                </button>
             </div>
         </div>
 
@@ -248,6 +271,10 @@
                 </div>
 
                 <div class="flashcard-card">
+                    <div id="flashcardStats" style="display: none; position: absolute; top: 1.5rem; right: 1.5rem; font-size: 0.9rem; color: #5865f2; font-weight: 600; text-align: right;">
+                        <div id="flashcardCounterInline"></div>
+                        <div id="flashcardScoreInline"></div>
+                    </div>
                     <div class="flashcard-question">
                         <p class="flashcard-label">Question:</p>
                         <p id="flashcardQuestion" class="flashcard-text"></p>

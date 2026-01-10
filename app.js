@@ -9,12 +9,16 @@ let state = {
     progress: {},
     questionStats: {}, // Track performance per question
     isPracticeMode: false, // Track if in global practice mode
+    isInfinitePracticeMode: false, // Track if in infinite practice mode (only answer questions, save anytime)
     practiceStats: {}, // Track which questions have been seen in practice mode
     isFlashcardMode: false, // Track if in flashcard mode
     flashcardStats: { correct: 0, incorrect: 0, skipped: 0 }, // Track flashcard session stats
     selectedAnswers: [], // Track selected answers for multi-answer questions
     isAdventureMode: false, // Track if in adventure mode
-    adventureProgress: { currentTopicIndex: 0, topicsCompleted: [] } // Track adventure progress
+    adventureProgress: { currentTopicIndex: 0, topicsCompleted: [] }, // Track adventure progress
+    showPracticeFirst: false, // Show practice topics at the top of topic list
+    showPracticeOnly: false, // Show only practice topics
+    currentQuestion: null // Store the current question being displayed (for infinite practice mode)
 };
 
 
@@ -302,10 +306,29 @@ function setupEventListeners() {
     const homePractice = document.getElementById('homePractice');
     if (homePractice) homePractice.addEventListener('click', () => {
         state.isPracticeMode = true;
+        state.isInfinitePracticeMode = false;
         state.isFlashcardMode = false;
         state.currentTopicIndex = null;
         showScreen('testScreen');
         showDifficultySelection();
+    });
+
+    const homeInfinitePractice = document.getElementById('homeInfinitePractice');
+    if (homeInfinitePractice) homeInfinitePractice.addEventListener('click', () => {
+        state.isPracticeMode = false;
+        state.isInfinitePracticeMode = true;
+        state.isFlashcardMode = false;
+        state.currentTopicIndex = null;
+        state.score = 0;
+        state.currentQuestionIndex = 0;
+        state.currentDifficulty = 'normal'; // Always use normal difficulty for infinite practice
+        state.currentQuestions = generateInfinitePracticeQuestions();
+        showScreen('testScreen');
+        document.getElementById('difficultySelection').style.display = 'none';
+        document.getElementById('testQuestions').style.display = 'block';
+        document.getElementById('testResults').style.display = 'none';
+        document.getElementById('testTopicTitle').textContent = 'Infinite Practice - Answer Questions';
+        renderQuestion();
     });
 
     const homeFlashcards = document.getElementById('homeFlashcards');
@@ -462,6 +485,17 @@ function setupEventListeners() {
         nextQuestion();
     });
 
+    // Save & Exit Button (Infinite Practice Mode)
+    const saveExitBtn = document.getElementById('saveExitPractice');
+    if (saveExitBtn) saveExitBtn.addEventListener('click', () => {
+        // Save practice stats and return to home
+        savePracticeStats();
+        state.isInfinitePracticeMode = false;
+        state.currentQuestions = [];
+        state.score = 0;
+        showScreen('homeScreen');
+    });
+
     // Result Buttons
     const retryTestBtn = document.getElementById('retryTest');
     if (retryTestBtn) retryTestBtn.addEventListener('click', () => {
@@ -541,17 +575,75 @@ function setupEventListeners() {
     if (filterStrongBtn) filterStrongBtn.addEventListener('click', () => {
         setStatsFilter('strong');
     });
+
+    // Topic controls: toggle practice-first grouping
+    const togglePracticeFirst = document.getElementById('togglePracticeFirst');
+    if (togglePracticeFirst) togglePracticeFirst.addEventListener('change', (e) => {
+        state.showPracticeFirst = !!e.target.checked;
+        renderTopicList();
+    });
+
+    // Topic controls: toggle practice-only filter
+    const filterPracticeOnly = document.getElementById('filterPracticeOnly');
+    if (filterPracticeOnly) filterPracticeOnly.addEventListener('click', () => {
+        state.showPracticeOnly = !state.showPracticeOnly;
+        filterPracticeOnly.style.background = state.showPracticeOnly ? '#5865f2' : 'transparent';
+        filterPracticeOnly.style.color = state.showPracticeOnly ? '#fff' : '#5865f2';
+        renderTopicList();
+    });
 }
 
 // Render Topic List
 function renderTopicList() {
     const container = document.getElementById('topicList');
     container.innerHTML = '';
+    // Build ordered list of indices; optionally place practice topics first or filter to practice-only
+    const isPracticeTitle = (t) => typeof t.title === 'string' && t.title.trim().toLowerCase().startsWith('practice:');
+    let indices = state.topics.map((_, i) => i);
+    
+    // Filter to practice-only if enabled
+    if (state.showPracticeOnly) {
+        indices = indices.filter(i => isPracticeTitle(state.topics[i]));
+    }
+    
+    // Reorder with practice first if enabled (but not when practice-only is active)
+    let ordered = indices;
+    if (state.showPracticeFirst && !state.showPracticeOnly) {
+        const practice = indices.filter(i => isPracticeTitle(state.topics[i]));
+        const core = indices.filter(i => !isPracticeTitle(state.topics[i]));
+        ordered = [...practice, ...core];
+    }
 
-    state.topics.forEach((topic, index) => {
+    // Optional section headers when grouping practice topics first
+    if (state.showPracticeFirst && !state.showPracticeOnly) {
+        const hasPractice = ordered.some(i => isPracticeTitle(state.topics[i]));
+        if (hasPractice) {
+            const header = document.createElement('div');
+            header.className = 'topic-section-header';
+            header.style.cssText = 'margin: 0.5rem 0; font-weight: 600; color: #dcddde;';
+            header.textContent = 'Practice Topics';
+            container.appendChild(header);
+        }
+    }
+
+    let addedCoreHeader = false;
+    ordered.forEach((index) => {
         // Topics are unlocked if: it's the first topic, OR the previous topic has been attempted
-        const isLocked = index > 0 && (!state.progress[index - 1] || state.progress[index - 1].attempts === 0);
+        const topic = state.topics[index];
+        const practiceTopic = typeof topic.title === 'string' && topic.title.trim().toLowerCase().startsWith('practice:');
+        // Practice topics should not be locked by sequential progression
+        const isLocked = practiceTopic ? false : (index > 0 && (!state.progress[index - 1] || state.progress[index - 1].attempts === 0));
         const progress = state.progress[index] || { completed: false, attempts: 0 };
+
+        // Insert a core section header once when transitioning from practice to core
+        if (state.showPracticeFirst && !practiceTopic && !addedCoreHeader) {
+            const header = document.createElement('div');
+            header.className = 'topic-section-header';
+            header.style.cssText = 'margin: 0.75rem 0; font-weight: 600; color: #dcddde;';
+            header.textContent = 'Core Topics';
+            container.appendChild(header);
+            addedCoreHeader = true;
+        }
 
         const card = document.createElement('div');
         card.className = `topic-card ${isLocked ? 'locked' : ''}`;
@@ -705,6 +797,57 @@ function generatePracticeQuestions(count = 24) {
     return selectedQuestions;
 }
 
+// Generate questions for infinite practice mode (generate one at a time)
+function generateInfinitePracticeQuestions() {
+    let allQuestions = [];
+    
+    // Collect all questions from all topics (similar to practice mode)
+    state.topics.forEach((topic, topicIndex) => {
+        // Add regular questions
+        if (topic.questions) {
+            topic.questions.forEach((q, idx) => {
+                allQuestions.push({ ...q, sourceIndex: idx, topicIndex });
+            });
+        }
+        
+        // Add one random variation from each question group
+        if (topic.questionGroups) {
+            topic.questionGroups.forEach((group, groupIdx) => {
+                if (group.variations && group.variations.length > 0) {
+                    const randomVariation = group.variations[Math.floor(Math.random() * group.variations.length)];
+                    // Attach groupId so all variations are tracked together
+                    allQuestions.push({ 
+                        ...randomVariation, 
+                        sourceIndex: `group_${groupIdx}`, 
+                        groupId: group.id,
+                        topicIndex 
+                    });
+                }
+            });
+        }
+    });
+
+    // Remove questions that have hit the mastery cap
+    allQuestions = allQuestions.filter((q) => {
+        const questionId = getQuestionId(q, q.topicIndex, q.sourceIndex);
+        return !isQuestionRetired(questionId);
+    });
+    
+    // Return all available questions (will be cycled through)
+    return allQuestions;
+}
+
+// Get next question for infinite practice mode (cycles through available questions)
+function getNextInfinitePracticeQuestion() {
+    if (!state.currentQuestions || state.currentQuestions.length === 0) {
+        return null;
+    }
+    
+    // Pick a random question from available pool
+    const randomIndex = Math.floor(Math.random() * state.currentQuestions.length);
+    return state.currentQuestions[randomIndex];
+}
+
 // Weighted question selection for adaptive learning
 function selectWeightedQuestions(questions, topicIndex) {
     // Skip questions that have reached mastery
@@ -739,7 +882,7 @@ function showScreen(screenId) {
 // Show Difficulty Selection
 function showDifficultySelection() {
     if (state.isPracticeMode) {
-        document.getElementById('testTopicTitle').textContent = 'Practice Test - 24 Questions';
+        document.getElementById('testTopicTitle').textContent = '';
     } else {
         const topic = state.topics[state.currentTopicIndex];
         document.getElementById('testTopicTitle').textContent = topic.title;
@@ -830,83 +973,72 @@ function startTest(difficulty) {
 
 // Render Question
 function renderQuestion() {
-    const question = state.currentQuestions[state.currentQuestionIndex];
-    const totalQuestions = state.currentQuestions.length;
-    const currentNum = state.currentQuestionIndex + 1;
-
-    // Update progress bar
-    const progress = (currentNum / totalQuestions) * 100;
-    document.getElementById('testProgressBar').style.width = `${progress}%`;
-
-    // Update counters
-    document.getElementById('questionCounter').textContent = `Question ${currentNum} of ${totalQuestions}`;
-    document.getElementById('scoreCounter').textContent = `Score: ${state.score}/${totalQuestions}`;
-
-    // Set question text with formatting for boolean questions
-    let questionText = question.question;
-    let expectedAnswer = question.answer;
+    let question;
     
-    // Transform awkward boolean format "[ANSWER] is the correct answer to: [QUESTION]" 
-    // into a cleaner format by combining both parts into a statement
-    if (question.type === 'boolean') {
-        const match = questionText.match(/^(.+?)\s+is the correct answer to:\s+(.+)$/i);
-        if (match) {
-            const answer = match[1].trim();
-            const originalQuestion = match[2].trim().replace(/\?$/, '');
-            
-            // Randomly invert 40% of boolean questions to add variety (since all originals are "true")
-            // Use a deterministic random based on question text so same question always gets same treatment
-            const hash = question.question.split('').reduce((acc, char) => acc + char.charCodeAt(0), 0);
-            const shouldInvert = (hash % 100) < 40;
-            
-            if (shouldInvert) {
-                expectedAnswer = false;
-                // Add "not" or modify the statement to make it false
-                const lowerQuestion = originalQuestion.toLowerCase();
-                
-                if (lowerQuestion.startsWith('who is') || lowerQuestion.startsWith('who was')) {
-                    const subject = originalQuestion.replace(/^who (is|was)\s+/i, '');
-                    questionText = `${subject.charAt(0).toUpperCase() + subject.slice(1)} is NOT ${answer}.`;
-                } else if (lowerQuestion.startsWith('what is') || lowerQuestion.startsWith('what was')) {
-                    const subject = originalQuestion.replace(/^what (is|was)\s+/i, '');
-                    questionText = `${subject.charAt(0).toUpperCase() + subject.slice(1)} is NOT ${answer}.`;
-                } else {
-                    // For all other question types, use "It is FALSE that:"
-                    questionText = `It is FALSE that: ${originalQuestion}: ${answer}.`;
-                }
-            } else {
-                // Keep as true statement
-                const lowerQuestion = originalQuestion.toLowerCase();
-                
-                // Try to create natural statements
-                if (lowerQuestion.startsWith('who is') || lowerQuestion.startsWith('who was')) {
-                    const subject = originalQuestion.replace(/^who (is|was)\s+/i, '');
-                    questionText = `${subject.charAt(0).toUpperCase() + subject.slice(1)} is ${answer}.`;
-                } else if (lowerQuestion.startsWith('what is') || lowerQuestion.startsWith('what was')) {
-                    const subject = originalQuestion.replace(/^what (is|was)\s+/i, '');
-                    questionText = `${subject.charAt(0).toUpperCase() + subject.slice(1)} is ${answer}.`;
-                } else if (lowerQuestion.startsWith('which')) {
-                    // Keep "Which" for context
-                    questionText = `${originalQuestion}: ${answer}.`;
-                } else if (lowerQuestion.startsWith('when')) {
-                    // Keep "When" for context
-                    questionText = `${originalQuestion}: ${answer}.`;
-                } else if (lowerQuestion.startsWith('why')) {
-                    questionText = `${originalQuestion}: ${answer}.`;
-                } else if (lowerQuestion.startsWith('how many')) {
-                    questionText = `${originalQuestion}: ${answer}.`;
-                } else if (lowerQuestion.startsWith('where')) {
-                    questionText = `${originalQuestion}: ${answer}.`;
-                } else {
-                    questionText = `${originalQuestion}: ${answer}.`;
-                }
-            }
-            
-            // Store the expected answer for this rendering
-            question._renderedAnswer = expectedAnswer;
+    if (state.isInfinitePracticeMode) {
+        // For infinite practice, get a random question from the pool
+        question = getNextInfinitePracticeQuestion();
+        if (!question) {
+            showScreen('homeScreen');
+            return;
+        }
+        // Store the current question for checkAnswer to use
+        state.currentQuestion = question;
+    } else {
+        question = state.currentQuestions[state.currentQuestionIndex];
+        state.currentQuestion = question;
+        
+        // Safety check if no questions available
+        if (!question || !state.currentQuestions || state.currentQuestions.length === 0) {
+            console.error('No questions available in test mode');
+            showScreen('homeScreen');
+            return;
         }
     }
     
+    const totalQuestions = state.isInfinitePracticeMode ? '∞' : state.currentQuestions.length;
+    const currentNum = state.currentQuestionIndex + 1;
+
+    // Update progress bar and header (hide for infinite practice and regular practice mode)
+    const testHeader = document.querySelector('.test-header');
+    if (testHeader) {
+        testHeader.style.display = (state.isInfinitePracticeMode || state.isPracticeMode) ? 'none' : 'flex';
+    }
+    
+    if (state.isInfinitePracticeMode || state.isPracticeMode) {
+        document.getElementById('testProgressBar').style.display = 'none';
+        // Show stats in the question card instead
+        const statsDiv = document.getElementById('infinitePracticeStats');
+        if (statsDiv) {
+            statsDiv.style.display = 'block';
+            if (state.isInfinitePracticeMode) {
+                document.getElementById('questionCounterInline').textContent = `Question #${currentNum}`;
+                document.getElementById('scoreCounterInline').textContent = `Score: ${state.score} points`;
+            } else {
+                document.getElementById('questionCounterInline').textContent = `Question ${currentNum} of ${totalQuestions}`;
+                document.getElementById('scoreCounterInline').textContent = `Score: ${state.score}/${totalQuestions}`;
+            }
+        }
+    } else {
+        document.getElementById('testProgressBar').style.display = 'block';
+        const progress = (currentNum / state.currentQuestions.length) * 100;
+        document.getElementById('testProgressBar').style.width = `${progress}%`;
+        const statsDiv = document.getElementById('infinitePracticeStats');
+        if (statsDiv) {
+            statsDiv.style.display = 'none';
+        }
+        document.getElementById('questionCounter').textContent = `Question ${currentNum} of ${totalQuestions}`;
+        document.getElementById('scoreCounter').textContent = `Score: ${state.score}/${totalQuestions}`;
+    }
+
+    // Show/hide Save & Exit button for infinite practice
+    const saveExitBtn = document.getElementById('saveExitPractice');
+    if (saveExitBtn) {
+        saveExitBtn.style.display = state.isInfinitePracticeMode ? 'inline-flex' : 'none';
+    }
+
+    // Set question text
+    const questionText = question.question;
     document.getElementById('questionText').textContent = questionText;
 
     // Hide feedback
@@ -916,16 +1048,13 @@ function renderQuestion() {
     state.selectedAnswers = [];
 
     // Render based on difficulty and question type
-    if (state.currentDifficulty === 'normal') {
-        // Check if this is a boolean (true/false) question or multiple choice
-        if (question.type === 'boolean') {
-            renderTrueFalse(question);
-        } else if (question.type === 'multipleAnswer') {
+    if (state.currentDifficulty === 'normal' || state.isInfinitePracticeMode) {
+        if (question.type === 'multipleAnswer') {
             renderMultipleAnswer(question);
         } else {
             renderMultipleChoice(question);
         }
-    } else {
+    } else if (state.currentDifficulty === 'hard') {
         renderTextInput();
     }
 }
@@ -948,28 +1077,6 @@ function renderMultipleChoice(question) {
         btn.addEventListener('click', () => {
             if (!btn.classList.contains('disabled')) {
                 checkAnswer(option);
-            }
-        });
-        container.appendChild(btn);
-    });
-}
-
-// Render True/False Question
-function renderTrueFalse(question) {
-    document.getElementById('multipleChoice').style.display = 'block';
-    document.getElementById('textInput').style.display = 'none';
-
-    const container = document.getElementById('multipleChoice');
-    container.innerHTML = '';
-
-    // Create True and False buttons
-    ['True', 'False'].forEach(option => {
-        const btn = document.createElement('button');
-        btn.className = 'option';
-        btn.textContent = option;
-        btn.addEventListener('click', () => {
-            if (!btn.classList.contains('disabled')) {
-                checkAnswer(option === 'True');
             }
         });
         container.appendChild(btn);
@@ -1057,11 +1164,9 @@ function renderTextInput() {
 
 // Check Answer
 function checkAnswer(userAnswer) {
-    const question = state.currentQuestions[state.currentQuestionIndex];
-    // For boolean questions that were inverted during rendering, use the rendered answer
-    const correctAnswer = question.type === 'boolean' && question._renderedAnswer !== undefined 
-        ? question._renderedAnswer 
-        : (question.answer || question.answers);
+    // Use stored current question (for both regular and infinite practice modes)
+    const question = state.currentQuestion || state.currentQuestions[state.currentQuestionIndex];
+    const correctAnswer = question.answer || question.answers;
 
     let isCorrect = false;
 
@@ -1117,23 +1222,6 @@ function checkAnswer(userAnswer) {
             // Remove submit button
             const submitBtn = document.querySelector('.submit-multi-answer');
             if (submitBtn) submitBtn.remove();
-        }
-        // Handle boolean questions
-        else if (question.type === 'boolean') {
-            isCorrect = userAnswer === correctAnswer;
-            
-            // Highlight options
-            const options = document.querySelectorAll('.option');
-            options.forEach(opt => {
-                opt.classList.add('disabled');
-                const optValue = opt.textContent === 'True';
-                if (optValue === correctAnswer) {
-                    opt.classList.add('correct');
-                }
-                if (optValue === userAnswer && !isCorrect) {
-                    opt.classList.add('incorrect');
-                }
-            });
         } else {
             // Handle multiple choice questions
             isCorrect = userAnswer === correctAnswer;
@@ -1175,23 +1263,49 @@ function checkAnswer(userAnswer) {
 
 // Fuzzy Match for Hard Mode
 function fuzzyMatch(userAnswer, correctAnswer) {
-    // Normalize both answers
-    const normalize = (str) => str.toLowerCase().trim().replace(/[^\w\s]/g, '');
+    // Handle array answers (multi-answer questions)
+    let answersToCheck = [];
+    if (Array.isArray(correctAnswer)) {
+        answersToCheck = correctAnswer;
+    } else {
+        answersToCheck = [correctAnswer];
+    }
+    
+    // Normalize answers - remove commas, punctuation, convert to lowercase
+    const normalize = (str) => {
+        return String(str)
+            .toLowerCase()
+            .trim()
+            .replace(/[,.\s]/g, ''); // Remove commas, periods, and spaces for number comparison
+    };
     
     const userNorm = normalize(userAnswer);
-    const correctNorm = normalize(correctAnswer);
-
-    // Exact match
-    if (userNorm === correctNorm) return true;
-
-    // Check if answer contains only numbers (dates, years)
-    if (/^\d+$/.test(correctNorm)) {
-        return userNorm === correctNorm;
+    
+    // Check against each possible answer
+    for (const answer of answersToCheck) {
+        const correctNorm = normalize(answer);
+        
+        // Exact match after normalization
+        if (userNorm === correctNorm) {
+            return true;
+        }
+        
+        // For pure numbers, do strict comparison after normalization
+        if (/^\d+$/.test(correctNorm) && /^\d+$/.test(userNorm)) {
+            if (userNorm === correctNorm) {
+                return true;
+            }
+            continue;
+        }
+        
+        // Levenshtein distance for fuzzy matching text
+        const similarity = calculateSimilarity(userNorm, correctNorm);
+        if (similarity >= 0.8) {
+            return true;
+        }
     }
-
-    // Levenshtein distance for fuzzy matching
-    const similarity = calculateSimilarity(userNorm, correctNorm);
-    return similarity >= 0.8; // 80% similarity threshold
+    
+    return false;
 }
 
 // Calculate String Similarity (Levenshtein-based)
@@ -1260,12 +1374,17 @@ function showFeedback(isCorrect, correctAnswer, userAnswer) {
 
 // Next Question
 function nextQuestion() {
-    state.currentQuestionIndex++;
-
-    if (state.currentQuestionIndex < state.currentQuestions.length) {
+    // For infinite practice mode, always generate next question
+    if (state.isInfinitePracticeMode) {
+        state.currentQuestionIndex++;
         renderQuestion();
     } else {
-        showResults();
+        state.currentQuestionIndex++;
+        if (state.currentQuestionIndex < state.currentQuestions.length) {
+            renderQuestion();
+        } else {
+            showResults();
+        }
     }
 }
 
@@ -1385,40 +1504,29 @@ function renderFlashcard() {
     const totalQuestions = state.currentQuestions.length;
     const currentNum = state.currentQuestionIndex + 1;
     
-    // Update progress bar
-    const progress = (currentNum / totalQuestions) * 100;
-    document.getElementById('flashcardProgressBar').style.width = `${progress}%`;
-    
-    // Update counters
-    document.getElementById('flashcardCounter').textContent = `Card ${currentNum} of ${totalQuestions}`;
-    document.getElementById('flashcardScore').textContent = 
-        `Correct: ${state.flashcardStats.correct} | Incorrect: ${state.flashcardStats.incorrect}`;
-    
-    // Set question text (apply same transformation as renderQuestion for boolean)
-    let questionText = question.question;
-    if (question.type === 'boolean') {
-        const match = questionText.match(/^(.+?)\s+is the correct answer to:\s+(.+)$/i);
-        if (match) {
-            const answer = match[1].trim();
-            const originalQuestion = match[2].trim();
-            // For flashcards, show the original question as the "question" side
-            questionText = originalQuestion;
-        }
+    // Hide header and progress bar for flashcards
+    const flashcardHeader = document.querySelector('.flashcard-header');
+    if (flashcardHeader) {
+        flashcardHeader.style.display = 'none';
     }
+    document.getElementById('flashcardProgressBar').style.display = 'none';
+    
+    // Show stats in the flashcard card instead
+    const statsDiv = document.getElementById('flashcardStats');
+    if (statsDiv) {
+        statsDiv.style.display = 'block';
+        document.getElementById('flashcardCounterInline').textContent = `Card ${currentNum} of ${totalQuestions}`;
+        document.getElementById('flashcardScoreInline').textContent = 
+            `✓ ${state.flashcardStats.correct} | ✗ ${state.flashcardStats.incorrect}`;
+    }
+    
+    // Set question text
+    const questionText = question.question;
     document.getElementById('flashcardQuestion').textContent = questionText;
     
-    // Set answer (handle boolean type properly)
+    // Set answer
     let answerText = question.answer;
-    if (question.type === 'boolean') {
-        const match = question.question.match(/^(.+?)\s+is the correct answer to:\s+(.+)$/i);
-        if (match) {
-            const answer = match[1].trim();
-            // Show the extracted answer as the answer side
-            answerText = answer.charAt(0).toUpperCase() + answer.slice(1);
-        } else {
-            answerText = question.answer === true ? 'True' : 'False';
-        }
-    } else if (Array.isArray(answerText)) {
+    if (Array.isArray(answerText)) {
         answerText = answerText.join(', ');
     }
     document.getElementById('flashcardAnswer').textContent = answerText;
@@ -1673,17 +1781,8 @@ function renderStatistics() {
                 const total = stats.correct + stats.incorrect;
                 const accuracy = total > 0 ? (stats.correct / total * 100) : 0;
                 
-                // Format question text for display (especially boolean questions)
-                let displayQuestion = q.question;
-                if (q.type === 'boolean') {
-                    const match = displayQuestion.match(/^(.+?)\s+is the correct answer to:\s+(.+)$/i);
-                    if (match) {
-                        const answer = match[1].trim();
-                        const originalQuestion = match[2].trim();
-                        // Show as "Question: Answer"
-                        displayQuestion = `${originalQuestion} → ${answer}`;
-                    }
-                }
+                // Format question text for display
+                const displayQuestion = q.question;
                 
                 questionStats.push({
                     question: displayQuestion,
