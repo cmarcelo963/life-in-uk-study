@@ -1,0 +1,365 @@
+[
+  {
+    "topicTitle": "A long and illustrious history - Chapter 5: The 20th century",
+    "questionGroups": [
+      {
+        "id": "field_marshal_haig",
+        "baseQuestion": "Who was the British Commander during much of WWI?",
+        "variations": [
+          {
+            "type": "multiple",
+            "question": "Who was the British Commander during much of WWI?",
+            "options": [
+              "Field Marshal Douglas Haig",
+              "Field Marshal Montgomery",
+              "Admiral Nelson",
+              "Duke of Wellington"
+            ],
+            "answer": "Field Marshal Douglas Haig"
+          }
+        ]
+      },
+      {
+        "id": "field_marshal_montgomery",
+        "baseQuestion": "Who commanded British forces at El Alamein in WWII?",
+        "variations": [
+          {
+            "type": "multiple",
+            "question": "Who commanded British forces at El Alamein in WWII?",
+            "options": [
+              "Winston Churchill",
+              "Field Marshal Montgomery",
+              "Field Marshal Haig",
+              "Admiral Mountbatten"
+            ],
+            "answer": "Field Marshal Montgomery"
+          }
+        ]
+      },
+      {
+        "id": "ernest_shackleton",
+        "baseQuestion": "Which British explorer led the Endurance expedition to Antarctica?",
+        "variations": [
+          {
+            "type": "multiple",
+            "question": "Which British explorer led the Endurance expedition to Antarctica?",
+            "options": [
+              "Captain Cook",
+              "Captain Scott",
+              "Ernest Shackleton",
+              "Edmund Hillary"
+            ],
+            "answer": "Ernest Shackleton"
+          }
+        ]
+      },
+      {
+        "id": "edmund_hillary",
+        "baseQuestion": "Who was the first person to reach the summit of Mount Everest?",
+        "variations": [
+          {
+            "type": "multiple",
+            "question": "Who was the first person to reach the summit of Mount Everest (with Tenzing Norgay)?",
+            "options": [
+              "Ernest Shackleton",
+              "Captain Scott",
+              "Edmund Hillary",
+              "Francis Drake"
+            ],
+            "answer": "Edmund Hillary"
+          }
+        ]
+      },
+      {
+        "id": "bobby_charlton",
+        "baseQuestion": "Which footballer was part of England's 1966 World Cup winning team?",
+        "variations": [
+          {
+            "type": "multipleAnswer",
+            "question": "Select footballers from England's 1966 World Cup winning team:",
+            "options": [
+              "Bobby Moore",
+              "Bobby Charlton",
+              "Andy Murray",
+              "Chris Hoy"
+            ],
+            "correctOptions": [
+              "Bobby Moore",
+              "Bobby Charlton"
+            ],
+            "numRequired": 2
+          }
+        ]
+      },
+      {
+        "id": "stephen_hawking",
+        "baseQuestion": "Which physicist wrote 'A Brief History of Time'?",
+        "variations": [
+          {
+            "type": "multiple",
+            "question": "Which physicist wrote 'A Brief History of Time'?",
+            "options": [
+              "Isaac Newton",
+              "Charles Darwin",
+              "Stephen Hawking",
+              "Ernest Rutherford"
+            ],
+            "answer": "Stephen Hawking"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "topicTitle": "A long and illustrious history - Chapter 4: A global power",
+    "questionGroups": [
+      {
+        "id": "michael_faraday",
+        "baseQuestion": "Who pioneered the study of electromagnetism?",
+        "variations": [
+          {
+            "type": "multiple",
+            "question": "Who pioneered the study of electromagnetism?",
+            "options": [
+              "Isaac Newton",
+              "Michael Faraday",
+              "James Watt",
+              "Charles Babbage"
+            ],
+            "answer": "Michael Faraday"
+          }
+        ]
+      },
+      {
+        "id": "charles_babbage",
+        "baseQuestion": "Who designed the first mechanical computer (Analytical Engine)?",
+        "variations": [
+          {
+            "type": "multiple",
+            "question": "Who designed the first mechanical computer (Analytical Engine)?",
+            "options": [
+              "Alan Turing",
+              "Charles Babbage",
+              "James Watt",
+              "George Stephenson"
+            ],
+            "answer": "Charles Babbage"
+          }
+        ]
+      },
+      {
+        "id": "robert_hooke",
+        "baseQuestion": "Which scientist discovered cells and wrote Micrographia?",
+        "variations": [
+          {
+            "type": "multiple",
+            "question": "Which scientist discovered cells and wrote Micrographia?",
+            "options": [
+              "Isaac Newton",
+              "Robert Hooke",
+              "Charles Darwin",
+              "Alexander Fleming"
+            ],
+            "answer": "Robert Hooke"
+          }
+        ]
+      },
+      {
+        "id": "james_clerk_maxwell",
+        "baseQuestion": "Who formulated the classical theory of electromagnetic radiation?",
+        "variations": [
+          {
+            "type": "multiple",
+            "question": "Who formulated the classical theory of electromagnetic radiation?",
+            "options": [
+              "Isaac Newton",
+              "Michael Faraday",
+              "James Clerk Maxwell",
+              "Ernest Rutherford"
+            ],
+            "answer": "James Clerk Maxwell"
+          }
+        ]
+      },
+      {
+        "id": "bronte_sisters",
+        "baseQuestion": "Which sisters wrote Jane Eyre and Wuthering Heights?",
+        "variations": [
+          {
+            "type": "multiple",
+            "question": "Which sisters wrote famous Victorian novels including Jane Eyre and Wuthering Heights?",
+            "options": [
+              "The Brontë sisters",
+              "The Mitford sisters",
+              "Jane Austen and her sister",
+              "George Eliot and her sister"
+            ],
+            "answer": "The Brontë sisters"
+          }
+        ]
+      },
+      {
+        "id": "george_eliot",
+        "baseQuestion": "Which author wrote Middlemarch under a male pen name?",
+        "variations": [
+          {
+            "type": "multiple",
+            "question": "Which author wrote Middlemarch under the male pen name George Eliot?",
+            "options": [
+              "Charlotte Brontë",
+              "Mary Ann Evans",
+              "Jane Austen",
+              "Virginia Woolf"
+            ],
+            "answer": "Mary Ann Evans"
+          }
+        ]
+      },
+      {
+        "id": "oscar_wilde",
+        "baseQuestion": "Who wrote The Picture of Dorian Gray and The Importance of Being Earnest?",
+        "variations": [
+          {
+            "type": "multiple",
+            "question": "Who wrote The Picture of Dorian Gray and The Importance of Being Earnest?",
+            "options": [
+              "Charles Dickens",
+              "Oscar Wilde",
+              "George Bernard Shaw",
+              "William Shakespeare"
+            ],
+            "answer": "Oscar Wilde"
+          }
+        ]
+      },
+      {
+        "id": "lord_shaftesbury",
+        "baseQuestion": "Which Victorian reformer campaigned for factory reforms and child welfare?",
+        "variations": [
+          {
+            "type": "multiple",
+            "question": "Which Victorian reformer campaigned for factory reforms and child welfare?",
+            "options": [
+              "William Wilberforce",
+              "Lord Shaftesbury",
+              "Florence Nightingale",
+              "Emmeline Pankhurst"
+            ],
+            "answer": "Lord Shaftesbury"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "topicTitle": "A long and illustrious history - Chapter 6: Britain since 1945",
+    "questionGroups": [
+      {
+        "id": "george_orwell",
+        "baseQuestion": "Who wrote 1984 and Animal Farm?",
+        "variations": [
+          {
+            "type": "multiple",
+            "question": "Who wrote the novels 1984 and Animal Farm?",
+            "options": [
+              "George Orwell",
+              "Aldous Huxley",
+              "J.R.R. Tolkien",
+              "C.S. Lewis"
+            ],
+            "answer": "George Orwell"
+          }
+        ]
+      },
+      {
+        "id": "virginia_woolf",
+        "baseQuestion": "Who wrote Mrs Dalloway and To the Lighthouse?",
+        "variations": [
+          {
+            "type": "multiple",
+            "question": "Which modernist writer wrote Mrs Dalloway and To the Lighthouse?",
+            "options": [
+              "Jane Austen",
+              "Virginia Woolf",
+              "George Eliot",
+              "Charlotte Brontë"
+            ],
+            "answer": "Virginia Woolf"
+          }
+        ]
+      },
+      {
+        "id": "wb_yeats",
+        "baseQuestion": "Which Irish poet won the Nobel Prize for Literature?",
+        "variations": [
+          {
+            "type": "multiple",
+            "question": "Which Irish poet won the Nobel Prize for Literature in 1923?",
+            "options": [
+              "William Wordsworth",
+              "W.B. Yeats",
+              "Robert Burns",
+              "Lord Byron"
+            ],
+            "answer": "W.B. Yeats"
+          }
+        ]
+      },
+      {
+        "id": "the_beatles",
+        "baseQuestion": "Which band from Liverpool became famous in the 1960s?",
+        "variations": [
+          {
+            "type": "multiple",
+            "question": "Which band from Liverpool became internationally famous in the 1960s?",
+            "options": [
+              "The Rolling Stones",
+              "The Beatles",
+              "Pink Floyd",
+              "Queen"
+            ],
+            "answer": "The Beatles"
+          }
+        ]
+      },
+      {
+        "id": "lennon_mccartney",
+        "baseQuestion": "Who were the main songwriters for The Beatles?",
+        "variations": [
+          {
+            "type": "multipleAnswer",
+            "question": "Select the main songwriters for The Beatles:",
+            "options": [
+              "John Lennon",
+              "Paul McCartney",
+              "Mick Jagger",
+              "Freddie Mercury"
+            ],
+            "correctOptions": [
+              "John Lennon",
+              "Paul McCartney"
+            ],
+            "numRequired": 2
+          }
+        ]
+      },
+      {
+        "id": "edward_heath",
+        "baseQuestion": "Which Prime Minister took the UK into the EEC in 1973?",
+        "variations": [
+          {
+            "type": "multiple",
+            "question": "Which Prime Minister took the UK into the EEC in 1973?",
+            "options": [
+              "Harold Wilson",
+              "Edward Heath",
+              "Margaret Thatcher",
+              "Harold Macmillan"
+            ],
+            "answer": "Edward Heath"
+          }
+        ]
+      }
+    ]
+  }
+]
