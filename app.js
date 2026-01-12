@@ -762,18 +762,32 @@ function generatePracticeQuestions(count = 24) {
     let selectedQuestions;
     
     if (hasSeenAll) {
-        // Use weighted selection based on performance
-        const weightedQuestions = allQuestions.map((q) => {
+        // All questions have been seen at least once
+        // Check if there are any unanswered questions (0 points)
+        const unansweredQuestions = allQuestions.filter((q) => {
             const questionId = getQuestionId(q, q.topicIndex, q.sourceIndex);
-            const weight = getQuestionWeight(questionId);
-            return { question: q, weight, id: questionId };
+            const points = state.questionStats[questionId]?.points ?? 0;
+            return points === 0;
         });
         
-        // Sort by weight (descending) - harder questions first
-        weightedQuestions.sort((a, b) => b.weight - a.weight);
-        
-        // Take top 24
-        selectedQuestions = weightedQuestions.slice(0, count).map(wq => wq.question);
+        if (unansweredQuestions.length > 0) {
+            // Randomly select from unanswered questions first
+            const shuffled = shuffleArray(unansweredQuestions);
+            selectedQuestions = shuffled.slice(0, count);
+        } else {
+            // All questions have been answered - use weighted selection for adaptive learning
+            const weightedQuestions = allQuestions.map((q) => {
+                const questionId = getQuestionId(q, q.topicIndex, q.sourceIndex);
+                const weight = getQuestionWeight(questionId);
+                return { question: q, weight, id: questionId };
+            });
+            
+            // Sort by weight (descending) - harder questions first
+            weightedQuestions.sort((a, b) => b.weight - a.weight);
+            
+            // Take top 24
+            selectedQuestions = weightedQuestions.slice(0, count).map(wq => wq.question);
+        }
     } else {
         // Random selection until all questions seen
         const shuffled = shuffleArray(allQuestions);
@@ -940,13 +954,19 @@ function startTest(difficulty) {
             return !isQuestionRetired(questionId);
         });
         
-        // Use weighted selection for subsequent attempts (adaptive learning)
-        if (attempts > 0) {
-            // Prioritize questions that were answered incorrectly
-            allQuestions = selectWeightedQuestions(allQuestions, topicIndex);
+        // Check if there are any unanswered questions (0 points)
+        const unansweredQuestions = allQuestions.filter((q) => {
+            const questionId = getQuestionId(q, topicIndex, q.sourceIndex);
+            const points = state.questionStats[questionId]?.points ?? 0;
+            return points === 0;
+        });
+        
+        if (unansweredQuestions.length > 0) {
+            // Randomly shuffle unanswered questions first
+            allQuestions = shuffleArray(unansweredQuestions);
         } else {
-            // First attempt: shuffle randomly
-            allQuestions = shuffleArray(allQuestions);
+            // All questions have been answered - use weighted selection for adaptive learning
+            allQuestions = selectWeightedQuestions(allQuestions, topicIndex);
         }
         
         state.currentQuestions = allQuestions;
