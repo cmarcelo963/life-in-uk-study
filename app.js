@@ -21,6 +21,62 @@ let state = {
     currentQuestion: null // Store the current question being displayed (for infinite practice mode)
 };
 
+// Extract bolded terms from HTML content
+function extractBoldTerms(html) {
+    try {
+        const doc = new DOMParser().parseFromString(html || '', 'text/html');
+        return Array.from(doc.querySelectorAll('strong'))
+            .map((el) => (el.textContent || '').trim())
+            .filter(Boolean);
+    } catch (e) {
+        console.warn('Failed to parse HTML for bold terms', e);
+        return [];
+    }
+}
+
+// Pick unique distractors from a pool, excluding the correct term
+function pickDistractors(pool, correct, count) {
+    const candidates = pool.filter((t) => t !== correct);
+    const shuffled = shuffleArray(candidates);
+    return shuffled.slice(0, Math.max(0, count));
+}
+
+// Add one generated question per bold term (no variations) into each topic
+function augmentTopicsWithGeneratedBoldQuestions(topics) {
+    if (!Array.isArray(topics)) return;
+
+    // Build global pool of bold terms for distractors
+    const globalTerms = new Set();
+    topics.forEach((topic) => {
+        extractBoldTerms(topic.content || '').forEach((t) => globalTerms.add(t));
+    });
+    const globalList = Array.from(globalTerms);
+
+    topics.forEach((topic, tIdx) => {
+        if (!topic || topic._generatedBoldAdded) return; // prevent double-add on reload
+        const terms = Array.from(new Set(extractBoldTerms(topic.content || '')));
+        if (terms.length === 0) return;
+        if (!Array.isArray(topic.questions)) topic.questions = [];
+
+        terms.forEach((term, idx) => {
+            const distractors = pickDistractors(globalList, term, 3);
+            const options = shuffleArray([term, ...distractors]);
+            topic.questions.push({
+                id: `auto_bold_${tIdx}_${idx}`,
+                type: 'multiple',
+                question: `Which of these appears in the study material for ${topic.title}?`,
+                options,
+                answer: term,
+                generated: true,
+                sourceIndex: `auto_${idx}`,
+                topicIndex: tIdx
+            });
+        });
+
+        topic._generatedBoldAdded = true;
+    });
+}
+
 
 // Initialize App
 async function init() {
@@ -43,6 +99,8 @@ async function loadTopics() {
             response = await fetch('topics.json');
         }
         state.topics = await response.json();
+        // Auto-generate single-variation questions from bolded facts in the study content
+        augmentTopicsWithGeneratedBoldQuestions(state.topics);
     } catch (error) {
         console.error('Error loading topics:', error);
         state.topics = [];
@@ -226,9 +284,8 @@ function updateQuestionStats(questionId, isCorrect) {
 function getQuestionWeight(questionId) {
     const points = state.questionStats[questionId]?.points ?? 0;
 
-    // Priority: neutral (0) first, then lowest points, then highest points
-    if (points === 0) return 100000; // Very high weight for neutral
-    if (points >= 100) return Number.NEGATIVE_INFINITY; // Retired questions sink to the bottom
+    // Retired questions sink to the bottom; otherwise lower points (including negative) rise to the top
+    if (points >= 100) return Number.NEGATIVE_INFINITY;
     return -points;
 }
 
@@ -717,31 +774,79 @@ function hideChoiceModal() {
     document.getElementById('studyChoiceModal').classList.remove('active');
 }
 
+// Get a single canonical variation for a question group (first variation wins)
+function getCanonicalGroupQuestion(group, groupIdx, topicIndex) {
+    if (!group || !group.variations || group.variations.length === 0) return null;
+    const canonical = group.variations[0];
+    return {
+        ...canonical,
+        question: canonical.question || group.baseQuestion,
+        sourceIndex: `group_${groupIdx}`,
+        groupId: group.id,
+        topicIndex
+    };
+}
+
+// Select questions prioritising unseen and low-point items
+function selectAdaptiveSubset(allQuestions, count) {
+    const buckets = { unseen: [], negative: [], lowPositive: [], others: [] };
+
+    allQuestions.forEach((q) => {
+        const qId = getQuestionId(q, q.topicIndex, q.sourceIndex);
+        const stats = state.questionStats[qId];
+        const points = stats?.points ?? 0;
+        const attempts = (stats?.correct || 0) + (stats?.incorrect || 0);
+        const entry = { question: q, id: qId, points, attempts };
+
+        if (attempts === 0) {
+            buckets.unseen.push(entry);
+        } else if (points < 0) {
+            buckets.negative.push(entry);
+        } else if (points <= 2) {
+            buckets.lowPositive.push(entry);
+        } else {
+            buckets.others.push(entry);
+        }
+    });
+
+    // Sort within buckets so the weakest items surface first
+    const ascPoints = (a, b) => a.points - b.points;
+    buckets.negative.sort(ascPoints);
+    buckets.lowPositive.sort(ascPoints);
+    buckets.others.sort(ascPoints);
+
+    const takeFrom = (bucket, selected) => {
+        while (selected.length < count && bucket.length > 0) {
+            selected.push(bucket.shift());
+        }
+    };
+
+    const selected = [];
+    takeFrom(buckets.unseen, selected);
+    takeFrom(buckets.negative, selected);
+    takeFrom(buckets.lowPositive, selected);
+    takeFrom(buckets.others, selected);
+
+    return selected;
+}
+
 // Generate practice questions from all topics
 function generatePracticeQuestions(count = 24) {
     let allQuestions = [];
-    
-    // Collect all questions from all topics
+
+    // Collect all questions from all topics (one canonical variation per group)
     state.topics.forEach((topic, topicIndex) => {
-        // Add regular questions
         if (topic.questions) {
             topic.questions.forEach((q, idx) => {
                 allQuestions.push({ ...q, sourceIndex: idx, topicIndex });
             });
         }
-        
-        // Add one random variation from each question group
+
         if (topic.questionGroups) {
             topic.questionGroups.forEach((group, groupIdx) => {
-                if (group.variations && group.variations.length > 0) {
-                    const randomVariation = group.variations[Math.floor(Math.random() * group.variations.length)];
-                    // Attach groupId so all variations are tracked together
-                    allQuestions.push({ 
-                        ...randomVariation, 
-                        sourceIndex: `group_${groupIdx}`, 
-                        groupId: group.id,
-                        topicIndex 
-                    });
+                const canonical = getCanonicalGroupQuestion(group, groupIdx, topicIndex);
+                if (canonical) {
+                    allQuestions.push(canonical);
                 }
             });
         }
@@ -752,103 +857,52 @@ function generatePracticeQuestions(count = 24) {
         const questionId = getQuestionId(q, q.topicIndex, q.sourceIndex);
         return !isQuestionRetired(questionId);
     });
-    
-    // Check if user has seen all questions at least once
+
     const availableIds = new Set(allQuestions.map((q) => getQuestionId(q, q.topicIndex, q.sourceIndex)));
     const totalAvailable = availableIds.size;
+
+    const selectedEntries = selectAdaptiveSubset(allQuestions, count);
+
+    // Mark selected as seen for practice tracking
+    selectedEntries.forEach(({ id }) => {
+        state.practiceStats.questionsSeen[id] = true;
+    });
+
     const seenCount = [...availableIds].filter((id) => state.practiceStats.questionsSeen?.[id]).length;
-    const hasSeenAll = totalAvailable > 0 && seenCount >= totalAvailable;
-    
-    let selectedQuestions;
-    
-    if (hasSeenAll) {
-        // All questions have been seen at least once
-        // Check if there are any unanswered questions (0 points)
-        const unansweredQuestions = allQuestions.filter((q) => {
-            const questionId = getQuestionId(q, q.topicIndex, q.sourceIndex);
-            const points = state.questionStats[questionId]?.points ?? 0;
-            return points === 0;
-        });
-        
-        if (unansweredQuestions.length > 0) {
-            // Randomly select from unanswered questions first
-            const shuffled = shuffleArray(unansweredQuestions);
-            selectedQuestions = shuffled.slice(0, count);
-        } else {
-            // All questions have been answered - use weighted selection for adaptive learning
-            const weightedQuestions = allQuestions.map((q) => {
-                const questionId = getQuestionId(q, q.topicIndex, q.sourceIndex);
-                const weight = getQuestionWeight(questionId);
-                return { question: q, weight, id: questionId };
-            });
-            
-            // Sort by weight (descending) - harder questions first
-            weightedQuestions.sort((a, b) => b.weight - a.weight);
-            
-            // Take top 24
-            selectedQuestions = weightedQuestions.slice(0, count).map(wq => wq.question);
-        }
-    } else {
-        // Random selection until all questions seen
-        const shuffled = shuffleArray(allQuestions);
-        selectedQuestions = shuffled.slice(0, count);
-        
-        // Mark these questions as seen
-        selectedQuestions.forEach((q) => {
-            const questionId = getQuestionId(q, q.topicIndex, q.sourceIndex);
-            state.practiceStats.questionsSeen[questionId] = true;
-        });
-        
-        // Check if we've now seen all
-        const updatedSeenCount = [...availableIds].filter((id) => state.practiceStats.questionsSeen?.[id]).length;
-        if (totalAvailable > 0 && updatedSeenCount >= totalAvailable) {
-            state.practiceStats.seenAll = true;
-        }
-        
-        savePracticeStats();
-    }
-    
-    return selectedQuestions;
+    state.practiceStats.seenAll = totalAvailable > 0 && seenCount >= totalAvailable;
+    savePracticeStats();
+
+    return selectedEntries.map((entry) => entry.question);
 }
 
 // Generate questions for infinite practice mode (generate one at a time)
 function generateInfinitePracticeQuestions() {
     let allQuestions = [];
-    
-    // Collect all questions from all topics (similar to practice mode)
+
     state.topics.forEach((topic, topicIndex) => {
-        // Add regular questions
         if (topic.questions) {
             topic.questions.forEach((q, idx) => {
                 allQuestions.push({ ...q, sourceIndex: idx, topicIndex });
             });
         }
-        
-        // Add one random variation from each question group
+
         if (topic.questionGroups) {
             topic.questionGroups.forEach((group, groupIdx) => {
-                if (group.variations && group.variations.length > 0) {
-                    const randomVariation = group.variations[Math.floor(Math.random() * group.variations.length)];
-                    // Attach groupId so all variations are tracked together
-                    allQuestions.push({ 
-                        ...randomVariation, 
-                        sourceIndex: `group_${groupIdx}`, 
-                        groupId: group.id,
-                        topicIndex 
-                    });
+                const canonical = getCanonicalGroupQuestion(group, groupIdx, topicIndex);
+                if (canonical) {
+                    allQuestions.push(canonical);
                 }
             });
         }
     });
 
-    // Remove questions that have hit the mastery cap
     allQuestions = allQuestions.filter((q) => {
         const questionId = getQuestionId(q, q.topicIndex, q.sourceIndex);
         return !isQuestionRetired(questionId);
     });
-    
-    // Return all available questions (will be cycled through)
-    return allQuestions;
+
+    // Sort the full pool by adaptive priority
+    return selectAdaptiveSubset(allQuestions, allQuestions.length).map((entry) => entry.question);
 }
 
 // Get next question for infinite practice mode (cycles through available questions)
@@ -856,10 +910,11 @@ function getNextInfinitePracticeQuestion() {
     if (!state.currentQuestions || state.currentQuestions.length === 0) {
         return null;
     }
-    
-    // Pick a random question from available pool
-    const randomIndex = Math.floor(Math.random() * state.currentQuestions.length);
-    return state.currentQuestions[randomIndex];
+
+    // Re-rank questions each time based on latest stats
+    const prioritized = selectAdaptiveSubset(state.currentQuestions, state.currentQuestions.length);
+    state.currentQuestions = prioritized.map((entry) => entry.question);
+    return state.currentQuestions[0];
 }
 
 // Weighted question selection for adaptive learning
@@ -931,19 +986,12 @@ function startTest(difficulty) {
             });
         }
         
-        // Add one random variation from each question group
+        // Add one canonical variation from each question group
         if (topic.questionGroups) {
             topic.questionGroups.forEach((group, groupIdx) => {
-                if (group.variations && group.variations.length > 0) {
-                    // Randomly select one variation from this group
-                    const randomVariation = group.variations[Math.floor(Math.random() * group.variations.length)];
-                    // Attach groupId so all variations are tracked together
-                    allQuestions.push({ 
-                        ...randomVariation, 
-                        sourceIndex: `group_${groupIdx}`, 
-                        groupId: group.id,
-                        topicIndex 
-                    });
+                const canonical = getCanonicalGroupQuestion(group, groupIdx, topicIndex);
+                if (canonical) {
+                    allQuestions.push(canonical);
                 }
             });
         }
@@ -953,23 +1001,9 @@ function startTest(difficulty) {
             const questionId = getQuestionId(q, topicIndex, q.sourceIndex);
             return !isQuestionRetired(questionId);
         });
-        
-        // Check if there are any unanswered questions (0 points)
-        const unansweredQuestions = allQuestions.filter((q) => {
-            const questionId = getQuestionId(q, topicIndex, q.sourceIndex);
-            const points = state.questionStats[questionId]?.points ?? 0;
-            return points === 0;
-        });
-        
-        if (unansweredQuestions.length > 0) {
-            // Randomly shuffle unanswered questions first
-            allQuestions = shuffleArray(unansweredQuestions);
-        } else {
-            // All questions have been answered - use weighted selection for adaptive learning
-            allQuestions = selectWeightedQuestions(allQuestions, topicIndex);
-        }
-        
-        state.currentQuestions = allQuestions;
+
+        const prioritized = selectAdaptiveSubset(allQuestions, allQuestions.length);
+        state.currentQuestions = prioritized.map((entry) => entry.question);
 
         // Update attempt count
         state.progress[state.currentTopicIndex].attempts++;
