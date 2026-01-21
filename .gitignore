@@ -2,3 +2,17 @@ node_modules/
 user-data/
 *.log
 .DS_Store
+
+# Local data generation outputs (not needed at runtime)
+curated_*.json
+suggested_questions.json
+BOOLEAN-REMOVAL-SUMMARY.md
+
+# Local helper scripts for curation/generation
+add-*.py
+analyze-coverage.py
+check-*.py
+find-mismatched-questions.py
+list-multiple-answer.py
+remove-boolean-questions.py
+validate-multiple-answer.py
