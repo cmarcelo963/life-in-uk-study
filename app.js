@@ -24,6 +24,35 @@ let state = {
 // Feature flags
 const ENABLE_AUTO_BOLD_QUESTIONS = false;
 
+// Dataset version - increment when question data format changes incompatibly
+const DATA_VERSION = 3;
+
+// Check and reset stats if dataset version changed
+function checkDatasetVersion() {
+    const storedVersion = localStorage.getItem('lifeInUK_dataVersion');
+    const currentVersion = String(DATA_VERSION);
+    
+    if (storedVersion !== currentVersion) {
+        console.log(`=== Dataset Version Change Detected ===`);
+        console.log(`Stored: ${storedVersion || 'none'}, Current: ${currentVersion}`);
+        
+        // Clear incompatible stats
+        localStorage.removeItem('lifeInUK_questionStats');
+        localStorage.removeItem('lifeInUK_statsMigrated_v2');
+        localStorage.removeItem('lifeInUK_practiceStats');
+        
+        console.log('Cleared old stats due to dataset version change');
+        
+        // Save new version
+        localStorage.setItem('lifeInUK_dataVersion', currentVersion);
+        console.log(`Updated data version to ${currentVersion}`);
+        
+        return true; // Stats were reset
+    }
+    
+    return false; // No reset needed
+}
+
 // Build a short excerpt around a bold term so generated questions have context
 function buildContextSnippet(node, term) {
     if (!node) return '';
@@ -139,6 +168,9 @@ function augmentTopicsWithGeneratedBoldQuestions(topics) {
 
 // Initialize App
 async function init() {
+    // Check dataset version and reset stats if incompatible
+    checkDatasetVersion();
+    
     await loadTopics();
     loadProgress();
     loadQuestionStats();
@@ -152,14 +184,56 @@ async function init() {
 // Load Topics from JSON
 async function loadTopics() {
     try {
-        // Try loading grouped topics first, fallback to old structure
-        let response = await fetch('topics_grouped.json');
+        // Load flat question array from data/questions.json
+        const response = await fetch('data/questions.json');
         if (!response.ok) {
-            response = await fetch('topics.json');
+            throw new Error('Failed to load questions');
         }
-        state.topics = await response.json();
-        // Auto-generate single-variation questions from bolded facts in the study content (disabled by default)
-        augmentTopicsWithGeneratedBoldQuestions(state.topics);
+        const questions = await response.json();
+        
+        console.log(`Loaded ${questions.length} questions from data/questions.json`);
+        
+        // Transform flat array into topics structure grouped by category
+        const categoryMap = new Map();
+        
+        questions.forEach(q => {
+            const category = q.category || 'Uncategorized';
+            
+            if (!categoryMap.has(category)) {
+                categoryMap.set(category, {
+                    title: category,
+                    content: `<p>Study material for ${category}</p>`,
+                    questions: []
+                });
+            }
+            
+            // Map question to expected schema
+            // Question IDs are already in format: <conceptId>_v<variant>
+            const mappedQuestion = {
+                type: 'multiple',
+                id: String(q.id), // Already in correct format from fixDuplicateIds.js
+                question: q.question,
+                options: q.options,
+                answer: q.answer,
+                conceptId: q.conceptId,
+                variant: q.variant ?? 0,
+                variantOf: q.variantOf || `${q.conceptId}_v0`, // Points to canonical v0
+                feedback: {
+                    fact: q.fact || '',
+                    whyCorrect: ''
+                },
+                generated: false,
+                sourceIndex: categoryMap.get(category).questions.length
+            };
+            
+            categoryMap.get(category).questions.push(mappedQuestion);
+        });
+        
+        // Convert map to array
+        state.topics = Array.from(categoryMap.values());
+        
+        console.log(`Loaded ${questions.length} questions across ${state.topics.length} topics`);
+        
     } catch (error) {
         console.error('Error loading topics:', error);
         state.topics = [];
@@ -220,13 +294,137 @@ async function saveProgress() {
     }
 }
 
+// Migrate old numeric question IDs to new format
+function migrateQuestionStats(stats) {
+    const migrationKey = 'lifeInUK_statsMigrated_v2';
+    
+    // Check if migration already done
+    if (localStorage.getItem(migrationKey) === 'true') {
+        return stats;
+    }
+    
+    console.log('=== Checking for stats migration ===');
+    
+    // Check if we have stats with old numeric format
+    let hasOldIds = false;
+    Object.keys(stats).forEach(key => {
+        // Old format: numeric only (1, 2, 3...) or topic_idx_text format
+        if (/^\d+$/.test(key) || /^\d+_\d+_/.test(key)) {
+            hasOldIds = true;
+        }
+    });
+    
+    if (!hasOldIds) {
+        console.log('No old-format stats found');
+        localStorage.setItem(migrationKey, 'true');
+        return stats;
+    }
+    
+    // Build mapping: We need to map old numeric IDs to new <conceptId>_v<variant> IDs
+    // Old IDs were 1,2,3...400 corresponding to array index + 1
+    // New IDs are <conceptId>_v<variant> based on conceptId and variant fields
+    
+    // Build index-based mapping from current questions
+    const idMapping = new Map();
+    let questionIndex = 0;
+    state.topics.forEach(topic => {
+        if (!topic.questions) return;
+        topic.questions.forEach(q => {
+            questionIndex++;
+            // Old ID format was numeric (1, 2, 3, ...) matching original array order
+            // Map old numeric ID to new ID
+            idMapping.set(String(questionIndex), String(q.id));
+            
+            // Also map conceptId if someone had stats keyed by conceptId
+            if (q.conceptId) {
+                const conceptKey = String(q.conceptId);
+                if (!idMapping.has(conceptKey)) {
+                    // Map to the canonical (v0) question for this concept
+                    if (q.variant === 0) {
+                        idMapping.set(conceptKey, String(q.id));
+                    }
+                }
+            }
+        });
+    });
+    
+    if (idMapping.size === 0) {
+        console.log('No ID mapping created');
+        localStorage.setItem(migrationKey, 'true');
+        return stats;
+    }
+    
+    console.log(`Migrating stats with ${idMapping.size} ID mappings...`);
+    console.log('Sample mappings:', Array.from(idMapping.entries()).slice(0, 5));
+    
+    const migratedStats = {};
+    let migratedCount = 0;
+    let mergedCount = 0;
+    let keptCount = 0;
+    let skippedCount = 0;
+    
+    Object.entries(stats).forEach(([oldId, statData]) => {
+        // Check if this is an old numeric ID
+        if (/^\d+$/.test(oldId)) {
+            const newId = idMapping.get(oldId);
+            if (newId) {
+                // Merge if new ID already has stats (concept-level aggregation)
+                if (migratedStats[newId]) {
+                    migratedStats[newId].correct += (statData.correct || 0);
+                    migratedStats[newId].incorrect += (statData.incorrect || 0);
+                    migratedStats[newId].points += (statData.points || 0);
+                    migratedStats[newId].lastAsked = Math.max(
+                        migratedStats[newId].lastAsked || 0,
+                        statData.lastAsked || 0
+                    );
+                    mergedCount++;
+                    console.log(`Merged ${oldId} -> ${newId}`);
+                } else {
+                    migratedStats[newId] = { ...statData };
+                    migratedCount++;
+                }
+            } else {
+                console.warn(`No mapping found for old ID: ${oldId}`);
+                skippedCount++;
+            }
+        } else if (oldId.includes('_v')) {
+            // Already new format - keep as-is
+            migratedStats[oldId] = statData;
+            keptCount++;
+        } else {
+            // Unknown format (e.g., old topic_idx_text format) - skip
+            console.log(`Skipping unknown format ID: ${oldId}`);
+            skippedCount++;
+        }
+    });
+    
+    console.log(`Migration complete:`);
+    console.log(`  - Migrated: ${migratedCount} entries`);
+    console.log(`  - Merged: ${mergedCount} entries`);
+    console.log(`  - Kept: ${keptCount} entries`);
+    console.log(`  - Skipped: ${skippedCount} entries`);
+    console.log(`  - Total: ${Object.keys(migratedStats).length} entries`);
+    
+    // Mark migration as complete
+    localStorage.setItem(migrationKey, 'true');
+    
+    return migratedStats;
+}
+
 // Load Question Statistics from Backend
 async function loadQuestionStats() {
     try {
         // Try localStorage first (works on mobile)
         const saved = localStorage.getItem('lifeInUK_questionStats');
         if (saved) {
-            state.questionStats = JSON.parse(saved);
+            let stats = JSON.parse(saved);
+            
+            // Migrate old IDs if needed (must have topics loaded first)
+            if (state.topics && state.topics.length > 0) {
+                stats = migrateQuestionStats(stats);
+            }
+            
+            state.questionStats = stats;
             console.log('Loaded question stats from localStorage:', Object.keys(state.questionStats).length, 'entries');
         } else {
             state.questionStats = {};
@@ -243,6 +441,11 @@ async function loadQuestionStats() {
         } catch (backendError) {
             // Backend not available (expected on mobile), continue with localStorage
             console.log('Backend not available, using localStorage');
+        }
+        
+        // Save migrated stats
+        if (saved && state.topics && state.topics.length > 0) {
+            saveQuestionStats();
         }
     } catch (error) {
         console.error('Error loading stats:', error);
@@ -280,6 +483,12 @@ function getQuestionId(question, topicIndex, questionIndex) {
         console.error('getQuestionId: null/undefined question');
             return `${topicIndex}_${(typeof question.topicIndex === 'number' ? question.topicIndex : questionIndex)}_unknown`;
     }
+    
+    // Use question.id if available (preferred - stable ID from data file)
+    if (question.id) {
+        return String(question.id);
+    }
+    
     if (question.groupId) {
         return `${topicIndex}_group_${question.groupId}`;
     }
@@ -292,6 +501,15 @@ function getQuestionId(question, topicIndex, questionIndex) {
     return `${topicIndex}_${indexPart}_${textHash}`;
 }
 
+// Get concept ID for concept-level scoring (groups variants together)
+function getConceptKey(question) {
+    if (question.conceptId) {
+        return `concept_${question.conceptId}`;
+    }
+    // Fallback to question ID if no conceptId
+    return getQuestionId(question, question.topicIndex, question.sourceIndex);
+}
+
 // Initialize question stats if not exists
 function initQuestionStats(questionId) {
     if (!state.questionStats[questionId]) {
@@ -299,7 +517,7 @@ function initQuestionStats(questionId) {
             correct: 0,
             incorrect: 0,
             lastAsked: null,
-            points: 0  // Points system: +1 correct, -2 incorrect
+            points: 0  // Points system: +1 correct, -3 incorrect
         };
     }
 }
@@ -319,7 +537,7 @@ function updateQuestionStats(questionId, isCorrect) {
         stats.points += 1;  // +1 point for correct
     } else {
         stats.incorrect++;
-        stats.points -= 2;  // -2 points for incorrect
+        stats.points -= 3;  // -3 points for incorrect
     }
 
     // Cap upper bound so mastered questions can be retired
@@ -339,18 +557,20 @@ function updateQuestionStats(questionId, isCorrect) {
     saveQuestionStats();
 }
 
-// Calculate question weight for adaptive learning
-function getQuestionWeight(questionId) {
-    const points = state.questionStats[questionId]?.points ?? 0;
+// Calculate question weight for adaptive learning (concept-level)
+function getQuestionWeight(question) {
+    const conceptKey = typeof question === 'string' ? question : getConceptKey(question);
+    const points = state.questionStats[conceptKey]?.points ?? 0;
 
     // Retired questions sink to the bottom; otherwise lower points (including negative) rise to the top
     if (points >= 100) return Number.NEGATIVE_INFINITY;
     return -points;
 }
 
-// Stop serving questions that have reached the mastery cap
-function isQuestionRetired(questionId) {
-    return !!(state.questionStats[questionId] && state.questionStats[questionId].points >= 100);
+// Stop serving questions that have reached the mastery cap (concept-level)
+function isQuestionRetired(question) {
+    const conceptKey = typeof question === 'string' ? question : getConceptKey(question);
+    return !!(state.questionStats[conceptKey] && state.questionStats[conceptKey].points >= 100);
 }
 
 // Load Practice Statistics from Backend
@@ -852,10 +1072,14 @@ function selectAdaptiveSubset(allQuestions, count) {
 
     allQuestions.forEach((q) => {
         const qId = getQuestionId(q, q.topicIndex, q.sourceIndex);
-        const stats = state.questionStats[qId];
+        const conceptKey = getConceptKey(q); // Use concept-level scoring
+        const stats = state.questionStats[conceptKey];
         const points = stats?.points ?? 0;
         const attempts = (stats?.correct || 0) + (stats?.incorrect || 0);
-        const entry = { question: q, id: qId, points, attempts };
+        const entry = { question: q, id: qId, conceptKey, points, attempts };
+
+        // DEBUG: Log selection details
+        console.log(`[Selection] id=${qId} conceptKey=${conceptKey} points=${points} attempts=${attempts}`);
 
         if (attempts === 0) {
             buckets.unseen.push(entry);
@@ -885,6 +1109,12 @@ function selectAdaptiveSubset(allQuestions, count) {
     takeFrom(buckets.negative, selected);
     takeFrom(buckets.lowPositive, selected);
     takeFrom(buckets.others, selected);
+    
+    // DEBUG: Summary of prioritization (TEMP)
+    try {
+        const summary = selected.slice(0, 5).map(e => `${e.id}:${e.points}`).join(', ');
+        console.log(`[SelectionSummary] next order (top 5): ${summary}`);
+    } catch {}
 
     return selected;
 }
@@ -911,10 +1141,9 @@ function generatePracticeQuestions(count = 24) {
         }
     });
 
-    // Remove questions that have hit the mastery cap
+    // Remove questions that have hit the mastery cap (concept-level)
     allQuestions = allQuestions.filter((q) => {
-        const questionId = getQuestionId(q, q.topicIndex, q.sourceIndex);
-        return !isQuestionRetired(questionId);
+        return !isQuestionRetired(q);
     });
 
     const availableIds = new Set(allQuestions.map((q) => getQuestionId(q, q.topicIndex, q.sourceIndex)));
@@ -956,8 +1185,7 @@ function generateInfinitePracticeQuestions() {
     });
 
     allQuestions = allQuestions.filter((q) => {
-        const questionId = getQuestionId(q, q.topicIndex, q.sourceIndex);
-        return !isQuestionRetired(questionId);
+        return !isQuestionRetired(q);
     });
 
     // Sort the full pool by adaptive priority
@@ -978,16 +1206,15 @@ function getNextInfinitePracticeQuestion() {
 
 // Weighted question selection for adaptive learning
 function selectWeightedQuestions(questions, topicIndex) {
-    // Skip questions that have reached mastery
+    // Skip questions that have reached mastery (concept-level)
     const availableQuestions = questions.filter((q) => {
-        const questionId = getQuestionId(q, topicIndex, q.sourceIndex);
-        return !isQuestionRetired(questionId);
+        return !isQuestionRetired(q);
     });
 
-    // Create array with questions and their weights
+    // Create array with questions and their weights (concept-level)
     const weightedQuestions = availableQuestions.map((q) => {
         const questionId = getQuestionId(q, topicIndex, q.sourceIndex);
-        const weight = getQuestionWeight(questionId);
+        const weight = getQuestionWeight(q);
         return { question: q, weight, id: questionId };
     });
     
@@ -1055,10 +1282,9 @@ function startTest(difficulty) {
             });
         }
 
-        // Remove questions that have hit the mastery cap
+        // Remove questions that have hit the mastery cap (concept-level)
         allQuestions = allQuestions.filter((q) => {
-            const questionId = getQuestionId(q, topicIndex, q.sourceIndex);
-            return !isQuestionRetired(questionId);
+            return !isQuestionRetired(q);
         });
 
         const prioritized = selectAdaptiveSubset(allQuestions, allQuestions.length);
@@ -1154,6 +1380,10 @@ function renderQuestion() {
     const questionText = question.question;
     document.getElementById('questionText').textContent = questionText;
 
+    // TEMP DEBUG PANEL: ensure and update
+    ensureDebugPanel();
+    updateDebugPanel(question);
+
     // Hide feedback
     document.getElementById('feedback').style.display = 'none';
 
@@ -1171,6 +1401,34 @@ function renderQuestion() {
         renderTextInput();
     }
 }
+
+// ===== TEMP DEBUG PANEL =====
+function ensureDebugPanel() {
+    let panel = document.getElementById('debugPanel');
+    if (!panel) {
+        panel = document.createElement('div');
+        panel.id = 'debugPanel';
+        panel.style.cssText = 'position:fixed; right:12px; bottom:12px; background:rgba(0,0,0,0.6); color:#fff; padding:8px 10px; border-radius:8px; font: 12px/1.4 system-ui, sans-serif; z-index:9999; box-shadow:0 2px 6px rgba(0,0,0,0.3)';
+        panel.innerHTML = '<div><strong>Debug</strong></div><div id="debugContent"></div>';
+        document.body.appendChild(panel);
+    }
+}
+
+function updateDebugPanel(question) {
+    try {
+        const topicIndex = (typeof question.topicIndex === 'number' ? question.topicIndex : state.currentTopicIndex) || 0;
+        const qid = question.id || getQuestionId(question, topicIndex, question.sourceIndex);
+        const conceptKey = getConceptKey(question);
+        const points = state.questionStats[conceptKey]?.points ?? 0;
+        const content = document.getElementById('debugContent');
+        if (content) {
+            content.textContent = `id: ${qid} | conceptId: ${question.conceptId ?? 'n/a'} | score: ${points}`;
+        }
+    } catch (e) {
+        console.warn('updateDebugPanel error:', e);
+    }
+}
+// ===== END TEMP DEBUG PANEL =====
 
 // Render Multiple Choice
 function renderMultipleChoice(question) {
@@ -1362,16 +1620,26 @@ function checkAnswer(userAnswer) {
     }
     
     // Track question performance for adaptive learning
-    const questionId = getQuestionId(
-        question,
-        // Use the question's own topic index to ensure consistency in Practice Mode
+    // Use concept-level key so all variants of same concept share score
+    const conceptKey = getConceptKey(question);
+    const questionId = getQuestionId(question, 
         (typeof question.topicIndex === 'number' ? question.topicIndex : state.currentTopicIndex),
         question.sourceIndex
     );
-    updateQuestionStats(questionId, isCorrect);
+    
+    // DEBUG: Log scoring details (TEMP)
+    const beforePoints = state.questionStats[conceptKey]?.points ?? 0;
+    console.log(`[Scoring] question.id=${question.id} conceptId=${question.conceptId} conceptKey=${conceptKey} isCorrect=${isCorrect}`);
+    console.log(`[Scoring] beforePoints=${beforePoints}`);
+    
+    updateQuestionStats(conceptKey, isCorrect);
+    // TEMP: refresh debug panel after scoring update
+    updateDebugPanel(question);
+    const afterPoints = state.questionStats[conceptKey]?.points ?? 0;
+    console.log(`[Scoring] afterPoints=${afterPoints}`);
 
     // Show feedback
-    showFeedback(isCorrect, correctAnswer, userAnswer);
+    showFeedback(isCorrect, correctAnswer, userAnswer, question);
 }
 
 // Fuzzy Match for Hard Mode
@@ -1462,7 +1730,7 @@ function levenshteinDistance(str1, str2) {
 }
 
 // Show Feedback
-function showFeedback(isCorrect, correctAnswer, userAnswer) {
+function showFeedback(isCorrect, correctAnswer, userAnswer, question) {
     const feedback = document.getElementById('feedback');
     const message = document.getElementById('feedbackMessage');
     const correctAnswerEl = document.getElementById('correctAnswer');
@@ -1482,6 +1750,24 @@ function showFeedback(isCorrect, correctAnswer, userAnswer) {
         } else {
             correctAnswerEl.textContent = `The correct answer is: ${correctAnswer}`;
         }
+    }
+    
+    // Display fact from feedback (shown for both correct and incorrect answers)
+    const fact = question?.feedback?.fact;
+    let factEl = document.getElementById('feedbackFact');
+    
+    if (fact) {
+        if (!factEl) {
+            // Create fact element if it doesn't exist
+            factEl = document.createElement('div');
+            factEl.id = 'feedbackFact';
+            factEl.style.cssText = 'margin-top: 0.75rem; padding: 0.75rem; background: rgba(255,255,255,0.1); border-radius: 6px; font-size: 0.9rem; color: #dcddde; line-height: 1.4;';
+            feedback.appendChild(factEl);
+        }
+        factEl.textContent = `📖 ${fact}`;
+        factEl.style.display = 'block';
+    } else if (factEl) {
+        factEl.style.display = 'none';
     }
 }
 
@@ -1653,13 +1939,16 @@ function handleFlashcardResponse(response) {
     
     // Track in adaptive learning system
     if (response === 'correct' || response === 'incorrect') {
-        const questionId = getQuestionId(
-            question,
-            question.topicIndex || 0,
-            question.sourceIndex
-        );
         const isCorrect = response === 'correct';
-        updateQuestionStats(questionId, isCorrect);
+        // TEMP DEBUG: Flashcard scoring at concept level
+        const conceptKey = getConceptKey(question);
+        const before = state.questionStats[conceptKey]?.points ?? 0;
+        console.log(`[FlashcardScoring] conceptKey=${conceptKey} beforePoints=${before} isCorrect=${isCorrect}`);
+        updateQuestionStats(conceptKey, isCorrect);
+        const after = state.questionStats[conceptKey]?.points ?? 0;
+        console.log(`[FlashcardScoring] afterPoints=${after}`);
+        // TEMP: refresh debug panel after scoring update
+        updateDebugPanel(question);
         
         // Update session stats
         state.flashcardStats[response]++;

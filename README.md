@@ -183,26 +183,12 @@ Use HTML tags in the `content` field:
 
 ## Practice Topics
 
-To help targeted revision, practice-only topics are included alongside core chapters. These appear under their own titles in `topics_grouped.json` and use the same group/variation schema:
+Practice-only topics are included alongside core chapters in `data/questions.json`. These cover focused areas:
 
-- Practice: Values & Civics Focus — covers Individual liberty, Tolerance, Mutual respect, Parliament roles, Elections, Courts, Devolution, UN membership.
-- Practice: History Core Facts — covers WWI/WWII dates, Industrial Revolution features, Victorian era definition, Union with Scotland (1707), Restoration (1660), Slavery abolition milestones, Post-war immigration (Windrush).
+- **Values & Civics Focus** — Individual liberty, Tolerance, Mutual respect, Parliament roles, Elections, Courts, Devolution, UN membership
+- **History Core Facts** — WWI/WWII dates, Industrial Revolution, Victorian era, Union with Scotland (1707), Restoration (1660), Slavery abolition, Post-war immigration (Windrush)
 
-You can add or update practice topics using the merge scripts:
-
-- `add-practice-sets.py` merges `curated_practice_sets.json` (civics values).
-- `add-practice-history.py` merges `curated_practice_history.json` (history facts).
-
-Run merges and validations:
-
-```powershell
-python add-practice-sets.py
-python add-practice-history.py
-python check-duplicates.py
-python analyze-coverage.py
-```
-
-These practice topics are treated like any other topic in the UI and can be used in normal mode, practice mode, or flashcards.
+Practice topics are treated like any other topic in the UI and can be used in normal mode, practice mode, or flashcards.
 
 ## 🎓 Passing Criteria
 
@@ -218,6 +204,14 @@ These practice topics are treated like any other topic in the UI and can be used
 - **LocalStorage** for progress persistence
 - **Responsive design** - Mobile-first approach
 - **Fuzzy matching** using Levenshtein distance algorithm
+
+## 📦 Data Architecture
+
+- **Active dataset**: `data/questions.json` (400 questions, 250 concepts)
+- **Question IDs**: Format `<conceptId>_v<variant>` (e.g., `1_v0`, `1_v1`)
+- **Scoring**: Concept-level tracking via `concept_<id>` keys (+1 correct, -3 incorrect)
+- **Service worker**: `life-in-uk-v22` caches `data/questions.json` for offline use
+- **Retired files**: Old `topics_grouped.json` and related scripts moved to `_unused_backup/`
 
 ## 📊 Progress Tracking
 

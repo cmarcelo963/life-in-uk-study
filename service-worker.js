@@ -1,11 +1,10 @@
-const CACHE_NAME = 'life-in-uk-v21'; // Change version number when updating app files
+const CACHE_NAME = 'life-in-uk-v22'; // Bumped: switched from topics_grouped.json to data/questions.json
 const urlsToCache = [
   '/',
   '/index.html',
   '/app.js',
   '/styles.css',
-  '/topics_grouped.json',
-  '/topics.json'
+  '/data/questions.json'
 ];
 
 // Install event - cache files
