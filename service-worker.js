@@ -1,4 +1,4 @@
-const CACHE_NAME = 'life-in-uk-v23'; // Bump to ensure latest app.js is cached
+const CACHE_NAME = 'life-in-uk-v24'; // Bump to ensure latest assets and fix API caching
 const urlsToCache = [
   '/',
   '/index.html',
@@ -44,37 +44,42 @@ self.addEventListener('activate', (event) => {
 
 // Fetch event - serve from cache, fallback to network
 self.addEventListener('fetch', (event) => {
-  event.respondWith(
-    caches.match(event.request)
-      .then((response) => {
-        // Cache hit - return response
-        if (response) {
-          return response;
+  const url = new URL(event.request.url);
+
+  // Never cache API calls; always go to network
+  if (url.pathname.startsWith('/api/')) {
+    event.respondWith(
+      fetch(event.request).catch(() => {
+        // Fallback empty JSON for GETs; let others fail
+        if (event.request.method === 'GET') {
+          return new Response('{}', { headers: { 'Content-Type': 'application/json' } });
         }
-        
-        // Clone the request
-        const fetchRequest = event.request.clone();
-        
-        return fetch(fetchRequest).then((response) => {
-          // Check if valid response
-          if (!response || response.status !== 200 || response.type !== 'basic') {
-            return response;
-          }
-          
-          // Clone the response
-          const responseToCache = response.clone();
-          
-          // Cache the fetched response for future use
-          caches.open(CACHE_NAME)
-            .then((cache) => {
-              cache.put(event.request, responseToCache);
-            });
-          
-          return response;
-        }).catch(() => {
-          // Network request failed, return cached version if available
-          return caches.match('/index.html');
-        });
+        return new Response(null, { status: 503 });
       })
+    );
+    return;
+  }
+
+  // Static asset caching
+  event.respondWith(
+    caches.match(event.request).then((response) => {
+      if (response) {
+        return response;
+      }
+
+      const fetchRequest = event.request.clone();
+      return fetch(fetchRequest)
+        .then((networkResponse) => {
+          if (!networkResponse || networkResponse.status !== 200 || networkResponse.type !== 'basic') {
+            return networkResponse;
+          }
+          const responseToCache = networkResponse.clone();
+          caches.open(CACHE_NAME).then((cache) => {
+            cache.put(event.request, responseToCache);
+          });
+          return networkResponse;
+        })
+        .catch(() => caches.match('/index.html'));
+    })
   );
 });
