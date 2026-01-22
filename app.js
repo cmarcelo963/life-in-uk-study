@@ -2107,54 +2107,54 @@ function renderStatistics() {
         state._statsMigrated = true;
     }
     
-    // Get all questions with stats
-    const questionStats = [];
-    
-    // Iterate through all topics and questions using consistent question IDs
+    // Get all questions with stats (concept-level; avoid duplicates)
+    const byConcept = new Map(); // conceptKey -> { questionText, stats }
+
     state.topics.forEach((topic, tIdx) => {
+        // Regular questions
         if (topic.questions) {
             topic.questions.forEach((q, qIdx) => {
-                const qId = getQuestionId(q, tIdx, qIdx);
-                const stats = state.questionStats[qId] || null;
-                if (!stats) return; // Only include attempted questions
-                const total = stats.correct + stats.incorrect;
-                const accuracy = total > 0 ? (stats.correct / total * 100) : 0;
-                
-                // Format question text for display
-                const displayQuestion = q.question;
-                
-                questionStats.push({
-                    question: displayQuestion,
-                    correct: stats.correct,
-                    incorrect: stats.incorrect,
-                    accuracy,
-                    total,
-                    points: stats.points || 0
-                });
-            });
-        }
-        // Include question groups (tracked as one unit, not individual variations)
-        if (topic.questionGroups) {
-            topic.questionGroups.forEach((group) => {
-                if (group.variations && group.variations.length > 0) {
-                    // Use groupId for tracking
-                    const qObj = { groupId: group.id };
-                    const qId = getQuestionId(qObj, tIdx, null);
-                    const stats = state.questionStats[qId] || null;
-                    if (!stats) return; // Only include attempted groups
-                    const total = stats.correct + stats.incorrect;
-                    const accuracy = total > 0 ? (stats.correct / total * 100) : 0;
-                    questionStats.push({
-                        question: group.baseQuestion || group.variations[0].question,
-                        correct: stats.correct,
-                        incorrect: stats.incorrect,
-                        accuracy,
-                        total,
-                        points: stats.points || 0
-                    });
+                const conceptKey = getConceptKey(q);
+                const stats = state.questionStats[conceptKey] || null;
+                if (!stats) return; // Only include attempted concepts
+                if (!byConcept.has(conceptKey)) {
+                    const displayQuestion = q.question;
+                    byConcept.set(conceptKey, { question: displayQuestion, stats });
                 }
             });
         }
+
+        // Question groups (treated as one unit; prefer canonical variant)
+        if (topic.questionGroups) {
+            topic.questionGroups.forEach((group, groupIdx) => {
+                if (group.variations && group.variations.length > 0) {
+                    const canonical = group.variations[0];
+                    const canonicalWithMeta = { ...canonical, groupId: group.id, sourceIndex: `group_${groupIdx}`, topicIndex: tIdx };
+                    // Prefer concept-level key if available; else use stable group key
+                    const conceptKey = canonical.conceptId ? getConceptKey(canonicalWithMeta) : getQuestionId({ groupId: group.id }, tIdx, null);
+                    const stats = state.questionStats[conceptKey] || null;
+                    if (!stats) return;
+                    if (!byConcept.has(conceptKey)) {
+                        const displayQuestion = group.baseQuestion || canonical.question;
+                        byConcept.set(conceptKey, { question: displayQuestion, stats });
+                    }
+                }
+            });
+        }
+    });
+
+    // Build array for rendering
+    const questionStats = Array.from(byConcept.values()).map(({ question, stats }) => {
+        const total = (stats.correct || 0) + (stats.incorrect || 0);
+        const accuracy = total > 0 ? ((stats.correct || 0) / total * 100) : 0;
+        return {
+            question,
+            correct: stats.correct || 0,
+            incorrect: stats.incorrect || 0,
+            accuracy,
+            total,
+            points: stats.points || 0
+        };
     });
     
     // Sort by incorrect count descending (most wrong first), then by accuracy ascending
