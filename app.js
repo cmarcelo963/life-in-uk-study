@@ -18,7 +18,8 @@ let state = {
     adventureProgress: { currentTopicIndex: 0, topicsCompleted: [] }, // Track adventure progress
     showPracticeFirst: false, // Show practice topics at the top of topic list
     showPracticeOnly: false, // Show only practice topics
-    currentQuestion: null // Store the current question being displayed (for infinite practice mode)
+    currentQuestion: null, // Store the current question being displayed (for infinite practice mode)
+    lastInfiniteConceptKey: null // Track last served concept in infinite practice to avoid repeats
 };
 
 // Feature flags
@@ -1182,7 +1183,39 @@ function getNextInfinitePracticeQuestion() {
     // Re-rank questions each time based on latest stats
     const prioritized = selectAdaptiveSubset(state.currentQuestions, state.currentQuestions.length);
     state.currentQuestions = prioritized.map((entry) => entry.question);
-    return state.currentQuestions[0];
+
+    // Prefer a different concept than last served, from the top N candidates
+    const prevKey = state.lastInfiniteConceptKey;
+    const topN = Math.min(20, prioritized.length);
+    let chosenEntry = null;
+
+    for (let i = 0; i < topN; i++) {
+        const entry = prioritized[i];
+        const key = entry.conceptKey;
+        if (key !== prevKey) {
+            // Optional: de-prioritise very recently asked concepts (<30s)
+            const stats = state.questionStats[key];
+            const recentlyAsked = stats && stats.lastAsked && (Date.now() - stats.lastAsked < 30000);
+            if (!recentlyAsked) {
+                chosenEntry = entry;
+                break;
+            }
+        }
+    }
+
+    // Fallback: if none found, take the first candidate
+    if (!chosenEntry) {
+        chosenEntry = prioritized[0];
+    }
+
+    // Log previous and chosen for verification
+    console.log(`[InfinitePractice] previous conceptKey=${prevKey || 'none'}`);
+    console.log(`[InfinitePractice] chosen conceptKey=${chosenEntry.conceptKey} points=${chosenEntry.points}`);
+
+    // Update last served concept key
+    state.lastInfiniteConceptKey = chosenEntry.conceptKey;
+
+    return chosenEntry.question;
 }
 
 // Weighted question selection for adaptive learning
@@ -1581,6 +1614,13 @@ function checkAnswer(userAnswer) {
     );
     
     updateQuestionStats(conceptKey, isCorrect);
+    // Runtime assertion: verify concept-level stats entry exists and log summary
+    const statsAfter = state.questionStats[conceptKey];
+    if (statsAfter) {
+        console.log(`[StatsUpdate] ${conceptKey} correct=${statsAfter.correct} incorrect=${statsAfter.incorrect} points=${statsAfter.points} lastAsked=${statsAfter.lastAsked}`);
+    } else {
+        console.warn(`[StatsUpdateMissing] ${conceptKey}`, question);
+    }
 
     // Show feedback
     showFeedback(isCorrect, correctAnswer, userAnswer, question);
