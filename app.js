@@ -1761,7 +1761,7 @@ function showFeedback(isCorrect, correctAnswer, userAnswer, question) {
             // Create fact element if it doesn't exist
             factEl = document.createElement('div');
             factEl.id = 'feedbackFact';
-            factEl.style.cssText = 'margin-top: 0.75rem; padding: 0.75rem; background: rgba(255,255,255,0.1); border-radius: 6px; font-size: 0.9rem; color: #dcddde; line-height: 1.4;';
+            factEl.className = 'feedback-fact';
             feedback.appendChild(factEl);
         }
         factEl.textContent = `📖 ${fact}`;
