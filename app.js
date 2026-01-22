@@ -21,17 +21,65 @@ let state = {
     currentQuestion: null // Store the current question being displayed (for infinite practice mode)
 };
 
-// Extract bolded terms from HTML content
-function extractBoldTerms(html) {
+// Feature flags
+const ENABLE_AUTO_BOLD_QUESTIONS = false;
+
+// Build a short excerpt around a bold term so generated questions have context
+function buildContextSnippet(node, term) {
+    if (!node) return '';
+
+    // Climb to a reasonably sized ancestor to capture a full sentence or list item
+    let current = node;
+    while (current && (current.textContent || '').trim().length < 30) {
+        current = current.parentElement;
+    }
+
+    const text = ((current || node).textContent || '').replace(/\s+/g, ' ').trim();
+    if (!text) return '';
+
+    const idx = text.toLowerCase().indexOf((term || '').toLowerCase());
+    if (idx === -1) {
+        return text.slice(0, 180);
+    }
+
+    const padding = 90;
+    const start = Math.max(0, idx - padding);
+    const end = Math.min(text.length, idx + term.length + padding);
+    let snippet = text.slice(start, end).trim();
+
+    if (start > 0) snippet = `...${snippet}`;
+    if (end < text.length) snippet = `${snippet}...`;
+    return snippet;
+}
+
+// Extract bold facts along with a contextual snippet
+function extractBoldFacts(html) {
     try {
         const doc = new DOMParser().parseFromString(html || '', 'text/html');
         return Array.from(doc.querySelectorAll('strong'))
-            .map((el) => (el.textContent || '').trim())
+            .map((el) => {
+                const term = (el.textContent || '').trim();
+                if (!term) return null;
+                const context = buildContextSnippet(el, term);
+                if (!context) return null;
+                return { term, context };
+            })
             .filter(Boolean);
     } catch (e) {
-        console.warn('Failed to parse HTML for bold terms', e);
+        console.warn('Failed to parse HTML for bold facts', e);
         return [];
     }
+}
+
+// Filter out terms that are too short or meaningless for questions
+function isUsableBoldTerm(term) {
+    const cleaned = (term || '').trim();
+    if (!cleaned) return false;
+    if (cleaned.length === 1) return false;
+    if (/^[0-9]+$/.test(cleaned)) return false;
+    // Allow short abbreviations like UK or EU but drop other very short tokens
+    if (cleaned.length < 3 && !/^[A-Z]{2,}$/.test(cleaned)) return false;
+    return true;
 }
 
 // Pick unique distractors from a pool, excluding the correct term
@@ -43,30 +91,41 @@ function pickDistractors(pool, correct, count) {
 
 // Add one generated question per bold term (no variations) into each topic
 function augmentTopicsWithGeneratedBoldQuestions(topics) {
+    if (!ENABLE_AUTO_BOLD_QUESTIONS) return;
     if (!Array.isArray(topics)) return;
+
+    // Pre-extract facts so we can reuse them for global distractors
+    const topicFacts = topics.map((topic) => extractBoldFacts(topic?.content || ''));
 
     // Build global pool of bold terms for distractors
     const globalTerms = new Set();
-    topics.forEach((topic) => {
-        extractBoldTerms(topic.content || '').forEach((t) => globalTerms.add(t));
-    });
+    topicFacts.forEach((facts) => facts.forEach((fact) => {
+        if (fact && isUsableBoldTerm(fact.term)) {
+            globalTerms.add(fact.term);
+        }
+    }));
     const globalList = Array.from(globalTerms);
 
     topics.forEach((topic, tIdx) => {
         if (!topic || topic._generatedBoldAdded) return; // prevent double-add on reload
-        const terms = Array.from(new Set(extractBoldTerms(topic.content || '')));
-        if (terms.length === 0) return;
+        const facts = Array.from(new Set((topicFacts[tIdx] || []).map((f) => f.term)))
+            .map((term) => (topicFacts[tIdx] || []).find((f) => f.term === term))
+            .filter((fact) => fact && fact.context && isUsableBoldTerm(fact.term));
+        if (facts.length === 0) return;
         if (!Array.isArray(topic.questions)) topic.questions = [];
 
-        terms.forEach((term, idx) => {
-            const distractors = pickDistractors(globalList, term, 3);
-            const options = shuffleArray([term, ...distractors]);
+        const questionText = `Which key fact is highlighted (bolded) in the official study material for ${topic.title}?`;
+
+        facts.forEach((fact, idx) => {
+            const distractors = pickDistractors(globalList, fact.term, 3);
+            const options = shuffleArray([fact.term, ...distractors]);
+
             topic.questions.push({
                 id: `auto_bold_${tIdx}_${idx}`,
                 type: 'multiple',
-                question: `Which of these appears in the study material for ${topic.title}?`,
+                question: questionText,
                 options,
-                answer: term,
+                answer: fact.term,
                 generated: true,
                 sourceIndex: `auto_${idx}`,
                 topicIndex: tIdx
@@ -99,7 +158,7 @@ async function loadTopics() {
             response = await fetch('topics.json');
         }
         state.topics = await response.json();
-        // Auto-generate single-variation questions from bolded facts in the study content
+        // Auto-generate single-variation questions from bolded facts in the study content (disabled by default)
         augmentTopicsWithGeneratedBoldQuestions(state.topics);
     } catch (error) {
         console.error('Error loading topics:', error);

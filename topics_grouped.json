@@ -143,7 +143,7 @@
                     "Freedom to discriminate",
                     "Freedom from taxation"
                 ],
-                "question": "What is one of the freedoms the UK offers its residents?",
+                "question": "In the values and principles section, which freedom is guaranteed to UK residents (for example, belief, speech, or fair trial)?",
                 "answer": "Freedom of belief and religion",
                 "id": "uk_freedoms"
             },
@@ -197,7 +197,7 @@
             },
             {
                 "type": "multipleAnswer",
-                "question": "Select the core British values:",
+                "question": "In the Life in the UK handbook section 'The values and principles of the UK', select the core British values:",
                 "options": [
                     "Democracy",
                     "Rule of law",
@@ -240,7 +240,7 @@
             },
             {
                 "type": "multipleAnswer",
-                "question": "Select the core British values:",
+                "question": "In the Life in the UK handbook section 'The values and principles of the UK', select the core British values:",
                 "options": [
                     "Rule of law",
                     "Individual liberty",
@@ -356,7 +356,7 @@
                     "England, Scotland and Wales",
                     "England and Scotland only"
                 ],
-                "question": "Which countries make up the UK?",
+                "question": "In the Life in the UK handbook section 'What is the UK', which countries make up the UK?",
                 "answer": "England, Scotland, Wales and Northern Ireland",
                 "id": "uk_countries"
             },
@@ -368,7 +368,7 @@
                     "England and Scotland only",
                     "All British territories worldwide"
                 ],
-                "question": "What does 'Great Britain' refer to?",
+                "question": "In the Life in the UK handbook section 'What is the UK', what does 'Great Britain' refer to?",
                 "answer": "England, Scotland and Wales",
                 "id": "great_britain"
             },
@@ -380,7 +380,7 @@
                     "The Scottish Parliament",
                     "Regional assemblies"
                 ],
-                "question": "Which parliament governs the UK?",
+                "question": "In the Life in the UK handbook section 'What is the UK', which parliament governs the UK?",
                 "answer": "The parliament sitting in Westminster",
                 "id": "which_parliament_governs"
             },
@@ -440,7 +440,7 @@
                     "London",
                     "Belfast"
                 ],
-                "question": "What is the capital city of the UK?",
+                "question": "In the Life in the UK handbook section 'What is the UK', what is the capital city of the UK?",
                 "answer": "London",
                 "id": "capital_city_uk"
             },
@@ -470,7 +470,7 @@
             },
             {
                 "answer": "Everyone in the UK",
-                "question": "In this book, who is included when it says \"Britain\" or \"British Isles\"?",
+                "question": "In the 'What is the UK' section, which nations and islands are included when the book uses the terms 'Britain' or 'British Isles'?",
                 "type": "multiple",
                 "options": [
                     "Everyone in the UK",
@@ -494,7 +494,7 @@
                     "An Iron Age hill fort",
                     "A Roman villa"
                 ],
-                "question": "What is Maiden Castle?",
+                "question": "In the Life in the UK handbook section 'A long and illustrious history - Chapter 1: Early Britain', what is Maiden Castle?",
                 "answer": "An Iron Age hill fort",
                 "id": "what_maiden_castle"
             },
@@ -542,7 +542,7 @@
                     "St Patrick",
                     "St David"
                 ],
-                "question": "Who became the patron saint of Ireland?",
+                "question": "According to the 'A long and illustrious history - Chapter 1: Early Britain' section, Which person became the patron saint of Ireland?",
                 "answer": "St Patrick",
                 "id": "became_patron_saint"
             },
@@ -566,7 +566,7 @@
                     "William Wallace",
                     "Macbeth"
                 ],
-                "question": "Who united Scotland under one king?",
+                "question": "According to the 'A long and illustrious history - Chapter 1: Early Britain' section, Which person united Scotland under one king?",
                 "answer": "Kenneth MacAlpin",
                 "id": "united_scotland_under"
             },
@@ -590,7 +590,7 @@
                     "A Viking warrior",
                     "An Anglo-Saxon princess"
                 ],
-                "question": "Who was Boudicca?",
+                "question": "According to the 'A long and illustrious history - Chapter 1: Early Britain' section, Which person was  Boudicca?",
                 "answer": "A queen of the Iceni who fought against Romans",
                 "id": "boudicca"
             },
@@ -602,7 +602,7 @@
                     "Anglo-Saxon invaders",
                     "Viking warriors"
                 ],
-                "question": "Who were the Picts?",
+                "question": "According to the 'A long and illustrious history - Chapter 1: Early Britain' section, Which people were  the Picts?",
                 "answer": "Ancestors of the Scottish people",
                 "id": "were_picts"
             },
@@ -614,7 +614,7 @@
                     "Dorset",
                     "Cornwall"
                 ],
-                "question": "Where is Maiden Castle located?",
+                "question": "In the Life in the UK handbook section 'A long and illustrious history - Chapter 1: Early Britain', where is Maiden Castle located?",
                 "answer": "Dorset",
                 "id": "where_maiden_castle"
             },
@@ -650,7 +650,7 @@
                     "Orkney, Scotland",
                     "Ireland"
                 ],
-                "question": "Where is Skara Brae located?",
+                "question": "In the Life in the UK handbook section 'A long and illustrious history - Chapter 1: Early Britain', where is Skara Brae located?",
                 "answer": "Orkney, Scotland",
                 "id": "where_skara_brae"
             },
@@ -662,7 +662,7 @@
                     "A book of laws",
                     "A collection of poems"
                 ],
-                "question": "What is the Domesday Book?",
+                "question": "In the Life in the UK handbook section 'A long and illustrious history - Chapter 1: Early Britain', what is the Domesday Book?",
                 "answer": "A record of towns, villages and land ownership",
                 "id": "domesday_book"
             },
@@ -674,7 +674,7 @@
                     "A Roman fort",
                     "A Viking settlement"
                 ],
-                "question": "What is Skara Brae?",
+                "question": "In the Life in the UK handbook section 'A long and illustrious history - Chapter 1: Early Britain', what is Skara Brae?",
                 "answer": "The best preserved prehistoric village in northern Europe",
                 "id": "what_skara_brae"
             },
@@ -686,7 +686,7 @@
                     "Wiltshire, England",
                     "Cornwall"
                 ],
-                "question": "Where is Stonehenge located?",
+                "question": "In the Life in the UK handbook section 'A long and illustrious history - Chapter 1: Early Britain', where is Stonehenge located?",
                 "answer": "Wiltshire, England",
                 "id": "stonehenge"
             },
@@ -710,7 +710,7 @@
                     "Erik Bloodaxe",
                     "Ragnar Lothbrok"
                 ],
-                "question": "Which Viking king ruled England?",
+                "question": "In the Life in the UK handbook section 'A long and illustrious history - Chapter 1: Early Britain', which Viking king ruled England?",
                 "answer": "Cnut (Canute)",
                 "id": "which_viking_king"
             },
@@ -734,7 +734,7 @@
                     "St Augustine",
                     "St David"
                 ],
-                "question": "Who was the first Archbishop of Canterbury?",
+                "question": "According to the 'A long and illustrious history - Chapter 1: Early Britain' section, Which person was  the first Archbishop of Canterbury?",
                 "answer": "St Augustine",
                 "id": "first_archbishop_canterbury"
             },
@@ -758,7 +758,7 @@
                     "Kent",
                     "Cornwall"
                 ],
-                "question": "Where is Sutton Hoo?",
+                "question": "In the Life in the UK handbook section 'A long and illustrious history - Chapter 1: Early Britain', where is Sutton Hoo?",
                 "answer": "Suffolk",
                 "id": "where_sutton_hoo"
             },
@@ -770,7 +770,7 @@
                     "AD 600",
                     "AD 1066"
                 ],
-                "question": "When did the Romans leave Britain?",
+                "question": "In the Life in the UK handbook section 'A long and illustrious history - Chapter 1: Early Britain', when did the Romans leave Britain?",
                 "answer": "AD 410",
                 "id": "romans"
             },
@@ -836,7 +836,7 @@
             },
             {
                 "answer": "In round barrows",
-                "question": "How did Bronze Age people in Britain commonly bury their dead?",
+                "question": "In Early Britain, describe the common Bronze Age burial practice used in Britain (for example, round barrows).",
                 "type": "multiple",
                 "options": [
                     "In round barrows",
@@ -896,7 +896,7 @@
             },
             {
                 "type": "multipleAnswer",
-                "question": "Select major Anglo-Saxon kingdoms:",
+                "question": "In the Life in the UK handbook section 'A long and illustrious history - Chapter 1: Early Britain', select major Anglo-Saxon kingdoms:",
                 "options": [
                     "Wessex",
                     "Mercia",
@@ -986,7 +986,7 @@
                     "Henry Tudor (Henry VII)",
                     "Henry V"
                 ],
-                "question": "Who became king after the Battle of Bosworth Field?",
+                "question": "According to the 'A long and illustrious history - Chapter 2: The Middle Ages' section, Which person became king after the Battle of Bosworth Field?",
                 "answer": "Henry Tudor (Henry VII)",
                 "id": "became_king_after"
             },
@@ -998,7 +998,7 @@
                     "The Scots",
                     "The Spanish"
                 ],
-                "question": "Who won the Battle of Agincourt?",
+                "question": "According to the 'A long and illustrious history - Chapter 2: The Middle Ages' section, Which person won  the Battle of Agincourt?",
                 "answer": "King Henry V of England",
                 "id": "battle_agincourt"
             },
@@ -1010,7 +1010,7 @@
                     "John Barbour",
                     "William Shakespeare"
                 ],
-                "question": "Who was the first person in England to print books using a printing press?",
+                "question": "According to the 'A long and illustrious history - Chapter 2: The Middle Ages' section, Which person was  the first person in England to print books using a printing press?",
                 "answer": "William Caxton",
                 "id": "william_caxton_printing"
             },
@@ -1046,7 +1046,7 @@
                     "John Barbour",
                     "William Caxton"
                 ],
-                "question": "Who wrote The Canterbury Tales?",
+                "question": "According to the 'A long and illustrious history - Chapter 2: The Middle Ages' section, Which person wrote  The Canterbury Tales?",
                 "answer": "Geoffrey Chaucer",
                 "id": "canterbury_tales"
             },
@@ -1058,7 +1058,7 @@
                     "King Edward I",
                     "Henry V"
                 ],
-                "question": "Who defeated the English at the Battle of Bannockburn in 1314?",
+                "question": "According to the 'A long and illustrious history - Chapter 2: The Middle Ages' section, Which person defeated the English at the Battle of Bannockburn in 1314?",
                 "answer": "Robert the Bruce",
                 "id": "battle_bannockburn"
             },
@@ -1070,7 +1070,7 @@
                     "A war between England and Scotland",
                     "A religious war"
                 ],
-                "question": "What was the Wars of the Roses?",
+                "question": "In the Life in the UK handbook section 'A long and illustrious history - Chapter 2: The Middle Ages', what was the Wars of the Roses?",
                 "answer": "A civil war between Lancaster and York",
                 "id": "wars_roses"
             },
@@ -1082,7 +1082,7 @@
                     "The Battle of Bannockburn",
                     "The Wars of the Roses"
                 ],
-                "question": "What was The Bruce about?",
+                "question": "In the Life in the UK handbook section 'A long and illustrious history - Chapter 2: The Middle Ages', what was The Bruce about?",
                 "answer": "The Battle of Bannockburn",
                 "id": "what_bruce_about"
             },
@@ -1094,7 +1094,7 @@
                     "Only nobles",
                     "Religious leaders"
                 ],
-                "question": "Who sat in the House of Commons?",
+                "question": "According to the 'A long and illustrious history - Chapter 2: The Middle Ages' section, Which person sat in the House of Commons?",
                 "answer": "Knights and wealthy people from towns and cities",
                 "id": "house_commons"
             },
@@ -1178,7 +1178,7 @@
                     "Knights",
                     "Freemen"
                 ],
-                "question": "What were peasants who could not move away from their lord's land called?",
+                "question": "In the Middle Ages section, what term was used for peasants bound to their lord's land and unable to move?",
                 "answer": "Serfs",
                 "id": "what_were_peasants"
             },
@@ -1190,7 +1190,7 @@
                     "1314",
                     "1348"
                 ],
-                "question": "When was the Magna Carta signed?",
+                "question": "In the Life in the UK handbook section 'A long and illustrious history - Chapter 2: The Middle Ages', when was the Magna Carta signed?",
                 "answer": "1215",
                 "id": "magna_carta"
             },
@@ -1202,7 +1202,7 @@
                     "All property owners",
                     "Elected representatives"
                 ],
-                "question": "Who sat in the House of Lords?",
+                "question": "According to the 'A long and illustrious history - Chapter 2: The Middle Ages' section, Which person sat in the House of Lords?",
                 "answer": "Nobility, great landowners and bishops",
                 "id": "house_lords"
             },
@@ -1214,7 +1214,7 @@
                     "The Bruce",
                     "Paradise Lost"
                 ],
-                "question": "What did John Barbour write?",
+                "question": "In the Life in the UK handbook section 'A long and illustrious history - Chapter 2: The Middle Ages', what did John Barbour write?",
                 "answer": "The Bruce",
                 "id": "what_john_barbour"
             },
@@ -1238,7 +1238,7 @@
                     "Written laws",
                     "European law"
                 ],
-                "question": "What is common law?",
+                "question": "In the Life in the UK handbook section 'A long and illustrious history - Chapter 2: The Middle Ages', what is common law?",
                 "answer": "Law developed by judges through precedence",
                 "id": "what_common_law"
             },
@@ -1268,7 +1268,7 @@
             },
             {
                 "answer": "Robert the Bruce",
-                "question": "Who led the Scots to victory at Bannockburn in 1314?",
+                "question": "According to the 'A long and illustrious history - Chapter 2: The Middle Ages' section, Which leader  the Scots to victory at Bannockburn in 1314?",
                 "type": "multiple",
                 "options": [
                     "Robert the Bruce",
@@ -1412,7 +1412,7 @@
                     "The king",
                     "Parliament"
                 ],
-                "question": "Who would have the power to appoint bishops in the Church of England?",
+                "question": "According to the 'A long and illustrious history - Chapter 3: The Tudors and Stuarts' section, Which person would have the power to appoint bishops in the Church of England?",
                 "answer": "The king",
                 "id": "would_have_power"
             },
@@ -1424,7 +1424,7 @@
                     "Henry VIII",
                     "Mary I"
                 ],
-                "question": "Who succeeded Elizabeth I?",
+                "question": "According to the 'A long and illustrious history - Chapter 3: The Tudors and Stuarts' section, Which person succeeded Elizabeth I?",
                 "answer": "James VI of Scotland",
                 "id": "succeeded_elizabeth"
             },
@@ -1448,7 +1448,7 @@
                     "Jewish",
                     "Muslim"
                 ],
-                "question": "What was Elizabeth I's religion?",
+                "question": "In the Life in the UK handbook section 'A long and illustrious history - Chapter 3: The Tudors and Stuarts', what was Elizabeth I's religion?",
                 "answer": "Protestant",
                 "id": "what_elizabeth_religion"
             },
@@ -1460,7 +1460,7 @@
                     "Westminster Abbey",
                     "Windsor Castle"
                 ],
-                "question": "Where was Charles I executed?",
+                "question": "In the Life in the UK handbook section 'A long and illustrious history - Chapter 3: The Tudors and Stuarts', where was Charles I executed?",
                 "answer": "Whitehall",
                 "id": "where_charles_executed"
             },
@@ -1484,7 +1484,7 @@
                     "An economic change",
                     "A political revolution"
                 ],
-                "question": "What was the Reformation?",
+                "question": "In the Life in the UK handbook section 'A long and illustrious history - Chapter 3: The Tudors and Stuarts', what was the Reformation?",
                 "answer": "A movement against the authority of the Pope",
                 "id": "what_reformation"
             },
@@ -1508,7 +1508,7 @@
                     "Anglican",
                     "Presbyterian"
                 ],
-                "question": "What was Mary I's religion?",
+                "question": "In the Life in the UK handbook section 'A long and illustrious history - Chapter 3: The Tudors and Stuarts', what was Mary I's religion?",
                 "answer": "Catholic",
                 "id": "what_mary_religion"
             },
@@ -1520,7 +1520,7 @@
                     "Isaac Newton",
                     "Christopher Wren"
                 ],
-                "question": "Who kept a famous diary recording the Great Fire and plague?",
+                "question": "According to the 'A long and illustrious history - Chapter 3: The Tudors and Stuarts' section, Which person kept a famous diary recording the Great Fire and plague?",
                 "answer": "Samuel Pepys",
                 "id": "samuel_pepys_diary"
             },
@@ -1532,7 +1532,7 @@
                     "Duke of Wellington",
                     "Sir Walter Raleigh"
                 ],
-                "question": "Who was in command of the English fleet at Trafalgar?",
+                "question": "According to the 'A long and illustrious history - Chapter 3: The Tudors and Stuarts' section, Which person was  in command of the English fleet at Trafalgar?",
                 "answer": "Admiral Nelson",
                 "id": "command_english_fleet"
             },
@@ -1544,7 +1544,7 @@
                     "Jane Seymour",
                     "Catherine Howard"
                 ],
-                "question": "Who was the mother of Queen Elizabeth I?",
+                "question": "According to the 'A long and illustrious history - Chapter 3: The Tudors and Stuarts' section, Which person was  the mother of Queen Elizabeth I?",
                 "answer": "Anne Boleyn",
                 "id": "mother_queen_elizabeth"
             },
@@ -1592,7 +1592,7 @@
                     "Catherine Parr",
                     "Jane Seymour"
                 ],
-                "question": "Which wife survived Henry VIII?",
+                "question": "In the Life in the UK handbook section 'A long and illustrious history - Chapter 3: The Tudors and Stuarts', which wife survived Henry VIII?",
                 "answer": "Catherine Parr",
                 "id": "which_wife_survived"
             },
@@ -1604,7 +1604,7 @@
                     "The oldest theatre in England",
                     "A royal palace"
                 ],
-                "question": "What is the Globe Theatre?",
+                "question": "In the Life in the UK handbook section 'A long and illustrious history - Chapter 3: The Tudors and Stuarts', what is the Globe Theatre?",
                 "answer": "A modern copy of theatres where Shakespeare's plays were performed",
                 "id": "what_globe_theatre"
             },
@@ -1616,7 +1616,7 @@
                     "Robert Adam",
                     "John Nash"
                 ],
-                "question": "Who designed the new St Paul's Cathedral?",
+                "question": "According to the 'A long and illustrious history - Chapter 3: The Tudors and Stuarts' section, Which person designed the new St Paul's Cathedral?",
                 "answer": "Sir Christopher Wren",
                 "id": "designed_pauls_cathedral"
             },
@@ -1628,7 +1628,7 @@
                     "London",
                     "Stratford-upon-Avon"
                 ],
-                "question": "Where is the Globe Theatre?",
+                "question": "In the Life in the UK handbook section 'A long and illustrious history - Chapter 3: The Tudors and Stuarts', where is the Globe Theatre?",
                 "answer": "London",
                 "id": "where_globe_theatre"
             },
@@ -1652,7 +1652,7 @@
                     "Jane Seymour",
                     "Catherine Parr"
                 ],
-                "question": "Who was Henry VIII's first wife?",
+                "question": "According to the 'A long and illustrious history - Chapter 3: The Tudors and Stuarts' section, Which person was  Henry VIII's first wife?",
                 "answer": "Catherine of Aragon",
                 "id": "henry_viiis_first"
             },
@@ -1664,7 +1664,7 @@
                     "1666",
                     "1679"
                 ],
-                "question": "When was the Great Fire of London?",
+                "question": "In the Life in the UK handbook section 'A long and illustrious history - Chapter 3: The Tudors and Stuarts', when was the Great Fire of London?",
                 "answer": "1666",
                 "id": "great_fire_london"
             },
@@ -1688,7 +1688,7 @@
                     "Six",
                     "Seven"
                 ],
-                "question": "How many wives did Henry VIII have?",
+                "question": "In the Life in the UK handbook section 'A long and illustrious history - Chapter 3: The Tudors and Stuarts', how many wives did Henry VIII have?",
                 "answer": "Six",
                 "id": "many_wives_henry"
             },
@@ -1724,7 +1724,7 @@
                     "'Power to the people'",
                     "'Justice for all'"
                 ],
-                "question": "What does 'Habeas Corpus' mean?",
+                "question": "In the Life in the UK handbook section 'A long and illustrious history - Chapter 3: The Tudors and Stuarts', what does 'Habeas Corpus' mean?",
                 "answer": "'You must present the person in court'",
                 "id": "what_does_habeas"
             },
@@ -1736,7 +1736,7 @@
                     "William Shakespeare",
                     "John Milton"
                 ],
-                "question": "Who wrote plays including Hamlet, Macbeth and Romeo and Juliet?",
+                "question": "According to the 'A long and illustrious history - Chapter 3: The Tudors and Stuarts' section, Which person wrote  plays including Hamlet, Macbeth and Romeo and Juliet?",
                 "answer": "William Shakespeare",
                 "id": "wrote_plays_including"
             },
@@ -1760,7 +1760,7 @@
                     "Anglican",
                     "Presbyterian"
                 ],
-                "question": "What was James II's religion?",
+                "question": "In the Life in the UK handbook section 'A long and illustrious history - Chapter 3: The Tudors and Stuarts', what was James II's religion?",
                 "answer": "Catholic",
                 "id": "what_james_iis"
             },
@@ -1772,7 +1772,7 @@
                     "Estates",
                     "Farms"
                 ],
-                "question": "What were these settlements in Ireland called?",
+                "question": "In the Tudors and Stuarts section, what were the English-controlled plantation settlements in Ireland called?",
                 "answer": "Plantations",
                 "id": "what_were_these"
             },
@@ -1796,7 +1796,7 @@
                     "Parliamentary supremacy",
                     "Religious freedom"
                 ],
-                "question": "What did Charles I believe in?",
+                "question": "In the Life in the UK handbook section 'A long and illustrious history - Chapter 3: The Tudors and Stuarts', what did Charles I believe in?",
                 "answer": "The Divine Right of Kings",
                 "id": "what_charles_believe"
             },
@@ -1832,7 +1832,7 @@
                     "Both of these",
                     "Neither of these"
                 ],
-                "question": "Who was Mary, Queen of Scots' son?",
+                "question": "According to the 'A long and illustrious history - Chapter 3: The Tudors and Stuarts' section, Which person was  Mary, Queen of Scots' son?",
                 "answer": "Both of these",
                 "id": "mary_queen_scots"
             },
@@ -1904,7 +1904,7 @@
                     "Catherine",
                     "Elizabeth"
                 ],
-                "question": "Who was William of Orange married to?",
+                "question": "According to the 'A long and illustrious history - Chapter 3: The Tudors and Stuarts' section, Which person was  William of Orange married to?",
                 "answer": "Mary, daughter of James II",
                 "id": "william_of_orange_marriage"
             },
@@ -1952,7 +1952,7 @@
                     "Supporters of the king",
                     "Foreign invaders"
                 ],
-                "question": "What were the Puritans?",
+                "question": "In the Life in the UK handbook section 'A long and illustrious history - Chapter 3: The Tudors and Stuarts', what were the Puritans?",
                 "answer": "A group of Protestants advocating strict religious doctrine",
                 "id": "what_were_puritans"
             },
@@ -1964,7 +1964,7 @@
                     "Robert Boyle",
                     "Charles Darwin"
                 ],
-                "question": "Who predicted the return of Halley's Comet?",
+                "question": "According to the 'A long and illustrious history - Chapter 3: The Tudors and Stuarts' section, Which person predicted the return of Halley's Comet?",
                 "answer": "Edmund Halley",
                 "id": "predicted_return_halleys"
             },
@@ -1976,7 +1976,7 @@
                     "Charles II",
                     "James II"
                 ],
-                "question": "Who was given the title of Lord Protector?",
+                "question": "According to the 'A long and illustrious history - Chapter 3: The Tudors and Stuarts' section, Which person was  given the title of Lord Protector?",
                 "answer": "Oliver Cromwell",
                 "id": "given_title_lord"
             },
@@ -2084,7 +2084,7 @@
             },
             {
                 "answer": "William of Orange (William III)",
-                "question": "Who defeated James II at the Battle of the Boyne in 1690?",
+                "question": "According to the 'A long and illustrious history - Chapter 3: The Tudors and Stuarts' section, Which person defeated James II at the Battle of the Boyne in 1690?",
                 "type": "multiple",
                 "options": [
                     "William of Orange (William III)",
@@ -2237,7 +2237,7 @@
                     "George Stephenson",
                     "Isambard Kingdom Brunel"
                 ],
-                "question": "Who was a pioneer of steam power?",
+                "question": "According to the 'A long and illustrious history - Chapter 4: A global power' section, Which person was  a pioneer of steam power?",
                 "answer": "James Watt",
                 "id": "pioneer_steam_power"
             },
@@ -2261,7 +2261,7 @@
                     "Robert Walpole",
                     "General Gordon"
                 ],
-                "question": "Who defeated Napoleon at Waterloo?",
+                "question": "According to the 'A long and illustrious history - Chapter 4: A global power' section, Which person defeated Napoleon at Waterloo?",
                 "answer": "The Duke of Wellington",
                 "id": "defeated_napoleon_waterloo"
             },
@@ -2285,7 +2285,7 @@
                     "70 years",
                     "45 years"
                 ],
-                "question": "How long did Queen Victoria reign?",
+                "question": "In the Life in the UK handbook section 'A long and illustrious history - Chapter 4: A global power', how long did Queen Victoria reign?",
                 "answer": "Almost 64 years",
                 "id": "long_queen_victoria"
             },
@@ -2321,7 +2321,7 @@
                     "Charles de Gaulle",
                     "Joan of Arc"
                 ],
-                "question": "Who led the French army in the wars with France?",
+                "question": "According to the 'A long and illustrious history - Chapter 4: A global power' section, Which leader  the French army in the wars with France?",
                 "answer": "Napoleon Bonaparte",
                 "id": "french_army_wars"
             },
@@ -2333,7 +2333,7 @@
                     "Duke of Marlborough",
                     "General Wolfe"
                 ],
-                "question": "Who defeated Napoleon at the Battle of Waterloo?",
+                "question": "According to the 'A long and illustrious history - Chapter 4: A global power' section, Which person defeated Napoleon at the Battle of Waterloo?",
                 "answer": "Duke of Wellington",
                 "id": "defeated_napoleon_battle"
             },
@@ -2369,7 +2369,7 @@
                     "William Pitt",
                     "Duke of Wellington"
                 ],
-                "question": "Who was Britain's first 'Prime Minister'?",
+                "question": "According to the 'A long and illustrious history - Chapter 4: A global power' section, Which person was  Britain's first 'Prime Minister'?",
                 "answer": "Robert Walpole",
                 "id": "britains_first_prime"
             },
@@ -2417,7 +2417,7 @@
                     "A diagonal red cross on a white ground",
                     "A red cross on a white ground"
                 ],
-                "question": "What color is St Patrick's cross?",
+                "question": "In the Life in the UK handbook section 'A long and illustrious history - Chapter 4: A global power', what color is St Patrick's cross?",
                 "answer": "A diagonal red cross on a white ground",
                 "id": "what_color_patricks"
             },
@@ -2441,7 +2441,7 @@
                     "A diagonal red cross on a white ground",
                     "A red cross on a white ground"
                 ],
-                "question": "What color is St Andrew's cross?",
+                "question": "In the Life in the UK handbook section 'A long and illustrious history - Chapter 4: A global power', what color is St Andrew's cross?",
                 "answer": "A diagonal white cross on a blue ground",
                 "id": "what_color_andrews"
             },
@@ -2489,7 +2489,7 @@
                     "William Wordsworth",
                     "Lord Byron"
                 ],
-                "question": "Who wrote 'Auld Lang Syne'?",
+                "question": "According to the 'A long and illustrious history - Chapter 4: A global power' section, Which person wrote  'Auld Lang Syne'?",
                 "answer": "Robert Burns",
                 "id": "wrote_auld_lang"
             },
@@ -2525,7 +2525,7 @@
                     "Charles III",
                     "William III"
                 ],
-                "question": "Who succeeded Queen Anne?",
+                "question": "According to the 'A long and illustrious history - Chapter 4: A global power' section, Which person succeeded Queen Anne?",
                 "answer": "George I",
                 "id": "succeeded_queen_anne"
             },
@@ -2537,7 +2537,7 @@
                     "Isambard Kingdom Brunel",
                     "Richard Arkwright"
                 ],
-                "question": "Who invented the Rocket?",
+                "question": "According to the 'A long and illustrious history - Chapter 4: A global power' section, Which person invented the Rocket?",
                 "answer": "George Stephenson",
                 "id": "invented_rocket"
             },
@@ -2561,7 +2561,7 @@
                     "Benjamin Disraeli",
                     "Winston Churchill"
                 ],
-                "question": "Who was the first Prime Minister?",
+                "question": "According to the 'A long and illustrious history - Chapter 4: A global power' section, Which person was  the first Prime Minister?",
                 "answer": "Robert Walpole",
                 "id": "first_prime_minister"
             },
@@ -2597,7 +2597,7 @@
                     "A blue cross on a white ground",
                     "A white cross on a blue ground"
                 ],
-                "question": "What color is St George's cross?",
+                "question": "In the Life in the UK handbook section 'A long and illustrious history - Chapter 4: A global power', what color is St George's cross?",
                 "answer": "A red cross on a white ground",
                 "id": "what_color_georges"
             },
@@ -2609,7 +2609,7 @@
                     "1714",
                     "1745"
                 ],
-                "question": "When did Anne become queen?",
+                "question": "In the Life in the UK handbook section 'A long and illustrious history - Chapter 4: A global power', when did Anne become queen?",
                 "answer": "1702",
                 "id": "when_anne_become"
             },
@@ -2633,7 +2633,7 @@
                     "John Locke",
                     "Edmund Burke"
                 ],
-                "question": "Who wrote The Wealth of Nations?",
+                "question": "According to the 'A long and illustrious history - Chapter 4: A global power' section, Which person wrote  The Wealth of Nations?",
                 "answer": "Adam Smith",
                 "id": "wrote_wealth_nations"
             },
@@ -2645,7 +2645,7 @@
                     "The Jacobites",
                     "Parliament"
                 ],
-                "question": "Who supported James II's son in claiming the throne?",
+                "question": "According to the 'A long and illustrious history - Chapter 4: A global power' section, Which person supported James II's son in claiming the throne?",
                 "answer": "The Jacobites",
                 "id": "supported_james_iis"
             },
@@ -2687,7 +2687,7 @@
             },
             {
                 "answer": "Sake Dean Mahomet in 1810",
-                "question": "Who opened Britain's first curry house, and when?",
+                "question": "According to the 'A long and illustrious history - Chapter 4: A global power' section, Which person opened Britain's first curry house, and when?",
                 "type": "multiple",
                 "options": [
                     "Sake Dean Mahomet in 1810",
@@ -2781,7 +2781,7 @@
             },
             {
                 "type": "multiple",
-                "question": "Who pioneered the study of electromagnetism?",
+                "question": "According to the 'A long and illustrious history - Chapter 4: A global power' section, Which person pioneered the study of electromagnetism?",
                 "options": [
                     "Isaac Newton",
                     "Michael Faraday",
@@ -2793,7 +2793,7 @@
             },
             {
                 "type": "multiple",
-                "question": "Who designed the first mechanical computer (Analytical Engine)?",
+                "question": "According to the 'A long and illustrious history - Chapter 4: A global power' section, Which person designed the first mechanical computer (Analytical Engine)?",
                 "options": [
                     "Alan Turing",
                     "Charles Babbage",
@@ -2817,7 +2817,7 @@
             },
             {
                 "type": "multiple",
-                "question": "Who formulated the classical theory of electromagnetic radiation?",
+                "question": "According to the 'A long and illustrious history - Chapter 4: A global power' section, Which person formulated the classical theory of electromagnetic radiation?",
                 "options": [
                     "Isaac Newton",
                     "Michael Faraday",
@@ -2853,7 +2853,7 @@
             },
             {
                 "type": "multiple",
-                "question": "Who wrote The Picture of Dorian Gray and The Importance of Being Earnest?",
+                "question": "According to the 'A long and illustrious history - Chapter 4: A global power' section, Which person wrote  The Picture of Dorian Gray and The Importance of Being Earnest?",
                 "options": [
                     "Charles Dickens",
                     "Oscar Wilde",
@@ -2889,7 +2889,7 @@
                     "Clement Attlee",
                     "Anthony Eden"
                 ],
-                "question": "Who was the British Prime Minister during much of WWII?",
+                "question": "According to the 'A long and illustrious history - Chapter 5: The 20th century' section, Which person was  the British Prime Minister during much of WWII?",
                 "answer": "Winston Churchill",
                 "id": "british_prime_minister"
             },
@@ -2949,7 +2949,7 @@
                     "Veterans' Equality",
                     "Victory in England"
                 ],
-                "question": "What does VE Day stand for?",
+                "question": "In the Life in the UK handbook section 'A long and illustrious history - Chapter 5: The 20th century', what does VE Day stand for?",
                 "answer": "Victory in Europe",
                 "id": "ve_day_meaning"
             },
@@ -2973,7 +2973,7 @@
                     "11 November",
                     "25 December"
                 ],
-                "question": "When is VE Day celebrated?",
+                "question": "In the Life in the UK handbook section 'A long and illustrious history - Chapter 5: The 20th century', when is VE Day celebrated?",
                 "answer": "8 May",
                 "id": "when_celebrated"
             },
@@ -3009,7 +3009,7 @@
                     "The D-Day invasion",
                     "A naval battle"
                 ],
-                "question": "What was the Blitz?",
+                "question": "In the Life in the UK handbook section 'A long and illustrious history - Chapter 5: The 20th century', what was the Blitz?",
                 "answer": "German bombing of British cities",
                 "id": "what_blitz"
             },
@@ -3021,7 +3021,7 @@
                     "1916",
                     "1918"
                 ],
-                "question": "When did the First World War begin?",
+                "question": "In the Life in the UK handbook section 'A long and illustrious history - Chapter 5: The 20th century', when did the First World War begin?",
                 "answer": "1914",
                 "id": "when_first_world"
             },
@@ -3093,7 +3093,7 @@
                     "Queen Victoria",
                     "Margaret Thatcher"
                 ],
-                "question": "Who was the leader of the suffragette movement?",
+                "question": "According to the 'A long and illustrious history - Chapter 5: The 20th century' section, Which person was  the leader of the suffragette movement?",
                 "answer": "Emmeline Pankhurst",
                 "id": "leader_suffragette_movement"
             },
@@ -3105,7 +3105,7 @@
                     "Francis Crick",
                     "James Watson"
                 ],
-                "question": "Who discovered penicillin?",
+                "question": "According to the 'A long and illustrious history - Chapter 5: The 20th century' section, Which person discovered penicillin?",
                 "answer": "Alexander Fleming",
                 "id": "discovered_penicillin"
             },
@@ -3117,7 +3117,7 @@
                     "Clement Attlee",
                     "Anthony Eden"
                 ],
-                "question": "Who became Prime Minister in 1940?",
+                "question": "According to the 'A long and illustrious history - Chapter 5: The 20th century' section, Which person became Prime Minister in 1940?",
                 "answer": "Winston Churchill",
                 "id": "became_prime_minister"
             },
@@ -3141,7 +3141,7 @@
                     "1945",
                     "1946"
                 ],
-                "question": "When did WWII end?",
+                "question": "In the Life in the UK handbook section 'A long and illustrious history - Chapter 5: The 20th century', when did WWII end?",
                 "answer": "1945",
                 "id": "when_wwii_end"
             },
@@ -3276,7 +3276,7 @@
             },
             {
                 "type": "multiple",
-                "question": "Which dates refer to 'World War I'?",
+                "question": "In the Life in the UK handbook section 'A long and illustrious history - Chapter 5: The 20th century', which dates refer to 'World War I'?",
                 "options": [
                     "1914–1918",
                     "1939–1945",
@@ -3328,7 +3328,7 @@
             },
             {
                 "type": "multiple",
-                "question": "Who was the British Commander during much of WWI?",
+                "question": "According to the 'A long and illustrious history - Chapter 5: The 20th century' section, Which person was  the British Commander during much of WWI?",
                 "options": [
                     "Field Marshal Douglas Haig",
                     "Field Marshal Montgomery",
@@ -3340,7 +3340,7 @@
             },
             {
                 "type": "multiple",
-                "question": "Who commanded British forces at El Alamein in WWII?",
+                "question": "According to the 'A long and illustrious history - Chapter 5: The 20th century' section, Which person commanded British forces at El Alamein in WWII?",
                 "options": [
                     "Winston Churchill",
                     "Field Marshal Montgomery",
@@ -3364,7 +3364,7 @@
             },
             {
                 "type": "multiple",
-                "question": "Who was the first person to reach the summit of Mount Everest (with Tenzing Norgay)?",
+                "question": "According to the 'A long and illustrious history - Chapter 5: The 20th century' section, Which person was  the first person to reach the summit of Mount Everest (with Tenzing Norgay)?",
                 "options": [
                     "Ernest Shackleton",
                     "Captain Scott",
@@ -3440,7 +3440,7 @@
                     "Margaret Thatcher",
                     "Tony Blair"
                 ],
-                "question": "Who was elected as Prime Minister immediately after WWII?",
+                "question": "According to the 'A long and illustrious history - Chapter 6: Britain since 1945' section, Which person was  elected as Prime Minister immediately after WWII?",
                 "answer": "Clement Attlee",
                 "id": "elected_prime_minister"
             },
@@ -3521,7 +3521,7 @@
                     "Tim Berners-Lee",
                     "Alan Turing"
                 ],
-                "question": "Who invented the World Wide Web?",
+                "question": "According to the 'A long and illustrious history - Chapter 6: Britain since 1945' section, Which person invented the World Wide Web?",
                 "answer": "Tim Berners-Lee",
                 "id": "invented_world_wide"
             },
@@ -3557,7 +3557,7 @@
                     "Free education",
                     "Free housing"
                 ],
-                "question": "What does the NHS provide?",
+                "question": "In the Life in the UK handbook section 'A long and illustrious history - Chapter 6: Britain since 1945', what does the NHS provide?",
                 "answer": "Free healthcare for all residents",
                 "id": "what_does_provide"
             },
@@ -3569,7 +3569,7 @@
                     "Queen Elizabeth II",
                     "Mary Wilson"
                 ],
-                "question": "Who was the first woman Prime Minister of the UK?",
+                "question": "According to the 'A long and illustrious history - Chapter 6: Britain since 1945' section, Which person was  the first woman Prime Minister of the UK?",
                 "answer": "Margaret Thatcher",
                 "id": "first_woman_prime"
             },
@@ -3593,7 +3593,7 @@
                     "A trade union",
                     "A military alliance"
                 ],
-                "question": "What is the Commonwealth?",
+                "question": "In the Life in the UK handbook section 'A long and illustrious history - Chapter 6: Britain since 1945', what is the Commonwealth?",
                 "answer": "An association of countries supporting democracy and development",
                 "id": "what_commonwealth"
             },
@@ -3647,7 +3647,7 @@
             },
             {
                 "answer": "The 1942 Beveridge Report: Want, Disease, Ignorance, Squalor, Idleness",
-                "question": "Which report named the five \"Giant Evils\" and what were they?",
+                "question": "According to the 'A long and illustrious history - Chapter 6: Britain since 1945' section, which report named the five \"Giant Evils\" and what were they?",
                 "type": "multiple",
                 "options": [
                     "The 1942 Beveridge Report: Want, Disease, Ignorance, Squalor, Idleness",
@@ -3659,7 +3659,7 @@
             },
             {
                 "answer": "Aneurin (Nye) Bevan; 1948",
-                "question": "Who introduced the NHS, and when did it start?",
+                "question": "According to the 'A long and illustrious history - Chapter 6: Britain since 1945' section, Which person introduced the NHS, and when did it start?",
                 "type": "multiple",
                 "options": [
                     "Aneurin (Nye) Bevan; 1948",
@@ -3695,7 +3695,7 @@
             },
             {
                 "answer": "1969",
-                "question": "In what year did Concorde make its first flight?",
+                "question": "According to the 'A long and illustrious history - Chapter 6: Britain since 1945' section, in what year did Concorde make its first flight?",
                 "type": "multiple",
                 "options": [
                     "1969",
@@ -3719,7 +3719,7 @@
             },
             {
                 "type": "multipleAnswer",
-                "question": "Select UK devolved legislatures:",
+                "question": "In the Life in the UK handbook section 'A long and illustrious history - Chapter 6: Britain since 1945', select UK devolved legislatures:",
                 "options": [
                     "Scottish Parliament",
                     "Senedd (Welsh Parliament)",
@@ -3790,7 +3790,7 @@
             },
             {
                 "type": "multiple",
-                "question": "Who wrote the novels 1984 and Animal Farm?",
+                "question": "According to the 'A long and illustrious history - Chapter 6: Britain since 1945' section, Which person wrote  the novels 1984 and Animal Farm?",
                 "options": [
                     "George Orwell",
                     "Aldous Huxley",
@@ -3878,7 +3878,7 @@
                     "London",
                     "Cardiff"
                 ],
-                "question": "Where is the National Gallery?",
+                "question": "In the Life in the UK handbook section 'A modern, thriving society', where is the National Gallery?",
                 "answer": "London",
                 "id": "where_national_gallery"
             },
@@ -3926,7 +3926,7 @@
                     "Pound sterling",
                     "Franc"
                 ],
-                "question": "What is the currency of the UK?",
+                "question": "In the Life in the UK handbook section 'A modern, thriving society', what is the currency of the UK?",
                 "answer": "Pound sterling",
                 "id": "uk_currency_name"
             },
@@ -3950,7 +3950,7 @@
                     "Some parts of the Highlands and Islands",
                     "The Lowlands"
                 ],
-                "question": "Where in Scotland is Gaelic spoken?",
+                "question": "In the Life in the UK handbook section 'A modern, thriving society', where in Scotland is Gaelic spoken?",
                 "answer": "Some parts of the Highlands and Islands",
                 "id": "where_scotland_gaelic"
             },
@@ -3962,7 +3962,7 @@
                     "23 April",
                     "30 November"
                 ],
-                "question": "When is St David's Day?",
+                "question": "In the Life in the UK handbook section 'A modern, thriving society', when is St David's Day?",
                 "answer": "1 March",
                 "id": "when_davids_day"
             },
@@ -3974,7 +3974,7 @@
                     "The Archbishop of Canterbury (spiritual leader)",
                     "The Parliament"
                 ],
-                "question": "Who is the head of the Church of England?",
+                "question": "According to the 'A modern, thriving society' section, Which person is  the head of the Church of England?",
                 "answer": "The monarch (as Supreme Governor)",
                 "id": "head_church_england"
             },
@@ -4130,13 +4130,13 @@
                     "23 April",
                     "30 November"
                 ],
-                "question": "When is St George's Day?",
+                "question": "In the Life in the UK handbook section 'A modern, thriving society', when is St George's Day?",
                 "answer": "23 April",
                 "id": "when_georges_day"
             },
             {
                 "answer": "About 870 miles (around 1,400 km)",
-                "question": "About how far is it from John O'Groats to Land's End?",
+                "question": "In 'A modern, thriving society', approximately how many miles separate John O'Groats from Land's End?",
                 "type": "multiple",
                 "options": [
                     "About 870 miles (around 1,400 km)",
@@ -4172,7 +4172,7 @@
             },
             {
                 "answer": "The Archbishop of Canterbury",
-                "question": "Who is the spiritual leader of the Church of England?",
+                "question": "According to the 'A modern, thriving society' section, Which person is  the spiritual leader of the Church of England?",
                 "type": "multiple",
                 "options": [
                     "The Archbishop of Canterbury",
@@ -4215,18 +4215,6 @@
                 "id": "uk_capitals"
             },
             {
-                "type": "multiple",
-                "question": "What is the currency of the UK?",
-                "options": [
-                    "Pound sterling",
-                    "Euro",
-                    "US dollar",
-                    "Scottish pound"
-                ],
-                "answer": "Pound sterling",
-                "id": "uk_currency"
-            },
-            {
                 "type": "multipleAnswer",
                 "question": "Which languages are traditionally spoken in parts of the UK?",
                 "options": [
@@ -4247,7 +4235,7 @@
             },
             {
                 "type": "multipleAnswer",
-                "question": "Match UK nations to their patron saints (select all that apply)",
+                "question": "According to the 'A modern, thriving society' section, match UK nations to their patron saints (select all that apply)?",
                 "options": [
                     "St George - England",
                     "St Andrew - Scotland",
@@ -4266,7 +4254,7 @@
             },
             {
                 "type": "multiple",
-                "question": "What is a bank holiday in the UK?",
+                "question": "In the Life in the UK handbook section 'A modern, thriving society', what is a bank holiday in the UK?",
                 "options": [
                     "A public holiday when many businesses and schools close",
                     "A day banks change interest rates",
@@ -4330,7 +4318,7 @@
             },
             {
                 "type": "multipleAnswer",
-                "question": "Select UK customs/events:",
+                "question": "In the Life in the UK handbook section 'A modern, thriving society', select UK customs/events:",
                 "options": [
                     "Bonfire Night",
                     "Remembrance Day",
@@ -4348,7 +4336,7 @@
             },
             {
                 "type": "multipleAnswer",
-                "question": "Select the correct saints' days:",
+                "question": "In the Life in the UK handbook section 'A modern, thriving society', select the correct saints' days:",
                 "options": [
                     "St George – 23 April",
                     "St Andrew – 30 November",
@@ -4483,7 +4471,7 @@
             },
             {
                 "type": "multiple",
-                "question": "Who wrote 'Water Music' for George I and 'Music for the Royal Fireworks' for George II?",
+                "question": "According to the 'A modern, thriving society' section, Which person wrote  'Water Music' for George I and 'Music for the Royal Fireworks' for George II?",
                 "options": [
                     "George Frederick Handel",
                     "Henry Purcell",
@@ -4519,7 +4507,7 @@
                     "May Day",
                     "Easter"
                 ],
-                "question": "What is Bonfire Night also called?",
+                "question": "In the Life in the UK handbook section 'Leisure', what is Bonfire Night also called?",
                 "answer": "Guy Fawkes Night",
                 "id": "what_bonfire_night"
             },
@@ -4543,7 +4531,7 @@
                     "Berkshire",
                     "Yorkshire"
                 ],
-                "question": "Where is Royal Ascot held?",
+                "question": "In the Life in the UK handbook section 'Leisure', where is Royal Ascot held?",
                 "answer": "Berkshire",
                 "id": "where_royal_ascot"
             },
@@ -4555,7 +4543,7 @@
                     "A Scottish food",
                     "A Scottish sport"
                 ],
-                "question": "What is Hogmanay?",
+                "question": "In the Life in the UK handbook section 'Leisure', what is Hogmanay?",
                 "answer": "Scottish New Year celebrations",
                 "id": "what_hogmanay"
             },
@@ -4567,7 +4555,7 @@
                     "1 November",
                     "5 November"
                 ],
-                "question": "When is Halloween?",
+                "question": "In the Life in the UK handbook section 'Leisure', when is Halloween?",
                 "answer": "31 October",
                 "id": "when_halloween"
             },
@@ -4591,7 +4579,7 @@
                     "Epsom",
                     "Cheltenham"
                 ],
-                "question": "Where is the Grand National held?",
+                "question": "In the Life in the UK handbook section 'Leisure', where is the Grand National held?",
                 "answer": "Aintree, near Liverpool",
                 "id": "where_grand_national"
             },
@@ -4603,7 +4591,7 @@
                     "The Battle of Trafalgar",
                     "The signing of the Magna Carta"
                 ],
-                "question": "What happened on 5 November 1605?",
+                "question": "In the Life in the UK handbook section 'Leisure', what happened on 5 November 1605?",
                 "answer": "Guy Fawkes tried to blow up Parliament",
                 "id": "what_happened_november"
             },
@@ -4639,7 +4627,7 @@
                     "Light bonfires",
                     "Have picnics"
                 ],
-                "question": "What do children do on Halloween?",
+                "question": "In the Life in the UK handbook section 'Leisure', what do children do on Halloween?",
                 "answer": "Dress up and go trick-or-treating",
                 "id": "what_children_halloween"
             },
@@ -4663,7 +4651,7 @@
                     "A rugby tournament",
                     "A tennis championship"
                 ],
-                "question": "What is the Ashes?",
+                "question": "In the Life in the UK handbook section 'Leisure', what is the Ashes?",
                 "answer": "A cricket competition between England and Australia",
                 "id": "what_ashes"
             },
@@ -4687,7 +4675,7 @@
                     "1 March",
                     "30 November"
                 ],
-                "question": "When is St Andrew's Day?",
+                "question": "In the Life in the UK handbook section 'Leisure', when is St Andrew's Day?",
                 "answer": "30 November",
                 "id": "when_andrews_day"
             },
@@ -4699,7 +4687,7 @@
                     "Maundy Thursday",
                     "Good Friday"
                 ],
-                "question": "What is the day before Lent called?",
+                "question": "In the Life in the UK handbook section 'Leisure', what is the day before Lent called?",
                 "answer": "Shrove Tuesday or Pancake Day",
                 "id": "what_before_lent"
             },
@@ -4735,7 +4723,7 @@
                     "A nature reserve in Scotland",
                     "A film studio"
                 ],
-                "question": "What is the Eden Project?",
+                "question": "In the Life in the UK handbook section 'Leisure', what is the Eden Project?",
                 "answer": "Giant greenhouses in Cornwall",
                 "id": "what_eden_project"
             },
@@ -4771,7 +4759,7 @@
                     "25 December",
                     "1 January"
                 ],
-                "question": "When is Bonfire Night?",
+                "question": "In the Life in the UK handbook section 'Leisure', when is Bonfire Night?",
                 "answer": "5 November",
                 "id": "when_bonfire_night"
             },
@@ -4795,7 +4783,7 @@
                     "26 December",
                     "31 December"
                 ],
-                "question": "When is Boxing Day?",
+                "question": "In the Life in the UK handbook section 'Leisure', when is Boxing Day?",
                 "answer": "26 December",
                 "id": "when_boxing_day"
             },
@@ -4807,7 +4795,7 @@
                     "1 March",
                     "30 November"
                 ],
-                "question": "When is St Patrick's Day?",
+                "question": "In the Life in the UK handbook section 'Leisure', when is St Patrick's Day?",
                 "answer": "17 March",
                 "id": "when_patricks_day"
             },
@@ -4819,7 +4807,7 @@
                     "Glasgow",
                     "Aberdeen"
                 ],
-                "question": "Where is the home of golf?",
+                "question": "In the Life in the UK handbook section 'Leisure', where is the home of golf?",
                 "answer": "St Andrews",
                 "id": "where_home_golf"
             },
@@ -4831,13 +4819,13 @@
                     "26 December",
                     "31 December"
                 ],
-                "question": "When is Christmas Day?",
+                "question": "In the Life in the UK handbook section 'Leisure', when is Christmas Day?",
                 "answer": "25 December",
                 "id": "when_christmas_day"
             },
             {
                 "answer": "A rented plot to grow fruit and vegetables",
-                "question": "What is an allotment used for?",
+                "question": "In the Life in the UK handbook section 'Leisure', what is an allotment used for?",
                 "type": "multiple",
                 "options": [
                     "A rented plot to grow fruit and vegetables",
@@ -4897,7 +4885,7 @@
             },
             {
                 "answer": "443 feet (135 metres)",
-                "question": "How tall is the London Eye?",
+                "question": "In the Life in the UK handbook section 'Leisure', how tall is the London Eye?",
                 "type": "multiple",
                 "options": [
                     "443 feet (135 metres)",
@@ -5005,7 +4993,7 @@
             },
             {
                 "type": "multipleAnswer",
-                "question": "Select famous horse-racing events:",
+                "question": "In the Life in the UK handbook section 'Leisure', select famous horse-racing events:",
                 "options": [
                     "Royal Ascot",
                     "The Grand National",
@@ -5022,7 +5010,7 @@
             },
             {
                 "type": "multipleAnswer",
-                "question": "Select notable British figures:",
+                "question": "In the Life in the UK handbook section 'Leisure', select notable British figures:",
                 "options": [
                     "Winston Churchill",
                     "Florence Nightingale",
@@ -5088,7 +5076,7 @@
                     "A garage",
                     "A mechanic"
                 ],
-                "question": "What must drivers have by law?",
+                "question": "In the Life in the UK handbook section 'The UK government, the law and your role', what must drivers have by law?",
                 "answer": "Insurance",
                 "id": "what_must_drivers"
             },
@@ -5112,7 +5100,7 @@
                     "Lords",
                     "Clergy"
                 ],
-                "question": "Who sits in the House of Commons?",
+                "question": "According to the 'The UK government, the law and your role' section, Which person sits in the House of Commons?",
                 "answer": "Members of Parliament (MPs)",
                 "id": "sits_house_commons"
             },
@@ -5160,7 +5148,7 @@
                     "Cardiff",
                     "Belfast"
                 ],
-                "question": "Where does the Senedd sit?",
+                "question": "In the Life in the UK handbook section 'The UK government, the law and your role', where does the Senedd sit?",
                 "answer": "Cardiff",
                 "id": "where_does_senedd"
             },
@@ -5172,7 +5160,7 @@
                     "18",
                     "21"
                 ],
-                "question": "What is the voting age in the UK?",
+                "question": "In the Life in the UK handbook section 'The UK government, the law and your role', what is the voting age in the UK?",
                 "answer": "18",
                 "id": "what_voting"
             },
@@ -5280,7 +5268,7 @@
                     "Only knives",
                     "Only guns"
                 ],
-                "question": "Is it illegal to carry a weapon for self-defence in the UK?",
+                "question": "According to the 'The UK government, the law and your role' section, is it illegal to carry a weapon for self-defence in the UK?",
                 "answer": "Yes",
                 "id": "illegal_carry_weapon"
             },
@@ -5292,7 +5280,7 @@
                     "The Speaker",
                     "The Archbishop of Canterbury"
                 ],
-                "question": "Who is the head of state in the UK?",
+                "question": "According to the 'The UK government, the law and your role' section, Which person is  the head of state in the UK?",
                 "answer": "The King",
                 "id": "head_state"
             },
@@ -5328,7 +5316,7 @@
                     "Edinburgh",
                     "Cardiff"
                 ],
-                "question": "Where does the UK Parliament sit?",
+                "question": "In the Life in the UK handbook section 'The UK government, the law and your role', where does the UK Parliament sit?",
                 "answer": "Westminster",
                 "id": "where_does_parliament"
             },
@@ -5340,7 +5328,7 @@
                     "King William V",
                     "Queen Camilla"
                 ],
-                "question": "Who is the current monarch?",
+                "question": "According to the 'The UK government, the law and your role' section, Which person is  the current monarch?",
                 "answer": "King Charles III",
                 "id": "current_monarch"
             },
@@ -5436,7 +5424,7 @@
                     "Inherited",
                     "Chosen by lottery"
                 ],
-                "question": "How are MPs chosen?",
+                "question": "In the Life in the UK handbook section 'The UK government, the law and your role', how are MPs chosen?",
                 "answer": "Elected by voters",
                 "id": "chosen"
             },
@@ -5448,7 +5436,7 @@
                     "The monarch",
                     "The oldest MP"
                 ],
-                "question": "Who chairs debates in the House of Commons?",
+                "question": "According to the 'The UK government, the law and your role' section, Which person chairs debates in the House of Commons?",
                 "answer": "The Speaker",
                 "id": "chairs_debates_house"
             },
@@ -5520,7 +5508,7 @@
                     "The King",
                     "The Archbishop of Canterbury"
                 ],
-                "question": "Who opens the new parliamentary session each year?",
+                "question": "According to the 'The UK government, the law and your role' section, Which person opens the new parliamentary session each year?",
                 "answer": "The King",
                 "id": "opens_parliamentary_session"
             },
@@ -5568,7 +5556,7 @@
                     "Blind people",
                     "Unemployed people"
                 ],
-                "question": "Who can get a 50% discount on their TV licence?",
+                "question": "According to the 'The UK government, the law and your role' section, Which person can get a 50% discount on their TV licence?",
                 "answer": "Blind people",
                 "id": "discount_their_licence"
             },
@@ -5592,7 +5580,7 @@
                     "Direct democracy",
                     "Socialist democracy"
                 ],
-                "question": "What type of democracy is the UK?",
+                "question": "In the Life in the UK handbook section 'The UK government, the law and your role', what type of democracy is the UK?",
                 "answer": "Parliamentary democracy",
                 "id": "type_of_democracy"
             },
@@ -5640,7 +5628,7 @@
                     "Britain Broadcast Centre",
                     "British Broadcast Channel"
                 ],
-                "question": "What does BBC stand for?",
+                "question": "In the Life in the UK handbook section 'The UK government, the law and your role', what does BBC stand for?",
                 "answer": "British Broadcasting Corporation",
                 "id": "bbc_acronym"
             },
@@ -5730,7 +5718,7 @@
             },
             {
                 "answer": "It is a criminal offence, including arranging it abroad",
-                "question": "What does UK law say about FGM?",
+                "question": "In the Life in the UK handbook section 'The UK government, the law and your role', what does UK law say about FGM?",
                 "type": "multiple",
                 "options": [
                     "It is a criminal offence, including arranging it abroad",
@@ -5893,7 +5881,7 @@
             },
             {
                 "type": "multipleAnswer",
-                "question": "Who is eligible to vote in UK general elections?",
+                "question": "According to the 'The UK government, the law and your role' section, Which person is  eligible to vote in UK general elections?",
                 "options": [
                     "British citizens",
                     "Irish citizens resident in the UK",
@@ -5941,7 +5929,7 @@
             },
             {
                 "type": "multiple",
-                "question": "What is the Commonwealth?",
+                "question": "In the Life in the UK handbook section 'The UK government, the law and your role', what is the Commonwealth?",
                 "options": [
                     "A voluntary association of independent countries",
                     "A military alliance",
@@ -6259,7 +6247,7 @@
         "questions": [
             {
                 "type": "multiple",
-                "question": "Which dates refer to 'World War I'?",
+                "question": "In the Life in the UK handbook section 'Practice: History Core Facts', which dates refer to 'World War I'?",
                 "options": [
                     "1914–1918",
                     "1939–1945",
