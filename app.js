@@ -1056,48 +1056,38 @@ function getCanonicalGroupQuestion(group, groupIdx, topicIndex) {
 
 // Select questions prioritising unseen and low-point items
 function selectAdaptiveSubset(allQuestions, count) {
-    const buckets = { unseen: [], negative: [], lowPositive: [], others: [] };
-
-    allQuestions.forEach((q) => {
-        const qId = getQuestionId(q, q.topicIndex, q.sourceIndex);
-        const conceptKey = getConceptKey(q); // Use concept-level scoring
+    // Build entries with concept-level points
+    const entries = allQuestions.map((q) => {
+        const id = getQuestionId(q, q.topicIndex, q.sourceIndex);
+        const conceptKey = getConceptKey(q);
         const stats = state.questionStats[conceptKey];
         const points = stats?.points ?? 0;
         const attempts = (stats?.correct || 0) + (stats?.incorrect || 0);
-        const entry = { question: q, id: qId, conceptKey, points, attempts };
-
-        // DEBUG: Log selection details
-        console.log(`[Selection] id=${qId} conceptKey=${conceptKey} points=${points} attempts=${attempts}`);
-
-        if (attempts === 0) {
-            buckets.unseen.push(entry);
-        } else if (points < 0) {
-            buckets.negative.push(entry);
-        } else if (points <= 2) {
-            buckets.lowPositive.push(entry);
-        } else {
-            buckets.others.push(entry);
-        }
+        return { question: q, id, conceptKey, points, attempts };
     });
 
-    // Sort within buckets so the weakest items surface first
-    const ascPoints = (a, b) => a.points - b.points;
-    buckets.negative.sort(ascPoints);
-    buckets.lowPositive.sort(ascPoints);
-    buckets.others.sort(ascPoints);
+    // Priority 1: questions with exactly 0 points (includes unseen)
+    const zeroPoint = entries.filter(e => e.points === 0);
+    const others = entries.filter(e => e.points !== 0);
 
-    const takeFrom = (bucket, selected) => {
-        while (selected.length < count && bucket.length > 0) {
-            selected.push(bucket.shift());
-        }
-    };
-
+    // Randomise zero-point questions
     const selected = [];
-    takeFrom(buckets.unseen, selected);
-    takeFrom(buckets.negative, selected);
-    takeFrom(buckets.lowPositive, selected);
-    takeFrom(buckets.others, selected);
-    
+    const zeroShuffled = shuffleArray(zeroPoint);
+    while (selected.length < count && zeroShuffled.length > 0) {
+        selected.push(zeroShuffled.shift());
+    }
+
+    // Priority 2: lowest points next, but randomised among the lowest slice
+    if (selected.length < count && others.length > 0) {
+        // Sort ascending by points (lowest first)
+        others.sort((a, b) => a.points - b.points);
+        while (selected.length < count && others.length > 0) {
+            const windowSize = Math.min(10, others.length); // pick randomly among the lowest K
+            const idx = Math.floor(Math.random() * windowSize);
+            selected.push(others.splice(idx, 1)[0]);
+        }
+    }
+
     return selected;
 }
 
