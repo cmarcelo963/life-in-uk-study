@@ -1187,10 +1187,19 @@ function getNextInfinitePracticeQuestion() {
     // Prefer a different concept than last served, from the top N candidates
     const prevKey = state.lastInfiniteConceptKey;
     const topN = Math.min(20, prioritized.length);
-    let chosenEntry = null;
-
+    // Build unique-by-concept candidate list to avoid many duplicates of the same concept
+    const uniqueCandidates = [];
+    const seenConcepts = new Set();
     for (let i = 0; i < topN; i++) {
         const entry = prioritized[i];
+        if (!seenConcepts.has(entry.conceptKey)) {
+            seenConcepts.add(entry.conceptKey);
+            uniqueCandidates.push(entry);
+        }
+    }
+
+    let chosenEntry = null;
+    for (const entry of uniqueCandidates) {
         const key = entry.conceptKey;
         if (key !== prevKey) {
             // Optional: de-prioritise very recently asked concepts (<30s)
