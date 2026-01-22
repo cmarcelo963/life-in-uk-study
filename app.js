@@ -1131,18 +1131,37 @@ function generatePracticeQuestions(count = 24) {
     const availableIds = new Set(allQuestions.map((q) => getQuestionId(q, q.topicIndex, q.sourceIndex)));
     const totalAvailable = availableIds.size;
 
-    const selectedEntries = selectAdaptiveSubset(allQuestions, count);
+    // Group by concept and pick one random variant per concept
+    const byConcept = new Map();
+    for (const q of allQuestions) {
+        const key = getConceptKey(q);
+        if (!byConcept.has(key)) byConcept.set(key, []);
+        byConcept.get(key).push(q);
+    }
+
+    const onePerConcept = [];
+    for (const group of byConcept.values()) {
+        const idx = Math.floor(Math.random() * group.length);
+        onePerConcept.push(group[idx]);
+    }
+
+    // Shuffle and take the first `count`
+    const shuffled = shuffleArray(onePerConcept);
+    const selected = shuffled.slice(0, count);
+
+    // Debug log removed after verification
 
     // Mark selected as seen for practice tracking
-    selectedEntries.forEach(({ id }) => {
+    for (const q of selected) {
+        const id = getQuestionId(q, q.topicIndex, q.sourceIndex);
         state.practiceStats.questionsSeen[id] = true;
-    });
+    }
 
     const seenCount = [...availableIds].filter((id) => state.practiceStats.questionsSeen?.[id]).length;
     state.practiceStats.seenAll = totalAvailable > 0 && seenCount >= totalAvailable;
     savePracticeStats();
 
-    return selectedEntries.map((entry) => entry.question);
+    return selected;
 }
 
 // Generate questions for infinite practice mode (generate one at a time)
@@ -2139,6 +2158,68 @@ function migrateLegacyQuestionStats() {
     }
 }
 
+// Consolidate any non-concept keys into concept-level stats
+function unifyStatsToConceptKeys() {
+    try {
+        if (!state.questionStats || Object.keys(state.questionStats).length === 0) return;
+        const topics = state.topics || [];
+        let changed = false;
+        const newStats = { ...state.questionStats };
+
+        for (const [key, entry] of Object.entries(state.questionStats)) {
+            if (key.startsWith('concept_')) continue;
+
+            let conceptKey = null;
+            // New ID format: <conceptId>_v<variant>
+            const m = key.match(/^(.+)_v\d+$/);
+            if (m) {
+                conceptKey = `concept_${m[1]}`;
+            } else {
+                // Group key format: <topicIndex>_group_<groupId>
+                const gm = key.match(/^(\d+)_group_(.+)$/);
+                if (gm) {
+                    const tIdx = Number(gm[1]);
+                    const groupId = gm[2];
+                    const topic = topics[tIdx];
+                    if (topic && Array.isArray(topic.questionGroups)) {
+                        const group = topic.questionGroups.find(g => String(g.id) === String(groupId));
+                        if (group && group.variations && group.variations[0]) {
+                            const canonical = group.variations[0];
+                            const canonicalWithMeta = { ...canonical, groupId: group.id, topicIndex: tIdx, sourceIndex: `group_${topic.questionGroups.indexOf(group)}` };
+                            const maybeKey = canonical.conceptId ? getConceptKey(canonicalWithMeta) : key;
+                            if (maybeKey && maybeKey.startsWith('concept_')) {
+                                conceptKey = maybeKey;
+                            }
+                        }
+                    }
+                }
+            }
+
+            if (conceptKey && conceptKey !== key) {
+                const existing = newStats[conceptKey] || { correct: 0, incorrect: 0, lastAsked: null, points: 0 };
+                existing.correct += (entry.correct || 0);
+                existing.incorrect += (entry.incorrect || 0);
+                existing.points += (entry.points || 0);
+                if (!existing.lastAsked || (entry.lastAsked && entry.lastAsked > existing.lastAsked)) {
+                    existing.lastAsked = entry.lastAsked || existing.lastAsked;
+                }
+                if (existing.points > 100) existing.points = 100;
+                newStats[conceptKey] = existing;
+                delete newStats[key];
+                changed = true;
+            }
+        }
+
+        if (changed) {
+            state.questionStats = newStats;
+            console.log('[StatsUnify] Consolidated to concept-level keys');
+            saveQuestionStats();
+        }
+    } catch (e) {
+        console.error('[StatsUnify] Failed:', e);
+    }
+}
+
 function renderStatistics() {
     // Safety check: ensure topics are loaded
     if (!state.topics || state.topics.length === 0) {
@@ -2150,9 +2231,10 @@ function renderStatistics() {
         return;
     }
 
-    // Run a one-time migration to normalize legacy keys (after topics are loaded)
+    // Run migrations: normalize legacy keys and unify to concept-level
     if (!state._statsMigrated) {
         migrateLegacyQuestionStats();
+        unifyStatsToConceptKeys();
         state._statsMigrated = true;
     }
     
