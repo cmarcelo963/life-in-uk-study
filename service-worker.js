@@ -1,4 +1,4 @@
-const CACHE_NAME = 'life-in-uk-v22'; // Bumped: switched from topics_grouped.json to data/questions.json
+const CACHE_NAME = 'life-in-uk-v23'; // Bump to ensure latest app.js is cached
 const urlsToCache = [
   '/',
   '/index.html',
