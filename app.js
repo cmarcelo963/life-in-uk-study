@@ -524,37 +524,24 @@ function initQuestionStats(questionId) {
 
 // Update question stats after answer
 function updateQuestionStats(questionId, isCorrect) {
-    console.log('=== updateQuestionStats ===');
-    console.log('ID:', questionId);
-        console.log('Correct:', isCorrect ? 'Yes' : 'No');
-    initQuestionStats(questionId);
+        initQuestionStats(questionId);
     
-    const stats = state.questionStats[questionId];
-    stats.lastAsked = Date.now();
+        const stats = state.questionStats[questionId];
+        stats.lastAsked = Date.now();
     
-    if (isCorrect) {
-        stats.correct++;
-        stats.points += 1;  // +1 point for correct
-    } else {
-        stats.incorrect++;
-        stats.points -= 3;  // -3 points for incorrect
-    }
-
-    // Cap upper bound so mastered questions can be retired
-    stats.points = Math.min(stats.points, 100);
+        if (isCorrect) {
+            stats.correct++;
+            stats.points += 1;  // +1 point for correct
+        } else {
+            stats.incorrect++;
+            stats.points -= 3;  // -3 points for incorrect
+        }
     
-    console.log('New stats:', stats);
-    console.log('Total entries:', Object.keys(state.questionStats).length);
-    console.log('Sample keys:', Object.keys(state.questionStats).slice(0, 3));
-    // Test localStorage
-    try {
-        localStorage.setItem('TEST_KEY', 'test');
-        const test = localStorage.getItem('TEST_KEY');
-        console.log('localStorage works:', test === 'test');
-    } catch (e) {
-        console.error('localStorage FAILED:', e);
-    }
-    saveQuestionStats();
+        // Cap upper bound so mastered questions can be retired
+        stats.points = Math.min(stats.points, 100);
+    
+        // Stats updated and capped; persist
+        saveQuestionStats();
 }
 
 // Calculate question weight for adaptive learning (concept-level)
@@ -1110,12 +1097,6 @@ function selectAdaptiveSubset(allQuestions, count) {
     takeFrom(buckets.lowPositive, selected);
     takeFrom(buckets.others, selected);
     
-    // DEBUG: Summary of prioritization (TEMP)
-    try {
-        const summary = selected.slice(0, 5).map(e => `${e.id}:${e.points}`).join(', ');
-        console.log(`[SelectionSummary] next order (top 5): ${summary}`);
-    } catch {}
-
     return selected;
 }
 
@@ -1380,9 +1361,7 @@ function renderQuestion() {
     const questionText = question.question;
     document.getElementById('questionText').textContent = questionText;
 
-    // TEMP DEBUG PANEL: ensure and update
-    ensureDebugPanel();
-    updateDebugPanel(question);
+    // TEMP DEBUG PANEL: removed after verification
 
     // Hide feedback
     document.getElementById('feedback').style.display = 'none';
@@ -1402,33 +1381,7 @@ function renderQuestion() {
     }
 }
 
-// ===== TEMP DEBUG PANEL =====
-function ensureDebugPanel() {
-    let panel = document.getElementById('debugPanel');
-    if (!panel) {
-        panel = document.createElement('div');
-        panel.id = 'debugPanel';
-        panel.style.cssText = 'position:fixed; right:12px; bottom:12px; background:rgba(0,0,0,0.6); color:#fff; padding:8px 10px; border-radius:8px; font: 12px/1.4 system-ui, sans-serif; z-index:9999; box-shadow:0 2px 6px rgba(0,0,0,0.3)';
-        panel.innerHTML = '<div><strong>Debug</strong></div><div id="debugContent"></div>';
-        document.body.appendChild(panel);
-    }
-}
-
-function updateDebugPanel(question) {
-    try {
-        const topicIndex = (typeof question.topicIndex === 'number' ? question.topicIndex : state.currentTopicIndex) || 0;
-        const qid = question.id || getQuestionId(question, topicIndex, question.sourceIndex);
-        const conceptKey = getConceptKey(question);
-        const points = state.questionStats[conceptKey]?.points ?? 0;
-        const content = document.getElementById('debugContent');
-        if (content) {
-            content.textContent = `id: ${qid} | conceptId: ${question.conceptId ?? 'n/a'} | score: ${points}`;
-        }
-    } catch (e) {
-        console.warn('updateDebugPanel error:', e);
-    }
-}
-// ===== END TEMP DEBUG PANEL =====
+// TEMP DEBUG PANEL: removed after verification
 
 // Render Multiple Choice
 function renderMultipleChoice(question) {
@@ -1627,16 +1580,7 @@ function checkAnswer(userAnswer) {
         question.sourceIndex
     );
     
-    // DEBUG: Log scoring details (TEMP)
-    const beforePoints = state.questionStats[conceptKey]?.points ?? 0;
-    console.log(`[Scoring] question.id=${question.id} conceptId=${question.conceptId} conceptKey=${conceptKey} isCorrect=${isCorrect}`);
-    console.log(`[Scoring] beforePoints=${beforePoints}`);
-    
     updateQuestionStats(conceptKey, isCorrect);
-    // TEMP: refresh debug panel after scoring update
-    updateDebugPanel(question);
-    const afterPoints = state.questionStats[conceptKey]?.points ?? 0;
-    console.log(`[Scoring] afterPoints=${afterPoints}`);
 
     // Show feedback
     showFeedback(isCorrect, correctAnswer, userAnswer, question);
@@ -1940,15 +1884,8 @@ function handleFlashcardResponse(response) {
     // Track in adaptive learning system
     if (response === 'correct' || response === 'incorrect') {
         const isCorrect = response === 'correct';
-        // TEMP DEBUG: Flashcard scoring at concept level
         const conceptKey = getConceptKey(question);
-        const before = state.questionStats[conceptKey]?.points ?? 0;
-        console.log(`[FlashcardScoring] conceptKey=${conceptKey} beforePoints=${before} isCorrect=${isCorrect}`);
         updateQuestionStats(conceptKey, isCorrect);
-        const after = state.questionStats[conceptKey]?.points ?? 0;
-        console.log(`[FlashcardScoring] afterPoints=${after}`);
-        // TEMP: refresh debug panel after scoring update
-        updateDebugPanel(question);
         
         // Update session stats
         state.flashcardStats[response]++;
