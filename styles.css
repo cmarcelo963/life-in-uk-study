@@ -633,6 +633,40 @@ h3 {
     background: var(--card-bg);
 }
 
+.option.selected {
+    border-color: var(--primary);
+    background: rgba(88, 101, 242, 0.2);
+    color: var(--primary);
+}
+
+.option.selected::after {
+    content: '✓';
+    float: right;
+    font-weight: bold;
+    color: var(--primary);
+}
+
+.option.submit-multi-answer {
+    background: var(--primary);
+    border-color: var(--primary);
+    color: white;
+    font-weight: 600;
+    margin-top: 0.5rem;
+}
+
+.option.submit-multi-answer:hover {
+    background: var(--primary-dark);
+    border-color: var(--primary-dark);
+}
+
+.option.submit-multi-answer:disabled {
+    background: var(--bg-secondary);
+    border-color: var(--border);
+    color: var(--text-muted);
+    cursor: not-allowed;
+    opacity: 0.5;
+}
+
 .option.correct {
     border-color: var(--success);
     background: rgba(59, 165, 93, 0.15);
