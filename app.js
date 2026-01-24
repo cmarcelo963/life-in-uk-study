@@ -211,6 +211,26 @@ async function init() {
     setupEventListeners();
 }
 
+// Check if a question has a flawed format (e.g., answer embedded in question text)
+function isFlawedQuestion(q) {
+    const text = (q.question || '').toLowerCase();
+    const answer = (q.answer || '').toLowerCase();
+    
+    // Filter: questions with blanks that typically indicate the answer is in the question
+    // Pattern: "in the __ section, which highlighted fact matches..." where answer is embedded
+    if (text.includes('in the __') && text.includes('highlighted fact')) {
+        return true;
+    }
+    
+    // Filter: questions where the exact answer appears in the question text
+    // (too obvious, defeats the purpose)
+    if (answer && answer.length > 2 && text.includes(answer)) {
+        return true;
+    }
+    
+    return false;
+}
+
 // Load Topics from JSON
 async function loadTopics() {
     try {
@@ -221,12 +241,16 @@ async function loadTopics() {
         }
         const questions = await response.json();
         
-        console.log(`Loaded ${questions.length} questions from data/questions.json`);
+        // Filter out flawed questions
+        const validQuestions = questions.filter(q => !isFlawedQuestion(q));
+        const removedCount = questions.length - validQuestions.length;
+        
+        console.log(`Loaded ${validQuestions.length} valid questions from data/questions.json (removed ${removedCount} flawed)`);
         
         // Transform flat array into topics structure grouped by category
         const categoryMap = new Map();
         
-        questions.forEach(q => {
+        validQuestions.forEach(q => {
             const category = q.category || 'Uncategorized';
             
             if (!categoryMap.has(category)) {
@@ -270,7 +294,7 @@ async function loadTopics() {
         // Convert map to array
         state.topics = Array.from(categoryMap.values());
         
-        console.log(`Loaded ${questions.length} questions across ${state.topics.length} topics`);
+        console.log(`Loaded ${validQuestions.length} questions across ${state.topics.length} topics`);
         
         // Now hydrate topics with real content from topics_grouped.json
         await hydrateTopicContent();
