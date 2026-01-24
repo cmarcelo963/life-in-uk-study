@@ -284,7 +284,7 @@ async function loadTopics() {
 // Hydrate topic content from topics_grouped.json
 async function hydrateTopicContent() {
     try {
-        const response = await fetch('_unused_backup/topics_grouped.json');
+        const response = await fetch('data/topics_grouped.json');
         if (!response.ok) {
             console.warn('Could not load topics_grouped.json, continuing with placeholder content');
             return;
