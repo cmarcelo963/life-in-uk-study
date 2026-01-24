@@ -13,7 +13,7 @@ let state = {
     practiceStats: {}, // Track which questions have been seen in practice mode
     isFlashcardMode: false, // Track if in flashcard mode
     flashcardStats: { correct: 0, incorrect: 0, skipped: 0 }, // Track flashcard session stats
-    selectedAnswers: [], // Track selected answers for multi-answer questions
+    selectedOptions: [], // Track selected options for multi-answer questions
     isAdventureMode: false, // Track if in adventure mode
     adventureProgress: { currentTopicIndex: 0, topicsCompleted: [] }, // Track adventure progress
     showPracticeFirst: false, // Show practice topics at the top of topic list
@@ -26,7 +26,7 @@ let state = {
 const ENABLE_AUTO_BOLD_QUESTIONS = false;
 
 // Dataset version - increment when question data format changes incompatibly
-const DATA_VERSION = 3;
+const DATA_VERSION = 4;
 
 // Check and reset stats if dataset version changed
 function checkDatasetVersion() {
@@ -37,12 +37,17 @@ function checkDatasetVersion() {
         console.log(`=== Dataset Version Change Detected ===`);
         console.log(`Stored: ${storedVersion || 'none'}, Current: ${currentVersion}`);
         
-        // Clear incompatible stats
+        // Clear incompatible stats from localStorage
         localStorage.removeItem('lifeInUK_questionStats');
         localStorage.removeItem('lifeInUK_statsMigrated_v2');
         localStorage.removeItem('lifeInUK_practiceStats');
         
-        console.log('Cleared old stats due to dataset version change');
+        console.log('Cleared old stats from localStorage due to dataset version change');
+        
+        // Clear backend stats files if server is available
+        clearBackendStats().catch(err => {
+            console.log('Backend not available for stats clearing (expected on mobile)');
+        });
         
         // Save new version
         localStorage.setItem('lifeInUK_dataVersion', currentVersion);
@@ -52,6 +57,30 @@ function checkDatasetVersion() {
     }
     
     return false; // No reset needed
+}
+
+// Clear backend stats files when dataset version changes
+async function clearBackendStats() {
+    try {
+        // Clear question stats
+        await fetch('http://localhost:3000/api/stats', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({})
+        });
+        
+        // Clear practice stats
+        await fetch('http://localhost:3000/api/practice-stats', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ seenAll: false, questionsSeen: {} })
+        });
+        
+        console.log('Cleared backend stats files');
+    } catch (error) {
+        // Silent fail - backend may not be available
+        throw error;
+    }
 }
 
 // Build a short excerpt around a bold term so generated questions have context
@@ -235,9 +264,107 @@ async function loadTopics() {
         
         console.log(`Loaded ${questions.length} questions across ${state.topics.length} topics`);
         
+        // Now hydrate topics with real content from topics_grouped.json
+        await hydrateTopicContent();
+        
     } catch (error) {
         console.error('Error loading topics:', error);
         state.topics = [];
+    }
+}
+
+// Hydrate topic content from topics_grouped.json
+async function hydrateTopicContent() {
+    try {
+        const response = await fetch('_unused_backup/topics_grouped.json');
+        if (!response.ok) {
+            console.warn('Could not load topics_grouped.json, continuing with placeholder content');
+            return;
+        }
+        
+        const groupedTopics = await response.json();
+        console.log(`Loaded ${groupedTopics.length} topics with full content from topics_grouped.json`);
+        
+        // Build lookup map by normalized title
+        const contentLookup = new Map();
+        groupedTopics.forEach(topic => {
+            const normalizedTitle = (topic.title || '').trim().toLowerCase();
+            contentLookup.set(normalizedTitle, {
+                content: topic.content,
+                originalTitle: topic.title
+            });
+        });
+        
+        // Special handling for "History of the UK" - combine all history chapters
+        const historyChapters = groupedTopics.filter(t => 
+            t.title && t.title.toLowerCase().includes('a long and illustrious history')
+        );
+        if (historyChapters.length > 0) {
+            const combinedHistoryContent = historyChapters
+                .map(ch => ch.content)
+                .join('\n<hr style="margin: 2rem 0; border: none; border-top: 2px solid #ddd;">\n');
+            contentLookup.set('history of the uk', {
+                content: combinedHistoryContent,
+                originalTitle: `Combined from ${historyChapters.length} history chapters`
+            });
+        }
+        
+        // Special mappings for other known mismatches
+        const specialMappings = {
+            'government, law and your role': 'the uk government, the law and your role'
+        };
+        
+        // Match and hydrate topics
+        let hydratedCount = 0;
+        const unmatchedTitles = [];
+        
+        state.topics.forEach(topic => {
+            const normalizedTitle = (topic.title || '').trim().toLowerCase();
+            
+            // Try exact match first
+            if (contentLookup.has(normalizedTitle)) {
+                const match = contentLookup.get(normalizedTitle);
+                topic.content = match.content;
+                console.log(`  ✓ Matched "${topic.title}" → "${match.originalTitle}"`);
+                hydratedCount++;
+                return;
+            }
+            
+            // Check special mappings
+            const mappedKey = specialMappings[normalizedTitle];
+            if (mappedKey && contentLookup.has(mappedKey)) {
+                const match = contentLookup.get(mappedKey);
+                topic.content = match.content;
+                console.log(`  ✓ Matched "${topic.title}" → "${match.originalTitle}" (via mapping)`);
+                hydratedCount++;
+                return;
+            }
+            
+            // Try partial matches
+            let matched = false;
+            for (const [key, data] of contentLookup.entries()) {
+                if (key.includes(normalizedTitle) || normalizedTitle.includes(key)) {
+                    topic.content = data.content;
+                    console.log(`  ✓ Matched "${topic.title}" → "${data.originalTitle}" (partial)`);
+                    hydratedCount++;
+                    matched = true;
+                    break;
+                }
+            }
+            
+            if (!matched) {
+                unmatchedTitles.push(topic.title);
+            }
+        });
+        
+        console.log(`✅ Hydrated ${hydratedCount} of ${state.topics.length} topics with real content`);
+        
+        if (unmatchedTitles.length > 0) {
+            console.warn('⚠️ Topics without matching content:', unmatchedTitles);
+        }
+        
+    } catch (error) {
+        console.warn('Failed to load topics_grouped.json, continuing with placeholder content:', error);
     }
 }
 
@@ -1417,12 +1544,18 @@ function renderQuestion() {
     // Hide feedback
     document.getElementById('feedback').style.display = 'none';
 
-    // Reset selected answers for multi-answer questions
-    state.selectedAnswers = [];
+    // Reset selected options for multi-answer questions
+    state.selectedOptions = [];
 
     // Render based on difficulty and question type
     if (state.currentDifficulty === 'normal' || state.isInfinitePracticeMode) {
-        if (question.type === 'multipleAnswer') {
+        // Robust multi-answer detector
+        const isMultiAnswer =
+            (String(question.type || '').trim().toLowerCase() === 'multipleanswer') ||
+            (Array.isArray(question.correctOptions) && question.correctOptions.length > 0) ||
+            (Number.isInteger(question.numRequired) && question.numRequired > 1);
+        
+        if (isMultiAnswer) {
             renderMultipleAnswer(question);
         } else {
             renderMultipleChoice(question);
@@ -1476,6 +1609,25 @@ function renderMultipleAnswer(question) {
     instruction.textContent = `Select ${numAnswers} answers`;
     container.appendChild(instruction);
 
+    // Submit button (created once, enabled when ready)
+    const submitBtn = document.createElement('button');
+    submitBtn.className = 'option submit-multi-answer';
+    submitBtn.textContent = 'Submit Answers';
+    submitBtn.style.cssText = 'background-color: #3ba55d; border-color: #3ba55d; margin-top: 1rem; opacity: 0.6;';
+    submitBtn.disabled = true;
+    submitBtn.addEventListener('click', () => {
+        if (!submitBtn.disabled) {
+            checkAnswer([...state.selectedOptions]);
+        }
+    });
+
+    // Helper to update submit state
+    const updateSubmitState = () => {
+        const ready = state.selectedOptions.length === numAnswers;
+        submitBtn.disabled = !ready;
+        submitBtn.style.opacity = ready ? '1' : '0.6';
+    };
+
     // Create options
     options.forEach(option => {
         const btn = document.createElement('button');
@@ -1486,45 +1638,33 @@ function renderMultipleAnswer(question) {
         btn.addEventListener('click', () => {
             if (btn.classList.contains('disabled')) return;
             
-            // Toggle selection
-            if (btn.dataset.selected === 'true') {
+            const isSelected = btn.dataset.selected === 'true';
+            if (isSelected) {
                 btn.dataset.selected = 'false';
+                btn.classList.remove('selected');
                 btn.style.backgroundColor = '';
                 btn.style.borderColor = '';
-                const index = state.selectedAnswers.indexOf(option);
-                if (index > -1) state.selectedAnswers.splice(index, 1);
+                const index = state.selectedOptions.indexOf(option);
+                if (index > -1) state.selectedOptions.splice(index, 1);
             } else {
-                if (state.selectedAnswers.length < numAnswers) {
+                if (state.selectedOptions.length < numAnswers) {
                     btn.dataset.selected = 'true';
+                    btn.classList.add('selected');
                     btn.style.backgroundColor = '#5865f2';
                     btn.style.borderColor = '#5865f2';
-                    state.selectedAnswers.push(option);
+                    state.selectedOptions.push(option);
                 }
             }
             
-            // If correct number selected, show submit button
-            if (state.selectedAnswers.length === numAnswers) {
-                // Check if submit button already exists
-                let submitBtn = container.querySelector('.submit-multi-answer');
-                if (!submitBtn) {
-                    submitBtn = document.createElement('button');
-                    submitBtn.className = 'option submit-multi-answer';
-                    submitBtn.textContent = 'Submit Answers';
-                    submitBtn.style.cssText = 'background-color: #3ba55d; border-color: #3ba55d; margin-top: 1rem;';
-                    submitBtn.addEventListener('click', () => {
-                        checkAnswer(state.selectedAnswers);
-                    });
-                    container.appendChild(submitBtn);
-                }
-            } else {
-                // Remove submit button if it exists
-                const submitBtn = container.querySelector('.submit-multi-answer');
-                if (submitBtn) submitBtn.remove();
-            }
+            updateSubmitState();
         });
         
         container.appendChild(btn);
     });
+
+    // Append submit button after options
+    container.appendChild(submitBtn);
+    updateSubmitState();
 }
 
 // Render Text Input
@@ -1539,60 +1679,52 @@ function renderTextInput() {
 
 // Check Answer
 function checkAnswer(userAnswer) {
+    console.log("checkAnswer loaded from app.js - build marker v1");
     // Use stored current question (for both regular and infinite practice modes)
     const question = state.currentQuestion || state.currentQuestions[state.currentQuestionIndex];
-    const correctAnswer = question.answer || question.answers;
+    
+    const isMultiAnswer =
+        (String(question.type || '').trim().toLowerCase() === 'multipleanswer') ||
+        (Array.isArray(question.correctOptions) && question.correctOptions.length > 0) ||
+        (Number.isInteger(question.numRequired) && question.numRequired > 1);
+    
+    if (isMultiAnswer && !Array.isArray(userAnswer)) {
+        console.warn("Blocked premature multi-answer evaluation", question);
+        return;
+    }
+    
+    const correctAnswer =
+        question.type === 'multipleAnswer'
+            ? (Array.isArray(question.correctOptions) ? question.correctOptions : [])
+            : (question.answer || question.answers);
 
     let isCorrect = false;
 
     if (state.currentDifficulty === 'normal') {
         // Handle multiple answer questions
         if (question.type === 'multipleAnswer') {
-            // If correctOptions is defined, check if all selected are valid
-            if (question.correctOptions) {
-                const allCorrect = Array.isArray(userAnswer) && 
-                    userAnswer.length === (question.numRequired || 2) &&
-                    userAnswer.every(ans => question.correctOptions.includes(ans));
-                isCorrect = allCorrect;
+            const correctOptions = Array.isArray(question.correctOptions) ? question.correctOptions : Array.isArray(correctAnswer) ? correctAnswer : [];
+            const required = question.numRequired || correctOptions.length || 2;
+            const userSelections = userAnswer; // Already validated as array above
+
+            // Correct if the user selected exactly the required count and all selections are in the correct set
+            isCorrect = userSelections.length === required && userSelections.every(ans => correctOptions.includes(ans));
+            
+            // Highlight options
+            const options = document.querySelectorAll('.option:not(.submit-multi-answer)');
+            options.forEach(opt => {
+                opt.classList.add('disabled');
+                opt.style.backgroundColor = '';
+                opt.style.borderColor = '';
+                opt.dataset.selected = 'false';
                 
-                // Highlight options
-                const options = document.querySelectorAll('.option:not(.submit-multi-answer)');
-                options.forEach(opt => {
-                    opt.classList.add('disabled');
-                    opt.style.backgroundColor = '';
-                    opt.style.borderColor = '';
-                    opt.dataset.selected = 'false';
-                    
-                    if (question.correctOptions.includes(opt.textContent)) {
-                        opt.classList.add('correct');
-                    }
-                    if (Array.isArray(userAnswer) && userAnswer.includes(opt.textContent) && !question.correctOptions.includes(opt.textContent)) {
-                        opt.classList.add('incorrect');
-                    }
-                });
-            } else {
-                // Legacy: Compare arrays for exact match
-                const sortedUser = Array.isArray(userAnswer) ? [...userAnswer].sort() : [];
-                const sortedCorrect = Array.isArray(correctAnswer) ? [...correctAnswer].sort() : [];
-                isCorrect = sortedUser.length === sortedCorrect.length && 
-                           sortedUser.every((val, idx) => val === sortedCorrect[idx]);
-                
-                // Highlight options
-                const options = document.querySelectorAll('.option:not(.submit-multi-answer)');
-                options.forEach(opt => {
-                    opt.classList.add('disabled');
-                    opt.style.backgroundColor = '';
-                    opt.style.borderColor = '';
-                    opt.dataset.selected = 'false';
-                    
-                    if (correctAnswer.includes(opt.textContent)) {
-                        opt.classList.add('correct');
-                    }
-                    if (Array.isArray(userAnswer) && userAnswer.includes(opt.textContent) && !correctAnswer.includes(opt.textContent)) {
-                        opt.classList.add('incorrect');
-                    }
-                });
-            }
+                if (correctOptions.includes(opt.textContent)) {
+                    opt.classList.add('correct');
+                }
+                if (userSelections.includes(opt.textContent) && !correctOptions.includes(opt.textContent)) {
+                    opt.classList.add('incorrect');
+                }
+            });
             
             // Remove submit button
             const submitBtn = document.querySelector('.submit-multi-answer');
@@ -1746,11 +1878,39 @@ function showFeedback(isCorrect, correctAnswer, userAnswer, question) {
         correctAnswerEl.textContent = '';
     } else {
         message.textContent = '✗ Incorrect';
-        // Format correct answer (handle arrays for multi-answer questions)
-        if (Array.isArray(correctAnswer)) {
-            correctAnswerEl.textContent = `The correct answers are: ${correctAnswer.join(' and ')}`;
+
+        // Show the right answer depending on question type
+        if (question?.type === 'multipleAnswer') {
+            const answersArray = Array.isArray(question.correctOptions)
+                ? question.correctOptions
+                : Array.isArray(question.answers)
+                    ? question.answers
+                    : Array.isArray(correctAnswer)
+                        ? correctAnswer
+                        : correctAnswer
+                            ? [correctAnswer]
+                            : [];
+
+            const cleanAnswers = answersArray.filter(Boolean);
+            let answerText = '';
+            if (cleanAnswers.length === 0) {
+                answerText = '(no correct answers provided)';
+            } else if (cleanAnswers.length === 1) {
+                answerText = cleanAnswers[0];
+            } else if (cleanAnswers.length === 2) {
+                answerText = `${cleanAnswers[0]} and ${cleanAnswers[1]}`;
+            } else {
+                // Oxford-comma style list for 3+ items
+                const last = cleanAnswers[cleanAnswers.length - 1];
+                answerText = `${cleanAnswers.slice(0, -1).join(', ')}, and ${last}`;
+            }
+
+            const selectHint = question.numRequired ? ` (select ${question.numRequired})` : '';
+            correctAnswerEl.textContent = `The correct answers${selectHint}: ${answerText}`;
         } else {
-            correctAnswerEl.textContent = `The correct answer is: ${correctAnswer}`;
+            // Default to single-answer multiple choice
+            const answerText = Array.isArray(correctAnswer) ? correctAnswer[0] : correctAnswer;
+            correctAnswerEl.textContent = `The correct answer is: ${answerText}`;
         }
     }
     
