@@ -240,7 +240,7 @@ async function loadTopics() {
             // Map question to expected schema
             // Question IDs are already in format: <conceptId>_v<variant>
             const mappedQuestion = {
-                type: 'multiple',
+                type: q.type || 'multiple', // Preserve original type (multipleAnswer or multiple)
                 id: String(q.id), // Already in correct format from fixDuplicateIds.js
                 question: q.question,
                 options: q.options,
@@ -255,6 +255,14 @@ async function loadTopics() {
                 generated: false,
                 sourceIndex: categoryMap.get(category).questions.length
             };
+            
+            // Preserve multi-answer specific fields if they exist
+            if (q.correctOptions) {
+                mappedQuestion.correctOptions = q.correctOptions;
+            }
+            if (q.numRequired) {
+                mappedQuestion.numRequired = q.numRequired;
+            }
             
             categoryMap.get(category).questions.push(mappedQuestion);
         });
