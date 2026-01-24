@@ -1,10 +1,11 @@
-const CACHE_NAME = 'life-in-uk-v24'; // Bump to ensure latest assets and fix API caching
+const CACHE_NAME = 'life-in-uk-v25'; // Bump to ensure clients fetch the latest assets including topics content
 const urlsToCache = [
   '/',
   '/index.html',
   '/app.js',
   '/styles.css',
-  '/data/questions.json'
+  '/data/questions.json',
+  '/data/topics_grouped.json'
 ];
 
 // Install event - cache files
