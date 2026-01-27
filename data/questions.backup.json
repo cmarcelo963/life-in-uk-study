@@ -5998,5 +5998,1805 @@
     "fact": "Worth knowing: MPs hold surgeries (meetings) and can be contacted to raise concerns with government or in Parliament.",
     "conceptId": 150,
     "variant": 1
+  },
+  {
+    "type": "multiple",
+    "conceptId": "hist_norman_conquest",
+    "question": "Which statement about the Norman Conquest is correct?",
+    "options": [
+      "William of Normandy became king after winning the Battle of Hastings in 1066",
+      "William of Normandy became king after signing Magna Carta"
+    ],
+    "answer": "William of Normandy became king after winning the Battle of Hastings in 1066",
+    "feedback": {
+      "fact": "William won the Battle of Hastings in 1066 and was crowned King of England."
+    },
+    "category": "A long and illustrious history",
+    "id": "hist_30000"
+  },
+  {
+    "type": "multiple",
+    "conceptId": "hist_anglo_saxon",
+    "question": "Which statement about Anglo-Saxon England is correct?",
+    "options": [
+      "England was divided into several kingdoms ruled by Anglo-Saxon kings",
+      "England was a single united kingdom ruled by the Romans"
+    ],
+    "answer": "England was divided into several kingdoms ruled by Anglo-Saxon kings",
+    "feedback": {
+      "fact": "Before the Norman Conquest, England was made up of several Anglo-Saxon kingdoms."
+    },
+    "category": "A long and illustrious history",
+    "id": "hist_30001"
+  },
+  {
+    "type": "multiple",
+    "conceptId": "hist_magna_carta",
+    "question": "Which statement about Magna Carta is correct?",
+    "options": [
+      "It established that the king was subject to the law",
+      "It gave women the right to vote"
+    ],
+    "answer": "It established that the king was subject to the law",
+    "feedback": {
+      "fact": "Magna Carta limited the power of the monarch."
+    },
+    "category": "A long and illustrious history",
+    "id": "hist_30002"
+  },
+  {
+    "type": "multiple",
+    "conceptId": "hist_parliament_origins",
+    "question": "Which statement about the development of Parliament is correct?",
+    "options": [
+      "Parliament developed to advise the monarch and approve taxes",
+      "Parliament was created to replace the monarchy"
+    ],
+    "answer": "Parliament developed to advise the monarch and approve taxes",
+    "feedback": {
+      "fact": "Parliament originally advised the monarch and helped approve taxation."
+    },
+    "category": "A long and illustrious history",
+    "id": "hist_30003"
+  },
+  {
+    "type": "multiple",
+    "conceptId": "hist_reformation",
+    "question": "Which statement about the Reformation in England is correct?",
+    "options": [
+      "Henry VIII broke from the Roman Catholic Church and formed the Church of England",
+      "Henry VIII introduced democracy to England"
+    ],
+    "answer": "Henry VIII broke from the Roman Catholic Church and formed the Church of England",
+    "feedback": {
+      "fact": "Henry VIII established the Church of England during the Reformation."
+    },
+    "category": "A long and illustrious history",
+    "id": "hist_30004"
+  },
+  {
+    "type": "multiple",
+    "conceptId": "hist_civil_war",
+    "question": "Which statement about the English Civil War is correct?",
+    "options": [
+      "It was fought between supporters of Parliament and supporters of the king",
+      "It was fought between England and France"
+    ],
+    "answer": "It was fought between supporters of Parliament and supporters of the king",
+    "feedback": {
+      "fact": "The Civil War was between Parliamentarians and Royalists."
+    },
+    "category": "A long and illustrious history",
+    "id": "hist_30005"
+  },
+  {
+    "type": "multiple",
+    "conceptId": "hist_industrial_revolution",
+    "question": "Which statement about the Industrial Revolution is correct?",
+    "options": [
+      "It led to rapid growth of factories and cities",
+      "It caused most people to move from cities to rural villages"
+    ],
+    "answer": "It led to rapid growth of factories and cities",
+    "feedback": {
+      "fact": "The Industrial Revolution caused urbanisation and factory growth."
+    },
+    "category": "A long and illustrious history",
+    "id": "hist_30006"
+  },
+  {
+    "type": "multiple",
+    "conceptId": "hist_workers_conditions",
+    "question": "Which statement about working conditions during the Industrial Revolution is correct?",
+    "options": [
+      "Many workers faced long hours and unsafe conditions",
+      "Most workers had strong legal protections and short working hours"
+    ],
+    "answer": "Many workers faced long hours and unsafe conditions",
+    "feedback": {
+      "fact": "Early industrial workers often worked long hours in unsafe environments."
+    },
+    "category": "A long and illustrious history",
+    "id": "hist_30007"
+  },
+  {
+    "type": "multiple",
+    "conceptId": "hist_empire",
+    "question": "Which statement about the British Empire is correct?",
+    "options": [
+      "It was one of the largest empires in history",
+      "It only controlled land within Europe"
+    ],
+    "answer": "It was one of the largest empires in history",
+    "feedback": {
+      "fact": "At its height, the British Empire covered territories across the world."
+    },
+    "category": "A long and illustrious history",
+    "id": "hist_30008"
+  },
+  {
+    "type": "multiple",
+    "conceptId": "hist_commonwealth",
+    "question": "Which statement about the Commonwealth is correct?",
+    "options": [
+      "It is a voluntary association of countries, many of which were part of the British Empire",
+      "It is a military alliance controlled by the UK government"
+    ],
+    "answer": "It is a voluntary association of countries, many of which were part of the British Empire",
+    "feedback": {
+      "fact": "The Commonwealth is a voluntary association of independent countries."
+    },
+    "category": "A long and illustrious history",
+    "id": "hist_30009"
+  },
+  {
+    "type": "multiple",
+    "conceptId": "values_rule_of_law",
+    "question": "True or False: the rule of law applies to everyone in the UK, including the government",
+    "options": [
+      "True",
+      "False"
+    ],
+    "answer": "True",
+    "feedback": {
+      "fact": "The rule of law means nobody is above the law, including those in power."
+    },
+    "category": "The values and principles of the UK",
+    "id": "mix_20000"
+  },
+  {
+    "type": "multiple",
+    "conceptId": "values_free_speech_limits",
+    "question": "True or False: freedom of speech allows people to say anything without legal consequences",
+    "options": [
+      "True",
+      "False"
+    ],
+    "answer": "False",
+    "feedback": {
+      "fact": "Freedom of speech does not protect speech that breaks the law."
+    },
+    "category": "The values and principles of the UK",
+    "id": "mix_20001"
+  },
+  {
+    "type": "multiple",
+    "conceptId": "values_democracy",
+    "question": "Which statement about democracy in the UK is true?",
+    "options": [
+      "People can vote in free elections to choose their representatives",
+      "The government is chosen by the monarch without elections"
+    ],
+    "answer": "People can vote in free elections to choose their representatives",
+    "feedback": {
+      "fact": "The UK is a democracy where citizens elect representatives."
+    },
+    "category": "The values and principles of the UK",
+    "id": "mix_20002"
+  },
+  {
+    "type": "multiple",
+    "conceptId": "gov_home_secretary_role",
+    "question": "True or False: the Home Secretary is responsible for immigration, policing, and national security",
+    "options": [
+      "True",
+      "False"
+    ],
+    "answer": "True",
+    "feedback": {
+      "fact": "The Home Secretary oversees immigration, security, and law and order."
+    },
+    "category": "The government, the law and your role",
+    "id": "mix_20003"
+  },
+  {
+    "type": "multiple",
+    "conceptId": "gov_pm_head_of_state",
+    "question": "True or False: the Prime Minister is the head of state of the UK",
+    "options": [
+      "True",
+      "False"
+    ],
+    "answer": "False",
+    "feedback": {
+      "fact": "The monarch is the head of state; the Prime Minister is head of government."
+    },
+    "category": "The government, the law and your role",
+    "id": "mix_20004"
+  },
+  {
+    "type": "multiple",
+    "conceptId": "gov_chancellor_role",
+    "question": "Which statement about the Chancellor of the Exchequer is true?",
+    "options": [
+      "The Chancellor is responsible for managing public finances",
+      "The Chancellor is responsible for running local councils"
+    ],
+    "answer": "The Chancellor is responsible for managing public finances",
+    "feedback": {
+      "fact": "The Chancellor oversees taxation and government spending."
+    },
+    "category": "The government, the law and your role",
+    "id": "mix_20005"
+  },
+  {
+    "type": "multiple",
+    "conceptId": "hist_norman_conquest",
+    "question": "True or False: the Norman Conquest took place in 1066",
+    "options": [
+      "True",
+      "False"
+    ],
+    "answer": "True",
+    "feedback": {
+      "fact": "William of Normandy became king after the Battle of Hastings in 1066."
+    },
+    "category": "A long and illustrious history",
+    "id": "mix_20006"
+  },
+  {
+    "type": "multiple",
+    "conceptId": "hist_magna_carta",
+    "question": "Which statement about Magna Carta is true?",
+    "options": [
+      "It limited the power of the king",
+      "It created the first Parliament"
+    ],
+    "answer": "It limited the power of the king",
+    "feedback": {
+      "fact": "Magna Carta established that the monarch was subject to the law."
+    },
+    "category": "A long and illustrious history",
+    "id": "mix_20007"
+  },
+  {
+    "type": "multiple",
+    "conceptId": "soc_volunteering",
+    "question": "True or False: volunteering usually involves unpaid work to help the community",
+    "options": [
+      "True",
+      "False"
+    ],
+    "answer": "True",
+    "feedback": {
+      "fact": "Volunteering supports local communities and charities."
+    },
+    "category": "A modern, thriving society",
+    "id": "mix_20008"
+  },
+  {
+    "type": "multiple",
+    "conceptId": "soc_media_law",
+    "question": "Which statement about online behaviour in the UK is true?",
+    "options": [
+      "Illegal content online should be reported",
+      "Online behaviour is not covered by UK law"
+    ],
+    "answer": "Illegal content online should be reported",
+    "feedback": {
+      "fact": "UK law applies to online activity as well as offline."
+    },
+    "category": "A modern, thriving society",
+    "id": "mix_20009"
+  },
+  {
+    "type": "multiple",
+    "conceptId": "values_rule_of_law",
+    "question": "True or False: the rule of law applies to everyone in the UK, including the government",
+    "options": [
+      "True",
+      "False"
+    ],
+    "answer": "True",
+    "feedback": {
+      "fact": "The rule of law means nobody is above the law, including those in power."
+    },
+    "category": "The values and principles of the UK",
+    "id": "mix_20010"
+  },
+  {
+    "type": "multiple",
+    "conceptId": "values_free_speech_limits",
+    "question": "True or False: freedom of speech allows people to say anything without legal consequences",
+    "options": [
+      "True",
+      "False"
+    ],
+    "answer": "False",
+    "feedback": {
+      "fact": "Freedom of speech does not protect speech that breaks the law."
+    },
+    "category": "The values and principles of the UK",
+    "id": "mix_20011"
+  },
+  {
+    "type": "multiple",
+    "conceptId": "values_democracy",
+    "question": "Which statement about democracy in the UK is true?",
+    "options": [
+      "People can vote in free elections to choose their representatives",
+      "The government is chosen by the monarch without elections"
+    ],
+    "answer": "People can vote in free elections to choose their representatives",
+    "feedback": {
+      "fact": "The UK is a democracy where citizens elect representatives."
+    },
+    "category": "The values and principles of the UK",
+    "id": "mix_20012"
+  },
+  {
+    "type": "multiple",
+    "conceptId": "gov_home_secretary_role",
+    "question": "True or False: the Home Secretary is responsible for immigration, policing, and national security",
+    "options": [
+      "True",
+      "False"
+    ],
+    "answer": "True",
+    "feedback": {
+      "fact": "The Home Secretary oversees immigration, security, and law and order."
+    },
+    "category": "The government, the law and your role",
+    "id": "mix_20013"
+  },
+  {
+    "type": "multiple",
+    "conceptId": "gov_pm_head_of_state",
+    "question": "True or False: the Prime Minister is the head of state of the UK",
+    "options": [
+      "True",
+      "False"
+    ],
+    "answer": "False",
+    "feedback": {
+      "fact": "The monarch is the head of state; the Prime Minister is head of government."
+    },
+    "category": "The government, the law and your role",
+    "id": "mix_20014"
+  },
+  {
+    "type": "multiple",
+    "conceptId": "gov_chancellor_role",
+    "question": "Which statement about the Chancellor of the Exchequer is true?",
+    "options": [
+      "The Chancellor is responsible for managing public finances",
+      "The Chancellor is responsible for running local councils"
+    ],
+    "answer": "The Chancellor is responsible for managing public finances",
+    "feedback": {
+      "fact": "The Chancellor oversees taxation and government spending."
+    },
+    "category": "The government, the law and your role",
+    "id": "mix_20015"
+  },
+  {
+    "type": "multiple",
+    "conceptId": "hist_norman_conquest",
+    "question": "True or False: the Norman Conquest took place in 1066",
+    "options": [
+      "True",
+      "False"
+    ],
+    "answer": "True",
+    "feedback": {
+      "fact": "William of Normandy became king after the Battle of Hastings in 1066."
+    },
+    "category": "A long and illustrious history",
+    "id": "mix_20016"
+  },
+  {
+    "type": "multiple",
+    "conceptId": "hist_magna_carta",
+    "question": "Which statement about Magna Carta is true?",
+    "options": [
+      "It limited the power of the king",
+      "It created the first Parliament"
+    ],
+    "answer": "It limited the power of the king",
+    "feedback": {
+      "fact": "Magna Carta established that the monarch was subject to the law."
+    },
+    "category": "A long and illustrious history",
+    "id": "mix_20017"
+  },
+  {
+    "type": "multiple",
+    "conceptId": "soc_volunteering",
+    "question": "True or False: volunteering usually involves unpaid work to help the community",
+    "options": [
+      "True",
+      "False"
+    ],
+    "answer": "True",
+    "feedback": {
+      "fact": "Volunteering supports local communities and charities."
+    },
+    "category": "A modern, thriving society",
+    "id": "mix_20018"
+  },
+  {
+    "type": "multiple",
+    "conceptId": "soc_media_law",
+    "question": "Which statement about online behaviour in the UK is true?",
+    "options": [
+      "Illegal content online should be reported",
+      "Online behaviour is not covered by UK law"
+    ],
+    "answer": "Illegal content online should be reported",
+    "feedback": {
+      "fact": "UK law applies to online activity as well as offline."
+    },
+    "category": "A modern, thriving society",
+    "id": "mix_20019"
+  },
+  {
+    "type": "multiple",
+    "conceptId": "values_rule_of_law",
+    "question": "True or False: the rule of law applies to everyone in the UK, including the government",
+    "options": [
+      "True",
+      "False"
+    ],
+    "answer": "True",
+    "feedback": {
+      "fact": "The rule of law means nobody is above the law, including those in power."
+    },
+    "category": "The values and principles of the UK",
+    "id": "mix_20020"
+  },
+  {
+    "type": "multiple",
+    "conceptId": "values_free_speech_limits",
+    "question": "True or False: freedom of speech allows people to say anything without legal consequences",
+    "options": [
+      "True",
+      "False"
+    ],
+    "answer": "False",
+    "feedback": {
+      "fact": "Freedom of speech does not protect speech that breaks the law."
+    },
+    "category": "The values and principles of the UK",
+    "id": "mix_20021"
+  },
+  {
+    "type": "multiple",
+    "conceptId": "values_democracy",
+    "question": "Which statement about democracy in the UK is true?",
+    "options": [
+      "People can vote in free elections to choose their representatives",
+      "The government is chosen by the monarch without elections"
+    ],
+    "answer": "People can vote in free elections to choose their representatives",
+    "feedback": {
+      "fact": "The UK is a democracy where citizens elect representatives."
+    },
+    "category": "The values and principles of the UK",
+    "id": "mix_20022"
+  },
+  {
+    "type": "multiple",
+    "conceptId": "gov_home_secretary_role",
+    "question": "True or False: the Home Secretary is responsible for immigration, policing, and national security",
+    "options": [
+      "True",
+      "False"
+    ],
+    "answer": "True",
+    "feedback": {
+      "fact": "The Home Secretary oversees immigration, security, and law and order."
+    },
+    "category": "The government, the law and your role",
+    "id": "mix_20023"
+  },
+  {
+    "type": "multiple",
+    "conceptId": "gov_pm_head_of_state",
+    "question": "True or False: the Prime Minister is the head of state of the UK",
+    "options": [
+      "True",
+      "False"
+    ],
+    "answer": "False",
+    "feedback": {
+      "fact": "The monarch is the head of state; the Prime Minister is head of government."
+    },
+    "category": "The government, the law and your role",
+    "id": "mix_20024"
+  },
+  {
+    "type": "multiple",
+    "conceptId": "gov_chancellor_role",
+    "question": "Which statement about the Chancellor of the Exchequer is true?",
+    "options": [
+      "The Chancellor is responsible for managing public finances",
+      "The Chancellor is responsible for running local councils"
+    ],
+    "answer": "The Chancellor is responsible for managing public finances",
+    "feedback": {
+      "fact": "The Chancellor oversees taxation and government spending."
+    },
+    "category": "The government, the law and your role",
+    "id": "mix_20025"
+  },
+  {
+    "type": "multiple",
+    "conceptId": "hist_norman_conquest",
+    "question": "True or False: the Norman Conquest took place in 1066",
+    "options": [
+      "True",
+      "False"
+    ],
+    "answer": "True",
+    "feedback": {
+      "fact": "William of Normandy became king after the Battle of Hastings in 1066."
+    },
+    "category": "A long and illustrious history",
+    "id": "mix_20026"
+  },
+  {
+    "type": "multiple",
+    "conceptId": "hist_magna_carta",
+    "question": "Which statement about Magna Carta is true?",
+    "options": [
+      "It limited the power of the king",
+      "It created the first Parliament"
+    ],
+    "answer": "It limited the power of the king",
+    "feedback": {
+      "fact": "Magna Carta established that the monarch was subject to the law."
+    },
+    "category": "A long and illustrious history",
+    "id": "mix_20027"
+  },
+  {
+    "type": "multiple",
+    "conceptId": "soc_volunteering",
+    "question": "True or False: volunteering usually involves unpaid work to help the community",
+    "options": [
+      "True",
+      "False"
+    ],
+    "answer": "True",
+    "feedback": {
+      "fact": "Volunteering supports local communities and charities."
+    },
+    "category": "A modern, thriving society",
+    "id": "mix_20028"
+  },
+  {
+    "type": "multiple",
+    "conceptId": "soc_media_law",
+    "question": "Which statement about online behaviour in the UK is true?",
+    "options": [
+      "Illegal content online should be reported",
+      "Online behaviour is not covered by UK law"
+    ],
+    "answer": "Illegal content online should be reported",
+    "feedback": {
+      "fact": "UK law applies to online activity as well as offline."
+    },
+    "category": "A modern, thriving society",
+    "id": "mix_20029"
+  },
+  {
+    "type": "multiple",
+    "conceptId": "values_rule_of_law",
+    "question": "True or False: the rule of law applies to everyone in the UK, including the government",
+    "options": [
+      "True",
+      "False"
+    ],
+    "answer": "True",
+    "feedback": {
+      "fact": "The rule of law means nobody is above the law, including those in power."
+    },
+    "category": "The values and principles of the UK",
+    "id": "mix_20030"
+  },
+  {
+    "type": "multiple",
+    "conceptId": "values_free_speech_limits",
+    "question": "True or False: freedom of speech allows people to say anything without legal consequences",
+    "options": [
+      "True",
+      "False"
+    ],
+    "answer": "False",
+    "feedback": {
+      "fact": "Freedom of speech does not protect speech that breaks the law."
+    },
+    "category": "The values and principles of the UK",
+    "id": "mix_20031"
+  },
+  {
+    "type": "multiple",
+    "conceptId": "values_democracy",
+    "question": "Which statement about democracy in the UK is true?",
+    "options": [
+      "People can vote in free elections to choose their representatives",
+      "The government is chosen by the monarch without elections"
+    ],
+    "answer": "People can vote in free elections to choose their representatives",
+    "feedback": {
+      "fact": "The UK is a democracy where citizens elect representatives."
+    },
+    "category": "The values and principles of the UK",
+    "id": "mix_20032"
+  },
+  {
+    "type": "multiple",
+    "conceptId": "gov_home_secretary_role",
+    "question": "True or False: the Home Secretary is responsible for immigration, policing, and national security",
+    "options": [
+      "True",
+      "False"
+    ],
+    "answer": "True",
+    "feedback": {
+      "fact": "The Home Secretary oversees immigration, security, and law and order."
+    },
+    "category": "The government, the law and your role",
+    "id": "mix_20033"
+  },
+  {
+    "type": "multiple",
+    "conceptId": "gov_pm_head_of_state",
+    "question": "True or False: the Prime Minister is the head of state of the UK",
+    "options": [
+      "True",
+      "False"
+    ],
+    "answer": "False",
+    "feedback": {
+      "fact": "The monarch is the head of state; the Prime Minister is head of government."
+    },
+    "category": "The government, the law and your role",
+    "id": "mix_20034"
+  },
+  {
+    "type": "multiple",
+    "conceptId": "gov_chancellor_role",
+    "question": "Which statement about the Chancellor of the Exchequer is true?",
+    "options": [
+      "The Chancellor is responsible for managing public finances",
+      "The Chancellor is responsible for running local councils"
+    ],
+    "answer": "The Chancellor is responsible for managing public finances",
+    "feedback": {
+      "fact": "The Chancellor oversees taxation and government spending."
+    },
+    "category": "The government, the law and your role",
+    "id": "mix_20035"
+  },
+  {
+    "type": "multiple",
+    "conceptId": "hist_norman_conquest",
+    "question": "True or False: the Norman Conquest took place in 1066",
+    "options": [
+      "True",
+      "False"
+    ],
+    "answer": "True",
+    "feedback": {
+      "fact": "William of Normandy became king after the Battle of Hastings in 1066."
+    },
+    "category": "A long and illustrious history",
+    "id": "mix_20036"
+  },
+  {
+    "type": "multiple",
+    "conceptId": "hist_magna_carta",
+    "question": "Which statement about Magna Carta is true?",
+    "options": [
+      "It limited the power of the king",
+      "It created the first Parliament"
+    ],
+    "answer": "It limited the power of the king",
+    "feedback": {
+      "fact": "Magna Carta established that the monarch was subject to the law."
+    },
+    "category": "A long and illustrious history",
+    "id": "mix_20037"
+  },
+  {
+    "type": "multiple",
+    "conceptId": "soc_volunteering",
+    "question": "True or False: volunteering usually involves unpaid work to help the community",
+    "options": [
+      "True",
+      "False"
+    ],
+    "answer": "True",
+    "feedback": {
+      "fact": "Volunteering supports local communities and charities."
+    },
+    "category": "A modern, thriving society",
+    "id": "mix_20038"
+  },
+  {
+    "type": "multiple",
+    "conceptId": "soc_media_law",
+    "question": "Which statement about online behaviour in the UK is true?",
+    "options": [
+      "Illegal content online should be reported",
+      "Online behaviour is not covered by UK law"
+    ],
+    "answer": "Illegal content online should be reported",
+    "feedback": {
+      "fact": "UK law applies to online activity as well as offline."
+    },
+    "category": "A modern, thriving society",
+    "id": "mix_20039"
+  },
+  {
+    "type": "multiple",
+    "conceptId": "values_rule_of_law",
+    "question": "True or False: the rule of law applies to everyone in the UK, including the government",
+    "options": [
+      "True",
+      "False"
+    ],
+    "answer": "True",
+    "feedback": {
+      "fact": "The rule of law means nobody is above the law, including those in power."
+    },
+    "category": "The values and principles of the UK",
+    "id": "mix_20040"
+  },
+  {
+    "type": "multiple",
+    "conceptId": "values_free_speech_limits",
+    "question": "True or False: freedom of speech allows people to say anything without legal consequences",
+    "options": [
+      "True",
+      "False"
+    ],
+    "answer": "False",
+    "feedback": {
+      "fact": "Freedom of speech does not protect speech that breaks the law."
+    },
+    "category": "The values and principles of the UK",
+    "id": "mix_20041"
+  },
+  {
+    "type": "multiple",
+    "conceptId": "values_democracy",
+    "question": "Which statement about democracy in the UK is true?",
+    "options": [
+      "People can vote in free elections to choose their representatives",
+      "The government is chosen by the monarch without elections"
+    ],
+    "answer": "People can vote in free elections to choose their representatives",
+    "feedback": {
+      "fact": "The UK is a democracy where citizens elect representatives."
+    },
+    "category": "The values and principles of the UK",
+    "id": "mix_20042"
+  },
+  {
+    "type": "multiple",
+    "conceptId": "gov_home_secretary_role",
+    "question": "True or False: the Home Secretary is responsible for immigration, policing, and national security",
+    "options": [
+      "True",
+      "False"
+    ],
+    "answer": "True",
+    "feedback": {
+      "fact": "The Home Secretary oversees immigration, security, and law and order."
+    },
+    "category": "The government, the law and your role",
+    "id": "mix_20043"
+  },
+  {
+    "type": "multiple",
+    "conceptId": "gov_pm_head_of_state",
+    "question": "True or False: the Prime Minister is the head of state of the UK",
+    "options": [
+      "True",
+      "False"
+    ],
+    "answer": "False",
+    "feedback": {
+      "fact": "The monarch is the head of state; the Prime Minister is head of government."
+    },
+    "category": "The government, the law and your role",
+    "id": "mix_20044"
+  },
+  {
+    "type": "multiple",
+    "conceptId": "gov_chancellor_role",
+    "question": "Which statement about the Chancellor of the Exchequer is true?",
+    "options": [
+      "The Chancellor is responsible for managing public finances",
+      "The Chancellor is responsible for running local councils"
+    ],
+    "answer": "The Chancellor is responsible for managing public finances",
+    "feedback": {
+      "fact": "The Chancellor oversees taxation and government spending."
+    },
+    "category": "The government, the law and your role",
+    "id": "mix_20045"
+  },
+  {
+    "type": "multiple",
+    "conceptId": "hist_norman_conquest",
+    "question": "True or False: the Norman Conquest took place in 1066",
+    "options": [
+      "True",
+      "False"
+    ],
+    "answer": "True",
+    "feedback": {
+      "fact": "William of Normandy became king after the Battle of Hastings in 1066."
+    },
+    "category": "A long and illustrious history",
+    "id": "mix_20046"
+  },
+  {
+    "type": "multiple",
+    "conceptId": "hist_magna_carta",
+    "question": "Which statement about Magna Carta is true?",
+    "options": [
+      "It limited the power of the king",
+      "It created the first Parliament"
+    ],
+    "answer": "It limited the power of the king",
+    "feedback": {
+      "fact": "Magna Carta established that the monarch was subject to the law."
+    },
+    "category": "A long and illustrious history",
+    "id": "mix_20047"
+  },
+  {
+    "type": "multiple",
+    "conceptId": "soc_volunteering",
+    "question": "True or False: volunteering usually involves unpaid work to help the community",
+    "options": [
+      "True",
+      "False"
+    ],
+    "answer": "True",
+    "feedback": {
+      "fact": "Volunteering supports local communities and charities."
+    },
+    "category": "A modern, thriving society",
+    "id": "mix_20048"
+  },
+  {
+    "type": "multiple",
+    "conceptId": "soc_media_law",
+    "question": "Which statement about online behaviour in the UK is true?",
+    "options": [
+      "Illegal content online should be reported",
+      "Online behaviour is not covered by UK law"
+    ],
+    "answer": "Illegal content online should be reported",
+    "feedback": {
+      "fact": "UK law applies to online activity as well as offline."
+    },
+    "category": "A modern, thriving society",
+    "id": "mix_20049"
+  },
+  {
+    "type": "multiple",
+    "conceptId": "values_rule_of_law",
+    "question": "True or False: the rule of law applies to everyone in the UK, including the government",
+    "options": [
+      "True",
+      "False"
+    ],
+    "answer": "True",
+    "feedback": {
+      "fact": "The rule of law means nobody is above the law, including those in power."
+    },
+    "category": "The values and principles of the UK",
+    "id": "mix_20050"
+  },
+  {
+    "type": "multiple",
+    "conceptId": "values_free_speech_limits",
+    "question": "True or False: freedom of speech allows people to say anything without legal consequences",
+    "options": [
+      "True",
+      "False"
+    ],
+    "answer": "False",
+    "feedback": {
+      "fact": "Freedom of speech does not protect speech that breaks the law."
+    },
+    "category": "The values and principles of the UK",
+    "id": "mix_20051"
+  },
+  {
+    "type": "multiple",
+    "conceptId": "values_democracy",
+    "question": "Which statement about democracy in the UK is true?",
+    "options": [
+      "People can vote in free elections to choose their representatives",
+      "The government is chosen by the monarch without elections"
+    ],
+    "answer": "People can vote in free elections to choose their representatives",
+    "feedback": {
+      "fact": "The UK is a democracy where citizens elect representatives."
+    },
+    "category": "The values and principles of the UK",
+    "id": "mix_20052"
+  },
+  {
+    "type": "multiple",
+    "conceptId": "gov_home_secretary_role",
+    "question": "True or False: the Home Secretary is responsible for immigration, policing, and national security",
+    "options": [
+      "True",
+      "False"
+    ],
+    "answer": "True",
+    "feedback": {
+      "fact": "The Home Secretary oversees immigration, security, and law and order."
+    },
+    "category": "The government, the law and your role",
+    "id": "mix_20053"
+  },
+  {
+    "type": "multiple",
+    "conceptId": "gov_pm_head_of_state",
+    "question": "True or False: the Prime Minister is the head of state of the UK",
+    "options": [
+      "True",
+      "False"
+    ],
+    "answer": "False",
+    "feedback": {
+      "fact": "The monarch is the head of state; the Prime Minister is head of government."
+    },
+    "category": "The government, the law and your role",
+    "id": "mix_20054"
+  },
+  {
+    "type": "multiple",
+    "conceptId": "gov_chancellor_role",
+    "question": "Which statement about the Chancellor of the Exchequer is true?",
+    "options": [
+      "The Chancellor is responsible for managing public finances",
+      "The Chancellor is responsible for running local councils"
+    ],
+    "answer": "The Chancellor is responsible for managing public finances",
+    "feedback": {
+      "fact": "The Chancellor oversees taxation and government spending."
+    },
+    "category": "The government, the law and your role",
+    "id": "mix_20055"
+  },
+  {
+    "type": "multiple",
+    "conceptId": "hist_norman_conquest",
+    "question": "True or False: the Norman Conquest took place in 1066",
+    "options": [
+      "True",
+      "False"
+    ],
+    "answer": "True",
+    "feedback": {
+      "fact": "William of Normandy became king after the Battle of Hastings in 1066."
+    },
+    "category": "A long and illustrious history",
+    "id": "mix_20056"
+  },
+  {
+    "type": "multiple",
+    "conceptId": "hist_magna_carta",
+    "question": "Which statement about Magna Carta is true?",
+    "options": [
+      "It limited the power of the king",
+      "It created the first Parliament"
+    ],
+    "answer": "It limited the power of the king",
+    "feedback": {
+      "fact": "Magna Carta established that the monarch was subject to the law."
+    },
+    "category": "A long and illustrious history",
+    "id": "mix_20057"
+  },
+  {
+    "type": "multiple",
+    "conceptId": "soc_volunteering",
+    "question": "True or False: volunteering usually involves unpaid work to help the community",
+    "options": [
+      "True",
+      "False"
+    ],
+    "answer": "True",
+    "feedback": {
+      "fact": "Volunteering supports local communities and charities."
+    },
+    "category": "A modern, thriving society",
+    "id": "mix_20058"
+  },
+  {
+    "type": "multiple",
+    "conceptId": "soc_media_law",
+    "question": "Which statement about online behaviour in the UK is true?",
+    "options": [
+      "Illegal content online should be reported",
+      "Online behaviour is not covered by UK law"
+    ],
+    "answer": "Illegal content online should be reported",
+    "feedback": {
+      "fact": "UK law applies to online activity as well as offline."
+    },
+    "category": "A modern, thriving society",
+    "id": "mix_20059"
+  },
+  {
+    "type": "multiple",
+    "conceptId": "values_rule_of_law",
+    "question": "True or False: the rule of law applies to everyone in the UK, including the government",
+    "options": [
+      "True",
+      "False"
+    ],
+    "answer": "True",
+    "feedback": {
+      "fact": "The rule of law means nobody is above the law, including those in power."
+    },
+    "category": "The values and principles of the UK",
+    "id": "mix_20060"
+  },
+  {
+    "type": "multiple",
+    "conceptId": "values_free_speech_limits",
+    "question": "True or False: freedom of speech allows people to say anything without legal consequences",
+    "options": [
+      "True",
+      "False"
+    ],
+    "answer": "False",
+    "feedback": {
+      "fact": "Freedom of speech does not protect speech that breaks the law."
+    },
+    "category": "The values and principles of the UK",
+    "id": "mix_20061"
+  },
+  {
+    "type": "multiple",
+    "conceptId": "values_democracy",
+    "question": "Which statement about democracy in the UK is true?",
+    "options": [
+      "People can vote in free elections to choose their representatives",
+      "The government is chosen by the monarch without elections"
+    ],
+    "answer": "People can vote in free elections to choose their representatives",
+    "feedback": {
+      "fact": "The UK is a democracy where citizens elect representatives."
+    },
+    "category": "The values and principles of the UK",
+    "id": "mix_20062"
+  },
+  {
+    "type": "multiple",
+    "conceptId": "gov_home_secretary_role",
+    "question": "True or False: the Home Secretary is responsible for immigration, policing, and national security",
+    "options": [
+      "True",
+      "False"
+    ],
+    "answer": "True",
+    "feedback": {
+      "fact": "The Home Secretary oversees immigration, security, and law and order."
+    },
+    "category": "The government, the law and your role",
+    "id": "mix_20063"
+  },
+  {
+    "type": "multiple",
+    "conceptId": "gov_pm_head_of_state",
+    "question": "True or False: the Prime Minister is the head of state of the UK",
+    "options": [
+      "True",
+      "False"
+    ],
+    "answer": "False",
+    "feedback": {
+      "fact": "The monarch is the head of state; the Prime Minister is head of government."
+    },
+    "category": "The government, the law and your role",
+    "id": "mix_20064"
+  },
+  {
+    "type": "multiple",
+    "conceptId": "gov_chancellor_role",
+    "question": "Which statement about the Chancellor of the Exchequer is true?",
+    "options": [
+      "The Chancellor is responsible for managing public finances",
+      "The Chancellor is responsible for running local councils"
+    ],
+    "answer": "The Chancellor is responsible for managing public finances",
+    "feedback": {
+      "fact": "The Chancellor oversees taxation and government spending."
+    },
+    "category": "The government, the law and your role",
+    "id": "mix_20065"
+  },
+  {
+    "type": "multiple",
+    "conceptId": "hist_norman_conquest",
+    "question": "True or False: the Norman Conquest took place in 1066",
+    "options": [
+      "True",
+      "False"
+    ],
+    "answer": "True",
+    "feedback": {
+      "fact": "William of Normandy became king after the Battle of Hastings in 1066."
+    },
+    "category": "A long and illustrious history",
+    "id": "mix_20066"
+  },
+  {
+    "type": "multiple",
+    "conceptId": "hist_magna_carta",
+    "question": "Which statement about Magna Carta is true?",
+    "options": [
+      "It limited the power of the king",
+      "It created the first Parliament"
+    ],
+    "answer": "It limited the power of the king",
+    "feedback": {
+      "fact": "Magna Carta established that the monarch was subject to the law."
+    },
+    "category": "A long and illustrious history",
+    "id": "mix_20067"
+  },
+  {
+    "type": "multiple",
+    "conceptId": "soc_volunteering",
+    "question": "True or False: volunteering usually involves unpaid work to help the community",
+    "options": [
+      "True",
+      "False"
+    ],
+    "answer": "True",
+    "feedback": {
+      "fact": "Volunteering supports local communities and charities."
+    },
+    "category": "A modern, thriving society",
+    "id": "mix_20068"
+  },
+  {
+    "type": "multiple",
+    "conceptId": "soc_media_law",
+    "question": "Which statement about online behaviour in the UK is true?",
+    "options": [
+      "Illegal content online should be reported",
+      "Online behaviour is not covered by UK law"
+    ],
+    "answer": "Illegal content online should be reported",
+    "feedback": {
+      "fact": "UK law applies to online activity as well as offline."
+    },
+    "category": "A modern, thriving society",
+    "id": "mix_20069"
+  },
+  {
+    "type": "multiple",
+    "conceptId": "values_rule_of_law",
+    "question": "True or False: the rule of law applies to everyone in the UK, including the government",
+    "options": [
+      "True",
+      "False"
+    ],
+    "answer": "True",
+    "feedback": {
+      "fact": "The rule of law means nobody is above the law, including those in power."
+    },
+    "category": "The values and principles of the UK",
+    "id": "mix_20070"
+  },
+  {
+    "type": "multiple",
+    "conceptId": "values_free_speech_limits",
+    "question": "True or False: freedom of speech allows people to say anything without legal consequences",
+    "options": [
+      "True",
+      "False"
+    ],
+    "answer": "False",
+    "feedback": {
+      "fact": "Freedom of speech does not protect speech that breaks the law."
+    },
+    "category": "The values and principles of the UK",
+    "id": "mix_20071"
+  },
+  {
+    "type": "multiple",
+    "conceptId": "values_democracy",
+    "question": "Which statement about democracy in the UK is true?",
+    "options": [
+      "People can vote in free elections to choose their representatives",
+      "The government is chosen by the monarch without elections"
+    ],
+    "answer": "People can vote in free elections to choose their representatives",
+    "feedback": {
+      "fact": "The UK is a democracy where citizens elect representatives."
+    },
+    "category": "The values and principles of the UK",
+    "id": "mix_20072"
+  },
+  {
+    "type": "multiple",
+    "conceptId": "gov_home_secretary_role",
+    "question": "True or False: the Home Secretary is responsible for immigration, policing, and national security",
+    "options": [
+      "True",
+      "False"
+    ],
+    "answer": "True",
+    "feedback": {
+      "fact": "The Home Secretary oversees immigration, security, and law and order."
+    },
+    "category": "The government, the law and your role",
+    "id": "mix_20073"
+  },
+  {
+    "type": "multiple",
+    "conceptId": "gov_pm_head_of_state",
+    "question": "True or False: the Prime Minister is the head of state of the UK",
+    "options": [
+      "True",
+      "False"
+    ],
+    "answer": "False",
+    "feedback": {
+      "fact": "The monarch is the head of state; the Prime Minister is head of government."
+    },
+    "category": "The government, the law and your role",
+    "id": "mix_20074"
+  },
+  {
+    "type": "multiple",
+    "conceptId": "gov_chancellor_role",
+    "question": "Which statement about the Chancellor of the Exchequer is true?",
+    "options": [
+      "The Chancellor is responsible for managing public finances",
+      "The Chancellor is responsible for running local councils"
+    ],
+    "answer": "The Chancellor is responsible for managing public finances",
+    "feedback": {
+      "fact": "The Chancellor oversees taxation and government spending."
+    },
+    "category": "The government, the law and your role",
+    "id": "mix_20075"
+  },
+  {
+    "type": "multiple",
+    "conceptId": "hist_norman_conquest",
+    "question": "True or False: the Norman Conquest took place in 1066",
+    "options": [
+      "True",
+      "False"
+    ],
+    "answer": "True",
+    "feedback": {
+      "fact": "William of Normandy became king after the Battle of Hastings in 1066."
+    },
+    "category": "A long and illustrious history",
+    "id": "mix_20076"
+  },
+  {
+    "type": "multiple",
+    "conceptId": "hist_magna_carta",
+    "question": "Which statement about Magna Carta is true?",
+    "options": [
+      "It limited the power of the king",
+      "It created the first Parliament"
+    ],
+    "answer": "It limited the power of the king",
+    "feedback": {
+      "fact": "Magna Carta established that the monarch was subject to the law."
+    },
+    "category": "A long and illustrious history",
+    "id": "mix_20077"
+  },
+  {
+    "type": "multiple",
+    "conceptId": "soc_volunteering",
+    "question": "True or False: volunteering usually involves unpaid work to help the community",
+    "options": [
+      "True",
+      "False"
+    ],
+    "answer": "True",
+    "feedback": {
+      "fact": "Volunteering supports local communities and charities."
+    },
+    "category": "A modern, thriving society",
+    "id": "mix_20078"
+  },
+  {
+    "type": "multiple",
+    "conceptId": "soc_media_law",
+    "question": "Which statement about online behaviour in the UK is true?",
+    "options": [
+      "Illegal content online should be reported",
+      "Online behaviour is not covered by UK law"
+    ],
+    "answer": "Illegal content online should be reported",
+    "feedback": {
+      "fact": "UK law applies to online activity as well as offline."
+    },
+    "category": "A modern, thriving society",
+    "id": "mix_20079"
+  },
+  {
+    "type": "multiple",
+    "conceptId": "values_rule_of_law",
+    "question": "True or False: the rule of law applies to everyone in the UK, including the government",
+    "options": [
+      "True",
+      "False"
+    ],
+    "answer": "True",
+    "feedback": {
+      "fact": "The rule of law means nobody is above the law, including those in power."
+    },
+    "category": "The values and principles of the UK",
+    "id": "mix_20080"
+  },
+  {
+    "type": "multiple",
+    "conceptId": "values_free_speech_limits",
+    "question": "True or False: freedom of speech allows people to say anything without legal consequences",
+    "options": [
+      "True",
+      "False"
+    ],
+    "answer": "False",
+    "feedback": {
+      "fact": "Freedom of speech does not protect speech that breaks the law."
+    },
+    "category": "The values and principles of the UK",
+    "id": "mix_20081"
+  },
+  {
+    "type": "multiple",
+    "conceptId": "values_democracy",
+    "question": "Which statement about democracy in the UK is true?",
+    "options": [
+      "People can vote in free elections to choose their representatives",
+      "The government is chosen by the monarch without elections"
+    ],
+    "answer": "People can vote in free elections to choose their representatives",
+    "feedback": {
+      "fact": "The UK is a democracy where citizens elect representatives."
+    },
+    "category": "The values and principles of the UK",
+    "id": "mix_20082"
+  },
+  {
+    "type": "multiple",
+    "conceptId": "gov_home_secretary_role",
+    "question": "True or False: the Home Secretary is responsible for immigration, policing, and national security",
+    "options": [
+      "True",
+      "False"
+    ],
+    "answer": "True",
+    "feedback": {
+      "fact": "The Home Secretary oversees immigration, security, and law and order."
+    },
+    "category": "The government, the law and your role",
+    "id": "mix_20083"
+  },
+  {
+    "type": "multiple",
+    "conceptId": "gov_pm_head_of_state",
+    "question": "True or False: the Prime Minister is the head of state of the UK",
+    "options": [
+      "True",
+      "False"
+    ],
+    "answer": "False",
+    "feedback": {
+      "fact": "The monarch is the head of state; the Prime Minister is head of government."
+    },
+    "category": "The government, the law and your role",
+    "id": "mix_20084"
+  },
+  {
+    "type": "multiple",
+    "conceptId": "gov_chancellor_role",
+    "question": "Which statement about the Chancellor of the Exchequer is true?",
+    "options": [
+      "The Chancellor is responsible for managing public finances",
+      "The Chancellor is responsible for running local councils"
+    ],
+    "answer": "The Chancellor is responsible for managing public finances",
+    "feedback": {
+      "fact": "The Chancellor oversees taxation and government spending."
+    },
+    "category": "The government, the law and your role",
+    "id": "mix_20085"
+  },
+  {
+    "type": "multiple",
+    "conceptId": "hist_norman_conquest",
+    "question": "True or False: the Norman Conquest took place in 1066",
+    "options": [
+      "True",
+      "False"
+    ],
+    "answer": "True",
+    "feedback": {
+      "fact": "William of Normandy became king after the Battle of Hastings in 1066."
+    },
+    "category": "A long and illustrious history",
+    "id": "mix_20086"
+  },
+  {
+    "type": "multiple",
+    "conceptId": "hist_magna_carta",
+    "question": "Which statement about Magna Carta is true?",
+    "options": [
+      "It limited the power of the king",
+      "It created the first Parliament"
+    ],
+    "answer": "It limited the power of the king",
+    "feedback": {
+      "fact": "Magna Carta established that the monarch was subject to the law."
+    },
+    "category": "A long and illustrious history",
+    "id": "mix_20087"
+  },
+  {
+    "type": "multiple",
+    "conceptId": "soc_volunteering",
+    "question": "True or False: volunteering usually involves unpaid work to help the community",
+    "options": [
+      "True",
+      "False"
+    ],
+    "answer": "True",
+    "feedback": {
+      "fact": "Volunteering supports local communities and charities."
+    },
+    "category": "A modern, thriving society",
+    "id": "mix_20088"
+  },
+  {
+    "type": "multiple",
+    "conceptId": "soc_media_law",
+    "question": "Which statement about online behaviour in the UK is true?",
+    "options": [
+      "Illegal content online should be reported",
+      "Online behaviour is not covered by UK law"
+    ],
+    "answer": "Illegal content online should be reported",
+    "feedback": {
+      "fact": "UK law applies to online activity as well as offline."
+    },
+    "category": "A modern, thriving society",
+    "id": "mix_20089"
+  },
+  {
+    "type": "multiple",
+    "conceptId": "values_rule_of_law",
+    "question": "True or False: the rule of law applies to everyone in the UK, including the government",
+    "options": [
+      "True",
+      "False"
+    ],
+    "answer": "True",
+    "feedback": {
+      "fact": "The rule of law means nobody is above the law, including those in power."
+    },
+    "category": "The values and principles of the UK",
+    "id": "mix_20090"
+  },
+  {
+    "type": "multiple",
+    "conceptId": "values_free_speech_limits",
+    "question": "True or False: freedom of speech allows people to say anything without legal consequences",
+    "options": [
+      "True",
+      "False"
+    ],
+    "answer": "False",
+    "feedback": {
+      "fact": "Freedom of speech does not protect speech that breaks the law."
+    },
+    "category": "The values and principles of the UK",
+    "id": "mix_20091"
+  },
+  {
+    "type": "multiple",
+    "conceptId": "values_democracy",
+    "question": "Which statement about democracy in the UK is true?",
+    "options": [
+      "People can vote in free elections to choose their representatives",
+      "The government is chosen by the monarch without elections"
+    ],
+    "answer": "People can vote in free elections to choose their representatives",
+    "feedback": {
+      "fact": "The UK is a democracy where citizens elect representatives."
+    },
+    "category": "The values and principles of the UK",
+    "id": "mix_20092"
+  },
+  {
+    "type": "multiple",
+    "conceptId": "gov_home_secretary_role",
+    "question": "True or False: the Home Secretary is responsible for immigration, policing, and national security",
+    "options": [
+      "True",
+      "False"
+    ],
+    "answer": "True",
+    "feedback": {
+      "fact": "The Home Secretary oversees immigration, security, and law and order."
+    },
+    "category": "The government, the law and your role",
+    "id": "mix_20093"
+  },
+  {
+    "type": "multiple",
+    "conceptId": "gov_pm_head_of_state",
+    "question": "True or False: the Prime Minister is the head of state of the UK",
+    "options": [
+      "True",
+      "False"
+    ],
+    "answer": "False",
+    "feedback": {
+      "fact": "The monarch is the head of state; the Prime Minister is head of government."
+    },
+    "category": "The government, the law and your role",
+    "id": "mix_20094"
+  },
+  {
+    "type": "multiple",
+    "conceptId": "gov_chancellor_role",
+    "question": "Which statement about the Chancellor of the Exchequer is true?",
+    "options": [
+      "The Chancellor is responsible for managing public finances",
+      "The Chancellor is responsible for running local councils"
+    ],
+    "answer": "The Chancellor is responsible for managing public finances",
+    "feedback": {
+      "fact": "The Chancellor oversees taxation and government spending."
+    },
+    "category": "The government, the law and your role",
+    "id": "mix_20095"
+  },
+  {
+    "type": "multiple",
+    "conceptId": "hist_norman_conquest",
+    "question": "True or False: the Norman Conquest took place in 1066",
+    "options": [
+      "True",
+      "False"
+    ],
+    "answer": "True",
+    "feedback": {
+      "fact": "William of Normandy became king after the Battle of Hastings in 1066."
+    },
+    "category": "A long and illustrious history",
+    "id": "mix_20096"
+  },
+  {
+    "type": "multiple",
+    "conceptId": "hist_magna_carta",
+    "question": "Which statement about Magna Carta is true?",
+    "options": [
+      "It limited the power of the king",
+      "It created the first Parliament"
+    ],
+    "answer": "It limited the power of the king",
+    "feedback": {
+      "fact": "Magna Carta established that the monarch was subject to the law."
+    },
+    "category": "A long and illustrious history",
+    "id": "mix_20097"
+  },
+  {
+    "type": "multiple",
+    "conceptId": "soc_volunteering",
+    "question": "True or False: volunteering usually involves unpaid work to help the community",
+    "options": [
+      "True",
+      "False"
+    ],
+    "answer": "True",
+    "feedback": {
+      "fact": "Volunteering supports local communities and charities."
+    },
+    "category": "A modern, thriving society",
+    "id": "mix_20098"
+  },
+  {
+    "type": "multiple",
+    "conceptId": "soc_media_law",
+    "question": "Which statement about online behaviour in the UK is true?",
+    "options": [
+      "Illegal content online should be reported",
+      "Online behaviour is not covered by UK law"
+    ],
+    "answer": "Illegal content online should be reported",
+    "feedback": {
+      "fact": "UK law applies to online activity as well as offline."
+    },
+    "category": "A modern, thriving society",
+    "id": "mix_20099"
+  },
+  {
+    "type": "multiple",
+    "conceptId": "values_rule_of_law",
+    "question": "True or False: the rule of law applies to everyone in the UK, including the government",
+    "options": [
+      "True",
+      "False"
+    ],
+    "answer": "True",
+    "feedback": {
+      "fact": "The rule of law means nobody is above the law, including those in power."
+    },
+    "category": "The values and principles of the UK",
+    "id": "mix_20100"
+  },
+  {
+    "type": "multiple",
+    "conceptId": "values_free_speech_limits",
+    "question": "True or False: freedom of speech allows people to say anything without legal consequences",
+    "options": [
+      "True",
+      "False"
+    ],
+    "answer": "False",
+    "feedback": {
+      "fact": "Freedom of speech does not protect speech that breaks the law."
+    },
+    "category": "The values and principles of the UK",
+    "id": "mix_20101"
+  },
+  {
+    "type": "multiple",
+    "conceptId": "values_democracy",
+    "question": "Which statement about democracy in the UK is true?",
+    "options": [
+      "People can vote in free elections to choose their representatives",
+      "The government is chosen by the monarch without elections"
+    ],
+    "answer": "People can vote in free elections to choose their representatives",
+    "feedback": {
+      "fact": "The UK is a democracy where citizens elect representatives."
+    },
+    "category": "The values and principles of the UK",
+    "id": "mix_20102"
+  },
+  {
+    "type": "multiple",
+    "conceptId": "gov_home_secretary_role",
+    "question": "True or False: the Home Secretary is responsible for immigration, policing, and national security",
+    "options": [
+      "True",
+      "False"
+    ],
+    "answer": "True",
+    "feedback": {
+      "fact": "The Home Secretary oversees immigration, security, and law and order."
+    },
+    "category": "The government, the law and your role",
+    "id": "mix_20103"
+  },
+  {
+    "type": "multiple",
+    "conceptId": "gov_pm_head_of_state",
+    "question": "True or False: the Prime Minister is the head of state of the UK",
+    "options": [
+      "True",
+      "False"
+    ],
+    "answer": "False",
+    "feedback": {
+      "fact": "The monarch is the head of state; the Prime Minister is head of government."
+    },
+    "category": "The government, the law and your role",
+    "id": "mix_20104"
+  },
+  {
+    "type": "multiple",
+    "conceptId": "gov_chancellor_role",
+    "question": "Which statement about the Chancellor of the Exchequer is true?",
+    "options": [
+      "The Chancellor is responsible for managing public finances",
+      "The Chancellor is responsible for running local councils"
+    ],
+    "answer": "The Chancellor is responsible for managing public finances",
+    "feedback": {
+      "fact": "The Chancellor oversees taxation and government spending."
+    },
+    "category": "The government, the law and your role",
+    "id": "mix_20105"
+  },
+  {
+    "type": "multiple",
+    "conceptId": "hist_norman_conquest",
+    "question": "True or False: the Norman Conquest took place in 1066",
+    "options": [
+      "True",
+      "False"
+    ],
+    "answer": "True",
+    "feedback": {
+      "fact": "William of Normandy became king after the Battle of Hastings in 1066."
+    },
+    "category": "A long and illustrious history",
+    "id": "mix_20106"
+  },
+  {
+    "type": "multiple",
+    "conceptId": "hist_magna_carta",
+    "question": "Which statement about Magna Carta is true?",
+    "options": [
+      "It limited the power of the king",
+      "It created the first Parliament"
+    ],
+    "answer": "It limited the power of the king",
+    "feedback": {
+      "fact": "Magna Carta established that the monarch was subject to the law."
+    },
+    "category": "A long and illustrious history",
+    "id": "mix_20107"
+  },
+  {
+    "type": "multiple",
+    "conceptId": "soc_volunteering",
+    "question": "True or False: volunteering usually involves unpaid work to help the community",
+    "options": [
+      "True",
+      "False"
+    ],
+    "answer": "True",
+    "feedback": {
+      "fact": "Volunteering supports local communities and charities."
+    },
+    "category": "A modern, thriving society",
+    "id": "mix_20108"
+  },
+  {
+    "type": "multiple",
+    "conceptId": "soc_media_law",
+    "question": "Which statement about online behaviour in the UK is true?",
+    "options": [
+      "Illegal content online should be reported",
+      "Online behaviour is not covered by UK law"
+    ],
+    "answer": "Illegal content online should be reported",
+    "feedback": {
+      "fact": "UK law applies to online activity as well as offline."
+    },
+    "category": "A modern, thriving society",
+    "id": "mix_20109"
   }
 ]
