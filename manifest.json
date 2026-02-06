@@ -1,7 +1,7 @@
 {
-  "name": "Life in the UK Study",
-  "short_name": "UK Study",
-  "description": "Interactive study app for the Life in the UK citizenship test",
+  "name": "Study Guide",
+  "short_name": "Study Guide",
+  "description": "Interactive study guide for Life in the UK and Driving Theory tests",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#ffffff",

@@ -1,5 +1,7 @@
 // State Management
 let state = {
+    currentSubject: null, // Track which subject is currently selected ('life-in-uk', 'driving-theory', etc)
+    activeSubject: null, // Tracks which subject's data is currently loaded
     topics: [],
     currentTopicIndex: null,
     currentQuestions: [],
@@ -22,11 +24,15 @@ let state = {
     lastInfiniteConceptKey: null // Track last served concept in infinite practice to avoid repeats
 };
 
+// App version for cache busting
+const APP_VERSION = '1.1.0';
+console.log(`%cStudy Guide v${APP_VERSION}`, 'color: blue; font-weight: bold; font-size: 16px');
+
 // Feature flags
 const ENABLE_AUTO_BOLD_QUESTIONS = false;
 
 // Dataset version - increment when question data format changes incompatibly
-const DATA_VERSION = 4;
+const DATA_VERSION = 5;
 
 // Check and reset stats if dataset version changed
 function checkDatasetVersion() {
@@ -200,14 +206,11 @@ function augmentTopicsWithGeneratedBoldQuestions(topics) {
 async function init() {
     // Check dataset version and reset stats if incompatible
     checkDatasetVersion();
-    
-    await loadTopics();
+
     loadProgress();
     loadQuestionStats();
     loadPracticeStats();
     loadAdventureProgress();
-    renderTopicList();
-    updateAdventureProgressDisplay();
     setupEventListeners();
 }
 
@@ -298,9 +301,90 @@ async function loadTopics() {
         
         // Now hydrate topics with real content from topics_grouped.json
         await hydrateTopicContent();
+        state.activeSubject = 'life-in-uk';
         
     } catch (error) {
         console.error('Error loading topics:', error);
+        state.topics = [];
+    }
+}
+
+// Load Driving Theory data
+async function loadDrivingTheoryData() {
+    try {
+        // Load questions
+        const questionsResponse = await fetch('data/driving-theory-questions.json');
+        if (!questionsResponse.ok) {
+            throw new Error('Failed to load driving theory questions');
+        }
+        const questions = await questionsResponse.json();
+        
+        // Load topics
+        const topicsResponse = await fetch('data/driving-theory-topics.json');
+        if (!topicsResponse.ok) {
+            throw new Error('Failed to load driving theory topics');
+        }
+        const topics = await topicsResponse.json();
+        
+        console.log(`Loaded ${questions.length} driving theory questions and ${topics.length} topics`);
+        
+        // Transform questions into topics structure
+        const categoryMap = new Map();
+        
+        questions.forEach(q => {
+            const category = q.category || 'Uncategorized';
+            
+            if (!categoryMap.has(category)) {
+                categoryMap.set(category, {
+                    title: category,
+                    content: '',
+                    questions: []
+                });
+            }
+            
+            const mappedQuestion = {
+                type: q.type || 'multiple-choice',
+                id: String(q.id),
+                question: q.question,
+                options: q.options,
+                answer: Array.isArray(q.answer) ? q.answer : q.answer,
+                conceptId: q.conceptId,
+                variant: 0,
+                variantOf: q.id,
+                feedback: { fact: '', whyCorrect: '' },
+                generated: false,
+                sourceIndex: categoryMap.get(category).questions.length
+            };
+            
+            // Handle multi-select questions
+            if (Array.isArray(q.answer)) {
+                mappedQuestion.type = 'multi-select';
+                mappedQuestion.correctOptions = q.answer;
+                mappedQuestion.numRequired = q.answer.length;
+            }
+            
+            categoryMap.get(category).questions.push(mappedQuestion);
+        });
+        
+        // Convert to array
+        state.topics = Array.from(categoryMap.values());
+        
+        // Hydrate with topic content
+        topics.forEach(topic => {
+            const matchingCategory = state.topics.find(t => 
+                t.title.toLowerCase() === topic.title.toLowerCase()
+            );
+            if (matchingCategory) {
+                matchingCategory.content = topic.content;
+            }
+        });
+        
+        console.log(`Driving theory data loaded: ${state.topics.length} topics ready`);
+        state.activeSubject = 'driving-theory';
+        
+    } catch (error) {
+        console.error('Error loading driving theory data:', error);
+        alert('Failed to load Driving Theory content. Please check console for details.');
         state.topics = [];
     }
 }
@@ -618,7 +702,8 @@ async function saveQuestionStats() {
     // Always save to localStorage first (works on mobile)
     try {
         localStorage.setItem('lifeInUK_questionStats', JSON.stringify(state.questionStats));
-        console.log('Saved question stats to localStorage');
+        const statsCount = Object.keys(state.questionStats).length;
+        console.log(`Saved ${statsCount} question stats to localStorage`);
     } catch (localError) {
         console.error('Error saving to localStorage:', localError);
     }
@@ -664,10 +749,14 @@ function getQuestionId(question, topicIndex, questionIndex) {
 // Get concept ID for concept-level scoring (groups variants together)
 function getConceptKey(question) {
     if (question.conceptId) {
-        return `concept_${question.conceptId}`;
+        const key = `concept_${question.conceptId}`;
+        console.log('getConceptKey:', key, 'for question:', question.question?.substring(0, 50));
+        return key;
     }
     // Fallback to question ID if no conceptId
-    return getQuestionId(question, question.topicIndex, question.sourceIndex);
+    const fallback = getQuestionId(question, question.topicIndex, question.sourceIndex);
+    console.log('getConceptKey (fallback):', fallback, 'for question:', question.question?.substring(0, 50));
+    return fallback;
 }
 
 // Initialize question stats if not exists
@@ -687,6 +776,7 @@ function updateQuestionStats(questionId, isCorrect) {
         initQuestionStats(questionId);
     
         const stats = state.questionStats[questionId];
+        const oldPoints = stats.points;
         stats.lastAsked = Date.now();
     
         if (isCorrect) {
@@ -699,6 +789,9 @@ function updateQuestionStats(questionId, isCorrect) {
     
         // Cap upper bound so mastered questions can be retired
         stats.points = Math.min(stats.points, 100);
+    
+        console.log(`Updated stats for ${questionId}: ${oldPoints} → ${stats.points} (${isCorrect ? 'correct' : 'incorrect'})`);
+        console.log(`Total: ${stats.correct} correct, ${stats.incorrect} incorrect`);
     
         // Stats updated and capped; persist
         saveQuestionStats();
@@ -798,6 +891,13 @@ function setupEventListeners() {
 
     const homeInfinitePractice = document.getElementById('homeInfinitePractice');
     if (homeInfinitePractice) homeInfinitePractice.addEventListener('click', () => {
+        // Ensure topics are loaded
+        if (!state.topics || state.topics.length === 0) {
+            console.error('Cannot start infinite practice: topics not loaded');
+            alert('Please wait for topics to load...');
+            return;
+        }
+        
         state.isPracticeMode = false;
         state.isInfinitePracticeMode = true;
         state.isFlashcardMode = false;
@@ -837,7 +937,7 @@ function setupEventListeners() {
             // Ensure data is loaded before rendering
             await Promise.all([
                 loadQuestionStats(),
-                loadTopics()
+                loadCurrentSubjectData()
             ]);
             console.log('Topics loaded:', state.topics?.length || 0);
             console.log('Question stats entries:', Object.keys(state.questionStats || {}).length);
@@ -850,6 +950,23 @@ function setupEventListeners() {
                 list.innerHTML = '<div class="stats-empty">Unable to load statistics right now.</div>';
             }
         }
+    });
+
+    // Subject Selection
+    const subjectButtons = document.querySelectorAll('.btn-subject-choice');
+    subjectButtons.forEach(btn => {
+        btn.addEventListener('click', async () => {
+            const subject = btn.dataset.subject;
+            await selectSubject(subject);
+        });
+    });
+
+    // Back to Subjects
+    const backToSubjects = document.getElementById('backToSubjects');
+    if (backToSubjects) backToSubjects.addEventListener('click', () => {
+        state.currentSubject = null;
+        updateHeaderForSubject(null);
+        showScreen('subjectScreen');
     });
 
     const homeAdventure = document.getElementById('homeAdventure');
@@ -906,6 +1023,54 @@ function setupEventListeners() {
             localStorage.removeItem('lifeInUK_questionStats');
             localStorage.removeItem('lifeInUK_practiceStats');
             location.reload();
+        }
+    });
+
+    // Clear Cache
+    const clearCacheBtn = document.getElementById('clearCache');
+    if (clearCacheBtn) clearCacheBtn.addEventListener('click', async () => {
+        if (confirm('Clear all cached data and reload the app? This will clear your offline cache but keep your progress.')) {
+            try {
+                // Save progress data before clearing
+                const progress = localStorage.getItem('lifeInUK_progress');
+                const questionStats = localStorage.getItem('lifeInUK_questionStats');
+                const practiceStats = localStorage.getItem('lifeInUK_practiceStats');
+                const adventureProgress = localStorage.getItem('lifeInUK_adventureProgress');
+                const dataVersion = localStorage.getItem('lifeInUK_dataVersion');
+                
+                // Clear all storage
+                localStorage.clear();
+                sessionStorage.clear();
+                
+                // Restore progress data
+                if (progress) localStorage.setItem('lifeInUK_progress', progress);
+                if (questionStats) localStorage.setItem('lifeInUK_questionStats', questionStats);
+                if (practiceStats) localStorage.setItem('lifeInUK_practiceStats', practiceStats);
+                if (adventureProgress) localStorage.setItem('lifeInUK_adventureProgress', adventureProgress);
+                if (dataVersion) localStorage.setItem('lifeInUK_dataVersion', dataVersion);
+                
+                // Unregister service worker
+                if ('serviceWorker' in navigator) {
+                    const registrations = await navigator.serviceWorker.getRegistrations();
+                    for (let registration of registrations) {
+                        await registration.unregister();
+                    }
+                }
+                
+                // Clear caches API
+                if ('caches' in window) {
+                    const cacheNames = await caches.keys();
+                    await Promise.all(cacheNames.map(name => caches.delete(name)));
+                }
+                
+                console.log('Cache cleared successfully');
+                alert('Cache cleared! The page will now reload.');
+                window.location.reload(true);
+            } catch (error) {
+                console.error('Error clearing cache:', error);
+                alert('Cache cleared (with some errors). The page will reload.');
+                window.location.reload(true);
+            }
         }
     });
 
@@ -1252,13 +1417,22 @@ function selectAdaptiveSubset(allQuestions, count) {
 
 // Generate practice questions from all topics
 function generatePracticeQuestions(count = 24) {
+    // Initialize practiceStats structure if needed (do this first!)
+    if (!state.practiceStats) {
+        state.practiceStats = { seenAll: false, questionsSeen: {} };
+    }
+    if (!state.practiceStats.questionsSeen) {
+        state.practiceStats.questionsSeen = {};
+    }
+    
     let allQuestions = [];
 
     // Collect all questions from all topics (one canonical variation per group)
     state.topics.forEach((topic, topicIndex) => {
         if (topic.questions) {
             topic.questions.forEach((q, idx) => {
-                allQuestions.push({ ...q, sourceIndex: idx, topicIndex });
+                const questionWithMeta = { ...q, sourceIndex: idx, topicIndex };
+                allQuestions.push(questionWithMeta);
             });
         }
 
@@ -1298,7 +1472,8 @@ function generatePracticeQuestions(count = 24) {
     const shuffled = shuffleArray(onePerConcept);
     const selected = shuffled.slice(0, count);
 
-    // Debug log removed after verification
+    console.log('Generated practice questions - sample conceptIds:', 
+        selected.slice(0, 3).map(q => ({ conceptId: q.conceptId, question: q.question?.substring(0, 40) })));
 
     // Mark selected as seen for practice tracking
     for (const q of selected) {
@@ -1423,6 +1598,57 @@ function showScreen(screenId) {
         screen.classList.remove('active');
     });
     document.getElementById(screenId).classList.add('active');
+}
+
+// Subject Selection
+async function selectSubject(subject) {
+    state.currentSubject = subject;
+    updateHeaderForSubject(subject);
+
+    await loadCurrentSubjectData();
+    renderTopicList();
+    updateAdventureProgressDisplay();
+    showScreen('homeScreen');
+}
+
+// Load data based on current subject
+async function loadCurrentSubjectData() {
+    if (state.currentSubject === 'driving-theory') {
+        if (state.activeSubject !== 'driving-theory' || state.topics.length === 0) {
+            await loadDrivingTheoryData();
+            state.activeSubject = 'driving-theory';
+        }
+    } else {
+        if (state.activeSubject !== 'life-in-uk' || state.topics.length === 0) {
+            await loadTopics();
+            state.activeSubject = 'life-in-uk';
+        }
+    }
+}
+
+// Update header based on current subject
+function updateHeaderForSubject(subject) {
+    const appTitle = document.getElementById('appTitle');
+    const backToSubjects = document.getElementById('backToSubjects');
+    const homeTitle = document.getElementById('homeTitle');
+    const homeSubtitle = document.getElementById('homeSubtitle');
+    
+    if (subject === null) {
+        appTitle.innerHTML = '📚 Study Guide';
+        backToSubjects.style.display = 'none';
+        if (homeTitle) homeTitle.textContent = 'Life in the UK';
+        if (homeSubtitle) homeSubtitle.textContent = 'Choose your learning mode';
+    } else if (subject === 'life-in-uk') {
+        appTitle.innerHTML = '🇬🇧 Life in the UK';
+        backToSubjects.style.display = 'block';
+        if (homeTitle) homeTitle.textContent = 'Life in the UK';
+        if (homeSubtitle) homeSubtitle.textContent = 'Choose your learning mode';
+    } else if (subject === 'driving-theory') {
+        appTitle.innerHTML = '🚗 Driving Theory';
+        backToSubjects.style.display = 'block';
+        if (homeTitle) homeTitle.textContent = 'Driving Theory';
+        if (homeSubtitle) homeSubtitle.textContent = 'Choose your learning mode';
+    }
 }
 
 // Show Difficulty Selection
@@ -2077,17 +2303,43 @@ function shuffleArray(array) {
 
 // Start Flashcards
 function startFlashcards() {
+    console.log('%c=== STARTING FLASHCARDS ===', 'color: green; font-weight: bold; font-size: 14px');
+    console.log('Topics loaded:', state.topics?.length || 0);
+    
+    // Ensure topics are loaded
+    if (!state.topics || state.topics.length === 0) {
+        console.error('Cannot start flashcards: topics not loaded');
+        alert('Please wait for topics to load...');
+        showScreen('homeScreen');
+        return;
+    }
+    
     state.currentQuestionIndex = 0;
     state.flashcardStats = { correct: 0, incorrect: 0, skipped: 0 };
     
     // Generate questions (use same adaptive logic as practice mode)
     state.currentQuestions = generatePracticeQuestions(24);
+    console.log('Generated questions for flashcards:', state.currentQuestions.length);
+    console.log('First question conceptId:', state.currentQuestions[0]?.conceptId, 'Question:', state.currentQuestions[0]?.question?.substring(0, 50));
+    
+    if (!state.currentQuestions || state.currentQuestions.length === 0) {
+        console.error('No questions generated for flashcards');
+        alert('No questions available for flashcards. Please try again.');
+        showScreen('homeScreen');
+        return;
+    }
     
     showScreen('flashcardScreen');
-    document.getElementById('flashcardResults').style.display = 'none';
-    document.querySelector('.flashcard-card').style.display = 'block';
-    document.querySelector('.flashcard-header').style.display = 'block';
     
+    const resultsEl = document.getElementById('flashcardResults');
+    const cardEl = document.querySelector('.flashcard-card');
+    const headerEl = document.querySelector('.flashcard-header');
+    
+    if (resultsEl) resultsEl.style.display = 'none';
+    if (cardEl) cardEl.style.display = 'block';
+    if (headerEl) headerEl.style.display = 'block';
+    
+    console.log('About to render first flashcard...');
     renderFlashcard();
 }
 
@@ -2097,32 +2349,52 @@ function renderFlashcard() {
     const totalQuestions = state.currentQuestions.length;
     const currentNum = state.currentQuestionIndex + 1;
     
+    console.log(`Rendering flashcard ${currentNum} of ${totalQuestions}`, question);
+    
     // Hide header and progress bar for flashcards
     const flashcardHeader = document.querySelector('.flashcard-header');
     if (flashcardHeader) {
         flashcardHeader.style.display = 'none';
     }
-    document.getElementById('flashcardProgressBar').style.display = 'none';
+    
+    const progressBar = document.getElementById('flashcardProgressBar');
+    if (progressBar) progressBar.style.display = 'none';
     
     // Show stats in the flashcard card instead
     const statsDiv = document.getElementById('flashcardStats');
     if (statsDiv) {
         statsDiv.style.display = 'block';
-        document.getElementById('flashcardCounterInline').textContent = `Card ${currentNum} of ${totalQuestions}`;
-        document.getElementById('flashcardScoreInline').textContent = 
-            `✓ ${state.flashcardStats.correct} | ✗ ${state.flashcardStats.incorrect}`;
+        const counterEl = document.getElementById('flashcardCounterInline');
+        const scoreEl = document.getElementById('flashcardScoreInline');
+        
+        if (counterEl) counterEl.textContent = `Card ${currentNum} of ${totalQuestions}`;
+        if (scoreEl) scoreEl.textContent = `✓ ${state.flashcardStats.correct} | ✗ ${state.flashcardStats.incorrect}`;
     }
     
     // Set question text
-    const questionText = question.question;
-    document.getElementById('flashcardQuestion').textContent = questionText;
+    const questionEl = document.getElementById('flashcardQuestion');
+    if (questionEl) {
+        questionEl.textContent = question.question || 'No question text';
+    } else {
+        console.error('flashcardQuestion element not found');
+    }
     
     // Set answer
     let answerText = question.answer;
-    if (Array.isArray(answerText)) {
+    
+    // Handle multi-answer questions
+    if (question.type === 'multipleAnswer' && question.correctOptions) {
+        answerText = question.correctOptions.join(', ');
+    } else if (Array.isArray(answerText)) {
         answerText = answerText.join(', ');
     }
-    document.getElementById('flashcardAnswer').textContent = answerText;
+    
+    const answerEl = document.getElementById('flashcardAnswer');
+    if (answerEl) {
+        answerEl.textContent = answerText || 'No answer available';
+    } else {
+        console.error('flashcardAnswer element not found');
+    }
 }
 
 // Handle flashcard response
@@ -2135,6 +2407,7 @@ function handleFlashcardResponse(response) {
     if (response === 'correct' || response === 'incorrect') {
         const isCorrect = response === 'correct';
         const conceptKey = getConceptKey(question);
+        console.log('Updating stats for concept:', conceptKey, 'isCorrect:', isCorrect);
         updateQuestionStats(conceptKey, isCorrect);
         
         // Update session stats
@@ -2156,13 +2429,23 @@ function handleFlashcardResponse(response) {
 
 // Show flashcard results
 function showFlashcardResults() {
-    document.querySelector('.flashcard-card').style.display = 'none';
-    document.querySelector('.flashcard-header').style.display = 'none';
-    document.getElementById('flashcardResults').style.display = 'block';
+    console.log('Showing flashcard results:', state.flashcardStats);
     
-    document.getElementById('flashcardFinalCorrect').textContent = state.flashcardStats.correct;
-    document.getElementById('flashcardFinalIncorrect').textContent = state.flashcardStats.incorrect;
-    document.getElementById('flashcardFinalSkipped').textContent = state.flashcardStats.skipped;
+    const cardEl = document.querySelector('.flashcard-card');
+    const headerEl = document.querySelector('.flashcard-header');
+    const resultsEl = document.getElementById('flashcardResults');
+    
+    if (cardEl) cardEl.style.display = 'none';
+    if (headerEl) headerEl.style.display = 'none';
+    if (resultsEl) resultsEl.style.display = 'block';
+    
+    const correctEl = document.getElementById('flashcardFinalCorrect');
+    const incorrectEl = document.getElementById('flashcardFinalIncorrect');
+    const skippedEl = document.getElementById('flashcardFinalSkipped');
+    
+    if (correctEl) correctEl.textContent = state.flashcardStats.correct;
+    if (incorrectEl) incorrectEl.textContent = state.flashcardStats.incorrect;
+    if (skippedEl) skippedEl.textContent = state.flashcardStats.skipped;
 }
 
 // Initialize on load
@@ -2616,6 +2899,14 @@ function updateAdventureProgressDisplay() {
 
 // Start Adventure Mode
 function startAdventureMode() {
+    // Ensure topics are loaded
+    if (!state.topics || state.topics.length === 0) {
+        console.error('Cannot start adventure mode: topics not loaded');
+        alert('Please wait for topics to load...');
+        showScreen('homeScreen');
+        return;
+    }
+    
     showScreen('adventureScreen');
     renderAdventureTopic();
 }
@@ -2794,6 +3085,26 @@ function hashCode(str) {
     }
     return hash;
 }
+
+// Debug function to check stats (call from console)
+window.debugStats = function() {
+    console.log('=== DEBUG STATS ===');
+    console.log('Total stats entries:', Object.keys(state.questionStats).length);
+    console.log('Sample stats:', Object.entries(state.questionStats).slice(0, 5));
+    console.log('Topics loaded:', state.topics?.length || 0);
+    
+    // Check localStorage
+    const saved = localStorage.getItem('lifeInUK_questionStats');
+    if (saved) {
+        const parsed = JSON.parse(saved);
+        console.log('localStorage has', Object.keys(parsed).length, 'entries');
+        console.log('Sample from localStorage:', Object.entries(parsed).slice(0, 3));
+    } else {
+        console.log('No stats in localStorage');
+    }
+    
+    return state.questionStats;
+};
 
 // Start the app
 init();

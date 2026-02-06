@@ -1,0 +1,77 @@
+[
+  {
+    "title": "Rules of the Road (Core)",
+    "content": "<h3>Core Principles</h3><p>Safe driving depends on planning ahead, staying within speed limits, and obeying road signs and signals. Always drive at a speed that allows you to stop safely within the distance you can see to be clear.</p><h3>Speed Limits (Cars)</h3><ul><li><strong>Built-up areas:</strong> 30 mph unless signs show otherwise</li><li><strong>Single carriageways:</strong> 60 mph</li><li><strong>Dual carriageways:</strong> 70 mph</li><li><strong>Motorways:</strong> 70 mph</li></ul><p><strong>Important:</strong> Speed limits can be lower where signs indicate, especially near schools, road works, or in residential zones.</p><h3>Stopping Distances</h3><p>Stopping distance = Thinking distance + Braking distance.</p><ul><li>30 mph: 23m</li><li>40 mph: 36m</li><li>50 mph: 53m</li><li>60 mph: 73m</li><li>70 mph: 96m</li></ul><h3>Following Distance</h3><p>Use the 2-second rule in dry conditions and at least 4 seconds in wet conditions.</p><h3>References</h3><p>See the official Highway Code for authoritative rules and updates: <a href=\"https://www.gov.uk/guidance/the-highway-code\" target=\"_blank\" rel=\"noopener\">gov.uk/guidance/the-highway-code</a></p>",
+    "conceptId": "rules_core"
+  },
+  {
+    "title": "Traffic Signs", 
+    "content": "<h3>Sign Categories</h3><ul><li><strong>Warning signs</strong> (red triangle): hazards ahead</li><li><strong>Regulatory signs</strong> (circle): mandatory or prohibitive instructions</li><li><strong>Information signs</strong> (rectangle): directions, services, and routes</li></ul><h3>Common Examples</h3><ul><li><strong>Stop</strong> (red octagon): must stop and give way</li><li><strong>Give Way</strong> (red triangle): slow and yield if needed</li><li><strong>No entry</strong> (red circle): do not enter</li><li><strong>Mandatory direction</strong> (blue circle): you must follow</li></ul><h3>References</h3><p>Official guidance: <a href=\"https://www.gov.uk/guidance/the-highway-code/traffic-signs\" target=\"_blank\" rel=\"noopener\">Highway Code – Traffic signs</a></p>",
+    "conceptId": "traffic_signs"
+  },
+  {
+    "title": "Road Markings", 
+    "content": "<h3>Center Lines</h3><ul><li><strong>Broken white line:</strong> you may cross if safe</li><li><strong>Double white lines, broken on your side:</strong> you may cross if safe and necessary</li><li><strong>Double white lines, solid on your side:</strong> do not cross unless safe and necessary to pass a stationary vehicle or overtake a cyclist/horse at very low speed</li></ul><h3>Stop Lines</h3><p>Stop behind the solid line at traffic lights or STOP signs.</p><h3>Box Junctions</h3><p>Do not enter unless your exit is clear. You may turn right if waiting for oncoming traffic and your exit is clear.</p><h3>References</h3><p>Highway Code: <a href=\"https://www.gov.uk/guidance/the-highway-code/road-markings\" target=\"_blank\" rel=\"noopener\">Road markings</a></p>",
+    "conceptId": "road_markings"
+  },
+  {
+    "title": "Traffic Lights and Signals",
+    "content": "<h3>Traffic Lights</h3><ul><li><strong>Red:</strong> Stop</li><li><strong>Red + Amber:</strong> Prepare to go (do not move until green)</li><li><strong>Green:</strong> Proceed if clear</li><li><strong>Amber:</strong> Stop unless unsafe to do so</li></ul><h3>Filter Arrows</h3><p>A green arrow means you may proceed in the arrow direction only if safe.</p><h3>Flashing Amber</h3><p>At pedestrian crossings, you may proceed if the crossing is clear.</p><h3>References</h3><p>Highway Code signals: <a href=\"https://www.gov.uk/guidance/the-highway-code/light-signals-controlling-traffic\" target=\"_blank\" rel=\"noopener\">Traffic light signals</a></p>",
+    "conceptId": "traffic_signals"
+  },
+  {
+    "title": "Junctions and Roundabouts",
+    "content": "<h3>Junctions</h3><p>Approach with caution, check mirrors, signal early, and position correctly. Give way to traffic on the main road.</p><h3>Roundabouts</h3><p>Give way to traffic approaching from your right. Signal left to exit. Use the correct lane and stay aware of lane markings and signs.</p><h3>Mini-roundabouts</h3><p>You must pass around the central markings (do not drive over unless it's unavoidable due to vehicle size).</p><h3>References</h3><p>Highway Code: <a href=\"https://www.gov.uk/guidance/the-highway-code/using-the-road\" target=\"_blank\" rel=\"noopener\">Using the road</a></p>",
+    "conceptId": "junctions_roundabouts"
+  },
+  {
+    "title": "Motorways and Dual Carriageways",
+    "content": "<h3>Joining Motorways</h3><p>Use the slip road to build speed, check mirrors and blind spots, and merge safely.</p><h3>Lane Discipline</h3><p>Keep left unless overtaking. Move back to the left when safe.</p><h3>Smart Motorways</h3><p>Follow overhead gantry signs. If a lane is marked with a red X, it is closed.</p><h3>Hard Shoulder</h3><p>Only use in emergencies unless signs show it is open as a running lane.</p><h3>References</h3><p>Motorway rules: <a href=\"https://www.gov.uk/guidance/the-highway-code/motorways-253-to-273\" target=\"_blank\" rel=\"noopener\">Motorways (rules 253–273)</a></p>",
+    "conceptId": "motorways_dual"
+  },
+  {
+    "title": "Vulnerable Road Users",
+    "content": "<h3>Pedestrians</h3><p>Give extra time and space to children, older people, and those with disabilities. Be prepared to stop at crossings.</p><h3>Cyclists</h3><p>Leave at least 1.5 meters when overtaking. Check for cyclists before opening doors.</p><h3>Motorcyclists</h3><p>They may be hard to see. Check blind spots carefully before changing lanes.</p><h3>Horse Riders</h3><p>Pass slowly and give at least a car’s width when safe.</p><h3>References</h3><p>Hierarchy of road users: <a href=\"https://www.gov.uk/guidance/the-highway-code/introduction#ruleh1\" target=\"_blank\" rel=\"noopener\">Highway Code Introduction</a></p>",
+    "conceptId": "vulnerable_users"
+  },
+  {
+    "title": "Vehicle Safety and Maintenance",
+    "content": "<h3>Pre-drive Checks</h3><ul><li>Tyres: minimum tread depth 1.6mm</li><li>Lights: all working</li><li>Windscreen: clear and undamaged</li><li>Fluids: oil, coolant, brake fluid, washer</li><li>Mirrors: adjusted</li></ul><h3>MOT</h3><p>Vehicles over 3 years old require an annual MOT certificate.</p><h3>Warning Lights</h3><ul><li><strong>Red:</strong> stop safely, serious issue</li><li><strong>Amber:</strong> check soon</li><li><strong>Green/Blue:</strong> information only</li></ul><h3>References</h3><p>MOT guidance: <a href=\"https://www.gov.uk/getting-an-mot\" target=\"_blank\" rel=\"noopener\">gov.uk/getting-an-mot</a></p>",
+    "conceptId": "vehicle_safety"
+  },
+  {
+    "title": "Driving in Different Conditions",
+    "content": "<h3>Wet Weather</h3><p>Reduce speed, increase following distance (at least 4 seconds), and avoid harsh braking.</p><h3>Fog</h3><p>Use fog lights when visibility is less than 100 meters. Turn them off when visibility improves.</p><h3>Night Driving</h3><p>Use dipped headlights in built-up areas and when following other vehicles. Use full beam on unlit roads when safe.</p><h3>Snow and Ice</h3><p>Drive slowly, use higher gears, brake gently, and increase following distance up to 10 times normal.</p><h3>References</h3><p>Bad weather advice: <a href=\"https://www.gov.uk/guidance/the-highway-code/driving-in-adverse-weather-conditions-226-to-237\" target=\"_blank\" rel=\"noopener\">Highway Code – Adverse weather</a></p>",
+    "conceptId": "conditions_weather"
+  },
+  {
+    "title": "Hazard Awareness and Defensive Driving",
+    "content": "<h3>Hazard Perception</h3><p>Scan far ahead, check mirrors every 5–8 seconds, and anticipate other road users’ actions.</p><h3>Defensive Driving</h3><p>Always assume others may make mistakes. Keep safe distances and plan escape routes.</p><h3>Common Hazards</h3><ul><li>Pedestrians near crossings</li><li>Cyclists and motorcyclists in blind spots</li><li>Road works and temporary signs</li><li>Weather changes</li></ul><h3>References</h3><p>Hazard awareness guidance: <a href=\"https://www.gov.uk/guidance/the-highway-code/using-the-road\" target=\"_blank\" rel=\"noopener\">Highway Code – Using the road</a></p>",
+    "conceptId": "hazard_awareness"
+  },
+  {
+    "title": "Safety, Seatbelts, and Passengers",
+    "content": "<h3>Seatbelts</h3><p>Drivers and passengers must wear seatbelts unless exempt. The driver is responsible for ensuring children are properly restrained.</p><h3>Child Seats</h3><p>Children must use the correct car seat for their height and weight as per UK law.</p><h3>Distractions</h3><p>Do not use a handheld mobile phone while driving. Avoid distractions that reduce your focus.</p><h3>References</h3><p>Seatbelt law: <a href=\"https://www.gov.uk/seat-belts-law\" target=\"_blank\" rel=\"noopener\">gov.uk/seat-belts-law</a></p>",
+    "conceptId": "safety_seatbelts"
+  },
+  {
+    "title": "Alcohol, Drugs, and Fitness to Drive",
+    "content": "<h3>Alcohol</h3><p>Never drive if you feel impaired. The safest limit is zero. Alcohol affects judgement, reaction time, and coordination.</p><h3>Drugs</h3><p>Driving under the influence of illegal or prescription drugs can be dangerous and illegal. Always check medication labels.</p><h3>Fatigue</h3><p>If you feel sleepy, stop safely, take a break, and rest.</p><h3>References</h3><p>Drink-driving rules: <a href=\"https://www.gov.uk/drink-drive-limit\" target=\"_blank\" rel=\"noopener\">gov.uk/drink-drive-limit</a></p>",
+    "conceptId": "fitness_to_drive"
+  },
+  {
+    "title": "Documents, Insurance, and Enforcement",
+    "content": "<h3>Documents</h3><ul><li>Driving licence</li><li>Vehicle tax (Vehicle Excise Duty)</li><li>Valid insurance</li><li>MOT (if required)</li></ul><h3>Insurance</h3><p>You must have at least third-party insurance to drive a car on UK roads.</p><h3>Penalties</h3><p>Breaking driving laws can result in fines, penalty points, or disqualification.</p><h3>References</h3><p>Driving documents: <a href=\"https://www.gov.uk/browse/driving/driving-licences\" target=\"_blank\" rel=\"noopener\">gov.uk driving licences</a></p>",
+    "conceptId": "documents_enforcement"
+  },
+  {
+    "title": "Breakdowns and Incidents",
+    "content": "<h3>Breakdown Safety</h3><p>If safe, pull over, switch on hazard lights, and move behind a barrier. Call for assistance.</p><h3>Warning Triangle</h3><p>Use on roads (not motorways) to warn other drivers. Place it at least 45m behind your vehicle.</p><h3>Incidents</h3><p>Stop if involved in a collision. Exchange details and report to police when required.</p><h3>References</h3><p>Breakdown advice: <a href=\"https://www.gov.uk/guidance/the-highway-code/breakdowns-and-incidents-274-to-287\" target=\"_blank\" rel=\"noopener\">Highway Code – Breakdowns</a></p>",
+    "conceptId": "breakdowns_incidents"
+  },
+  {
+    "title": "Eco-Driving and Vehicle Loading",
+    "content": "<h3>Eco-Driving</h3><p>Drive smoothly, anticipate traffic, and avoid harsh acceleration. Maintain correct tyre pressures and remove unnecessary weight from the car.</p><h3>Vehicle Loading</h3><p>Load should be secure and not obstruct your view. Heavy items should be placed low and as far forward as possible.</p><h3>References</h3><p>Eco-driving tips: <a href=\"https://www.gov.uk/eco-driving\" target=\"_blank\" rel=\"noopener\">gov.uk/eco-driving</a></p>",
+    "conceptId": "eco_loading"
+  }
+]

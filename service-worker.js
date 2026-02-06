@@ -1,11 +1,13 @@
-const CACHE_NAME = 'life-in-uk-v25'; // Bump to ensure clients fetch the latest assets including topics content
+const CACHE_NAME = 'life-in-uk-v29'; // Bump to ensure clients fetch the latest assets including 900-question driving theory expansion
 const urlsToCache = [
   '/',
   '/index.html',
   '/app.js',
   '/styles.css',
   '/data/questions.json',
-  '/data/topics_grouped.json'
+  '/data/topics_grouped.json',
+  '/data/driving-theory-questions.json',
+  '/data/driving-theory-topics.json'
 ];
 
 // Install event - cache files

@@ -251,4 +251,19 @@ Free to use for personal study purposes.
 
 ---
 
+## 📖 Complete Documentation
+
+For a comprehensive guide covering:
+- All learning modes (Adventure, Study, Practice, Flashcards, Statistics)
+- Detailed scoring system and adaptive learning algorithm
+- Data file structure and question formats
+- Troubleshooting common issues
+- Plans for adding new subjects (Driving Theory)
+- Technical architecture and API documentation
+
+**See [GUIDE.md](GUIDE.md)** for the complete user and maintainer documentation.
+
+---
+
 **Good luck with your exam! 🇬🇧**
+
